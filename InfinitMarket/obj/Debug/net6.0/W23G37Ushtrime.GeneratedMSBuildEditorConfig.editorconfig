@@ -1,0 +1,185 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = W23G37Ushtrime
+build_property.RootNamespace = W23G37Ushtrime
+build_property.ProjectDir = D:\Programim\C#\test\W23G37Ushtrime\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\Programim\C#\test\W23G37Ushtrime
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Areas/Identity/Pages/Account/AccessDenied.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Areas/Identity/Pages/Account/ChangePassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxDaGFuZ2VQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Areas/Identity/Pages/Account/DeletePersonalData.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxEZWxldGVQZXJzb25hbERhdGEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Areas/Identity/Pages/Account/ForgotPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxGb3Jnb3RQYXNzd29yZENvbmZpcm1hdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Areas/Identity/Pages/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Areas/Identity/Pages/Account/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Areas/Identity/Pages/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Areas/Identity/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Areas/Identity/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Views/Departamentet/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0YW1lbnRldFxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Views/Departamentet/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0YW1lbnRldFxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Views/Departamentet/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0YW1lbnRldFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Views/Lendet/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVuZGV0XENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Views/Lendet/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVuZGV0XERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Views/Lendet/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVuZGV0XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Views/Llogarite/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGxvZ2FyaXRlXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Views/Llogarite/FshijRoletUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGxvZ2FyaXRlXEZzaGlqUm9sZXRVc2VyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Views/Llogarite/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGxvZ2FyaXRlXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Views/Llogarite/RoletPerUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGxvZ2FyaXRlXFJvbGV0UGVyVXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Views/Llogarite/ShtoRoletUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGxvZ2FyaXRlXFNodG9Sb2xldFVzZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Views/Lokacionet/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9rYWNpb25ldFxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Views/Lokacionet/CreateSallat.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9rYWNpb25ldFxDcmVhdGVTYWxsYXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Views/Lokacionet/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9rYWNpb25ldFxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Views/Lokacionet/DeleteSallat.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9rYWNpb25ldFxEZWxldGVTYWxsYXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Views/Lokacionet/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9rYWNpb25ldFxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Views/Lokacionet/DetailsSallat.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9rYWNpb25ldFxEZXRhaWxzU2FsbGF0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Views/Lokacionet/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9rYWNpb25ldFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Views/Lokacionet/IndexSallat.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9rYWNpb25ldFxJbmRleFNhbGxhdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Views/Rolet/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXRcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Views/Rolet/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXRcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Views/Rolet/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programim/C\#/test/W23G37Ushtrime/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-spszm5rutq

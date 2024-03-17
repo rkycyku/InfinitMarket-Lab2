@@ -1,0 +1,106 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+.containeri {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+
+.tableStyle {
+    width: 100%;
+}
+
+    .tableStyle tr th {
+        margin-top: 3em;
+        background-color: #009879;
+        color: #ffffff;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    .tableStyle th,
+    .tableStyle td {
+        padding: 12px 15px;
+    }
+
+    .tableStyle tr td {
+        border-bottom: 1px solid #dddddd;
+    }
+
+table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    margin: 0 auto;
+}
+
+.formaSelect {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+    width: 80%;
+    margin-top: 5em;
+    background-color: #E4E9F7;
+}
+body, html {
+    background-color: #E4E9F7;
+}
+
+.nav-tabs .nav-link.active{
+    background: #009879; 
+    color: white;
+
+}
+
+.nav-tabs .nav-link {
+    background: #d8ddea;
+    color: #009879;
+}
+
+.loginImg {
+    height: 100px;
+    width: 100px;
+    margin-bottom: 1em;
+}
+
+.DetajetLink{
+    text-decoration: none;
+    color: black;
+}
+
+    .DetajetLink:hover {
+        color: #009879;
+    }
