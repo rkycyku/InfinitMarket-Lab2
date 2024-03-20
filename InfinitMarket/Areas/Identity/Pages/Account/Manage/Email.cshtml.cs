@@ -7,11 +7,13 @@ using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using InfinitMarket.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.EntityFrameworkCore;
 
 namespace InfinitMarket.Areas.Identity.Pages.Account.Manage
 {
@@ -20,15 +22,18 @@ namespace InfinitMarket.Areas.Identity.Pages.Account.Manage
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly IEmailSender _emailSender;
+        private readonly ApplicationDbContext _context;
 
         public EmailModel(
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            ApplicationDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
+            _context = context;
         }
 
         /// <summary>
@@ -71,6 +76,11 @@ namespace InfinitMarket.Areas.Identity.Pages.Account.Manage
             [EmailAddress]
             [Display(Name = "New email")]
             public string NewEmail { get; set; }
+
+            [Required]
+            [DataType(DataType.Password)]
+            [Display(Name = "Fjalkalimi Aktual")]
+            public string Password { get; set; }
         }
 
         private async Task LoadAsync(IdentityUser user)
@@ -113,22 +123,46 @@ namespace InfinitMarket.Areas.Identity.Pages.Account.Manage
             }
 
             var email = await _userManager.GetEmailAsync(user);
+
+            var kontrolloFjalekalimin = await _userManager.CheckPasswordAsync(user, Input.Password);
+
+            if (!kontrolloFjalekalimin)
+            {
+                StatusMessage = "Fjalekalimi eshte gabim!.";
+                return RedirectToPage();
+            }
+
             if (Input.NewEmail != email)
             {
+                var kontrolloEmail = await _context.Perdoruesit.Where(x => x.Email == Input.NewEmail).CountAsync();
+
+                if(kontrolloEmail > 0) {
+                    StatusMessage = "Ky email eshte i perdorur ju lutem provoni nje email tjeter!.";
+                    return RedirectToPage();
+                }
+
                 var userId = await _userManager.GetUserIdAsync(user);
                 var code = await _userManager.GenerateChangeEmailTokenAsync(user, Input.NewEmail);
-                code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                var callbackUrl = Url.Page(
-                    "/Account/ConfirmEmailChange",
-                    pageHandler: null,
-                    values: new { area = "Identity", userId = userId, email = Input.NewEmail, code = code },
-                    protocol: Request.Scheme);
-                await _emailSender.SendEmailAsync(
-                    Input.NewEmail,
-                    "Confirm your email",
-                    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
-                StatusMessage = "Confirmation link to change email sent. Please check your email.";
+                
+
+                var result = await _userManager.ChangeEmailAsync(user, Input.NewEmail, code);
+
+                if (result.Succeeded)
+                {
+                    user.UserName = Input.NewEmail;
+
+                    await _userManager.UpdateAsync(user);
+
+                    var perdoruesi = await _context.Perdoruesit.Where(x => x.AspNetUserId == userId).FirstOrDefaultAsync();
+
+                    perdoruesi.Email = Input.NewEmail;
+
+                    _context.Perdoruesit.Update(perdoruesi);
+                    await _context.SaveChangesAsync();
+                }
+
+                StatusMessage = "Email u ndryshua me sukses.";
                 return RedirectToPage();
             }
 

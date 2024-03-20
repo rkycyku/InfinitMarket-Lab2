@@ -19,7 +19,7 @@
         <div style="display: flex; gap: 1em; flex-direction: column">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="col-md-4">
-                <input asp-for="Input.Email" class="form-control" autocomplete="email" />
+                <input asp-for="Input.Email" class="form-control" autocomplete="email"/>
                 <label asp-for="Input.Email" class="form-label"></label>
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
@@ -31,11 +31,6 @@
                     <input asp-for="Input.Emri" class="form-control" autocomplete="Emri" aria-required="true" placeholder="Filan" />
                     <label asp-for="Input.Emri">Emri</label>
                     <span asp-validation-for="Input.Emri" class="text-danger"></span>
-                </div>
-                <div class="form-floating mb-3">
-                    <input asp-for="Input.Username" class="form-control" autocomplete="Username" aria-required="true" placeholder="Filan" />
-                    <label asp-for="Input.Username">Usernamet</label>
-                    <span asp-validation-for="Input.Username" class="text-danger"></span>
                 </div>
                 <div class="form-floating mb-3">
                     <input asp-for="Input.Mbiemri" class="form-control" autocomplete="Mbiemri" aria-required="true" placeholder="Fisteku" />

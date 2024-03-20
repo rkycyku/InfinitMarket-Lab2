@@ -171,7 +171,10 @@ namespace InfinitMarket.Areas.Identity.Pages.Account
             {
                 _logger.LogInformation("{Name} logged in with {LoginProvider} provider.", info.Principal.Identity.Name, info.LoginProvider);
                 Console.WriteLine(info.Principal.Identity.Name);
-                var user = await _userManager.FindByEmailAsync(info.Principal.FindFirstValue(ClaimTypes.Email));
+                Console.WriteLine(ClaimTypes.Email.ToString());
+                var perdoruesi = await _context.Perdoruesit.Where(x => x.EmailFillestar == ClaimTypes.Email).FirstOrDefaultAsync();
+
+                var user = await _userManager.FindByIdAsync(perdoruesi.AspNetUserId);
 
                 var roles = await _userManager.GetRolesAsync(user);
 
@@ -237,6 +240,7 @@ namespace InfinitMarket.Areas.Identity.Pages.Account
                             AspNetUserId = userId,
                             Emri = Input.Emri,
                             Email = Input.Email,
+                            EmailFillestar = Input.Email,
                             Mbiemri = Input.Mbiemri,
                         };
                         await _context.Perdoruesit.AddAsync(perdoruesi);

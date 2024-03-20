@@ -166,6 +166,7 @@ namespace InfinitMarket.Areas.Identity.Pages.Account
                         AspNetUserId = userId,
                         Emri = Input.Emri,
                         Email = Input.Email,
+                        EmailFillestar = Input.Email,
                         Mbiemri = Input.Mbiemri,
                     };
                     await _context.Perdoruesit.AddAsync(perdoruesi);

@@ -167,13 +167,13 @@
                                 @if (SignInManager.IsSignedIn(User))
                                 {
                                     var user = await UserManager.GetUserAsync(User);
-                                    var userRoles = (await UserManager.GetRolesAsync(user)).Where(role => role != "User").ToList();
+                                    @* var userRoles = (await UserManager.GetRolesAsync(user)).Where(role => role != "User").ToList(); *@
 
                                     // Displaying the user's email
                                 <div class="profile_name">@User.Identity?.Name</div>
 
                                     // Displaying the user's roles
-                                    @if (userRoles.Any())
+                                    @* @if (userRoles.Any())
                                     {
                                     <div class="job">
                                             @if (userRoles.Count == 1)
@@ -189,7 +189,7 @@
                                             <span>@userRoles.Last()</span>
                                             }
                                     </div>
-                                    }
+                                    } *@
                                 }
                         </div>
 
