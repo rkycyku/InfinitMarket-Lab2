@@ -124,12 +124,30 @@ function Navbar(props) {
               <Link to="/">
                 <img
                   class="logoImg"
-                  src={process.env.PUBLIC_URL + "/img/InfiniteMarketLogo/default.png"}
+                  src={
+                    process.env.PUBLIC_URL +
+                    "/img/InfiniteMarketLogo/default.png"
+                  }
                 />
               </Link>
               <span class="logo_name">Infinit Market</span>
             </div>
             <ul class="nav-links">
+              <li>
+                <a href="https://localhost:7251/Identity/Account/Manage">
+                  <i class="bx bx-pie-chart-alt-2">
+                    <FontAwesomeIcon icon={faPenToSquare} />
+                  </i>
+                  <span class="link_name">Perditesimi i Fjalekalimit</span>
+                </a>
+                <ul class="sub-menu blank">
+                  <li>
+                    <Link class="link_name" to="/PerditesoTeDhenat">
+                      Perditesimi i Fjalekalimit
+                    </Link>
+                  </li>
+                </ul>
+              </li>
               <li>
                 <Link to="/PerditesoTeDhenat">
                   <i class="bx bx-pie-chart-alt-2">

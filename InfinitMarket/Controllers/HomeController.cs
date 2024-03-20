@@ -8,7 +8,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace InfinitMarket.Controllers
 {
-    [Authorize(Policy = "punonAdministrat")]
     public class HomeController : Controller
     {
         public ActionResult Index()

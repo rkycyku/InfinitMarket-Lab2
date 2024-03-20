@@ -69,6 +69,15 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-floating mb-3">
+                    <label asp-for="Input.GjiniaZgjedhur">Zgjedhni Gjinini</label>
+                    <select asp-for="Input.GjiniaZgjedhur" class="form-control" required>
+                        <option disabled value="">Zgjedhni Gjinin</option>
+                        <option value="M">Mashkull</option>
+                        <option value="F">Femer</option>
+                    </select>
+                    <span asp-validation-for="Input.GjiniaZgjedhur" class="text-danger"></span>
+                </div>
 
                 <div class="form-floating mb-3">
                     <input asp-for="Input.Adresa" class="form-control" autocomplete="Adresa" aria-required="true" placeholder="Lagjja Kalabria" />

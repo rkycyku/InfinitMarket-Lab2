@@ -18,6 +18,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 });
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
+
+
 builder.Services.AddCors(opt =>
 {
     opt.AddPolicy(name: "CorsPolicy", builder =>
@@ -51,12 +53,12 @@ builder.Services.AddAuthentication(options =>
     };
 }).AddGoogle(googleOptions =>
 {
-    googleOptions.ClientId = builder.Configuration["Authentication:Google:ClientId"];
-    googleOptions.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
+    googleOptions.ClientId = builder.Configuration.GetSection("Authentication:Google:ClientId").Value;
+    googleOptions.ClientSecret = builder.Configuration.GetSection("Authentication:Google:ClientSecret").Value;
 }).AddFacebook(facebookOptions =>
 {
-    facebookOptions.AppId = builder.Configuration["Authentication:Facebook:AppId"];
-    facebookOptions.AppSecret = builder.Configuration["Authentication:Facebook:AppSecret"];
+    facebookOptions.AppId = builder.Configuration.GetSection("Authentication:Facebook:AppId").Value;
+    facebookOptions.AppSecret = builder.Configuration.GetSection("Authentication:Facebook:AppSecret").Value;
 }); ;
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>

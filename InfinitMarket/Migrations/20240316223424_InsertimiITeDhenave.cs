@@ -32,7 +32,7 @@ namespace InfinitMarket.Migrations
                 values: new object[,]
                 {
             {
-                "01010101-0101-0101-0101-010101010101", "admin@ifinitmarket.com", "ADMIN@INFINITMARKET.COM",
+                "01010101-0101-0101-0101-010101010101", "admin@infinitmarket.com", "ADMIN@INFINITMARKET.COM",
                 "admin@infinitmarket.com", "ADMIN@INFINITMARKET.COM", false,
                 "AQAAAAEAACcQAAAAEJlO6MbXUfC+q4JVGrZEjKV6z1dDnA323QebRD85vPQJ3ScQEmBr3P8zKSHwu5Cy2w==",
                 "PKJ54KGIZB4MOS3BACM2INRJE54VBB32", "9e6bf9b8-daa7-42b1-9529-f17ee6633b0f",

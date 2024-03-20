@@ -179,7 +179,7 @@ namespace InfinitMarket.Areas.Identity.Pages.Account
 
                 Console.WriteLine(jwtToken);
                     var redirectUrl = "http://localhost:3000/login?token=" + jwtToken;
-                    await _signInManager.SignOutAsync();
+                    /*await _signInManager.SignOutAsync();*/
                     return Redirect(redirectUrl);
             }
             if (result.IsLockedOut)
@@ -237,7 +237,6 @@ namespace InfinitMarket.Areas.Identity.Pages.Account
                             AspNetUserId = userId,
                             Emri = Input.Emri,
                             Email = Input.Email,
-                            Username = Input.Username,
                             Mbiemri = Input.Mbiemri,
                         };
                         await _context.Perdoruesit.AddAsync(perdoruesi);
@@ -284,7 +283,7 @@ namespace InfinitMarket.Areas.Identity.Pages.Account
 
                         Console.WriteLine(jwtToken);
                         var redirectUrl = "http://localhost:3000/login?token=" + jwtToken;
-                        await _signInManager.SignOutAsync();
+                        /*await _signInManager.SignOutAsync();*/
                         return Redirect(redirectUrl);
                     }
                 }

@@ -32,7 +32,6 @@ namespace InfinitMarket.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<IdentityUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
-
         private readonly ApplicationDbContext _context;
 
         public RegisterModel(
@@ -96,6 +95,7 @@ namespace InfinitMarket.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "Passwordat nuk perputhen! Ju lutem kontrolloni ato.")]
             public string ConfirmPassword { get; set; }
+
             [Required(ErrorMessage = "Ju lutem shenoni Emrin!")]
             [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "Emri duhet te permbaje vetem shkronja.")]
             public string? Emri { get; set; }
@@ -166,7 +166,6 @@ namespace InfinitMarket.Areas.Identity.Pages.Account
                         AspNetUserId = userId,
                         Emri = Input.Emri,
                         Email = Input.Email,
-                        Username = Input.Username,
                         Mbiemri = Input.Mbiemri,
                     };
                     await _context.Perdoruesit.AddAsync(perdoruesi);

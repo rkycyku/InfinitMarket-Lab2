@@ -8,7 +8,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] | InfiniteMarket</title>
+    <title>@ViewData["Title"] | UBT SMIS Admin</title>
     <link rel="stylesheet" href="~/css/style.css" asp-append-version="true">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
@@ -18,11 +18,250 @@
 </head>
 
 <body>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <div class="sidebar close">
+            <div class="logo-details">
+
+                @* <a href="/">
+                    <img class="logoImg" src="~/Ubtlogo.png" />
+
+                </a> *@
+                <span class="logo_name">InfiniteMarket</span>
+            </div>
+            <ul class="nav-links">
+                <li>
+                    <div class="iocn-link">
+                        <a href="#">
+                            <i class="fa-solid fa-address-book"></i>
+                            <span class="link_name">Llogarite</span>
+                        </a>
+                        <i class='bx bxs-chevron-down arrow'></i>
+                    </div>
+                    <ul class="sub-menu">
+                        <li><a class="link_name" href="#">Llogarite</a></li>
+                        <li><a asp-area="" asp-controller="Llogarite" asp-action="Index">Llogarite e Reja</a></li>
+                        <li><a asp-area="Identity" asp-page="/Account/Register">Krijoni Llogarin</a></li>
+                        <li><a asp-area="Identity" asp-page="/Account/ForgotPassword">Riktheni Fjalekalimin</a></li>
+                        <li><a asp-area="Identity" asp-page="/Account/DeletePersonalData">Fshini Llogarin</a></li>
+                        <li>
+                            <div class="icon-link2">
+                                <a>Studentet <i class='bx bxs-chevron-down arrow2'></i></a>
+                            </div>
+                            <ul class="sub-menu2">
+                                <li><a class="link_name" href="#">Studentet</a></li>
+                                <li><a asp-area="" asp-controller="Studentet" asp-action="AplikimetERejaIndex">Aplikimet e Reja</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="iocn-link">
+                        <a href="#">
+                            <i class="fa-solid fa-lock"></i>
+                            <span class="link_name">Rolet</span>
+                        </a>
+                        <i class='bx bxs-chevron-down arrow'></i>
+                    </div>
+                    <ul class="sub-menu">
+                        <li><a class="link_name" href="#">Rolet</a></li>
+                        <li><a asp-area="" asp-controller="Rolet" asp-action="Index">Menaxhoni Rolet</a></li>
+                        <li><a asp-area="" asp-controller="Llogarite" asp-action="RoletPerUser">Rolet e Stafit</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="iocn-link">
+                        <a href="#">
+                            <i class="fa-solid fa-building"></i>
+                            <span class="link_name">Lokacionet</span>
+                        </a>
+                        <i class='bx bxs-chevron-down arrow'></i>
+                    </div>
+                    <ul class="sub-menu">
+                        <li><a class="link_name" href="#">Lokacionet</a></li>
+                        <li><a asp-area="" asp-controller="Lokacionet" asp-action="Index">Menaxhoni Lokacionet</a></li>
+                        <li><a asp-area="" asp-controller="Lokacionet" asp-action="IndexSallat">Menaxhoni Sallat</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="iocn-link">
+                        <a href="#">
+                            <i class="fa-solid fa-building"></i>
+                            <span class="link_name">Departamentet</span>
+                        </a>
+                        <i class='bx bxs-chevron-down arrow'></i>
+                    </div>
+                    <ul class="sub-menu">
+                        <li><a class="link_name" href="#">Departamentet</a></li>
+                        <li><a asp-area="" asp-controller="Departamentet" asp-action="Index">Menaxhoni Departamentet</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="iocn-link">
+                        <a href="#">
+                            <i class="fa-solid fa-book"></i>
+                            <span class="link_name">Lendet</span>
+                        </a>
+                        <i class='bx bxs-chevron-down arrow'></i>
+                    </div>
+                    <ul class="sub-menu">
+                        <li><a class="link_name" href="#">Lendet</a></li>
+                        <li><a asp-area="" asp-controller="Lendet" asp-action="Index">Menaxhoni Lendet</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="iocn-link">
+                        <a href="#">
+                            <i class="fa-solid fa-timeline"></i>
+                            <span class="link_name">Afatet</span>
+                        </a>
+                        <i class='bx bxs-chevron-down arrow'></i>
+                    </div>
+                    <ul class="sub-menu">
+                        <li><a class="link_name" href="#">Afatet</a></li>
+                        <li>
+                            <div class="icon-link2">
+                                <a>Semestrat <i class='bx bxs-chevron-down arrow2'></i></a>
+                            </div>
+                            <ul class="sub-menu2">
+                                <li><a class="link_name" href="#">Semestrat</a></li>
+                                <li><a asp-area="" asp-controller="Afatet" asp-action="SemestriIndex">Semestrat</a></li>
+                                <li><a asp-area="" asp-controller="Afatet" asp-action="APSIndex">Afati Paraqitjes Semestrit</a></li>
+                            </ul>
+
+                        <li><a asp-area="" asp-controller="Afatet" asp-action="APPIndex">Afati Paraqitjes Provimit</a></li>
+                </li>
+            </ul>
+            </li>
+            <li>
+                <div class="iocn-link">
+                    <a href="#">
+                        <i class="fa-solid fa-circle-nodes"></i>
+                        <span class="link_name">Te Ndryshme</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="#">Te Ndryshme</a></li>
+                    <li><a asp-area="" asp-controller="TeNdrysheme" asp-action="NiveliStudimeveIndex">Niveli Studimeve</a></li>
+                    <li><a asp-area="" asp-controller="TeNdrysheme" asp-action="SpecializimetPerDepartamentIndex">Specializimet Per Departament</a></li>
+                    <li><a asp-area="" asp-controller="TeNdrysheme" asp-action="ZbritjaIndex">Zbritja</a></li>
+                </ul>
+            </li>
+                @* <li>
+        <a href="#">
+        <i class='bx bx-pie-chart-alt-2'></i>
+        <span class="link_name">Analytics</span>
+        </a>
+        <ul class="sub-menu blank">
+        <li><a class="link_name" href="#">Analytics</a></li>
+        </ul>
+        </li> *@
+            <li>
+                <div class="profile-details">
+                    <div class="profile-content">
+                    </div>
+
+                    <a href="/">
+                        <div class="name-job">
+                                @if (SignInManager.IsSignedIn(User))
+                                {
+                                    var user = await UserManager.GetUserAsync(User);
+                                    var userRoles = (await UserManager.GetRolesAsync(user)).Where(role => role != "User").ToList();
+
+                                    // Displaying the user's email
+                                <div class="profile_name">@User.Identity?.Name</div>
+
+                                    // Displaying the user's roles
+                                    @if (userRoles.Any())
+                                    {
+                                    <div class="job">
+                                            @if (userRoles.Count == 1)
+                                            {
+                                            <span>@userRoles.First()</span>
+                                            }
+                                            else
+                                            {
+                                                @foreach (var role in userRoles.Take(userRoles.Count - 1))
+                                                {
+                                                <span>@role,</span>
+                                                }
+                                            <span>@userRoles.Last()</span>
+                                            }
+                                    </div>
+                                    }
+                                }
+                        </div>
+
+                    </a>
+                    <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                        <button type="submit" class="btnDropDown">
+                            <i class='bx bx-log-out'></i>
+                        </button>
+                    </form>
+                </div>
+            </li>
+            </ul>
+        </div>
+        <section class="home-section">
+            <div class="home-content">
+                <i class='bx bx-menu'></i>
+                <span class="text">@ViewData["Title"]</span>
+            </div>
+            <div class="col py-3 ms-3">
+                @RenderBody()
+            </div>
+        </section>
+    }
+    else
+    {
+
         @RenderBody()
+    }
+
+    <script>
+        let arrow = document.querySelectorAll(".arrow");
+        for (var i = 0; i < arrow.length; i++) {
+            arrow[i].addEventListener("click", (e) => {
+                let arrowParent = e.target.parentElement.parentElement;
+                arrowParent.classList.toggle("showMenu");
+            });
+        }
+
+        let anchorElements = document.querySelectorAll('a > .arrow2');
+        anchorElements.forEach((arrow) => {
+            arrow.addEventListener("click", (e) => {
+                e.preventDefault();
+                let anchorElementsParent = arrow.parentElement.parentElement.parentElement;
+
+                document.querySelectorAll('.showMenu2').forEach((element) => {
+                    if (element !== anchorElementsParent) {
+                        element.classList.remove('open');
+                        element.classList.remove('showMenu2');
+                    }
+                });
+
+                anchorElementsParent.classList.toggle("showMenu2");
+                anchorElementsParent.classList.toggle("open");
+            });
+        });
+
+        let sidebar = document.querySelector(".sidebar");
+        let sidebarBtn = document.querySelector(".bx-menu");
+        console.log(sidebarBtn);
+        sidebarBtn.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+        });
+    </script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/mdb.min.js" asp-append-version="true"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/aef627d6f9.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 
