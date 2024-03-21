@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\InfinitMarket.bundle.scp.css"
     },
     {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\css\\boxicons.min.css",
+      "PackagePath": "staticwebassets\\assets\\css\\boxicons.min.css"
+    },
+    {
       "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\css\\style.css",
       "PackagePath": "staticwebassets\\assets\\css\\style.css"
     },
@@ -261,6 +265,10 @@
       "PackagePath": "staticwebassets\\assets\\js\\pages\\google-maps.js"
     },
     {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\js\\pcoded.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\pcoded.min.js"
+    },
+    {
       "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\js\\vendor-all.min.js",
       "PackagePath": "staticwebassets\\assets\\js\\vendor-all.min.js"
     },
@@ -415,6 +423,10 @@
     {
       "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-icons.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-icons.css"
     },
     {
       "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
