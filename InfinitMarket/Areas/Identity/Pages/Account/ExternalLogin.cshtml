@@ -4,6 +4,120 @@
     ViewData["Title"] = "Register";
 }
 
+<div class="auth-wrapper">
+    <div class="auth-content">
+        <div class="auth-bg">
+            <span class="r"></span>
+            <span class="r s"></span>
+            <span class="r s"></span>
+            <span class="r"></span>
+        </div>
+        <div class="card">
+            <div class="card-body text-center">
+                <div class="mb-4">
+                    <img class="logoImgLoginReg" src="~/profile_crop.png" />
+                </div>
+                <h3 class="mb-4">Krijoni Llogarin</h3>
+                <p id="external-login-description" class="text-info">
+                    Ju jeni kyqyr permes <strong>@Model.ProviderDisplayName</strong> me sukses.
+                    Ju lutem plotesoni fushat me poshte dhe pastaj klikoni mbi Krijo Llogarine per te perfunduar regjistrimin tuaj!
+                </p>
+
+                <form asp-page-handler="Confirmation" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                    <!-- Input fields for personal information -->
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.Emri" class="form-control" autocomplete="Emri" aria-required="true" placeholder="Filan" />
+                        <label asp-for="Input.Emri">Emri</label>
+                        <span asp-validation-for="Input.Emri" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.Mbiemri" class="form-control" autocomplete="Mbiemri" aria-required="true" placeholder="Fisteku" />
+                        <label asp-for="Input.Mbiemri">Mbiemri</label>
+                        <span asp-validation-for="Input.Mbiemri" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.Email" class="form-control" autocomplete="Email" aria-required="true" placeholder="email@example.com" />
+                        <label asp-for="Input.Email">Email</label>
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+
+                    <!-- Input fields for additional information -->
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.DataLindjes" class="form-control" autocomplete="DataLindjes" aria-required="true" placeholder="dd/mm/yyyy" type="date" />
+                        <label asp-for="Input.DataLindjes">Data Lindjes</label>
+                        <span asp-validation-for="Input.DataLindjes" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.NrTelefonit" class="form-control" autocomplete="NrTelefonit" aria-required="true" placeholder="+38343111000" />
+                        <label asp-for="Input.NrTelefonit">Nr. Telefonit</label>
+                        <span asp-validation-for="Input.NrTelefonit" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.GjiniaZgjedhur">Zgjedhni Gjinini</label>
+                        <select asp-for="Input.GjiniaZgjedhur" class="form-control" required>
+                            <option disabled value="">Zgjedhni Gjinin</option>
+                            <option value="M">Mashkull</option>
+                            <option value="F">Femer</option>
+                        </select>
+                        <span asp-validation-for="Input.GjiniaZgjedhur" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.Adresa" class="form-control" autocomplete="Adresa" aria-required="true" placeholder="Lagjja Kalabria" />
+                        <label asp-for="Input.Adresa">Adresa</label>
+                        <span asp-validation-for="Input.Adresa" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.Qyteti" class="form-control" autocomplete="Qyteti" aria-required="true" placeholder="Prishtine" />
+                        <label asp-for="Input.Qyteti">Qyteti</label>
+                        <span asp-validation-for="Input.Qyteti" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.ZipKodi" class="form-control" autocomplete="ZipKodi" aria-required="true" placeholder="10000" />
+                        <label asp-for="Input.ZipKodi">Zip Kodi</label>
+                        <span asp-validation-for="Input.ZipKodi" class="text-danger"></span>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label asp-for="Input.ShtetiZgjedhur">Zgjedhni Shtetin</label>
+                        <select asp-for="Input.ShtetiZgjedhur" class="form-control" required>
+                            <option disabled value="">Zgjedhni Shtetin</option>
+                            <option value="Kosovë">Kosovë</option>
+                            <option value="Shqipëri">Shqipëri</option>
+                            <option value="Maqedoni e Veriut">Maqedoni e Veriut</option>
+                        </select>
+                        <span asp-validation-for="Input.ShtetiZgjedhur" class="text-danger"></span>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label asp-for="Input.RoliIZgjedhur">Lloji Llogaris</label>
+                        <select asp-for="Input.RoliIZgjedhur" class="form-control" required>
+                            <option disabled value="">Zgjedhni Rolin</option>
+                            <option value="Klient">Klient</option>
+                            <option value="Shites">Shites</option>
+                        </select>
+                        <span asp-validation-for="Input.RoliIZgjedhur" class="text-danger"></span>
+                    </div>
+
+                    <div class="text-center">
+                        <button id="registerSubmit" type="submit" class="btn btn-lg btn-primary">Krijo Llogarine</button>
+                    </div>
+                </form>
+                <p class="mb-0 text-muted">Allready have an account? <a href="Login"> Log in</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Required Js -->
+<script src="assets/js/vendor-all.min.js"></script>
+<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+@* 
+
 <h1>@ViewData["Title"]</h1>
 <h2 id="external-login-title">Associate your @Model.ProviderDisplayName account.</h2>
 <hr />
@@ -113,7 +227,7 @@
         <button id="registerSubmit" type="submit" class="w-20 btn btn-lg btn-primary">Krijo Llogarine</button>
         </form>
     </div>
-
+ *@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

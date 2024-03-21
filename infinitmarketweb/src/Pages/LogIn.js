@@ -14,21 +14,38 @@ const LogIn = () => {
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const token = searchParams.get("token");
+    console.log(token);
 
-    if (token) {
-      localStorage.setItem("token", token);
+    setTimeout(() => {
+      if (token) {
+        localStorage.setItem("token", token);
 
-      const decodedToken = jwt_decode(token);
+        const decodedToken = jwt_decode(token);
 
-      localStorage.setItem("id", decodedToken.id);
+        localStorage.setItem("id", decodedToken.id);
 
-      setTimeout(() => {
-        navigate("/dashboard");
-        window.location.reload();
-      }, 200);
-    }else{
-      window.location.href = 'https://localhost:7251/';
-    }
+        setTimeout(() => {
+          navigate("/dashboard");
+          window.location.reload();
+        }, 200);
+      } else {
+        if (token) {
+          localStorage.setItem("token", token);
+  
+          const decodedToken = jwt_decode(token);
+  
+          localStorage.setItem("id", decodedToken.id);
+  
+          setTimeout(() => {
+            navigate("/dashboard");
+            window.location.reload();
+          }, 200);
+        } else {
+          window.location.href =
+            "https://localhost:7251/Identity/Account/Logout?returnUrl=%2F";
+        }
+      }
+    }, 400);
   }, [location.search]);
 
   return (

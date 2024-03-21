@@ -5,8 +5,364 @@
       "PackagePath": "staticwebassets\\InfinitMarket.bundle.scp.css"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\Ubtlogo.png",
-      "PackagePath": "staticwebassets\\Ubtlogo.png"
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\css\\style.css",
+      "PackagePath": "staticwebassets\\assets\\css\\style.css"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\datta\\datta-icon.css",
+      "PackagePath": "staticwebassets\\assets\\fonts\\datta\\datta-icon.css"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\datta\\fonts\\pct.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\datta\\fonts\\pct.eot"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\datta\\fonts\\pct.svg",
+      "PackagePath": "staticwebassets\\assets\\fonts\\datta\\fonts\\pct.svg"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\datta\\fonts\\pct.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\datta\\fonts\\pct.ttf"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\datta\\fonts\\pct.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\datta\\fonts\\pct.woff"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\feather\\css\\feather.css",
+      "PackagePath": "staticwebassets\\assets\\fonts\\feather\\css\\feather.css"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\feather\\fonts\\feather.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\feather\\fonts\\feather.eot"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\feather\\fonts\\feather.svg",
+      "PackagePath": "staticwebassets\\assets\\fonts\\feather\\fonts\\feather.svg"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\feather\\fonts\\feather.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\feather\\fonts\\feather.ttf"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\feather\\fonts\\feather.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\feather\\fonts\\feather.woff"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\css\\fontawesome-all.min.css",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\css\\fontawesome-all.min.css"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-brands-400.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\webfonts\\fa-brands-400.eot"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-brands-400.svg",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\webfonts\\fa-brands-400.svg"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-brands-400.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\webfonts\\fa-brands-400.ttf"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-brands-400.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\webfonts\\fa-brands-400.woff"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-brands-400.woff2",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\webfonts\\fa-brands-400.woff2"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-regular-400.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\webfonts\\fa-regular-400.eot"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-regular-400.svg",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\webfonts\\fa-regular-400.svg"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-regular-400.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\webfonts\\fa-regular-400.ttf"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-regular-400.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\webfonts\\fa-regular-400.woff"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-regular-400.woff2",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\webfonts\\fa-regular-400.woff2"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-solid-900.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\webfonts\\fa-solid-900.eot"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-solid-900.svg",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\webfonts\\fa-solid-900.svg"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-solid-900.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\webfonts\\fa-solid-900.ttf"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-solid-900.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\webfonts\\fa-solid-900.woff"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-solid-900.woff2",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\webfonts\\fa-solid-900.woff2"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\Thumbs.db",
+      "PackagePath": "staticwebassets\\assets\\images\\Thumbs.db"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\browser\\Thumbs.db",
+      "PackagePath": "staticwebassets\\assets\\images\\browser\\Thumbs.db"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\browser\\chrome.png",
+      "PackagePath": "staticwebassets\\assets\\images\\browser\\chrome.png"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\browser\\firefox.png",
+      "PackagePath": "staticwebassets\\assets\\images\\browser\\firefox.png"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\browser\\ie.png",
+      "PackagePath": "staticwebassets\\assets\\images\\browser\\ie.png"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\browser\\opera.png",
+      "PackagePath": "staticwebassets\\assets\\images\\browser\\opera.png"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\browser\\safari.png",
+      "PackagePath": "staticwebassets\\assets\\images\\browser\\safari.png"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\favicon.ico",
+      "PackagePath": "staticwebassets\\assets\\images\\favicon.ico"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\logo-dark.png",
+      "PackagePath": "staticwebassets\\assets\\images\\logo-dark.png"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\logo-thumb.png",
+      "PackagePath": "staticwebassets\\assets\\images\\logo-thumb.png"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\logo.png",
+      "PackagePath": "staticwebassets\\assets\\images\\logo.png"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\slider\\img-slide-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\img-slide-1.jpg"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\slider\\img-slide-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\img-slide-2.jpg"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\slider\\img-slide-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\img-slide-3.jpg"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\slider\\img-slide-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\img-slide-4.jpg"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\slider\\img-slide-5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\img-slide-5.jpg"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\slider\\img1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\img1.jpg"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\slider\\img2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\img2.jpg"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\slider\\img3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\img3.jpg"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\user\\Thumbs.db",
+      "PackagePath": "staticwebassets\\assets\\images\\user\\Thumbs.db"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\user\\avatar-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\user\\avatar-1.jpg"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\user\\avatar-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\user\\avatar-2.jpg"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\user\\avatar-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\user\\avatar-3.jpg"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\user\\avatar-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\user\\avatar-4.jpg"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\user\\avatar-5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\user\\avatar-5.jpg"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\user\\user-1.png",
+      "PackagePath": "staticwebassets\\assets\\images\\user\\user-1.png"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\user\\user-2.png",
+      "PackagePath": "staticwebassets\\assets\\images\\user\\user-2.png"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\widget\\Thumbs.db",
+      "PackagePath": "staticwebassets\\assets\\images\\widget\\Thumbs.db"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\widget\\dashborad-1.png",
+      "PackagePath": "staticwebassets\\assets\\images\\widget\\dashborad-1.png"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\widget\\dashborad-2.png",
+      "PackagePath": "staticwebassets\\assets\\images\\widget\\dashborad-2.png"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\widget\\dashborad-3.png",
+      "PackagePath": "staticwebassets\\assets\\images\\widget\\dashborad-3.png"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\widget\\dashborad-4.png",
+      "PackagePath": "staticwebassets\\assets\\images\\widget\\dashborad-4.png"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\widget\\dashborad-5.png",
+      "PackagePath": "staticwebassets\\assets\\images\\widget\\dashborad-5.png"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\widget\\dashborad-6.png",
+      "PackagePath": "staticwebassets\\assets\\images\\widget\\dashborad-6.png"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\widget\\emoticon.png",
+      "PackagePath": "staticwebassets\\assets\\images\\widget\\emoticon.png"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\js\\pages\\chart-morris-custom.js",
+      "PackagePath": "staticwebassets\\assets\\js\\pages\\chart-morris-custom.js"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\js\\pages\\google-maps.js",
+      "PackagePath": "staticwebassets\\assets\\js\\pages\\google-maps.js"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\js\\vendor-all.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\vendor-all.min.js"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\amchart\\js\\amcharts.js",
+      "PackagePath": "staticwebassets\\assets\\plugins\\amchart\\js\\amcharts.js"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\amchart\\js\\ammap.min.js",
+      "PackagePath": "staticwebassets\\assets\\plugins\\amchart\\js\\ammap.min.js"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\amchart\\js\\gauge.js",
+      "PackagePath": "staticwebassets\\assets\\plugins\\amchart\\js\\gauge.js"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\amchart\\js\\images\\dragIconRoundBig.svg",
+      "PackagePath": "staticwebassets\\assets\\plugins\\amchart\\js\\images\\dragIconRoundBig.svg"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\amchart\\js\\images\\lens.svg",
+      "PackagePath": "staticwebassets\\assets\\plugins\\amchart\\js\\images\\lens.svg"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\amchart\\js\\light.js",
+      "PackagePath": "staticwebassets\\assets\\plugins\\amchart\\js\\light.js"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\amchart\\js\\pie.min.js",
+      "PackagePath": "staticwebassets\\assets\\plugins\\amchart\\js\\pie.min.js"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\amchart\\js\\radar.js",
+      "PackagePath": "staticwebassets\\assets\\plugins\\amchart\\js\\radar.js"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\amchart\\js\\serial.js",
+      "PackagePath": "staticwebassets\\assets\\plugins\\amchart\\js\\serial.js"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\amchart\\js\\usaLow.js",
+      "PackagePath": "staticwebassets\\assets\\plugins\\amchart\\js\\usaLow.js"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\amchart\\js\\worldLow.js",
+      "PackagePath": "staticwebassets\\assets\\plugins\\amchart\\js\\worldLow.js"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\animation\\css\\animate.min.css",
+      "PackagePath": "staticwebassets\\assets\\plugins\\animation\\css\\animate.min.css"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\bootstrap\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\assets\\plugins\\bootstrap\\css\\bootstrap.css"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\bootstrap\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\assets\\plugins\\bootstrap\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\bootstrap\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\assets\\plugins\\bootstrap\\js\\bootstrap.js"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\bootstrap\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\assets\\plugins\\bootstrap\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\bootstrap\\js\\popover.js",
+      "PackagePath": "staticwebassets\\assets\\plugins\\bootstrap\\js\\popover.js"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\chart-morris\\css\\morris.css",
+      "PackagePath": "staticwebassets\\assets\\plugins\\chart-morris\\css\\morris.css"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\chart-morris\\js\\morris.min.js",
+      "PackagePath": "staticwebassets\\assets\\plugins\\chart-morris\\js\\morris.min.js"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\chart-morris\\js\\raphael.min.js",
+      "PackagePath": "staticwebassets\\assets\\plugins\\chart-morris\\js\\raphael.min.js"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\google-maps\\js\\gmaps.js",
+      "PackagePath": "staticwebassets\\assets\\plugins\\google-maps\\js\\gmaps.js"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\jquery-scrollbar\\css\\jquery.scrollbar.min.css",
+      "PackagePath": "staticwebassets\\assets\\plugins\\jquery-scrollbar\\css\\jquery.scrollbar.min.css"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\jquery-scrollbar\\js\\jquery.scrollbar.min.js",
+      "PackagePath": "staticwebassets\\assets\\plugins\\jquery-scrollbar\\js\\jquery.scrollbar.min.js"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\jquery-ui\\js\\jquery-ui.js",
+      "PackagePath": "staticwebassets\\assets\\plugins\\jquery-ui\\js\\jquery-ui.js"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\jquery\\js\\jquery.min.js",
+      "PackagePath": "staticwebassets\\assets\\plugins\\jquery\\js\\jquery.min.js"
     },
     {
       "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\css\\site.css",
@@ -15,10 +371,6 @@
     {
       "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\css\\style.css",
       "PackagePath": "staticwebassets\\css\\style.css"
-    },
-    {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\favicon.ico",
-      "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
       "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\js\\qr.js",
@@ -295,6 +647,14 @@
     {
       "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\profile.png",
+      "PackagePath": "staticwebassets\\profile.png"
+    },
+    {
+      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\profile_crop.png",
+      "PackagePath": "staticwebassets\\profile_crop.png"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.InfinitMarket.Microsoft.AspNetCore.StaticWebAssets.props",

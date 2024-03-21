@@ -171,8 +171,10 @@ namespace InfinitMarket.Areas.Identity.Pages.Account
             {
                 _logger.LogInformation("{Name} logged in with {LoginProvider} provider.", info.Principal.Identity.Name, info.LoginProvider);
                 Console.WriteLine(info.Principal.Identity.Name);
-                Console.WriteLine(ClaimTypes.Email.ToString());
-                var perdoruesi = await _context.Perdoruesit.Where(x => x.EmailFillestar == ClaimTypes.Email).FirstOrDefaultAsync();
+
+                
+                Console.WriteLine(info.Principal.Identities.ToList());
+                var perdoruesi = await _context.Perdoruesit.Where(x => x.EmailFillestar == info.Principal.FindFirstValue(ClaimTypes.Email)).FirstOrDefaultAsync();
 
                 var user = await _userManager.FindByIdAsync(perdoruesi.AspNetUserId);
 

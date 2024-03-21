@@ -224,6 +224,11 @@ body, html {
     width: 78px;
 }
 
+.sidebar.close .logoImg{
+        height: 00px;
+        margin-right: 100em;
+}
+
 .sidebar .profile-details .profile-content {
     display: flex;
     align-items: center;
@@ -305,10 +310,8 @@ body, html {
 
 
 .logoImg {
-    margin-left: 1.64em;
-    height: 25px;
-    width: 25px;
-    margin-right: 1.5em;
+    height: 300px;
+    width: 400px;
 }
 
 .btnDropDown {

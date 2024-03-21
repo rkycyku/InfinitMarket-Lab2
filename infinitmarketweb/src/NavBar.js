@@ -126,11 +126,10 @@ function Navbar(props) {
                   class="logoImg"
                   src={
                     process.env.PUBLIC_URL +
-                    "/img/InfiniteMarketLogo/default.png"
+                    "/img/InfiniteMarketLogo/profile.png"
                   }
                 />
               </Link>
-              <span class="logo_name">Infinit Market</span>
             </div>
             <ul class="nav-links">
               <li>
