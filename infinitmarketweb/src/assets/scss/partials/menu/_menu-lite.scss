@@ -5,7 +5,7 @@
   align-items: center;
 
   .b-bg {
-    background: $theme-color;
+    background: #fff;;
     border-radius: 10px;
     width: 35px;
     height: 35px;
@@ -592,7 +592,7 @@
 
       &:after,
       &:before {
-        content: '';
+        
         position: absolute;
         left: 0;
         height: 2.8px;
@@ -1355,11 +1355,6 @@
   }
 }
 
-.pro-card {
-  background: #5c6a83;
-  border: #465673;
-  border-radius: 8px;
-}
 
 /* ==========================    Responsive Menu  end   ====================== */
 

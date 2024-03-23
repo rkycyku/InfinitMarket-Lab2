@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
@@ -50,12 +51,15 @@ const DashDefault = () => {
 
       vendosTeDhenat();
     } else {
-      navigate("/login");
+      navigate('/login');
     }
   }, [perditeso]);
 
   return (
     <React.Fragment>
+      <Helmet>
+        <title>Dashboard | InfinitMarket</title>
+      </Helmet>
       <Row>
         <div className="dashboard">
           <div className="containerDashboard">
@@ -67,9 +71,7 @@ const DashDefault = () => {
                     <td>
                       <strong>Përdoruesi:</strong>
                     </td>
-                    <td>
-                      {teDhenat && teDhenat.email}
-                    </td>
+                    <td>{teDhenat && teDhenat.email}</td>
                   </tr>
                   <tr>
                     <td>

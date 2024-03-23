@@ -42,8 +42,15 @@ const NavBar = () => {
           <span />
         </Link>
         <Link to="#" className="b-brand">
-          <div className="b-bg">
-            <i className="feather icon-trending-up" />
+        <div className="b-bg">
+            <i>
+              <img
+                className="logoImg"
+                src={process.env.PUBLIC_URL + '/img/InfiniteMarketLogo/favico.png'}
+                alt=""
+                style={{ height: '30px', width: '30px', marginBottom: "0.1em" }}
+              />
+            </i>
           </div>
           <span className="b-title">InfinitMarket</span>
         </Link>
