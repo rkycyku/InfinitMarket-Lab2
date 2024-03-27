@@ -14,5 +14,6 @@ namespace InfinitMarket.Data
 
         public DbSet<Perdoruesi> Perdoruesit { get; set; }
         public DbSet<TeDhenatPerdoruesit> TeDhenatPerdoruesit { get; set; }
+        public DbSet<SliderOfertat> SliderOfertat { get; set; }
     }
 }

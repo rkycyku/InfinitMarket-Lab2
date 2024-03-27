@@ -14,6 +14,9 @@ const NavContent = ({ navigation }) => {
   
   const getID = localStorage.getItem('id');
 
+  
+  const navigate = useNavigate();
+
   const getToken = localStorage.getItem('token');
 
   const authentikimi = {

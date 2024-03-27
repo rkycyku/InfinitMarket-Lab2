@@ -51,6 +51,21 @@ const routes = [
         element: lazy(() => import('./views/admin-dashboard/kategorit/TabelaEKategorive'))
       },
       {
+        exact: 'true',
+        path: '/admin/ofertatslider',
+        element: lazy(() => import('./views/admin-dashboard/OfertatSlider'))
+      },
+      {
+        exact: 'true',
+        path: '/',
+        element: lazy(() => import('./views/Home'))
+      },
+      // {
+      //   exact: true,
+      //   path: '/produktet/:id',
+      //   element: lazy(() => import('./views/Home'))
+      // },
+      {
         path: '*',
         exact: 'true',
         element: () => <Navigate to={BASE_URL} />

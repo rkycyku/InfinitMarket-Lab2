@@ -4,28 +4,28 @@ const menuItems = {
       type: 'group',
       children: [
         {
-          id: 'forms',
+          id: 'Home',
           title: 'Home',
           type: 'item',
           icon: 'feather icon-home',
           url: '/'
         },
         {
-          id: 'forms',
+          id: 'Products',
           title: 'Products',
           type: 'item',
           icon: 'feather icon-package',
           url: '/'
         },
         {
-          id: 'forms',
+          id: 'AboutUs',
           title: 'About Us',
           type: 'item',
           icon: 'feather icon-info',
           url: '/'
         },
         {
-          id: 'forms',
+          id: 'ContactUs',
           title: 'Contact Us',
           type: 'item',
           icon: 'feather icon-at-sign',
@@ -40,25 +40,25 @@ const menuItems = {
       icon: 'icon-navigation',
       children: [
         {
-          id: 'forms',
+          id: 'Produktet',
           title: 'Produktet',
           type: 'collapse',
           icon: 'feather icon-home',
           children: [
             {
-              id: 'button',
+              id: 'ListaEProdukteve',
               title: 'Lista e Produkteve',
               type: 'item',
               url: '/basic/button'
             },
             {
-              id: 'badges',
+              id: 'Kategorite',
               title: 'Kategorite',
               type: 'item',
               url: '/admin/produktet/kategorite'
             },
             {
-              id: 'breadcrumb',
+              id: 'Kompanite',
               title: 'Kompanite',
               type: 'item',
               url: '/basic/breadcrumb'
@@ -66,21 +66,35 @@ const menuItems = {
           ]
         },
         {
-          id: 'forms',
+          id: 'TeNdryshme',
+          title: 'Te Ndryshme',
+          type: 'collapse',
+          icon: 'feather icon-sliders',
+          children: [
+            {
+              id: 'OfertatSliderHome',
+              title: 'Ofertat Slider Home',
+              type: 'item',
+              url: '/admin/ofertatslider'
+            },
+          ]
+        },
+        {
+          id: 'Porosit',
           title: 'Porosit',
           type: 'item',
           icon: 'feather icon-package',
           url: '/'
         },
         {
-          id: 'forms',
+          id: 'Klientet',
           title: 'Klientet',
           type: 'item',
           icon: 'feather icon-info',
           url: '/'
         },
         {
-          id: 'forms',
+          id: 'Mesazhet',
           title: 'Mesazhet',
           type: 'item',
           icon: 'feather icon-at-sign',

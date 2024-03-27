@@ -4,6 +4,7 @@ using InfinitMarket.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InfinitMarket.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240327000254_KrijimiSliderOfertat")]
+    partial class KrijimiSliderOfertat
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,13 +72,7 @@ namespace InfinitMarket.Migrations
                     b.Property<DateTime?>("DataMbarimitOfertes")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("FotoOferta")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("LinkuOfertes")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("isDeleted")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("SliderOfertatID");
