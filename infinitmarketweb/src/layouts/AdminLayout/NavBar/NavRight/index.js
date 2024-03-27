@@ -57,11 +57,12 @@ const NavRight = () => {
         navigate('/LogIn');
       }
     }
-  }, []);
+  }, [perditeso]);
 
   const handleSignOut = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('id');
+    setPerditeso(Date.now())
   };
 
   return (

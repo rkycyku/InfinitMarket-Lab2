@@ -187,6 +187,14 @@ namespace InfinitMarket.Areas.Identity.Pages.Account
                     await _context.TeDhenatPerdoruesit.AddAsync(teDhenatPerdoruesit);
                     await _context.SaveChangesAsync();
 
+                    Shporta shporta = new()
+                    {
+                       PerdoruesiID = perdoruesi.UserID,
+                    };
+
+                    await _context.Shporta.AddAsync(shporta);
+                    await _context.SaveChangesAsync();
+
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
                     var callbackUrl = Url.Page(

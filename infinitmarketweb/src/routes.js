@@ -60,11 +60,11 @@ const routes = [
         path: '/',
         element: lazy(() => import('./views/Home'))
       },
-      // {
-      //   exact: true,
-      //   path: '/produktet/:id',
-      //   element: lazy(() => import('./views/Home'))
-      // },
+      {
+        exact: true,
+        path: '/produktet/:id',
+        element: lazy(() => import('./views/Home'))
+      },
       {
         path: '*',
         exact: 'true',

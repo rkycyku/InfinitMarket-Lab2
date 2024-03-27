@@ -85,7 +85,7 @@ namespace InfinitMarket.Controllers
 
             var emriUnikFotos = GjeneroEmrinUnikFotos(foto.FileName);
 
-            var follderi = Path.Combine("..", "..", "infinitmarketweb", "public", "img", "ofertat", emriUnikFotos);
+            var follderi = Path.Combine("..", "infinitmarketweb", "public", "img", "ofertat", emriUnikFotos);
 
             using (var stream = new FileStream(follderi, FileMode.Create))
             {

@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
-import ShtoKategori from './ShtoOfertenSlider';
+import ShtoOfertenSlider from './ShtoOfertenSlider';
 import Mesazhi from '../../../components/Mesazhi';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBan, faPenToSquare, faPlus, faClose } from '@fortawesome/free-solid-svg-icons';
-import LargoKategorin from './LargoOfertenSlider';
+import { faBan, faPlus, faClose } from '@fortawesome/free-solid-svg-icons';
+import LargoOfertenSlider from './LargoOfertenSlider';
 import { TailSpin } from 'react-loader-spinner';
 import { Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -14,7 +14,6 @@ function OfertatSlider(props) {
   const [kategorit, setKategorit] = useState([]);
   const [perditeso, setPerditeso] = useState('');
   const [shto, setShto] = useState(false);
-  const [edito, setEdito] = useState(false);
   const [fshij, setFshij] = useState(false);
   const [shfaqMesazhin, setShfaqMesazhin] = useState(false);
   const [tipiMesazhit, setTipiMesazhit] = useState('');
@@ -34,7 +33,7 @@ function OfertatSlider(props) {
     const shfaqKateogrit = async () => {
       try {
         setLoading(true);
-        const kategoria = await axios.get('https://localhost:7251/ShfaqOfertatSlider', authentikimi);
+        const kategoria = await axios.get('https://localhost:7251/api/TeNdryshme/ShfaqOfertatSlider', authentikimi);
         setKategorit(kategoria.data);
         setLoading(false);
       } catch (err) {
@@ -51,12 +50,6 @@ function OfertatSlider(props) {
   };
   const handleShow = () => setShto(true);
 
-  const handleEdito = (id) => {
-    setEdito(true);
-    setId(id);
-  };
-  const handleEditoMbyll = () => setEdito(false);
-
   const handleFshij = (id) => {
     setFshij(true);
     setId(id);
@@ -66,7 +59,7 @@ function OfertatSlider(props) {
   return (
     <div>
       {shto && (
-        <ShtoKategori
+        <ShtoOfertenSlider
           shfaq={handleShow}
           largo={handleClose}
           shfaqmesazhin={() => setShfaqMesazhin(true)}
@@ -78,7 +71,7 @@ function OfertatSlider(props) {
       {shfaqMesazhin && <Mesazhi setShfaqMesazhin={setShfaqMesazhin} pershkrimi={pershkrimiMesazhit} tipi={tipiMesazhit} />}
 
       {fshij && (
-        <LargoKategorin
+        <LargoOfertenSlider
           largo={handleFshijMbyll}
           id={id}
           shfaqmesazhin={() => setShfaqMesazhin(true)}
@@ -105,53 +98,42 @@ function OfertatSlider(props) {
           <h1>Ofertat e Sliderit</h1>
           <Link to="/admin/produktet">
             <Button className="mb-3 Butoni">
-              Mbyll Kategorite <FontAwesomeIcon icon={faClose} />
+              Mbyll Ofertat <FontAwesomeIcon icon={faClose} />
             </Button>
           </Link>
           <Button className="mb-3 Butoni" onClick={handleShow}>
-            Shto Kategori <FontAwesomeIcon icon={faPlus} />
+            Shto Oferten <FontAwesomeIcon icon={faPlus} />
           </Button>
 
           <Table responsive>
             <thead>
               <tr>
-                <th>ID Kategorise</th>
-                <th>Emri Kategoris</th>
-                <th>Pershkrimi Kategoris</th>
+                <th>ID Oferta</th>
+                <th>Linku Ofertes</th>
+                <th>Oferta Aktive</th>
+                <th>Foto Oferta</th>
                 <th>Funksione</th>
               </tr>
             </thead>
             <tbody>
               {kategorit.map((k) => (
-                <tr key={k.kategoriaId}>
-                  <td>{k.kategoriaId}</td>
-                  <td>{k.llojiKategoris}</td>
+                <tr key={k.sliderOfertatID}>
+                  <td>{k.sliderOfertatID}</td>
+                  <td>{k.linkuOfertes}</td>
                   <td>
-                    {k.pershkrimiKategoris !== null && k.pershkrimiKategoris.trim() !== '' ? k.pershkrimiKategoris : 'Nuk Ka Pershkrim'}
+                    {new Date(k.dataFillimitOfertes).toLocaleDateString('en-GB', { dateStyle: 'short' })} -{' '}
+                    {new Date(k.dataMbarimitOfertes).toLocaleDateString('en-GB', { dateStyle: 'short' })}
                   </td>
                   <td>
-                    <Button style={{ marginRight: '0.5em' }} variant="success" onClick={() => handleEdito(k.kategoriaId)}>
-                      <FontAwesomeIcon icon={faPenToSquare} />
-                    </Button>
-                    <Button variant="danger" onClick={() => handleFshij(k.kategoriaId)}>
+                    <img style={{ height: '70px' }} src={process.env.PUBLIC_URL + '/img/ofertat/' + k.fotoOferta} />
+                  </td>
+                  <td>
+                    <Button variant="danger" onClick={() => handleFshij(k.sliderOfertatID)}>
                       <FontAwesomeIcon icon={faBan} />
                     </Button>
                   </td>
                 </tr>
               ))}
-              <tr key={1}>
-                <td>1</td>
-                <td>1</td>
-                <td>Nuk Ka Pershkrim</td>
-                <td>
-                  <Button style={{ marginRight: '0.5em' }} variant="success" onClick={() => handleEdito(1)}>
-                    <FontAwesomeIcon icon={faPenToSquare} />
-                  </Button>
-                  <Button variant="danger" onClick={() => handleFshij(1)}>
-                    <FontAwesomeIcon icon={faBan} />
-                  </Button>
-                </td>
-              </tr>
             </tbody>
           </Table>
         </>

@@ -2,14 +2,11 @@ import ProduktetNeHome from '../components/ProduktetNeHome';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Footer from '../components/Footer';
-import BrandsSlider from '../components/BrandsSlider';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
-
+import { Swiper, SwiperSlide } from 'swiper/react';
 import './Styles/Home.css';
 import '../assets/css/swiperSlider.css';
-
-import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
@@ -18,6 +15,9 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 function Home() {
   const [produktet, setProduktet] = useState([]);
+
+  const [ofertatSlider, setOfertatSlider] = useState([]);
+  const [perditeso, setPerditeso] = useState(Date.now());
 
   const getToken = localStorage.getItem('token');
 
@@ -28,35 +28,21 @@ function Home() {
   };
 
   useEffect(() => {
-    const shfaqProduktet = async () => {
+    const perditesoTeDhenat = async () => {
       try {
-        const produktet = await axios.get('https://localhost:7285/api/Produkti/15ProduktetMeTeFundit', authentikimi);
-        setProduktet(produktet.data);
+        // const produktet = await axios.get('https://localhost:7285/api/Produkti/15ProduktetMeTeFundit', authentikimi);
+        const ofertatSlider = await axios.get('https://localhost:7251/api/TeNdryshme/ShfaqOfertatSlider', authentikimi);
+
+        setOfertatSlider(ofertatSlider.data);
+        console.log(ofertatSlider.data);
+        // setProduktet(produktet.data);
       } catch (err) {
         console.log(err);
       }
     };
 
-    shfaqProduktet();
+    perditesoTeDhenat();
   }, []);
-
-  const slideImages = [
-    {
-      url: 'https://iqq6kf0xmf.gjirafa.net/images/acd7d917-df70-4db3-a5e5-1baabc56ad40/acd7d917-df70-4db3-a5e5-1baabc56ad40.jpeg?w=1920',
-      caption: 'Slide 1',
-      link: '/dashboard'
-    },
-    {
-      url: 'https://iqq6kf0xmf.gjirafa.net/images/a98b91f6-7a3f-40e4-b230-717a16ad8581/a98b91f6-7a3f-40e4-b230-717a16ad8581.jpeg?w=1920',
-      caption: 'Slide 2',
-      link: '/'
-    },
-    {
-      url: 'https://iqq6kf0xmf.gjirafa.net/images/428afded-00ef-4241-8a2d-c4bd1b6fefc9/428afded-00ef-4241-8a2d-c4bd1b6fefc9.jpeg?w=1920',
-      caption: 'Slide 3',
-      link: '/'
-    }
-  ];
 
   return (
     <div>
@@ -68,26 +54,26 @@ function Home() {
         centeredSlides={true}
         autoplay={{
           delay: 2500,
-          disableOnInteraction: false,
+          disableOnInteraction: false
         }}
         pagination={{
-          clickable: true,
+          clickable: true
         }}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
-        {slideImages.map((slideImage, index) => (
-          <SwiperSlide>
-            <div key={index}>
-              <Link to={slideImage.link}>
-                <img src={slideImage.url}></img>
-              </Link>
-            </div>
-          </SwiperSlide>
-        ))}
+        {ofertatSlider &&
+          ofertatSlider.map((oferta) => (
+            <SwiperSlide>
+              <div key={oferta.sliderOfertatID}>
+                <Link to={oferta.linkuOfertes}>
+                  <img src={process.env.PUBLIC_URL + '/img/ofertat/' + oferta.fotoOferta} />
+                </Link>
+              </div>
+            </SwiperSlide>
+          ))}
       </Swiper>
-      <BrandsSlider />
       <div className="artikujt">
         <div className="titulliArtikuj">
           <h1>Latest Products</h1>
