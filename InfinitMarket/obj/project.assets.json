@@ -11767,19 +11767,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\LENOVO\\.nuget\\packages\\": {}
+    "C:\\Users\\rkycy\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\react\\InfinitMarket-Lab2\\InfinitMarket\\InfinitMarket.csproj",
+      "projectUniqueName": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\InfinitMarket.csproj",
       "projectName": "InfinitMarket",
-      "projectPath": "C:\\react\\InfinitMarket-Lab2\\InfinitMarket\\InfinitMarket.csproj",
-      "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-      "outputPath": "C:\\react\\InfinitMarket-Lab2\\InfinitMarket\\obj\\",
+      "projectPath": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\InfinitMarket.csproj",
+      "packagesPath": "C:\\Users\\rkycy\\.nuget\\packages\\",
+      "outputPath": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\rkycy\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

@@ -61,7 +61,7 @@ const menuItems = {
               id: 'Kompanite',
               title: 'Kompanite',
               type: 'item',
-              url: '/basic/breadcrumb'
+              url: '/admin/produktet/kompanite'
             }
           ]
         },
@@ -91,7 +91,7 @@ const menuItems = {
           title: 'Klientet',
           type: 'item',
           icon: 'feather icon-info',
-          url: '/'
+          url: '/admin/klientet'
         },
         {
           id: 'Mesazhet',

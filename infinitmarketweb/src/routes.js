@@ -2,7 +2,7 @@ import React, { Suspense, Fragment, lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
 import Loader from './components/Loader/Loader';
-import AdminLayout from './layouts/AdminLayout';
+import BaseLayout from './layouts/BaseLayout';
 
 import { BASE_URL } from './config/constant';
 
@@ -38,7 +38,7 @@ const routes = [
   },
   {
     path: '*',
-    layout: AdminLayout,
+    layout: BaseLayout,
     routes: [
       {
         exact: 'true',
@@ -48,12 +48,22 @@ const routes = [
       {
         exact: 'true',
         path: '/admin/produktet/kategorite',
-        element: lazy(() => import('./views/admin-dashboard/kategorit/TabelaEKategorive'))
+        element: lazy(() => import('./views/admin-dashboard/Produktet/Kategorite'))
+      },
+      {
+        exact: 'true',
+        path: '/admin/produktet/kompanite',
+        element: lazy(() => import('./views/admin-dashboard/Produktet/Kompanit'))
+      },
+      {
+        exact: 'true',
+        path: '/admin/klientet',
+        element: lazy(() => import('./views/admin-dashboard/Klientet'))
       },
       {
         exact: 'true',
         path: '/admin/ofertatslider',
-        element: lazy(() => import('./views/admin-dashboard/OfertatSlider'))
+        element: lazy(() => import('./views/admin-dashboard/TeNdryshme/OfertatSlider'))
       },
       {
         exact: 'true',
@@ -63,6 +73,11 @@ const routes = [
       {
         exact: true,
         path: '/produktet/:id',
+        element: lazy(() => import('./views/Home'))
+      },
+      {
+        exact: true,
+        path: '/produktet/kategoria/:id',
         element: lazy(() => import('./views/Home'))
       },
       {

@@ -36,9 +36,34 @@ namespace InfinitMarket.Migrations
                     b.Property<string>("PershkrimiKategoris")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("isDeleted")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("KategoriaId");
 
                     b.ToTable("KategoriaProduktit");
+                });
+
+            modelBuilder.Entity("InfinitMarket.Models.KompanitePartnere", b =>
+                {
+                    b.Property<int>("KompaniaID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("KompaniaID"), 1L, 1);
+
+                    b.Property<string>("Adresa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmriKompanis")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("isDeleted")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("KompaniaID");
+
+                    b.ToTable("KompanitePartnere");
                 });
 
             modelBuilder.Entity("InfinitMarket.Models.Perdoruesi", b =>

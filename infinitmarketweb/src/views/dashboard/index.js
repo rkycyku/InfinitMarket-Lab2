@@ -33,9 +33,7 @@ const DashDefault = () => {
     if (getID) {
       const vendosTeDhenat = async () => {
         try {
-          const rolet = await axios.get(`https://localhost:7251/api/Perdoruesi/shfaqSipasID?idUserAspNet=${getID}`, authentikimi);
-
-          const perdoruesi = await axios.get(`https://localhost:7251/api/Perdoruesi/ShfaqTeDhenatNgaID?id=${getID}`, authentikimi);
+          const perdoruesi = await axios.get(`https://localhost:7251/api/Perdoruesi/shfaqSipasID?idUserAspNet=${getID}`, authentikimi);
 
           setTeDhenat(perdoruesi.data);
 
