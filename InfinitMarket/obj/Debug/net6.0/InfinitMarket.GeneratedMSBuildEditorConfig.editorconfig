@@ -9,145 +9,145 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = InfinitMarket
 build_property.RootNamespace = InfinitMarket
-build_property.ProjectDir = D:\Programim\GitHubProjekte\InfinitMarket-Lab2\InfinitMarket\
+build_property.ProjectDir = C:\react\InfinitMarket-Lab2\InfinitMarket\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\Programim\GitHubProjekte\InfinitMarket-Lab2\InfinitMarket
+build_property.MSBuildProjectDirectory = C:\react\InfinitMarket-Lab2\InfinitMarket
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Programim/GitHubProjekte/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/AccessDenied.cshtml]
+[C:/react/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/AccessDenied.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Programim/GitHubProjekte/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/ConfirmEmail.cshtml]
+[C:/react/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/ConfirmEmail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxDb25maXJtRW1haWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Programim/GitHubProjekte/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/ConfirmEmailChange.cshtml]
+[C:/react/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/ConfirmEmailChange.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxDb25maXJtRW1haWxDaGFuZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Programim/GitHubProjekte/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/ExternalLogin.cshtml]
+[C:/react/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/ExternalLogin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxFeHRlcm5hbExvZ2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Programim/GitHubProjekte/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/ForgotPassword.cshtml]
+[C:/react/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/ForgotPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Programim/GitHubProjekte/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/Login.cshtml]
+[C:/react/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Programim/GitHubProjekte/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/LoginWith2fa.cshtml]
+[C:/react/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/LoginWith2fa.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbldpdGgyZmEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Programim/GitHubProjekte/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/Logout.cshtml]
+[C:/react/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/Logout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Programim/GitHubProjekte/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml]
+[C:/react/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcQ2hhbmdlUGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Programim/GitHubProjekte/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/Manage/Disable2fa.cshtml]
+[C:/react/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/Manage/Disable2fa.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRGlzYWJsZTJmYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Programim/GitHubProjekte/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/Manage/Email.cshtml]
+[C:/react/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/Manage/Email.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRW1haWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Programim/GitHubProjekte/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/Manage/EnableAuthenticator.cshtml]
+[C:/react/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/Manage/EnableAuthenticator.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRW5hYmxlQXV0aGVudGljYXRvci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Programim/GitHubProjekte/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/Manage/GenerateRecoveryCodes.cshtml]
+[C:/react/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/Manage/GenerateRecoveryCodes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcR2VuZXJhdGVSZWNvdmVyeUNvZGVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Programim/GitHubProjekte/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/Manage/Index.cshtml]
+[C:/react/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/Manage/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Programim/GitHubProjekte/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/Manage/ResetAuthenticator.cshtml]
+[C:/react/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/Manage/ResetAuthenticator.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcUmVzZXRBdXRoZW50aWNhdG9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Programim/GitHubProjekte/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/Manage/SetPassword.cshtml]
+[C:/react/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/Manage/SetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcU2V0UGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Programim/GitHubProjekte/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/Manage/ShowRecoveryCodes.cshtml]
+[C:/react/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/Manage/ShowRecoveryCodes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcU2hvd1JlY292ZXJ5Q29kZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Programim/GitHubProjekte/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/Manage/TwoFactorAuthentication.cshtml]
+[C:/react/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/Manage/TwoFactorAuthentication.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcVHdvRmFjdG9yQXV0aGVudGljYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Programim/GitHubProjekte/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/Manage/_Layout.cshtml]
+[C:/react/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/Manage/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Programim/GitHubProjekte/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
+[C:/react/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX01hbmFnZU5hdi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Programim/GitHubProjekte/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
+[C:/react/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Programim/GitHubProjekte/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/Register.cshtml]
+[C:/react/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Programim/GitHubProjekte/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/ResetPassword.cshtml]
+[C:/react/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/ResetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Programim/GitHubProjekte/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+[C:/react/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/Account/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Programim/GitHubProjekte/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+[C:/react/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Programim/GitHubProjekte/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/_ViewImports.cshtml]
+[C:/react/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Programim/GitHubProjekte/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/_ViewStart.cshtml]
+[C:/react/InfinitMarket-Lab2/InfinitMarket/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Programim/GitHubProjekte/InfinitMarket-Lab2/InfinitMarket/Views/Home/Index.cshtml]
+[C:/react/InfinitMarket-Lab2/InfinitMarket/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Programim/GitHubProjekte/InfinitMarket-Lab2/InfinitMarket/Views/Shared/Error.cshtml]
+[C:/react/InfinitMarket-Lab2/InfinitMarket/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Programim/GitHubProjekte/InfinitMarket-Lab2/InfinitMarket/Views/Shared/_LoginPartial.cshtml]
+[C:/react/InfinitMarket-Lab2/InfinitMarket/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Programim/GitHubProjekte/InfinitMarket-Lab2/InfinitMarket/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/react/InfinitMarket-Lab2/InfinitMarket/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Programim/GitHubProjekte/InfinitMarket-Lab2/InfinitMarket/Views/_ViewImports.cshtml]
+[C:/react/InfinitMarket-Lab2/InfinitMarket/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Programim/GitHubProjekte/InfinitMarket-Lab2/InfinitMarket/Views/_ViewStart.cshtml]
+[C:/react/InfinitMarket-Lab2/InfinitMarket/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Programim/GitHubProjekte/InfinitMarket-Lab2/InfinitMarket/Views/Shared/_Layout.cshtml]
+[C:/react/InfinitMarket-Lab2/InfinitMarket/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-7rfa9z15bi

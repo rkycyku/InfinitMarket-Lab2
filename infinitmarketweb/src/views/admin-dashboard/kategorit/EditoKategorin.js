@@ -19,7 +19,7 @@ function EditoKompanin(props) {
         const vendosKategorite = async () => {
             try {
                 const kategorite = await axios.get(
-                    `https://localhost:7285/api/Kategoria/shfaqKategorit`, authentikimi
+                    `https://localhost:7251/api/Kategoria/shfaqKategorit`, authentikimi
                 );
                 setKateogrite(kategorite.data);
 
@@ -42,16 +42,15 @@ function EditoKompanin(props) {
     useEffect(() => {
         const ShfaqKategorine = async () => {
             try {
-                const kategoria = await axios.get(`https://localhost:7285/api/Kategoria/shfaqKategorinSipasIDs?id=${props.id}`, authentikimi);
+                const kategoria = await axios.get(`https://localhost:7251/api/Kategoria/shfaqKategorinSipasIDs?id=${props.id}`, authentikimi);
                 setKategoria(kategoria.data);
-
             } catch (err) {
                 console.log(err);
             }
         };
 
         ShfaqKategorine();
-    }, []);
+    }, [props.id]);
 
     const handleEmriChange = (value) => {
         setKategoria((prev) => ({ ...prev, llojiKategoris: value }));
@@ -66,7 +65,7 @@ function EditoKompanin(props) {
     }
 
     function handleSubmit() {
-        axios.put(`https://localhost:7285/api/Kategoria/perditesoKategorin?id=${kategoria.kategoriaId}`, kategoria, authentikimi)
+        axios.put(`https://localhost:7251/api/Kategoria/perditesoKategorin?id=${kategoria.kategoriaId}`, kategoria, authentikimi)
             .then(x => {
 
                 props.setTipiMesazhit("success");
