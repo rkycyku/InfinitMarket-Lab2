@@ -4,6 +4,7 @@ using InfinitMarket.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InfinitMarket.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240329015540_KrijimiProduktit")]
+    partial class KrijimiProduktit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -272,39 +274,6 @@ namespace InfinitMarket.Migrations
                     b.ToTable("TeDhenatPerdoruesit");
                 });
 
-            modelBuilder.Entity("InfinitMarket.Models.TeDhenatProduktit", b =>
-                {
-                    b.Property<int>("TeDhenatProduktitID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TeDhenatProduktitID"), 1L, 1);
-
-                    b.Property<DateTime?>("DataKrijimit")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DataPerditsimit")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("ProduktiId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal?>("QmimiBleres")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal?>("QmimiProduktit")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int?>("SasiaNeStok")
-                        .HasColumnType("int");
-
-                    b.HasKey("TeDhenatProduktitID");
-
-                    b.HasIndex("ProduktiId");
-
-                    b.ToTable("TeDhenatProduktit");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -558,17 +527,6 @@ namespace InfinitMarket.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("InfinitMarket.Models.TeDhenatProduktit", b =>
-                {
-                    b.HasOne("InfinitMarket.Models.Produkti", "Produkti")
-                        .WithMany()
-                        .HasForeignKey("ProduktiId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Produkti");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

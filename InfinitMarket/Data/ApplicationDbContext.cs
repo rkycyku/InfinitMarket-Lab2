@@ -19,5 +19,7 @@ namespace InfinitMarket.Data
         public DbSet<KategoriaProduktit> KategoriaProduktit { get; set; }
         public DbSet<KompanitePartnere> KompanitePartnere { get; set; }
         public DbSet<AdresatPerdoruesit> AdresatPerdoruesit { get; set; }
+        public DbSet<Produkti> Produkti { get; set; }
+        public DbSet<TeDhenatProduktit> TeDhenatProduktit { get; set; }
     }
 }
