@@ -57,7 +57,7 @@ namespace InfinitMarket.Migrations
                 columns: new[] { "UserID", "Emri", "Mbiemri", "Email", "Username", "AspNetUserId" },
                 values: new object[,]
                 {
-            { 1, "Admin", "Admin", "admin@ubt-uni.net", "admin", "01010101-0101-0101-0101-010101010101" },
+            { 1, "Admin", "Admin", "admin@infinitmarket.net", "admin", "01010101-0101-0101-0101-010101010101" },
                 });
 
             migrationBuilder.InsertData(
@@ -65,7 +65,7 @@ namespace InfinitMarket.Migrations
                 columns: new[] { "TeDhenatID", "NrKontaktit", "Qyteti", "ZipKodi", "Adresa", "Shteti", "UserID", "DataKrijimit", "DataLindjes", "EmailPersonal", "EmriPrindit", "Gjinia", "NrPersonal" },
                 values: new object[,]
                 {
-            { 1, "38344111222", "Prishtine", "10000", "P.A.", "Kosove", 1, "1900-01-01T00:00:00.000Z", "1900-01-01T00:00:00.000Z", "email@gmail.com", "Filani", "M", "1100110011" },
+            { 1, "38344111222", "Prishtine", "10000", "P.A.", "Kosove", 1, "1900-01-01T00:00:00.000Z", "1900-01-01T00:00:00.000Z", "admin@infinitmarket.com", "Filani", "M", "1100110011" },
                 });
         }
 
