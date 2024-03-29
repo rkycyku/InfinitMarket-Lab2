@@ -1,0 +1,46 @@
+﻿@page
+@model AdresatModel
+@{
+    ViewData["Title"] = "Adresat";
+    ViewData["ActivePage"] = ManageNavPages.Adresat;
+}
+
+<h3>@ViewData["Title"]</h3>
+<partial name="_StatusMessage" for="StatusMessage" />
+<div class="row">
+    <div class="col">
+        <a class="btn btn-lg btn-primary" id="adresat" asp-page="./AdresatShto">Shto Adrese te re +</a>
+            <div class="row mt-1">
+                @foreach (var item in Model.AdresatPerdoruesit)
+                {
+                    <div class="col-sm-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">@Html.DisplayFor(modelItem => item.Emri) @Html.DisplayFor(modelItem => item.Mbiemri)</h5>
+                                <p class="card-text">
+                                Email: @Html.DisplayFor(modelItem => item.Email)
+                                </p>
+                                <p class="card-text">
+                                Numri i telefonit: @Html.DisplayFor(modelItem => item.NrKontaktit)
+                                </p>
+                                <p class="card-text">
+                                 @Html.DisplayFor(modelItem => item.Adresa)
+                                    <br />
+                                @Html.DisplayFor(modelItem => item.Qyteti), @Html.DisplayFor(modelItem => item.ZipKodi)
+                                    <br />
+                                 @Html.DisplayFor(modelItem => item.Shteti)
+                                </p>
+                            <a asp-page="./AdresatEdito" asp-route-id="@item.AdresaID" class="btn btn-primary">Edito</a>
+                            <a asp-page="./AdresatFshij" asp-route-id="@item.AdresaID" class="btn btn-primary">Fshije</a>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

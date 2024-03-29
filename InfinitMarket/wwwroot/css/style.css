@@ -1,9 +1,10 @@
 ﻿
-.logoImg {
-    height: 250px;
-    width: 200px;
-}
 
+.logoImg {
+    height: 30px;
+    width: 30px;
+    margin-bottom: 0.1em;
+}
 .logoImgLoginReg {
     width: 300px;
 }

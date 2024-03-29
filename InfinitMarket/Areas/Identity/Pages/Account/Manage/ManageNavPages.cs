@@ -19,6 +19,10 @@ namespace  InfinitMarket.Areas.Identity.Pages.Account.Manage
         /// </summary>
         public static string Index => "Index";
 
+        public static string Adresat => "Adresat";
+        public static string AdresatShto => "AdresatShto";
+        public static string AdresatFshij => "AdresatFshij";
+
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
         ///     directly from your code. This API may change or be removed in future releases.
@@ -66,6 +70,10 @@ namespace  InfinitMarket.Areas.Identity.Pages.Account.Manage
         ///     directly from your code. This API may change or be removed in future releases.
         /// </summary>
         public static string IndexNavClass(ViewContext viewContext) => PageNavClass(viewContext, Index);
+
+        public static string AdresatNavClass(ViewContext viewContext) => PageNavClass(viewContext, Adresat);
+        public static string AdresatShtoNavClass(ViewContext viewContext) => PageNavClass(viewContext, AdresatShto);
+        public static string AdresatFshijNavClass(ViewContext viewContext) => PageNavClass(viewContext, AdresatFshij);
 
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used

@@ -1,0 +1,45 @@
+﻿@page
+@model AdresatFshijModel
+@{
+    ViewData["Title"] = "Fshini Adresen";
+    ViewData["ActivePage"] = ManageNavPages.AdresatFshij;
+}
+
+<h3>@ViewData["Title"]</h3>
+<partial name="_StatusMessage" for="StatusMessage" />
+<div class="row">
+    <div class="col">
+        <form id="profile-form" method="post">
+            <div class="col">
+                <div class="card">
+                    <h5 class="card-header">
+                        A jeni te sigurt qe deshironi te fshini kete adrese?
+                    </h5>
+                    <div class="card-body">
+                        <h5 class="card-title">@Model.AdresatPerdoruesit.Emri @Model.AdresatPerdoruesit.Mbiemri</h5>
+                        <p class="card-text">
+                            Email: @Model.AdresatPerdoruesit.Email
+                        </p>
+                        <p class="card-text">
+                            Numri i telefonit: @Model.AdresatPerdoruesit.NrKontaktit
+                        </p>
+                        <p class="card-text">
+                            @Model.AdresatPerdoruesit.Adresa
+                            <br />
+                            @Model.AdresatPerdoruesit.Qyteti, @Model.AdresatPerdoruesit.ZipKodi
+                            <br />
+                            @Model.AdresatPerdoruesit.Shteti
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+            <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Fshije</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
