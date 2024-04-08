@@ -4,7 +4,17 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Loader from './components/Loader/Loader';
 import BaseLayout from './layouts/BaseLayout';
 
+
+
+
 import { BASE_URL } from './config/constant';
+
+
+import ContactUs from './views/ContactUs';
+
+
+
+
 
 export const renderRoutes = (routes = []) => (
   <Suspense fallback={<Loader />}>
@@ -47,6 +57,11 @@ const routes = [
       },
       {
         exact: 'true',
+        path: '/ContactUs',
+        element: lazy(() => import('./views/ContactUs'))
+      },
+      {
+        exact: 'true',
         path: '/admin/produktet/kategorite',
         element: lazy(() => import('./views/admin-dashboard/Produktet/Kategorite'))
       },
@@ -60,11 +75,20 @@ const routes = [
         path: '/admin/klientet',
         element: lazy(() => import('./views/admin-dashboard/Klientet'))
       },
+      
       {
         exact: 'true',
         path: '/admin/ofertatslider',
         element: lazy(() => import('./views/admin-dashboard/TeNdryshme/OfertatSlider'))
       },
+      
+      {
+      exact: 'true',
+      path: '/admin/mesazhet',
+      element: lazy(() => import('./views/admin-dashboard/Mesazhet'))
+      },
+      
+
       {
         exact: 'true',
         path: '/',

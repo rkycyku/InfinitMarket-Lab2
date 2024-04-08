@@ -6,14 +6,22 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
+
+
+
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
+
+
+
+
 
 const DashDefault = () => {
   const [eshteStudent, setEshteStudent] = useState(false);
   const [teDhenat, setTeDhenat] = useState([]);
   const [perditeso, setPerditeso] = useState('');
   const [loading, setLoading] = useState(true);
+   
 
   const [resetoFaqen, setResetoFaqen] = useState(0);
 
@@ -56,7 +64,7 @@ const DashDefault = () => {
   return (
     <React.Fragment>
       <Helmet>
-        <title>Dashboard | InfinitMarket</title>
+        <title>Dashboard | Infinit Market</title>
       </Helmet>
       <Row>
         <div className="dashboard">

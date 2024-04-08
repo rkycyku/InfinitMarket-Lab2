@@ -7,6 +7,8 @@ import { faBan, faPlus, faClose } from '@fortawesome/free-solid-svg-icons';
 import { TailSpin } from 'react-loader-spinner';
 import { Table } from 'react-bootstrap';
 
+
+
 function Klientet(props) {
   const [klientet, setKlientet] = useState([]);
   const [perditeso, setPerditeso] = useState('');

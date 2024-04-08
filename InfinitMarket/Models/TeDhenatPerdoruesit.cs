@@ -19,6 +19,7 @@ namespace InfinitMarket.Models
         public string? Shteti { get; set; } = "";
 
         public string? Gjinia { get; set; } = "";
+        
 
         public DateTime? DataLindjes { get; set; } = DateTime.Now;
 

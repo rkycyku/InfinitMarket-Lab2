@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using InfinitMarket;
 using InfinitMarket.Models;
 
+
 namespace InfinitMarket.Data
 {
     public class ApplicationDbContext : IdentityDbContext
@@ -22,5 +23,6 @@ namespace InfinitMarket.Data
         public DbSet<Produkti> Produkti { get; set; }
         public DbSet<TeDhenatProduktit> TeDhenatProduktit { get; set; }
         public DbSet<TeDhenatShporta> TeDhenatShporta { get; set; }
+        public DbSet<ContactForm> ContactForm { get; set; }
     }
 }

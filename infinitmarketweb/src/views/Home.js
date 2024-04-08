@@ -11,6 +11,8 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
+
+
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 function Home() {
@@ -47,7 +49,7 @@ function Home() {
   return (
     <div>
       <Helmet>
-        <title>Home | Tech Store</title>
+        <title>Home | Infinit Market</title>
       </Helmet>
       <Swiper
         spaceBetween={30}
@@ -88,6 +90,7 @@ function Home() {
               sasiaNeStok={produkti.sasiaNeStok}
               cmimiMeZbritje={produkti.qmimiMeZbritjeProduktit}
             />
+            
           );
         })}
       </div>

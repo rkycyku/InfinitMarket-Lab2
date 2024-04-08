@@ -86,6 +86,8 @@ function TabelaEKategorive(props) {
           setTipiMesazhit={setTipiMesazhit}
           setPershkrimiMesazhit={setPershkrimiMesazhit}
         />
+
+        
       )}
       {fshij && (
         <LargoKategorin

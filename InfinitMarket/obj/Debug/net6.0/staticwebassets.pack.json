@@ -1,671 +1,671 @@
 {
   "Files": [
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\InfinitMarket.bundle.scp.css",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\InfinitMarket.bundle.scp.css",
       "PackagePath": "staticwebassets\\InfinitMarket.bundle.scp.css"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\css\\boxicons.min.css",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\css\\boxicons.min.css",
       "PackagePath": "staticwebassets\\assets\\css\\boxicons.min.css"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\css\\style.css",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\css\\style.css",
       "PackagePath": "staticwebassets\\assets\\css\\style.css"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\datta\\datta-icon.css",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\fonts\\datta\\datta-icon.css",
       "PackagePath": "staticwebassets\\assets\\fonts\\datta\\datta-icon.css"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\datta\\fonts\\pct.eot",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\fonts\\datta\\fonts\\pct.eot",
       "PackagePath": "staticwebassets\\assets\\fonts\\datta\\fonts\\pct.eot"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\datta\\fonts\\pct.svg",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\fonts\\datta\\fonts\\pct.svg",
       "PackagePath": "staticwebassets\\assets\\fonts\\datta\\fonts\\pct.svg"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\datta\\fonts\\pct.ttf",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\fonts\\datta\\fonts\\pct.ttf",
       "PackagePath": "staticwebassets\\assets\\fonts\\datta\\fonts\\pct.ttf"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\datta\\fonts\\pct.woff",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\fonts\\datta\\fonts\\pct.woff",
       "PackagePath": "staticwebassets\\assets\\fonts\\datta\\fonts\\pct.woff"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\feather\\css\\feather.css",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\fonts\\feather\\css\\feather.css",
       "PackagePath": "staticwebassets\\assets\\fonts\\feather\\css\\feather.css"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\feather\\fonts\\feather.eot",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\fonts\\feather\\fonts\\feather.eot",
       "PackagePath": "staticwebassets\\assets\\fonts\\feather\\fonts\\feather.eot"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\feather\\fonts\\feather.svg",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\fonts\\feather\\fonts\\feather.svg",
       "PackagePath": "staticwebassets\\assets\\fonts\\feather\\fonts\\feather.svg"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\feather\\fonts\\feather.ttf",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\fonts\\feather\\fonts\\feather.ttf",
       "PackagePath": "staticwebassets\\assets\\fonts\\feather\\fonts\\feather.ttf"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\feather\\fonts\\feather.woff",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\fonts\\feather\\fonts\\feather.woff",
       "PackagePath": "staticwebassets\\assets\\fonts\\feather\\fonts\\feather.woff"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\css\\fontawesome-all.min.css",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\css\\fontawesome-all.min.css",
       "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\css\\fontawesome-all.min.css"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-brands-400.eot",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-brands-400.eot",
       "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\webfonts\\fa-brands-400.eot"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-brands-400.svg",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-brands-400.svg",
       "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\webfonts\\fa-brands-400.svg"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-brands-400.ttf",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-brands-400.ttf",
       "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\webfonts\\fa-brands-400.ttf"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-brands-400.woff",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-brands-400.woff",
       "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\webfonts\\fa-brands-400.woff"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-brands-400.woff2",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-brands-400.woff2",
       "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\webfonts\\fa-brands-400.woff2"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-regular-400.eot",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-regular-400.eot",
       "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\webfonts\\fa-regular-400.eot"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-regular-400.svg",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-regular-400.svg",
       "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\webfonts\\fa-regular-400.svg"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-regular-400.ttf",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-regular-400.ttf",
       "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\webfonts\\fa-regular-400.ttf"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-regular-400.woff",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-regular-400.woff",
       "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\webfonts\\fa-regular-400.woff"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-regular-400.woff2",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-regular-400.woff2",
       "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\webfonts\\fa-regular-400.woff2"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-solid-900.eot",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-solid-900.eot",
       "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\webfonts\\fa-solid-900.eot"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-solid-900.svg",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-solid-900.svg",
       "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\webfonts\\fa-solid-900.svg"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-solid-900.ttf",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-solid-900.ttf",
       "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\webfonts\\fa-solid-900.ttf"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-solid-900.woff",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-solid-900.woff",
       "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\webfonts\\fa-solid-900.woff"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-solid-900.woff2",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\fonts\\fontawesome\\webfonts\\fa-solid-900.woff2",
       "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\webfonts\\fa-solid-900.woff2"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\Thumbs.db",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\Thumbs.db",
       "PackagePath": "staticwebassets\\assets\\images\\Thumbs.db"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\browser\\Thumbs.db",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\browser\\Thumbs.db",
       "PackagePath": "staticwebassets\\assets\\images\\browser\\Thumbs.db"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\browser\\chrome.png",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\browser\\chrome.png",
       "PackagePath": "staticwebassets\\assets\\images\\browser\\chrome.png"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\browser\\firefox.png",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\browser\\firefox.png",
       "PackagePath": "staticwebassets\\assets\\images\\browser\\firefox.png"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\browser\\ie.png",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\browser\\ie.png",
       "PackagePath": "staticwebassets\\assets\\images\\browser\\ie.png"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\browser\\opera.png",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\browser\\opera.png",
       "PackagePath": "staticwebassets\\assets\\images\\browser\\opera.png"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\browser\\safari.png",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\browser\\safari.png",
       "PackagePath": "staticwebassets\\assets\\images\\browser\\safari.png"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\favicon.ico",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\favicon.ico",
       "PackagePath": "staticwebassets\\assets\\images\\favicon.ico"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\logo-dark.png",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\logo-dark.png",
       "PackagePath": "staticwebassets\\assets\\images\\logo-dark.png"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\logo-thumb.png",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\logo-thumb.png",
       "PackagePath": "staticwebassets\\assets\\images\\logo-thumb.png"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\logo.png",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\logo.png",
       "PackagePath": "staticwebassets\\assets\\images\\logo.png"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\slider\\img-slide-1.jpg",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\slider\\img-slide-1.jpg",
       "PackagePath": "staticwebassets\\assets\\images\\slider\\img-slide-1.jpg"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\slider\\img-slide-2.jpg",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\slider\\img-slide-2.jpg",
       "PackagePath": "staticwebassets\\assets\\images\\slider\\img-slide-2.jpg"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\slider\\img-slide-3.jpg",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\slider\\img-slide-3.jpg",
       "PackagePath": "staticwebassets\\assets\\images\\slider\\img-slide-3.jpg"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\slider\\img-slide-4.jpg",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\slider\\img-slide-4.jpg",
       "PackagePath": "staticwebassets\\assets\\images\\slider\\img-slide-4.jpg"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\slider\\img-slide-5.jpg",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\slider\\img-slide-5.jpg",
       "PackagePath": "staticwebassets\\assets\\images\\slider\\img-slide-5.jpg"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\slider\\img1.jpg",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\slider\\img1.jpg",
       "PackagePath": "staticwebassets\\assets\\images\\slider\\img1.jpg"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\slider\\img2.jpg",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\slider\\img2.jpg",
       "PackagePath": "staticwebassets\\assets\\images\\slider\\img2.jpg"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\slider\\img3.jpg",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\slider\\img3.jpg",
       "PackagePath": "staticwebassets\\assets\\images\\slider\\img3.jpg"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\user\\Thumbs.db",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\user\\Thumbs.db",
       "PackagePath": "staticwebassets\\assets\\images\\user\\Thumbs.db"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\user\\avatar-1.jpg",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\user\\avatar-1.jpg",
       "PackagePath": "staticwebassets\\assets\\images\\user\\avatar-1.jpg"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\user\\avatar-2.jpg",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\user\\avatar-2.jpg",
       "PackagePath": "staticwebassets\\assets\\images\\user\\avatar-2.jpg"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\user\\avatar-3.jpg",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\user\\avatar-3.jpg",
       "PackagePath": "staticwebassets\\assets\\images\\user\\avatar-3.jpg"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\user\\avatar-4.jpg",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\user\\avatar-4.jpg",
       "PackagePath": "staticwebassets\\assets\\images\\user\\avatar-4.jpg"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\user\\avatar-5.jpg",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\user\\avatar-5.jpg",
       "PackagePath": "staticwebassets\\assets\\images\\user\\avatar-5.jpg"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\user\\user-1.png",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\user\\user-1.png",
       "PackagePath": "staticwebassets\\assets\\images\\user\\user-1.png"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\user\\user-2.png",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\user\\user-2.png",
       "PackagePath": "staticwebassets\\assets\\images\\user\\user-2.png"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\widget\\Thumbs.db",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\widget\\Thumbs.db",
       "PackagePath": "staticwebassets\\assets\\images\\widget\\Thumbs.db"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\widget\\dashborad-1.png",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\widget\\dashborad-1.png",
       "PackagePath": "staticwebassets\\assets\\images\\widget\\dashborad-1.png"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\widget\\dashborad-2.png",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\widget\\dashborad-2.png",
       "PackagePath": "staticwebassets\\assets\\images\\widget\\dashborad-2.png"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\widget\\dashborad-3.png",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\widget\\dashborad-3.png",
       "PackagePath": "staticwebassets\\assets\\images\\widget\\dashborad-3.png"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\widget\\dashborad-4.png",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\widget\\dashborad-4.png",
       "PackagePath": "staticwebassets\\assets\\images\\widget\\dashborad-4.png"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\widget\\dashborad-5.png",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\widget\\dashborad-5.png",
       "PackagePath": "staticwebassets\\assets\\images\\widget\\dashborad-5.png"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\widget\\dashborad-6.png",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\widget\\dashborad-6.png",
       "PackagePath": "staticwebassets\\assets\\images\\widget\\dashborad-6.png"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\images\\widget\\emoticon.png",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\images\\widget\\emoticon.png",
       "PackagePath": "staticwebassets\\assets\\images\\widget\\emoticon.png"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\js\\pages\\chart-morris-custom.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\js\\pages\\chart-morris-custom.js",
       "PackagePath": "staticwebassets\\assets\\js\\pages\\chart-morris-custom.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\js\\pages\\google-maps.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\js\\pages\\google-maps.js",
       "PackagePath": "staticwebassets\\assets\\js\\pages\\google-maps.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\js\\pcoded.min.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\js\\pcoded.min.js",
       "PackagePath": "staticwebassets\\assets\\js\\pcoded.min.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\js\\vendor-all.min.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\js\\vendor-all.min.js",
       "PackagePath": "staticwebassets\\assets\\js\\vendor-all.min.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\amchart\\js\\amcharts.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\plugins\\amchart\\js\\amcharts.js",
       "PackagePath": "staticwebassets\\assets\\plugins\\amchart\\js\\amcharts.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\amchart\\js\\ammap.min.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\plugins\\amchart\\js\\ammap.min.js",
       "PackagePath": "staticwebassets\\assets\\plugins\\amchart\\js\\ammap.min.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\amchart\\js\\gauge.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\plugins\\amchart\\js\\gauge.js",
       "PackagePath": "staticwebassets\\assets\\plugins\\amchart\\js\\gauge.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\amchart\\js\\images\\dragIconRoundBig.svg",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\plugins\\amchart\\js\\images\\dragIconRoundBig.svg",
       "PackagePath": "staticwebassets\\assets\\plugins\\amchart\\js\\images\\dragIconRoundBig.svg"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\amchart\\js\\images\\lens.svg",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\plugins\\amchart\\js\\images\\lens.svg",
       "PackagePath": "staticwebassets\\assets\\plugins\\amchart\\js\\images\\lens.svg"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\amchart\\js\\light.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\plugins\\amchart\\js\\light.js",
       "PackagePath": "staticwebassets\\assets\\plugins\\amchart\\js\\light.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\amchart\\js\\pie.min.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\plugins\\amchart\\js\\pie.min.js",
       "PackagePath": "staticwebassets\\assets\\plugins\\amchart\\js\\pie.min.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\amchart\\js\\radar.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\plugins\\amchart\\js\\radar.js",
       "PackagePath": "staticwebassets\\assets\\plugins\\amchart\\js\\radar.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\amchart\\js\\serial.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\plugins\\amchart\\js\\serial.js",
       "PackagePath": "staticwebassets\\assets\\plugins\\amchart\\js\\serial.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\amchart\\js\\usaLow.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\plugins\\amchart\\js\\usaLow.js",
       "PackagePath": "staticwebassets\\assets\\plugins\\amchart\\js\\usaLow.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\amchart\\js\\worldLow.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\plugins\\amchart\\js\\worldLow.js",
       "PackagePath": "staticwebassets\\assets\\plugins\\amchart\\js\\worldLow.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\animation\\css\\animate.min.css",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\plugins\\animation\\css\\animate.min.css",
       "PackagePath": "staticwebassets\\assets\\plugins\\animation\\css\\animate.min.css"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\bootstrap\\css\\bootstrap.css",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\plugins\\bootstrap\\css\\bootstrap.css",
       "PackagePath": "staticwebassets\\assets\\plugins\\bootstrap\\css\\bootstrap.css"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\bootstrap\\css\\bootstrap.min.css",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\plugins\\bootstrap\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\assets\\plugins\\bootstrap\\css\\bootstrap.min.css"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\bootstrap\\js\\bootstrap.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\plugins\\bootstrap\\js\\bootstrap.js",
       "PackagePath": "staticwebassets\\assets\\plugins\\bootstrap\\js\\bootstrap.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\bootstrap\\js\\bootstrap.min.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\plugins\\bootstrap\\js\\bootstrap.min.js",
       "PackagePath": "staticwebassets\\assets\\plugins\\bootstrap\\js\\bootstrap.min.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\bootstrap\\js\\popover.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\plugins\\bootstrap\\js\\popover.js",
       "PackagePath": "staticwebassets\\assets\\plugins\\bootstrap\\js\\popover.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\chart-morris\\css\\morris.css",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\plugins\\chart-morris\\css\\morris.css",
       "PackagePath": "staticwebassets\\assets\\plugins\\chart-morris\\css\\morris.css"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\chart-morris\\js\\morris.min.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\plugins\\chart-morris\\js\\morris.min.js",
       "PackagePath": "staticwebassets\\assets\\plugins\\chart-morris\\js\\morris.min.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\chart-morris\\js\\raphael.min.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\plugins\\chart-morris\\js\\raphael.min.js",
       "PackagePath": "staticwebassets\\assets\\plugins\\chart-morris\\js\\raphael.min.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\google-maps\\js\\gmaps.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\plugins\\google-maps\\js\\gmaps.js",
       "PackagePath": "staticwebassets\\assets\\plugins\\google-maps\\js\\gmaps.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\jquery-scrollbar\\css\\jquery.scrollbar.min.css",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\plugins\\jquery-scrollbar\\css\\jquery.scrollbar.min.css",
       "PackagePath": "staticwebassets\\assets\\plugins\\jquery-scrollbar\\css\\jquery.scrollbar.min.css"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\jquery-scrollbar\\js\\jquery.scrollbar.min.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\plugins\\jquery-scrollbar\\js\\jquery.scrollbar.min.js",
       "PackagePath": "staticwebassets\\assets\\plugins\\jquery-scrollbar\\js\\jquery.scrollbar.min.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\jquery-ui\\js\\jquery-ui.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\plugins\\jquery-ui\\js\\jquery-ui.js",
       "PackagePath": "staticwebassets\\assets\\plugins\\jquery-ui\\js\\jquery-ui.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\assets\\plugins\\jquery\\js\\jquery.min.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\assets\\plugins\\jquery\\js\\jquery.min.js",
       "PackagePath": "staticwebassets\\assets\\plugins\\jquery\\js\\jquery.min.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\css\\site.css",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\css\\style.css",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\css\\style.css",
       "PackagePath": "staticwebassets\\css\\style.css"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\js\\qr.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\js\\qr.js",
       "PackagePath": "staticwebassets\\js\\qr.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\js\\site.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\LICENSE",
       "PackagePath": "staticwebassets\\lib\\bootstrap"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-icons.css",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-icons.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-icons.css"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\davidshimjs-qrcodejs-04f46c6\\.gitignore",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\davidshimjs-qrcodejs-04f46c6\\.gitignore",
       "PackagePath": "staticwebassets\\lib\\davidshimjs-qrcodejs-04f46c6\\.gitignore"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\davidshimjs-qrcodejs-04f46c6\\LICENSE",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\davidshimjs-qrcodejs-04f46c6\\LICENSE",
       "PackagePath": "staticwebassets\\lib\\davidshimjs-qrcodejs-04f46c6"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\davidshimjs-qrcodejs-04f46c6\\README.md",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\davidshimjs-qrcodejs-04f46c6\\README.md",
       "PackagePath": "staticwebassets\\lib\\davidshimjs-qrcodejs-04f46c6\\README.md"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\davidshimjs-qrcodejs-04f46c6\\bower.json",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\davidshimjs-qrcodejs-04f46c6\\bower.json",
       "PackagePath": "staticwebassets\\lib\\davidshimjs-qrcodejs-04f46c6\\bower.json"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\davidshimjs-qrcodejs-04f46c6\\index-svg.html",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\davidshimjs-qrcodejs-04f46c6\\index-svg.html",
       "PackagePath": "staticwebassets\\lib\\davidshimjs-qrcodejs-04f46c6\\index-svg.html"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\davidshimjs-qrcodejs-04f46c6\\index.html",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\davidshimjs-qrcodejs-04f46c6\\index.html",
       "PackagePath": "staticwebassets\\lib\\davidshimjs-qrcodejs-04f46c6\\index.html"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\davidshimjs-qrcodejs-04f46c6\\index.svg",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\davidshimjs-qrcodejs-04f46c6\\index.svg",
       "PackagePath": "staticwebassets\\lib\\davidshimjs-qrcodejs-04f46c6\\index.svg"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\davidshimjs-qrcodejs-04f46c6\\jquery.min.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\davidshimjs-qrcodejs-04f46c6\\jquery.min.js",
       "PackagePath": "staticwebassets\\lib\\davidshimjs-qrcodejs-04f46c6\\jquery.min.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\davidshimjs-qrcodejs-04f46c6\\qrcode.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\davidshimjs-qrcodejs-04f46c6\\qrcode.js",
       "PackagePath": "staticwebassets\\lib\\davidshimjs-qrcodejs-04f46c6\\qrcode.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\davidshimjs-qrcodejs-04f46c6\\qrcode.min.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\davidshimjs-qrcodejs-04f46c6\\qrcode.min.js",
       "PackagePath": "staticwebassets\\lib\\davidshimjs-qrcodejs-04f46c6\\qrcode.min.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\profile.png",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\profile.png",
       "PackagePath": "staticwebassets\\profile.png"
     },
     {
-      "Id": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\wwwroot\\profile_crop.png",
+      "Id": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\wwwroot\\profile_crop.png",
       "PackagePath": "staticwebassets\\profile_crop.png"
     },
     {

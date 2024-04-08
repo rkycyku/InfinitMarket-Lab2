@@ -29,7 +29,7 @@ const menuItems = {
           title: 'Contact Us',
           type: 'item',
           icon: 'feather icon-at-sign',
-          url: '/'
+          url: '/ContactUs'
         }
       ]
     },
@@ -77,6 +77,7 @@ const menuItems = {
               type: 'item',
               url: '/admin/ofertatslider'
             },
+            
           ]
         },
         {
@@ -98,7 +99,7 @@ const menuItems = {
           title: 'Mesazhet',
           type: 'item',
           icon: 'feather icon-at-sign',
-          url: '/'
+          url: '/admin/mesazhet'
         }
       ]
     }

@@ -18,6 +18,7 @@ namespace InfinitMarket.Models
         public IdentityUser? AspNetUser { get; set; }
 
         public  TeDhenatPerdoruesit? TeDhenatPerdoruesit { get; set; }
+        public string? Username { get; internal set; }
     }
 }
 

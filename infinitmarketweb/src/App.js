@@ -1,5 +1,7 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useRoutes } from 'react-router-dom';
+
+
 
 // auth provider
 

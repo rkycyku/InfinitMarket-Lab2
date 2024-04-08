@@ -1,0 +1,493 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|c:\\users\\administrator\\downloads\\infinitmarket-lab2-main\\infinitmarket-lab2-main\\infinitmarket\\controllers\\api\\tendryshme\\contactformcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|solutionrelative:infinitmarket\\controllers\\api\\tendryshme\\contactformcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|c:\\users\\administrator\\downloads\\infinitmarket-lab2-main\\infinitmarket-lab2-main\\infinitmarket\\controllers\\api\\tendryshme\\ofertatslidercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|solutionrelative:infinitmarket\\controllers\\api\\tendryshme\\ofertatslidercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|c:\\users\\administrator\\downloads\\infinitmarket-lab2-main\\infinitmarket-lab2-main\\infinitmarket\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|solutionrelative:infinitmarket\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\infinitmarket\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|solutionrelative:infinitmarket\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|c:\\users\\administrator\\downloads\\infinitmarket-lab2-main\\infinitmarket-lab2-main\\infinitmarket\\models\\contactform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|solutionrelative:infinitmarket\\models\\contactform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\infinitmarket\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|solutionrelative:infinitmarket\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|c:\\users\\administrator\\downloads\\infinitmarket-lab2-main\\infinitmarket-lab2-main\\infinitmarket\\models\\perdoruesi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|solutionrelative:infinitmarket\\models\\perdoruesi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|c:\\users\\administrator\\downloads\\infinitmarket-lab2-main\\infinitmarket-lab2-main\\infinitmarket\\models\\tedhenatperdoruesit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|solutionrelative:infinitmarket\\models\\tedhenatperdoruesit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|c:\\users\\administrator\\downloads\\infinitmarket-lab2-main\\infinitmarket-lab2-main\\infinitmarket\\controllers\\api\\produktet\\shportacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|solutionrelative:infinitmarket\\controllers\\api\\produktet\\shportacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\infinitmarket\\models\\tedhenatshporta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|solutionrelative:infinitmarket\\models\\tedhenatshporta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\Migrations\\20240329131438_PerditesimiIShportes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\infinitmarket\\controllers\\api\\produktet\\produkticontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|solutionrelative:infinitmarket\\controllers\\api\\produktet\\produkticontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\infinitmarket\\migrations\\20240329124616_krijmiishportesinsertimiadreses.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|solutionrelative:infinitmarket\\migrations\\20240329124616_krijmiishportesinsertimiadreses.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\infinitmarket\\migrations\\20240329022215_krijimitedhenatproduktit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|solutionrelative:infinitmarket\\migrations\\20240329022215_krijimitedhenatproduktit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\infinitmarket\\migrations\\20240329015540_krijimiproduktit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|solutionrelative:infinitmarket\\migrations\\20240329015540_krijimiproduktit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\infinitmarket\\migrations\\20240328230435_perditesimiadresaveperdoruesitvendosjaemrimbiemri.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|solutionrelative:infinitmarket\\migrations\\20240328230435_perditesimiadresaveperdoruesitvendosjaemrimbiemri.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\infinitmarket\\migrations\\20240328221352_perditesimiadresaveperdoruesit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|solutionrelative:infinitmarket\\migrations\\20240328221352_perditesimiadresaveperdoruesit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\infinitmarket\\migrations\\20240328220557_krijimiadresaveperdoruesit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|solutionrelative:infinitmarket\\migrations\\20240328220557_krijimiadresaveperdoruesit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\infinitmarket\\migrations\\20240328132907_krijimikompanivepartnere.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|solutionrelative:infinitmarket\\migrations\\20240328132907_krijimikompanivepartnere.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\infinitmarket\\migrations\\20240328124512_perditesimikategorisproduktit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|solutionrelative:infinitmarket\\migrations\\20240328124512_perditesimikategorisproduktit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\infinitmarket\\migrations\\20240328001534_krijimikategorive.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|solutionrelative:infinitmarket\\migrations\\20240328001534_krijimikategorive.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\infinitmarket\\migrations\\20240327232705_krijimishportes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|solutionrelative:infinitmarket\\migrations\\20240327232705_krijimishportes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\infinitmarket\\migrations\\20240327000531_perditesimisliderofertat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|solutionrelative:infinitmarket\\migrations\\20240327000531_perditesimisliderofertat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\infinitmarket\\migrations\\20240327000254_krijimisliderofertat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|solutionrelative:infinitmarket\\migrations\\20240327000254_krijimisliderofertat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\infinitmarket\\migrations\\20240320133035_perditesimiperdoruesit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|solutionrelative:infinitmarket\\migrations\\20240320133035_perditesimiperdoruesit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\infinitmarket\\migrations\\20240317005219_perditesim_i_tedhenatperdoruesit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|solutionrelative:infinitmarket\\migrations\\20240317005219_perditesim_i_tedhenatperdoruesit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\infinitmarket\\migrations\\20240316223424_insertimiitedhenave.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|solutionrelative:infinitmarket\\migrations\\20240316223424_insertimiitedhenave.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Migrations\\20240329131524_PerditesimiIShportes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1176FD7-329F-44F8-AB51-FAAA5D1D3C68}|InfinitMarket\\InfinitMarket.csproj|solutionrelative:InfinitMarket\\Migrations\\20240329131524_PerditesimiIShportes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "OfertatSliderController.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Controllers\\API\\TeNdryshme\\OfertatSliderController.cs",
+              "RelativeDocumentMoniker": "InfinitMarket\\Controllers\\API\\TeNdryshme\\OfertatSliderController.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Controllers\\API\\TeNdryshme\\OfertatSliderController.cs",
+              "RelativeToolTip": "InfinitMarket\\Controllers\\API\\TeNdryshme\\OfertatSliderController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T23:31:54.935Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Program.cs",
+              "RelativeDocumentMoniker": "InfinitMarket\\Program.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Program.cs",
+              "RelativeToolTip": "InfinitMarket\\Program.cs",
+              "ViewState": "AQIAAJAAAAAAAAAAAAAAAB0AAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T23:30:27.344Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Perdoruesi.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Models\\Perdoruesi.cs",
+              "RelativeDocumentMoniker": "InfinitMarket\\Models\\Perdoruesi.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Models\\Perdoruesi.cs",
+              "RelativeToolTip": "InfinitMarket\\Models\\Perdoruesi.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T13:26:57.725Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "TeDhenatPerdoruesit.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Models\\TeDhenatPerdoruesit.cs",
+              "RelativeDocumentMoniker": "InfinitMarket\\Models\\TeDhenatPerdoruesit.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Models\\TeDhenatPerdoruesit.cs",
+              "RelativeToolTip": "InfinitMarket\\Models\\TeDhenatPerdoruesit.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T13:24:36.261Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ContactFormController.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Controllers\\API\\TeNdryshme\\ContactFormController.cs",
+              "RelativeDocumentMoniker": "InfinitMarket\\Controllers\\API\\TeNdryshme\\ContactFormController.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Controllers\\API\\TeNdryshme\\ContactFormController.cs",
+              "RelativeToolTip": "InfinitMarket\\Controllers\\API\\TeNdryshme\\ContactFormController.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABAAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T13:13:56.986Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ContactForm.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Models\\ContactForm.cs",
+              "RelativeDocumentMoniker": "InfinitMarket\\Models\\ContactForm.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Models\\ContactForm.cs",
+              "RelativeToolTip": "InfinitMarket\\Models\\ContactForm.cs",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAjwA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T13:09:18.892Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ShportaController.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Controllers\\API\\Produktet\\ShportaController.cs",
+              "RelativeDocumentMoniker": "InfinitMarket\\Controllers\\API\\Produktet\\ShportaController.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Controllers\\API\\Produktet\\ShportaController.cs",
+              "RelativeToolTip": "InfinitMarket\\Controllers\\API\\Produktet\\ShportaController.cs",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAiwBgAAABRAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T13:00:22.405Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "20240329022215_KrijimiTeDhenatProduktit.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Migrations\\20240329022215_KrijimiTeDhenatProduktit.cs",
+              "RelativeDocumentMoniker": "InfinitMarket\\Migrations\\20240329022215_KrijimiTeDhenatProduktit.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Migrations\\20240329022215_KrijimiTeDhenatProduktit.cs",
+              "RelativeToolTip": "InfinitMarket\\Migrations\\20240329022215_KrijimiTeDhenatProduktit.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T13:00:23.122Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\appsettings.json",
+              "RelativeDocumentMoniker": "InfinitMarket\\appsettings.json",
+              "ToolTip": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\appsettings.json",
+              "RelativeToolTip": "InfinitMarket\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-04-07T13:00:23.136Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "InfinitMarket\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "InfinitMarket\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAgwAQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T13:00:23.134Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "20240329015540_KrijimiProduktit.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Migrations\\20240329015540_KrijimiProduktit.cs",
+              "RelativeDocumentMoniker": "InfinitMarket\\Migrations\\20240329015540_KrijimiProduktit.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Migrations\\20240329015540_KrijimiProduktit.cs",
+              "RelativeToolTip": "InfinitMarket\\Migrations\\20240329015540_KrijimiProduktit.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T13:00:23.122Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "20240328230435_PerditesimiAdresavePerdoruesitVendosjaEmriMbiemri.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Migrations\\20240328230435_PerditesimiAdresavePerdoruesitVendosjaEmriMbiemri.cs",
+              "RelativeDocumentMoniker": "InfinitMarket\\Migrations\\20240328230435_PerditesimiAdresavePerdoruesitVendosjaEmriMbiemri.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Migrations\\20240328230435_PerditesimiAdresavePerdoruesitVendosjaEmriMbiemri.cs",
+              "RelativeToolTip": "InfinitMarket\\Migrations\\20240328230435_PerditesimiAdresavePerdoruesitVendosjaEmriMbiemri.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T13:00:23.124Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "20240329131438_PerditesimiIShportes.cs",
+              "DocumentMoniker": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\Migrations\\20240329131438_PerditesimiIShportes.cs",
+              "ToolTip": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\Migrations\\20240329131438_PerditesimiIShportes.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-29T13:14:38.689Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "20240329131524_PerditesimiIShportes.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Migrations\\20240329131524_PerditesimiIShportes.cs",
+              "RelativeDocumentMoniker": "InfinitMarket\\Migrations\\20240329131524_PerditesimiIShportes.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Migrations\\20240329131524_PerditesimiIShportes.cs",
+              "RelativeToolTip": "InfinitMarket\\Migrations\\20240329131524_PerditesimiIShportes.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T13:00:21.899Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "20240328221352_PerditesimiAdresavePerdoruesit.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Migrations\\20240328221352_PerditesimiAdresavePerdoruesit.cs",
+              "RelativeDocumentMoniker": "InfinitMarket\\Migrations\\20240328221352_PerditesimiAdresavePerdoruesit.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Migrations\\20240328221352_PerditesimiAdresavePerdoruesit.cs",
+              "RelativeToolTip": "InfinitMarket\\Migrations\\20240328221352_PerditesimiAdresavePerdoruesit.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T13:00:23.125Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "20240328220557_KrijimiAdresavePerdoruesit.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Migrations\\20240328220557_KrijimiAdresavePerdoruesit.cs",
+              "RelativeDocumentMoniker": "InfinitMarket\\Migrations\\20240328220557_KrijimiAdresavePerdoruesit.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Migrations\\20240328220557_KrijimiAdresavePerdoruesit.cs",
+              "RelativeToolTip": "InfinitMarket\\Migrations\\20240328220557_KrijimiAdresavePerdoruesit.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T13:00:23.126Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "20240328132907_KrijimiKompanivePartnere.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Migrations\\20240328132907_KrijimiKompanivePartnere.cs",
+              "RelativeDocumentMoniker": "InfinitMarket\\Migrations\\20240328132907_KrijimiKompanivePartnere.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Migrations\\20240328132907_KrijimiKompanivePartnere.cs",
+              "RelativeToolTip": "InfinitMarket\\Migrations\\20240328132907_KrijimiKompanivePartnere.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T13:00:23.127Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "20240328124512_PerditesimiKategorisProduktit.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Migrations\\20240328124512_PerditesimiKategorisProduktit.cs",
+              "RelativeDocumentMoniker": "InfinitMarket\\Migrations\\20240328124512_PerditesimiKategorisProduktit.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Migrations\\20240328124512_PerditesimiKategorisProduktit.cs",
+              "RelativeToolTip": "InfinitMarket\\Migrations\\20240328124512_PerditesimiKategorisProduktit.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T13:00:23.128Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "20240328001534_KrijimiKategorive.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Migrations\\20240328001534_KrijimiKategorive.cs",
+              "RelativeDocumentMoniker": "InfinitMarket\\Migrations\\20240328001534_KrijimiKategorive.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Migrations\\20240328001534_KrijimiKategorive.cs",
+              "RelativeToolTip": "InfinitMarket\\Migrations\\20240328001534_KrijimiKategorive.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T13:00:23.128Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "20240327232705_KrijimiShportes.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Migrations\\20240327232705_KrijimiShportes.cs",
+              "RelativeDocumentMoniker": "InfinitMarket\\Migrations\\20240327232705_KrijimiShportes.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Migrations\\20240327232705_KrijimiShportes.cs",
+              "RelativeToolTip": "InfinitMarket\\Migrations\\20240327232705_KrijimiShportes.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T13:00:23.129Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "20240327000531_PerditesimiSliderOfertat.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Migrations\\20240327000531_PerditesimiSliderOfertat.cs",
+              "RelativeDocumentMoniker": "InfinitMarket\\Migrations\\20240327000531_PerditesimiSliderOfertat.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Migrations\\20240327000531_PerditesimiSliderOfertat.cs",
+              "RelativeToolTip": "InfinitMarket\\Migrations\\20240327000531_PerditesimiSliderOfertat.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T13:00:23.13Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "20240320133035_PerditesimiPerdoruesit.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Migrations\\20240320133035_PerditesimiPerdoruesit.cs",
+              "RelativeDocumentMoniker": "InfinitMarket\\Migrations\\20240320133035_PerditesimiPerdoruesit.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Migrations\\20240320133035_PerditesimiPerdoruesit.cs",
+              "RelativeToolTip": "InfinitMarket\\Migrations\\20240320133035_PerditesimiPerdoruesit.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T13:00:23.131Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "20240327000254_KrijimiSliderOfertat.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Migrations\\20240327000254_KrijimiSliderOfertat.cs",
+              "RelativeDocumentMoniker": "InfinitMarket\\Migrations\\20240327000254_KrijimiSliderOfertat.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Migrations\\20240327000254_KrijimiSliderOfertat.cs",
+              "RelativeToolTip": "InfinitMarket\\Migrations\\20240327000254_KrijimiSliderOfertat.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T13:00:23.131Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "20240317005219_Perditesim_I_TeDhenatPerdoruesit.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Migrations\\20240317005219_Perditesim_I_TeDhenatPerdoruesit.cs",
+              "RelativeDocumentMoniker": "InfinitMarket\\Migrations\\20240317005219_Perditesim_I_TeDhenatPerdoruesit.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Migrations\\20240317005219_Perditesim_I_TeDhenatPerdoruesit.cs",
+              "RelativeToolTip": "InfinitMarket\\Migrations\\20240317005219_Perditesim_I_TeDhenatPerdoruesit.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAAAYwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T13:00:23.132Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "20240316223424_InsertimiITeDhenave.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Migrations\\20240316223424_InsertimiITeDhenave.cs",
+              "RelativeDocumentMoniker": "InfinitMarket\\Migrations\\20240316223424_InsertimiITeDhenave.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Migrations\\20240316223424_InsertimiITeDhenave.cs",
+              "RelativeToolTip": "InfinitMarket\\Migrations\\20240316223424_InsertimiITeDhenave.cs",
+              "ViewState": "AQIAACgAAAAAAAAAAAAQwEMAAACXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T13:00:23.133Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "20240329124616_KrijmiIShportesInsertimiAdreses.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Migrations\\20240329124616_KrijmiIShportesInsertimiAdreses.cs",
+              "RelativeDocumentMoniker": "InfinitMarket\\Migrations\\20240329124616_KrijmiIShportesInsertimiAdreses.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Migrations\\20240329124616_KrijmiIShportesInsertimiAdreses.cs",
+              "RelativeToolTip": "InfinitMarket\\Migrations\\20240329124616_KrijmiIShportesInsertimiAdreses.cs",
+              "ViewState": "AQIAACgAAAAAAAAAAAAQwD4AAABxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T13:00:23.134Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "TeDhenatShporta.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Models\\TeDhenatShporta.cs",
+              "RelativeDocumentMoniker": "InfinitMarket\\Models\\TeDhenatShporta.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Models\\TeDhenatShporta.cs",
+              "RelativeToolTip": "InfinitMarket\\Models\\TeDhenatShporta.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAABBAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T13:00:23.135Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ProduktiController.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Controllers\\API\\Produktet\\ProduktiController.cs",
+              "RelativeDocumentMoniker": "InfinitMarket\\Controllers\\API\\Produktet\\ProduktiController.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Downloads\\InfinitMarket-Lab2-main\\InfinitMarket-Lab2-main\\InfinitMarket\\Controllers\\API\\Produktet\\ProduktiController.cs",
+              "RelativeToolTip": "InfinitMarket\\Controllers\\API\\Produktet\\ProduktiController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T13:00:23.137Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

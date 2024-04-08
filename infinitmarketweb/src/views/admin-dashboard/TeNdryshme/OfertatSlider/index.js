@@ -10,6 +10,8 @@ import { TailSpin } from 'react-loader-spinner';
 import { Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
+
+
 function OfertatSlider(props) {
   const [kategorit, setKategorit] = useState([]);
   const [perditeso, setPerditeso] = useState('');
@@ -54,7 +56,7 @@ function OfertatSlider(props) {
     setFshij(true);
     setId(id);
   };
-  const handleFshijMbyll = () => setFshij(false);
+  
 
   return (
     <div>
