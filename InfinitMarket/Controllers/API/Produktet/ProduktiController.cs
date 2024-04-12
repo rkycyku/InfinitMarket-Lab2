@@ -9,7 +9,6 @@ using InfinitMarket.Data;
 
 namespace InfinitMarket.Controllers.API.Produktet
 {
-    [Authorize(AuthenticationSchemes = "Bearer")]
     [Route("api/Produktet/[controller]")]
     [ApiController]
     public class ProduktiController : ControllerBase
@@ -115,25 +114,115 @@ namespace InfinitMarket.Controllers.API.Produktet
         [AllowAnonymous]
         [HttpPost]
         [Route("ShtoProdukt")]
-        public async Task<ActionResult> ShtoProdukt([FromBody] Produkti produkti)
+        public async Task<ActionResult> ShtoProdukt([FromBody] Produkti produktiData)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var produkti = new Produkti
+            {
+                EmriProduktit = produktiData.EmriProduktit,
+                Pershkrimi = produktiData.Pershkrimi,
+                FotoProduktit = produktiData.FotoProduktit,
+                KompaniaId = produktiData.KompaniaId,
+                KategoriaId = produktiData.KategoriaId,
+                isDeleted = produktiData.isDeleted,
+                TeDhenatProduktit = new TeDhenatProduktit
+                {
+                    SasiaNeStok = produktiData.TeDhenatProduktit.SasiaNeStok,
+                    QmimiBleres = produktiData.TeDhenatProduktit.QmimiBleres,
+                    QmimiProduktit = produktiData.TeDhenatProduktit.QmimiProduktit,
+                    DataKrijimit = produktiData.TeDhenatProduktit.DataKrijimit,
+                    DataPerditsimit = produktiData.TeDhenatProduktit.DataPerditsimit
+                }
+            };
+
             try
             {
-                if (ModelState.IsValid)
-                {
-                    _context.Produkti.Add(produkti);
-                    await _context.SaveChangesAsync();
-                    return Ok("Produkti u shtua me sukses!");
-                }
-                else
-                {
-                    return BadRequest("Të dhënat e produktit nuk janë valide.");
-                }
+                _context.Produkti.Add(produkti);
+                await _context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, $"Gabim gjatë shtimit të produktit: {ex.Message}");
+                return StatusCode(500, $"Internal server error: {ex.Message}");
             }
+
+            return Ok("Data saved successfully.");
+        }
+
+        [AllowAnonymous]
+        [HttpDelete]
+        [Route("FshijProduktin/{id}")]
+        public async Task<ActionResult> FshijProduktin(int id)
+        {
+            var produkti = await _context.Produkti.FindAsync(id);
+            if (produkti == null)
+            {
+                return NotFound();
+            }
+
+            produkti.isDeleted = "true";
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+
+            return Ok("Produkti u fshi me sukses.");
+        }
+
+
+        [AllowAnonymous]
+        [HttpPut]
+        [Route("PerditesoProduktin/{id}")]
+        public async Task<ActionResult> PerditesoProduktin(int id, [FromBody] Produkti produktiData)
+        {
+            if (id != produktiData.ProduktiId)
+            {
+                return BadRequest("Product ID in the request body does not match the route parameter.");
+            }
+
+            var existingProdukti = await _context.Produkti
+                .Include(p => p.TeDhenatProduktit)
+                .FirstOrDefaultAsync(p => p.ProduktiId == id);
+
+            if (existingProdukti == null)
+            {
+                return NotFound("Produkti nuk u gjet.");
+            }
+
+            existingProdukti.EmriProduktit = produktiData.EmriProduktit;
+            existingProdukti.Pershkrimi = produktiData.Pershkrimi;
+            existingProdukti.FotoProduktit = produktiData.FotoProduktit;
+            existingProdukti.KompaniaId = produktiData.KompaniaId;
+            existingProdukti.KategoriaId = produktiData.KategoriaId;
+            existingProdukti.isDeleted = produktiData.isDeleted;
+
+            if (existingProdukti.TeDhenatProduktit != null && produktiData.TeDhenatProduktit != null)
+            {
+                existingProdukti.TeDhenatProduktit.SasiaNeStok = produktiData.TeDhenatProduktit.SasiaNeStok;
+                existingProdukti.TeDhenatProduktit.QmimiBleres = produktiData.TeDhenatProduktit.QmimiBleres;
+                existingProdukti.TeDhenatProduktit.QmimiProduktit = produktiData.TeDhenatProduktit.QmimiProduktit;
+                existingProdukti.TeDhenatProduktit.DataKrijimit = produktiData.TeDhenatProduktit.DataKrijimit;
+                existingProdukti.TeDhenatProduktit.DataPerditsimit = produktiData.TeDhenatProduktit.DataPerditsimit;
+            }
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+
+            return Ok("Product u perditesua me sukses.");
         }
 
 
