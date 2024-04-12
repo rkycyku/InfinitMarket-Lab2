@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faBan } from "@fortawesome/free-solid-svg-icons";
 import Button from "react-bootstrap/Button";
 import { Table } from "react-bootstrap";
+import Mesazhi from "../../components/Mesazhi";
 
 function Mesazhet() {
     const [mesazhet, setMesazhet] = useState([])
@@ -116,7 +117,7 @@ function Mesazhet() {
                     {mesazhet.map((m) => (
                         <tr key={m.mesazhiId}>
                             <td>{m.mesazhiId}</td>
-                            <td>{m.user ? m.user.userId + " - " + m.user.username : 'Nuk ka Llogari'}</td>
+                            <td>{m.user ? m.user.userID + " - " + m.user.emri + " " + m.user.mbiemri : 'Nuk ka Llogari'}</td>
                             <td > {m.emri} </td>
                             <td > {m.email} </td>
                             <td > {m.mesazhi} </td>

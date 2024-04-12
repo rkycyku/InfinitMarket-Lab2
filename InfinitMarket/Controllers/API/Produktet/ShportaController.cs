@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace InfinitMarket.Controllers.API.Produktet
 {
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [Route("api/Produktet/[controller]")]
     [ApiController]
     public class ShportaController : ControllerBase

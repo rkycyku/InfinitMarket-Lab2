@@ -1,11 +1,13 @@
 ﻿using InfinitMarket.Data;
 using InfinitMarket.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace InfinitMarket.Controllers.API.TeNdryshme
 {
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [Route("api/TeNdryshme/[controller]")]
     [ApiController]
     public class OfertatSliderController : ControllerBase

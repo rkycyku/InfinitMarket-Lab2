@@ -41,7 +41,7 @@ const NavBar = () => {
         <Link to="#" className={toggleClass.join(' ')} id="mobile-collapse" onClick={navToggleHandler}>
           <span />
         </Link>
-        <Link to="#" className="b-brand">
+        <Link to="/" className="b-brand">
         <div className="b-bg">
             <i>
               <img

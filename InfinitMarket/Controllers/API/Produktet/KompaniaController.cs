@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace InfinitMarket.Controllers.API.Produktet
 {
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [Route("api/Produktet/[controller]")]
     [ApiController]
     public class KompaniaController : ControllerBase
@@ -19,7 +20,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             _context = context;
         }
 
-        [AllowAnonymous]
+        [Authorize(Policy = "punonAdministrat")]
         [HttpGet]
         [Route("shfaqKompanit")]
         public async Task<IActionResult> ShfaqKompanit()

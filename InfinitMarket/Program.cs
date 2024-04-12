@@ -14,7 +14,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(connectionString);
-    /*options.EnableSensitiveDataLogging(); //Per testim*/
+    options.EnableSensitiveDataLogging(); //Per testim
 });
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -72,14 +72,6 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("eshteStaf", policy =>
-    {
-        policy.RequireAssertion(context =>
-        {
-            return !context.User.Claims.Any(c => c.Type == ClaimTypes.Role && c.Value.Contains("Student"));
-        });
-    });
-
     options.AddPolicy("punonAdministrat", policy =>
     {
         policy.RequireAssertion(context =>

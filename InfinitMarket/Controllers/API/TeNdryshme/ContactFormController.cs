@@ -4,25 +4,24 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-
-
 namespace InfinitMarket.Controllers.API.TeNdryshme
 {
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [Route("api/TeNdryshme/[controller]")]
     [ApiController]
-    public class ContactFormController : Controller
+    public class ContactFormController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        public readonly ApplicationDbContext _context;
 
         public ContactFormController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        [Authorize(Roles = "Admin, Menaxher")]
+        [Authorize(Policy = "punonAdministrat")]
         [HttpGet]
         [Route("shfaqMesazhet")]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> ShfaqMesazhet()
         {
             List<ContactForm> ContactForm = await _context.ContactForm
                 .Include(x => x.User)
@@ -45,7 +44,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
                 } : null
             });
 
-            return Ok(mesazhet);
+            return Ok(ContactForm);
         }
 
         [Authorize(Roles = "Admin, Menaxher, User")]
