@@ -31,10 +31,12 @@ function EditoProduktin(props) {
           axios.get('https://localhost:7251/api/Produktet/Kategoria/shfaqKategorit'),
           axios.get('https://localhost:7251/api/Produktet/Kompania/shfaqKompanit')
         ]);
-        // Set produkti state with fetched data
+        
+        const isDeleted = responseProdukti.data.isDeleted ? "true" : "false";
+
         setProdukti({
           ...responseProdukti.data,
-          isDeleted: responseProdukti.data.isDeleted ? "true" : "false" // Convert boolean to string
+          isDeleted: isDeleted
         });
         setCategories(responseCategories.data);
         setCompanies(responseCompanies.data);
@@ -56,8 +58,21 @@ function EditoProduktin(props) {
   const handleSubmit = async () => {
     setLoading(true);
     try {
-      console.log('Data sent to API:', produkti);
-      await axios.put(`https://localhost:7251/api/Produktet/Produkti/PerditesoProduktin/${props.id}`, produkti);
+      const Produkti = {
+        ProduktiId: produkti.produktiId,
+        EmriProduktit: produkti.emriProduktit,
+        Pershkrimi: produkti.pershkrimi,
+        FotoProduktit: produkti.fotoProduktit,
+        KompaniaId: produkti.kompaniaId,
+        KategoriaId: produkti.kategoriaId,
+        isDeleted: produkti.isDeleted,
+        TeDhenatProduktit: {
+          SasiaNeStok: produkti.sasiaNeStok,
+          QmimiBleres: produkti.qmimiBleres,
+          QmimiProduktit: produkti.qmimiProduktit
+        }
+      };
+      await axios.put(`https://localhost:7251/api/Produktet/Produkti/PerditesoProduktin/${props.id}`, Produkti);
       setSuccess(true);
       props.perditesoTeDhenat();
     } catch (error) {
@@ -66,7 +81,7 @@ function EditoProduktin(props) {
       setLoading(false);
     }
   };
-
+  
   return (
     <Modal show={true} onHide={props.largo}>
       <Modal.Header closeButton>

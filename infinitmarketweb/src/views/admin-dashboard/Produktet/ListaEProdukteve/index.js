@@ -38,6 +38,15 @@ function TabelaEProdukteve() {
     fetchProduktet();
   }, []);
 
+  const fetchData = async () => {
+    try {
+      const response = await axios.get('https://localhost:7251/api/Produktet/Produkti/ShfaqProduktet');
+      setProduktet(response.data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
   const handleEdito = (id) => {
     setEdito(true);
     setId(id);
@@ -59,6 +68,17 @@ function TabelaEProdukteve() {
     setShowLargoModal(true);
   };
 
+  const handleDeleteConfirm = async () => {
+    try {
+      await axios.delete(`https://localhost:7251/api/Produktet/Produkti/LargoProduktin/${produktIdToDelete}`);
+      setShowLargoModal(false);
+      setProduktIdToDelete(null);
+      fetchData();
+    } catch (error) {
+      console.error('Error deleting product:', error);
+    }
+  };
+
   const handleCloseLargoModal = () => {
     setShowLargoModal(false);
     setProduktIdToDelete(null);
@@ -71,7 +91,7 @@ function TabelaEProdukteve() {
           id={id}
           largo={handleEditoMbyll}
           shfaqmesazhin={() => setShfaqMesazhin(true)}
-          perditesoTeDhenat={() => setProduktet(Date.now())}
+          perditesoTeDhenat={fetchData}
           setTipiMesazhit={setTipiMesazhit}
           setPershkrimiMesazhit={setPershkrimiMesazhit}
         />
@@ -82,7 +102,7 @@ function TabelaEProdukteve() {
           shfaq={handleShow}
           largo={handleClose}
           shfaqmesazhin={() => setShfaqMesazhin(true)}
-          perditesoTeDhenat={() => setProduktet(Date.now())}
+          perditesoTeDhenat={fetchData}
           setTipiMesazhit={setTipiMesazhit}
           setPershkrimiMesazhit={setPershkrimiMesazhit}
         />
@@ -130,10 +150,11 @@ function TabelaEProdukteve() {
         <LargoProduktin
           id={produktIdToDelete}
           largo={handleCloseLargoModal}
-          perditesoTeDhenat={() => setProduktet(Date.now())}
+          perditesoTeDhenat={fetchData}
           shfaqmesazhin={() => setShfaqMesazhin(true)}
           setTipiMesazhit={setTipiMesazhit}
           setPershkrimiMesazhit={setPershkrimiMesazhit}
+          handleDeleteConfirm={handleDeleteConfirm}
         />
       )}
     </div>
