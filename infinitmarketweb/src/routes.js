@@ -81,6 +81,12 @@ const routes = [
         path: '/admin/ofertatslider',
         element: lazy(() => import('./views/admin-dashboard/TeNdryshme/OfertatSlider'))
       },
+
+      {
+        exact: 'true',
+        path: '/admin/produktet/ListaEProdukteve',
+        element: lazy(() => import('./views/admin-dashboard/Produktet/ListaEProdukteve'))
+      },
       
       {
       exact: 'true',

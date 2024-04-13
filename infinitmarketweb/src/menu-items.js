@@ -49,7 +49,7 @@ const menuItems = {
               id: 'ListaEProdukteve',
               title: 'Lista e Produkteve',
               type: 'item',
-              url: '/basic/button'
+              url: '/admin/produktet/ListaEProdukteve'
             },
             {
               id: 'Kategorite',

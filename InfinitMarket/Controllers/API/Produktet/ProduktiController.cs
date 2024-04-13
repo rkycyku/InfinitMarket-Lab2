@@ -134,8 +134,8 @@ namespace InfinitMarket.Controllers.API.Produktet
                     SasiaNeStok = produktiData.TeDhenatProduktit.SasiaNeStok,
                     QmimiBleres = produktiData.TeDhenatProduktit.QmimiBleres,
                     QmimiProduktit = produktiData.TeDhenatProduktit.QmimiProduktit,
-                    DataKrijimit = produktiData.TeDhenatProduktit.DataKrijimit,
-                    DataPerditsimit = produktiData.TeDhenatProduktit.DataPerditsimit
+                    DataKrijimit = DateTime.Now,
+                    DataPerditsimit = DateTime.Now
                 }
             };
 
@@ -209,8 +209,7 @@ namespace InfinitMarket.Controllers.API.Produktet
                 existingProdukti.TeDhenatProduktit.SasiaNeStok = produktiData.TeDhenatProduktit.SasiaNeStok;
                 existingProdukti.TeDhenatProduktit.QmimiBleres = produktiData.TeDhenatProduktit.QmimiBleres;
                 existingProdukti.TeDhenatProduktit.QmimiProduktit = produktiData.TeDhenatProduktit.QmimiProduktit;
-                existingProdukti.TeDhenatProduktit.DataKrijimit = produktiData.TeDhenatProduktit.DataKrijimit;
-                existingProdukti.TeDhenatProduktit.DataPerditsimit = produktiData.TeDhenatProduktit.DataPerditsimit;
+                existingProdukti.TeDhenatProduktit.DataPerditsimit = DateTime.Now;
             }
 
             try

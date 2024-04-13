@@ -20,7 +20,8 @@ namespace InfinitMarket.Controllers.API.Produktet
             _context = context;
         }
 
-        [Authorize(Policy = "punonAdministrat")]
+        //[Authorize(Policy = "punonAdministrat")]
+        [AllowAnonymous]
         [HttpGet]
         [Route("shfaqKompanit")]
         public async Task<IActionResult> ShfaqKompanit()
