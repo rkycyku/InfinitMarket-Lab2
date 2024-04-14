@@ -17,8 +17,8 @@ namespace InfinitMarket.Models
         [ForeignKey("AspNetUserId")]
         public IdentityUser? AspNetUser { get; set; }
 
-        public  TeDhenatPerdoruesit? TeDhenatPerdoruesit { get; set; }
-        public string? Username { get; internal set; }
+        public virtual TeDhenatPerdoruesit? TeDhenatPerdoruesit { get; set; }
+        public string? Username { get; set; }
     }
 }
 

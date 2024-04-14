@@ -20,18 +20,18 @@ function Footer(props) {
     }
   };
 
-  useEffect(() => {
-    const ShfaqTeDhenat = async () => {
-      try {
-        const teDhenat = await axios.get('https://localhost:7285/api/TeDhenatBiznesit/ShfaqTeDhenat', authentikimi);
-        setTeDhenatBiznesit(teDhenat.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
+  // useEffect(() => {
+  //   const ShfaqTeDhenat = async () => {
+  //     try {
+  //       const teDhenat = await axios.get('https://localhost:7285/api/TeDhenatBiznesit/ShfaqTeDhenat', authentikimi);
+  //       setTeDhenatBiznesit(teDhenat.data);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
 
-    ShfaqTeDhenat();
-  }, [perditeso]);
+  //   ShfaqTeDhenat();
+  // }, [perditeso]);
 
   return (
     <footer>

@@ -68,6 +68,11 @@ const NavRight = () => {
   return (
     <React.Fragment>
       <ListGroup as="ul" bsPrefix=" " className="navbar-nav ml-auto" id="navbar-right">
+      <ListGroup.Item as="li" bsPrefix=" " className="nav-item">
+          <Link to="/shporta">
+          <i className="icon feather icon-shopping-cart" />
+          </Link>
+        </ListGroup.Item>
         <ListGroup.Item as="li" bsPrefix=" ">
           <Dropdown align="start" className="drp-user">
             <Dropdown.Toggle as={Link} variant="link" to="#" id="dropdown-basic">

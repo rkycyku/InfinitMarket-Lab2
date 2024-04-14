@@ -17,6 +17,7 @@ namespace InfinitMarket.Models
         public decimal? QmimiBleres { get; set; } = 0;
 
         public decimal? QmimiProduktit { get; set; } = 0;
+        public int? llojiTVSH {  get; set; } = 0;
 
         public DateTime? DataKrijimit { get; set; } = DateTime.Now;
 

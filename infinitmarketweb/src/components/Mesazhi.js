@@ -15,7 +15,6 @@ function Mesazhi(props) {
             </Modal.Header>
             <Modal.Body>
                 <div dangerouslySetInnerHTML={{ __html: props.pershkrimi }} />
-
             </Modal.Body>
             <Modal.Footer>
                 <Button onClick={handleMesazhiMbyll} variant={'outline-' + props.tipi}>

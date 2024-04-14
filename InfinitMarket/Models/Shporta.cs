@@ -9,6 +9,10 @@ namespace InfinitMarket.Models
         public int ShportaID { get; set; }
         public int? PerdoruesiID { get; set; }
         public int? TotaliProdukteveNeShporte { get; set; } = 0;
+        public decimal? Totali18TVSH { get; set; } = 0;
+        public int? TotProd18TVSH { get; set; } = 0;
+        public decimal? Totali8TVSH { get; set; } = 0;
+        public int? TotProd8TVSH { get; set; } = 0;
         public DateTime? DataEFunditEPerditesimit { get; set; } = DateTime.Now;
 
         [ForeignKey(nameof(PerdoruesiID))]

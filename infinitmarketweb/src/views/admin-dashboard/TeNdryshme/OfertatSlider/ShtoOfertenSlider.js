@@ -50,7 +50,7 @@ function ShtoOfertenSlider(props) {
       await axios.post('https://localhost:7251/api/TeNdryshme/VendosFotot/ShtoOfertenSlider', formData, authentikimi).then(async (response) => {
         axios
           .post(
-            'https://localhost:7251/TeNdryshme/OfertatSlider/VendosOfertatSlider',
+            'https://localhost:7251/api/TeNdryshme/OfertatSlider/VendosOfertatSlider',
             {
               linkuOfertes: linkuOfertes,
               dataFillimitOfertes: dataFillimitOfertes,

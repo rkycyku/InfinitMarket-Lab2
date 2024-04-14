@@ -110,6 +110,12 @@ const routes = [
         path: '/produktet/kategoria/:id',
         element: lazy(() => import('./views/Home'))
       },
+      ,
+      {
+        exact: true,
+        path: '/shporta',
+        element: lazy(() => import('./views/Shporta'))
+      },
       {
         path: '*',
         exact: 'true',
