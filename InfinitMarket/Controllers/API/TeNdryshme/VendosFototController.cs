@@ -17,39 +17,61 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             _context = context;
         }
 
-       /* [Authorize(Roles = "Admin, Menaxher")]
+        /* [Authorize(Roles = "Admin, Menaxher")]
+         [HttpPost]
+         [Route("EditoProduktin")]
+         public async Task<IActionResult> EditoProduktin(IFormFile foto, string fotoVjeterProduktit)
+         {
+             if (foto == null || foto.Length == 0)
+             {
+                 return BadRequest("Ju lutem vendosni foton");
+             }
+
+             var follderi = Path.Combine("..", "..", "infinitmarketweb", "public", "img", "products");
+
+             if (!fotoVjeterProduktit.Equals("ProduktPaFoto.png"))
+             {
+                 var fotoVjeter = Path.Combine(follderi, fotoVjeterProduktit);
+
+                 if (System.IO.File.Exists(fotoVjeter))
+                 {
+                     System.IO.File.Delete(fotoVjeter);
+                 }
+             }
+
+             var emriUnikFotos = GjeneroEmrinUnikFotos(foto.FileName);
+
+             var fotoERe = Path.Combine(follderi, emriUnikFotos);
+
+             using (var stream = new FileStream(fotoERe, FileMode.Create))
+             {
+                 await foto.CopyToAsync(stream);
+             }
+
+             return Ok(emriUnikFotos);
+         }*/
+
+        [Authorize(Roles = "Admin, Menaxher")]
         [HttpPost]
-        [Route("EditoProduktin")]
-        public async Task<IActionResult> EditoProduktin(IFormFile foto, string fotoVjeterProduktit)
+        [Route("ShtoProduktin")]
+        public async Task<IActionResult> ShtoProduktin(IFormFile foto)
         {
             if (foto == null || foto.Length == 0)
             {
                 return BadRequest("Ju lutem vendosni foton");
             }
 
-            var follderi = Path.Combine("..", "..", "infinitmarketweb", "public", "img", "products");
-
-            if (!fotoVjeterProduktit.Equals("ProduktPaFoto.png"))
-            {
-                var fotoVjeter = Path.Combine(follderi, fotoVjeterProduktit);
-
-                if (System.IO.File.Exists(fotoVjeter))
-                {
-                    System.IO.File.Delete(fotoVjeter);
-                }
-            }
-
             var emriUnikFotos = GjeneroEmrinUnikFotos(foto.FileName);
 
-            var fotoERe = Path.Combine(follderi, emriUnikFotos);
+            var follderi = Path.Combine("..", "infinitmarketweb", "public", "img", "produktet", emriUnikFotos);
 
-            using (var stream = new FileStream(fotoERe, FileMode.Create))
+            using (var stream = new FileStream(follderi, FileMode.Create))
             {
                 await foto.CopyToAsync(stream);
             }
 
             return Ok(emriUnikFotos);
-        }*/
+        }
 
         [Authorize(Roles = "Admin, Menaxher")]
         [HttpPost]

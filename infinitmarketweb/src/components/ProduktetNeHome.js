@@ -3,14 +3,36 @@ import "./Styles/produktet.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faFaceFrown } from "@fortawesome/free-solid-svg-icons";
 import Mesazhi from "./Mesazhi";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Button from "react-bootstrap/esm/Button";
 
 
 function ProduktetNeHome(props) {
-  // const [{ cart }, dispatch] = useStateValue();
   const [shfaqMesazhin, setShfaqMesazhin] = useState(false);
   const [tipiMesazhit, setTipiMesazhit] = useState("success");
   const [pershkrimiMesazhit, setPershkrimiMesazhit] = useState("");
+  const [perditeso, setPerditeso] = useState(Date.now());
+
+  const getToken = localStorage.getItem("token");
+
+  const authentikimi = {
+    headers: {
+      Authorization: `Bearer ${getToken}`,
+    },
+  };
+
+  useEffect(() => {
+    const ShfaqTeDhenat = async () => {
+      try {
+        const teDhenat = await axios.get("https://localhost:7285/api/TeDhenatBiznesit/ShfaqTeDhenat", authentikimi);
+        setTeDhenatBiznesit(teDhenat.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    ShfaqTeDhenat();
+  }, [perditeso]);
 
   const handleShtoNeShporte = () => {
     const eshteNeShporte = cart.find((item) => item.id === props.produktiID);
@@ -53,7 +75,7 @@ function ProduktetNeHome(props) {
             </div>
           }
           <img
-            src={`${process.env.PUBLIC_URL}/img/products/${props.fotoProduktit}`}
+            src={`${process.env.PUBLIC_URL}/img/produktet/${props.fotoProduktit}`}
             alt={props.emriProduktit}
           />
           <p className="artikulliLabel">{props.emriProduktit}</p>
@@ -65,19 +87,18 @@ function ProduktetNeHome(props) {
         </div>
       <div className="butonatDiv">
         {props.sasiaNeStok > 0 &&
-          <button
+          <Button
             onClick={handleShtoNeShporte}
-            className={`${classes.buttonat} ${classes.butoniAddToCart}`}
           >
             Shto ne Shporte <FontAwesomeIcon icon={faCartShopping} />
-          </button>
+          </Button>
         }
         {props.sasiaNeStok <= 0 &&
-          <button
-            className={"button"} disabled style={{ backgroundColor: "lightgray", color: "black", cursor: "unset", marginTop: "0" }}
+          <Button
+            disabled style={{ backgroundColor: "lightgray", color: "black", cursor: "unset", marginTop: "0" }}
           >
             Out of Stock
-          </button>
+          </Button>
         }
       </div>
     </div>

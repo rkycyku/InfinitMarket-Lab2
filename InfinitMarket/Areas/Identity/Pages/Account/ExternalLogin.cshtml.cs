@@ -134,8 +134,6 @@ namespace InfinitMarket.Areas.Identity.Pages.Account
 
             public string? GjiniaZgjedhur { get; set; }
 
-            public string? RoliIZgjedhur { get; set; }
-
             public DateTime? DataKrijimit { get; set; } = DateTime.Now;
         }
 
@@ -235,7 +233,7 @@ namespace InfinitMarket.Areas.Identity.Pages.Account
 
                         var userId = await _userManager.GetUserIdAsync(user);
 
-                        await _userManager.AddToRolesAsync(user, new[] { "User", Input.RoliIZgjedhur });
+                        await _userManager.AddToRolesAsync(user, new[] { "User", "Klient" });
 
                         Perdoruesi perdoruesi = new Perdoruesi()
                         {

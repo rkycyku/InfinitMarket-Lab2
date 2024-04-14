@@ -49,6 +49,29 @@ namespace InfinitMarket.Controllers.API.Produktet
             return Ok(produkti);
         }
 
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("Shfaq15ProduktetMeTeFundit")]
+        public async Task<ActionResult> Shfaq15ProduktetMeTeFundit()
+        {
+             var Kthe15TeFundit = await _context.Produkti
+                .Where(p => p.isDeleted == "false")
+                .OrderByDescending(x => x.ProduktiId)
+                .Take(15)
+                .Select(x => new
+                {
+                    x.ProduktiId,
+                    x.EmriProduktit,
+                    x.FotoProduktit,
+                    x.TeDhenatProduktit.SasiaNeStok,
+                    x.TeDhenatProduktit.QmimiBleres,
+                    x.TeDhenatProduktit.QmimiProduktit
+                })
+                .ToListAsync();
+
+            return Ok(Kthe15TeFundit);
+        }
+
 
         [AllowAnonymous]
         [HttpGet]

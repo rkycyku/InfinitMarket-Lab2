@@ -32,12 +32,11 @@ function Home() {
   useEffect(() => {
     const perditesoTeDhenat = async () => {
       try {
-        // const produktet = await axios.get('https://localhost:7285/api/Produkti/15ProduktetMeTeFundit', authentikimi);
+        const produktet = await axios.get('https://localhost:7251/api/Produktet/Produkti/Shfaq15ProduktetMeTeFundit', authentikimi);
         const ofertatSlider = await axios.get('https://localhost:7251/api/TeNdryshme/OfertatSlider/ShfaqOfertatSlider', authentikimi);
 
         setOfertatSlider(ofertatSlider.data);
-        console.log(ofertatSlider.data);
-        // setProduktet(produktet.data);
+        setProduktet(produktet.data);
       } catch (err) {
         console.log(err);
       }
