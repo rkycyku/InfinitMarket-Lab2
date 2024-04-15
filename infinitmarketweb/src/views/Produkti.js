@@ -183,7 +183,7 @@ function Produkti() {
                   <tr>
                     <td>Kompania:</td>
                     <td>
-                      <Link to={`/Produktet/${produkti.emriKompanis}`}>{produkti.emriKompanis}</Link>
+                      <Link to={`/Produktet/kompania/${produkti.emriKompanis}`}>{produkti.emriKompanis}</Link>
                     </td>
                   </tr>
                   <tr>

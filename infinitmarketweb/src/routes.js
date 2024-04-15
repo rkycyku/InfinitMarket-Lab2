@@ -107,12 +107,12 @@ const routes = [
       },
       {
         exact: true,
-        path: '/produktet/kategoria/:id',
+        path: '/produktet/kategoria/:kategoriaid',
         element: lazy(() => import('./views/Produktet'))
       },
       {
         exact: true,
-        path: '/produktet/kompania/:id',
+        path: '/produktet/kompania/:kompaniaid',
         element: lazy(() => import('./views/Produktet'))
       },
       {

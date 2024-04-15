@@ -12,21 +12,21 @@ const menuItems = {
         },
         {
           id: 'Products',
-          title: 'Products',
+          title: 'Produktet',
           type: 'item',
           icon: 'feather icon-package',
           url: '/produktet'
         },
         {
           id: 'AboutUs',
-          title: 'About Us',
+          title: 'Rreth Nesh',
           type: 'item',
           icon: 'feather icon-info',
           url: '/'
         },
         {
           id: 'ContactUs',
-          title: 'Contact Us',
+          title: 'Na Kontaktoni',
           type: 'item',
           icon: 'feather icon-at-sign',
           url: '/ContactUs'

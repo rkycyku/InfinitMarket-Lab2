@@ -9,12 +9,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFaceFrown } from "@fortawesome/free-solid-svg-icons";
 
 function Produktet(props) {
-  const { kategoriaNgaProdukti } = useParams();
-  const { kompania } = useParams();
-  const [kategoria, setKateogria] = useState(kategoriaNgaProdukti ? kategoriaNgaProdukti : "");
+  const { kategoriaid } = useParams();
+  const { kompaniaid } = useParams();
+  const [kategoria, setKateogria] = useState(kategoriaid ? kategoriaid : "");
   const [kategorit, setKategorit] = useState([]);
 
-  const [emriKomapnis, setEmriKompanis] = useState(kompania ? kompania : "");
+  const [emriKomapnis, setEmriKompanis] = useState(kompaniaid ? kompaniaid : "");
   const [perditeso, setPerditeso] = useState("");
   const [filteredResults, setFilteredResults] = useState([]);
   const [searchInput, setSearchInput] = useState("");
@@ -27,8 +27,6 @@ function Produktet(props) {
       Authorization: `Bearer ${getToken}`,
     },
   };
-
-
 
   useEffect(() => {
     const vendosProduktet = async () => {
@@ -125,7 +123,7 @@ function Produktet(props) {
       <div className="artikujt">
         <div className="titulliArtikuj">
           {kategoria ? <h2>Te gjitha produktet e llojit {kategoria}</h2> :
-            emriKomapnis ? <h2>Te gjitha produktet nga {kompania}</h2> :
+            emriKomapnis ? <h2>Te gjitha produktet nga {kompaniaid}</h2> :
               searchInput ? <h2>Produktet nga Kerkimi per: {searchInput}</h2> :
                 <h2>Te Gjitha Produktet</h2>
           }
@@ -160,9 +158,9 @@ function Produktet(props) {
                 );
               }) : <h2>Nuk u gjet asnje produkt! <FontAwesomeIcon icon={faFaceFrown} /> </h2>)
             : produktet && emriKomapnis !== ""
-              ? (produktet.filter((item) => item.emriKompanis === kompania).length !== 0 ?
+              ? (produktet.filter((item) => item.emriKompanis === kompaniaid).length !== 0 ?
                 produktet
-                  .filter((item) => item.emriKompanis === kompania).map((item) => {
+                  .filter((item) => item.emriKompanis === kompaniaid).map((item) => {
                     return (
                       <ProduktetNeHome
                         produktiID={item.produktiId}
