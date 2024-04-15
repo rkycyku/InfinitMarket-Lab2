@@ -15,7 +15,7 @@ const menuItems = {
           title: 'Products',
           type: 'item',
           icon: 'feather icon-package',
-          url: '/'
+          url: '/produktet'
         },
         {
           id: 'AboutUs',

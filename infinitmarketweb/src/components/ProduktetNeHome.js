@@ -65,7 +65,7 @@ function ProduktetNeHome(props) {
   return (
     <div className="artikulli" key={props.produktiID} data-aos="zoom-in">
       {shfaqMesazhin && <Mesazhi setShfaqMesazhin={setShfaqMesazhin} pershkrimi={pershkrimiMesazhit} tipi={tipiMesazhit} />}
-      <Link to={`/Produkti/${props.produktiID}`}>
+      <Link to={`/produktet/${props.produktiID}`}>
         <div className="emri-foto">
           {props.cmimiMeZbritje != null && (
             <div className="zbritjaBadge">

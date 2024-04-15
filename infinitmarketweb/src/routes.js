@@ -103,14 +103,23 @@ const routes = [
       {
         exact: true,
         path: '/produktet/:id',
-        element: lazy(() => import('./views/Home'))
+        element: lazy(() => import('./views/Produkti'))
       },
       {
         exact: true,
         path: '/produktet/kategoria/:id',
-        element: lazy(() => import('./views/Home'))
+        element: lazy(() => import('./views/Produktet'))
       },
-      ,
+      {
+        exact: true,
+        path: '/produktet/kompania/:id',
+        element: lazy(() => import('./views/Produktet'))
+      },
+      {
+        exact: true,
+        path: '/produktet',
+        element: lazy(() => import('./views/Produktet'))
+      },
       {
         exact: true,
         path: '/shporta',
