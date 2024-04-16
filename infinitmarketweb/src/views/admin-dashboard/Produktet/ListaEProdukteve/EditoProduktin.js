@@ -11,9 +11,7 @@ function EditoProduktin(props) {
     fotoProduktit: '',
     kategoriaId: '',
     kompaniaId: '',
-    sasiaNeStok: '',
-    qmimiBleres: '',
-    qmimiProduktit: '',
+    llojiTVSH: '',
     isDeleted: ''
   });
   const [categories, setCategories] = useState([]);
@@ -21,6 +19,16 @@ function EditoProduktin(props) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
+
+  const [foto, setFoto] = useState(null);
+
+  const getToken = localStorage.getItem('token');
+
+  const authentikimi = {
+    headers: {
+      Authorization: `Bearer ${getToken}`
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,8 +39,8 @@ function EditoProduktin(props) {
           axios.get('https://localhost:7251/api/Produktet/Kategoria/shfaqKategorit'),
           axios.get('https://localhost:7251/api/Produktet/Kompania/shfaqKompanit')
         ]);
-        
-        const isDeleted = responseProdukti.data.isDeleted ? "true" : "false";
+
+        const isDeleted = responseProdukti.data.isDeleted ? 'true' : 'false';
 
         setProdukti({
           ...responseProdukti.data,
@@ -55,33 +63,93 @@ function EditoProduktin(props) {
     setProdukti((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleFotoChange = (event) => {
+    setFoto(event.target.files[0]);
+  };
+
   const handleSubmit = async () => {
-    setLoading(true);
-    try {
-      const Produkti = {
-        ProduktiId: produkti.produktiId,
-        EmriProduktit: produkti.emriProduktit,
-        Pershkrimi: produkti.pershkrimi,
-        FotoProduktit: produkti.fotoProduktit,
-        KompaniaId: produkti.kompaniaId,
-        KategoriaId: produkti.kategoriaId,
-        isDeleted: produkti.isDeleted,
-        TeDhenatProduktit: {
-          SasiaNeStok: produkti.sasiaNeStok,
-          QmimiBleres: produkti.qmimiBleres,
-          QmimiProduktit: produkti.qmimiProduktit
-        }
-      };
-      await axios.put(`https://localhost:7251/api/Produktet/Produkti/PerditesoProduktin/${props.id}`, Produkti);
-      setSuccess(true);
-      props.perditesoTeDhenat();
-    } catch (error) {
-      setError('Error updating product.');
-    } finally {
-      setLoading(false);
+    if (foto) {
+      const formData = new FormData();
+      formData.append('foto', foto);
+
+      try {
+        await axios
+          .post(
+            `https://localhost:7251/api/TeNdryshme/VendosFotot/EditoProduktin?fotoVjeterProduktit=${produkti.fotoProduktit}`,
+            formData,
+            authentikimi
+          )
+          .then(async (response) => {
+            await axios
+              .put(
+                `https://localhost:7251/api/Produktet/Produkti/PerditesoProduktin/${props.id}`,
+                {
+                  ProduktiId: produkti.produktiId,
+                  EmriProduktit: produkti.emriProduktit,
+                  Pershkrimi: produkti.pershkrimi,
+                  FotoProduktit: response.data,
+                  KompaniaId: produkti.kompaniaId,
+                  KategoriaId: produkti.kategoriaId,
+                  isDeleted: produkti.isDeleted,
+                  TeDhenatProduktit: {
+                    llojiTVSH: produkti.llojiTVSH
+                  }
+                },
+                authentikimi
+              )
+              .then((x) => {
+                props.setTipiMesazhit('success');
+                props.setPershkrimiMesazhit('Produkti u Perditesua me sukses!');
+                props.perditesoTeDhenat();
+                props.largo();
+                props.shfaqmesazhin();
+              })
+              .catch((error) => {
+                console.error('Error saving the product:', error);
+                props.setTipiMesazhit('danger');
+                props.setPershkrimiMesazhit('Ndodhi nje gabim gjate perditesimit te produktit!');
+                props.perditesoTeDhenat();
+                props.shfaqmesazhin();
+              });
+          });
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      await axios
+        .put(
+          `https://localhost:7251/api/Produktet/Produkti/PerditesoProduktin/${props.id}`,
+          {
+            ProduktiId: produkti.produktiId,
+            EmriProduktit: produkti.emriProduktit,
+            Pershkrimi: produkti.pershkrimi,
+            FotoProduktit: produkti.fotoProduktit,
+            KompaniaId: produkti.kompaniaId,
+            KategoriaId: produkti.kategoriaId,
+            isDeleted: produkti.isDeleted,
+            TeDhenatProduktit: {
+              llojiTVSH: produkti.llojiTVSH
+            }
+          },
+          authentikimi
+        )
+        .then((x) => {
+          props.setTipiMesazhit('success');
+          props.setPershkrimiMesazhit('Produkti u Perditesua me sukses!');
+          props.perditesoTeDhenat();
+          props.largo();
+          props.shfaqmesazhin();
+        })
+        .catch((error) => {
+          console.error('Error saving the product:', error);
+          props.setTipiMesazhit('danger');
+          props.setPershkrimiMesazhit('Ndodhi nje gabim gjate perditesimit te produktit!');
+          props.perditesoTeDhenat();
+          props.shfaqmesazhin();
+        });
     }
   };
-  
+
   return (
     <Modal show={true} onHide={props.largo}>
       <Modal.Header closeButton>
@@ -93,15 +161,16 @@ function EditoProduktin(props) {
         <Form>
           <Form.Group className="mb-3" controlId="emriProduktit">
             <Form.Label>Emri Produktit</Form.Label>
-            <Form.Control type="text" name="emriProduktit" value={produkti.emriProduktit} onChange={handleInputChange} />
+            <Form.Control 
+                as="textarea" name="emriProduktit" value={produkti.emriProduktit} onChange={handleInputChange} />
           </Form.Group>
           <Form.Group className="mb-3" controlId="pershkrimi">
             <Form.Label>Pershkrimi</Form.Label>
-            <Form.Control type="text" name="pershkrimi" value={produkti.pershkrimi} onChange={handleInputChange} />
+            <Form.Control as="textarea" name="pershkrimi" value={produkti.pershkrimi} onChange={handleInputChange} />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="fotoProduktit">
+          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Foto Produktit</Form.Label>
-            <Form.Control type="text" name="fotoProduktit" value={produkti.fotoProduktit} onChange={handleInputChange} />
+            <Form.Control type="file" accept="image/*" placeholder="Foto e Produktit" onChange={handleFotoChange} />
           </Form.Group>
           <Form.Group className="mb-3" controlId="kategoriaId">
             <Form.Label>Kategoria</Form.Label>
@@ -126,16 +195,8 @@ function EditoProduktin(props) {
             </Form.Select>
           </Form.Group>
           <Form.Group className="mb-3" controlId="sasiaNeStok">
-            <Form.Label>Sasia në Stok</Form.Label>
-            <Form.Control type="number" name="sasiaNeStok" value={produkti.sasiaNeStok} onChange={handleInputChange} />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="qmimiBleres">
-            <Form.Label>Çmimi Blerës</Form.Label>
-            <Form.Control type="number" name="qmimiBleres" value={produkti.qmimiBleres} onChange={handleInputChange} />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="qmimiProduktit">
-            <Form.Label>Çmimi Produktit</Form.Label>
-            <Form.Control type="number" name="qmimiProduktit" value={produkti.qmimiProduktit} onChange={handleInputChange} />
+            <Form.Label>Lloji TVSH-s</Form.Label>
+            <Form.Control type="number" name="llojiTVSH" value={produkti.llojiTVSH} onChange={handleInputChange} />
           </Form.Group>
         </Form>
       </Modal.Body>

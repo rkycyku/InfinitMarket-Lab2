@@ -13,12 +13,12 @@
 .emriProd {
   text-align: left;
 }
-.butonatDiv{
+.butonatDiv {
   display: flex;
   gap: 7px;
 }
 
-.buttonat{
+.buttonat {
   border: none;
   box-shadow: 0 0 10px #d3d3d3;
   background-color: white;
@@ -34,7 +34,7 @@
   color: white;
 }
 
-.remove-button{
+.remove-button {
   border: none;
   box-shadow: 0 0 10px #d3d3d3;
   background-color: white;
@@ -46,11 +46,11 @@
   font-weight: 600;
 }
 
-.remove-button{
+.remove-button {
   background-color: rgb(177, 51, 51);
   color: white;
 }
-.remove-button:hover{
+.remove-button:hover {
   background-color: transparent;
   color: black;
 }
@@ -88,7 +88,6 @@ table {
   flex-direction: column;
   width: 80%;
 }
-
 
 .detajet {
   display: flex;
@@ -203,11 +202,11 @@ td a:hover {
   padding: 1em;
 }
 
-.footer{
+.footer {
   width: 100%;
 }
 
-.qmimiPaZbritje{
+.qmimiPaZbritje {
   text-decoration: line-through;
   color: #777;
 }
@@ -218,8 +217,8 @@ td a:hover {
   }
 
   .dropdown-content-kategoria {
-    margin: -1.6em;
-    margin-left: 1.6em;
+    margin: 0.5em;
+    margin-left: 0.1em;
   }
 }
 
@@ -227,14 +226,14 @@ td a:hover {
   .navKerkimi {
     gap: 1em;
   }
-  
+
   .button {
     margin: 0;
     width: 10em;
   }
   .button-kategoria {
-    margin: 0.3em;  
-  }   
+    margin: 0.3em;
+  }
   .searchBar {
     width: 15em;
   }
@@ -275,7 +274,7 @@ td a:hover {
     object-fit: contain;
   }
 
-  .mesazhiZbritjes{
+  .mesazhiZbritjes {
     width: 90%;
   }
 }

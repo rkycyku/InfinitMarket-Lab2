@@ -74,7 +74,7 @@ function OfertatSlider(props) {
 
       {fshij && (
         <LargoOfertenSlider
-          largo={handleFshijMbyll}
+          largo={() => setFshij(false)}
           id={id}
           shfaqmesazhin={() => setShfaqMesazhin(true)}
           perditesoTeDhenat={() => setPerditeso(Date.now())}

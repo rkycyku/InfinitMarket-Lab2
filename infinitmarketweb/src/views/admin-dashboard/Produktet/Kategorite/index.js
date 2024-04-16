@@ -115,7 +115,7 @@ function TabelaEKategorive(props) {
       ) : (
         <>
           <h1>Lista e Kategorive te Produkteve</h1>
-          <Link to="/admin/produktet">
+          <Link to="/admin/produktet/ListaEProdukteve">
             <Button className="mb-3 Butoni">
               Mbyll Kategorite <FontAwesomeIcon icon={faClose} />
             </Button>

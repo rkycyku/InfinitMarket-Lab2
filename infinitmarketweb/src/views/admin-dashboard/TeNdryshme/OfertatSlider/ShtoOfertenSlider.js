@@ -9,19 +9,24 @@ import useKeyboardNavigation from '../../../../contexts/useKeyboardNavigation';
 
 function ShtoOfertenSlider(props) {
   const [foto, setFoto] = useState(null);
-  const [linkuOfertes, setLinkuOfertes] = useState('');
+  const [linkuOfertes, setLinkuOfertes] = useState('PaLink');
   const [dataFillimitOfertes, setDataFillimitOfertes] = useState(Date.now());
   const [dataMbarimtOfertes, setDataMbarimitOfertes] = useState(Date.now());
   const [llojiOfertes, setLlojiOfertes] = useState('OfertaEProduktit');
+
+  const [perditeso, setPerditeso] = useState(Date.now());
 
   const [produktet, setProduktet] = useState([]);
   const [kompanit, setKompanite] = useState([]);
   const [kategorite, setKategorite] = useState([]);
 
-  const [inputValue, setInputValue] = useState("");
-  const [filteredItems, setFilteredItems] = useState(produktet);
-  const selectedIndex = useKeyboardNavigation(filteredItems);
-
+  const [inputValue, setInputValue] = useState('');
+  const [filteredItemsProduktet, setFilteredItemsProduktet] = useState(produktet);
+  const [filteredItemsKompanit, setFilteredItemsKompanit] = useState(kompanit);
+  const [filteredItemsKategorit, setFilteredItemsKategorit] = useState(kategorite);
+  const selectedIndexProduktet = useKeyboardNavigation(filteredItemsProduktet);
+  const selectedIndexKompanit = useKeyboardNavigation(filteredItemsKompanit);
+  const selectedIndexKategorit = useKeyboardNavigation(filteredItemsKategorit);
 
   const [fushatEZbrazura, setFushatEZbrazura] = useState(false);
 
@@ -33,9 +38,22 @@ function ShtoOfertenSlider(props) {
     }
   };
 
-  const handleLinkuOfertesChange = (value) => {
-    setLinkuOfertes(value);
-  };
+  useEffect(() => {
+    const VendosTeDhenat = async () => {
+      try {
+        const produktet = await axios.get(`https://localhost:7251/api/Produktet/Produkti/ShfaqProduktet`, authentikimi);
+        const kategorite = await axios.get(`https://localhost:7251/api/Produktet/Kategoria/shfaqKategorit`, authentikimi);
+        const kompanite = await axios.get(`https://localhost:7251/api/Produktet/Kompania/shfaqKompanit`, authentikimi);
+        setProduktet(produktet.data);
+        setKompanite(kompanite.data);
+        setKategorite(kategorite.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    VendosTeDhenat();
+  }, [perditeso]);
 
   const handleDataFillimitOfertesChange = (value) => {
     setDataFillimitOfertes(value);
@@ -96,25 +114,73 @@ function ShtoOfertenSlider(props) {
     }
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChangeProdukti = (e) => {
     const value = e.target.value.toLowerCase();
     setInputValue(value);
-
-    const filtered = partneret.filter((item) =>
-      item.emriBiznesit.toLowerCase().includes(value)
-    );
-
-    setFilteredItems(filtered);
+    const filtered = produktet.filter((item) => item.emriProduktit.toLowerCase().includes(value));
+    setFilteredItemsProduktet(filtered);
   };
-
-  const handleInputKeyDown = (e) => {
-    if (e.key === "Enter") {
+  const handleInputKeyDownProdukti = (e) => {
+    if (e.key === 'Enter') {
       e.preventDefault();
-      if (filteredItems.length > 0) {
-        handleNdryshoPartneri(filteredItems[selectedIndex]);
+      if (filteredItemsProduktet.length > 0) {
+        handleNdryshoProduktin(filteredItemsProduktet[selectedIndexProduktet]);
       }
+      ndrroField(e, 'pershkrimShtese');
+    }
+  };
+  function handleNdryshoProduktin(produkti) {
+    setLinkuOfertes('/produktet/' + produkti.produktiId);
+    setFilteredItemsProduktet([]);
+    setInputValue(`${produkti?.emriProduktit ? produkti.emriProduktit : ''}`);
+  }
 
-      ndrroField(e, "pershkrimShtese");
+  const handleInputChangeKategoria = (e) => {
+    const value = e.target.value.toLowerCase();
+    setInputValue(value);
+    const filtered = kategorite.filter((item) => item.llojiKategoris.toLowerCase().includes(value));
+    setFilteredItemsKategorit(filtered);
+  };
+  const handleInputKeyDownKategoria = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      if (filteredItemsKategorit.length > 0) {
+        handleNdryshoKategorin(filteredItemsKategorit[selectedIndexKategorit]);
+      }
+      ndrroField(e, 'pershkrimShtese');
+    }
+  };
+  function handleNdryshoKategorin(kategoria) {
+    setLinkuOfertes('/produktet/kategoria/' + kategoria.llojiKategoris);
+    setFilteredItemsKategorit([]);
+    setInputValue(`${kategoria?.llojiKategoris ? kategoria.llojiKategoris : ''}`);
+  }
+
+  const handleInputChangeKompania = (e) => {
+    const value = e.target.value.toLowerCase();
+    setInputValue(value);
+    const filtered = kompanit.filter((item) => item.emriKompanis.toLowerCase().includes(value));
+    setFilteredItemsKompanit(filtered);
+  };
+  const handleInputKeyDownKompania = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      if (filteredItemsKompanit.length > 0) {
+        handleNdryshoKompania(filteredItemsKompanit[selectedIndexKompanit]);
+      }
+      ndrroField(e, 'pershkrimShtese');
+    }
+  };
+  function handleNdryshoKompania(kompania) {
+    setLinkuOfertes('/produktet/kompania/' + kompania.emriKompanis);
+    setFilteredItemsProduktet([]);
+    setInputValue(`${kompania?.emriKompanis ? kompania.emriKompanis : ''}`);
+  }
+
+  const ndrroField = (e, tjetra) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      document.getElementById(tjetra).focus();
     }
   };
 
@@ -155,75 +221,129 @@ function ShtoOfertenSlider(props) {
                 name="llojiOfertes"
                 id="OfertaEProduktit"
                 defaultChecked
-                onClick={() => setLlojiOfertes('OfertaEProduktit')}
+                onClick={() => {
+                  setLlojiOfertes('OfertaEProduktit');
+                  setInputValue('');
+                }}
               />
               <Form.Check
                 type="radio"
                 label="Oferte e Kategorise"
                 name="llojiOfertes"
                 id="OfertaEKategorise"
-                onClick={() => setLlojiOfertes('OfertaEKategorise')}
+                onClick={() => {
+                  setLlojiOfertes('OfertaEKategorise');
+                  setInputValue('');
+                }}
               />
               <Form.Check
                 type="radio"
                 label="Oferte e Kompanise"
                 name="llojiOfertes"
                 id="OferteEKompanise"
-                onClick={() => setLlojiOfertes('OferteEKompanise')}
+                onClick={() => {
+                  setLlojiOfertes('OferteEKompanise');
+                  setInputValue('');
+                }}
               />
-              <Form.Check type="radio" label="Njoftim" name="llojiOfertes" id="Njoftim" onClick={() => setLlojiOfertes('Njoftim')} />
+              <Form.Check
+                type="radio"
+                label="Njoftim"
+                name="llojiOfertes"
+                id="Njoftim"
+                onClick={() => {
+                  setLlojiOfertes('Njoftim');
+                  setInputValue('');
+                }}
+              />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>
-                Linku Ofertes<span style={{ color: 'red' }}>*</span>
-              </Form.Label>
-              <Form.Control
-                onChange={(e) => handleLinkuOfertesChange(e.target.value)}
-                value={linkuOfertes}
-                type="text"
-                placeholder="/produktet/2"
-                autoFocus
-                disabled={llojiOfertes == 'OfertaEProduktit'}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Partneri</Form.Label>
-              <Form.Control
-                type="text"
-                className="form-control styled-input"
-                placeholder="Zgjedhni Partnerin"
-                value={inputValue}
-                onChange={handleInputChange}
-                onKeyDown={handleInputKeyDown}
-                onFocus={handleInputChange}
-              />
+            {llojiOfertes == 'OfertaEProduktit' && (
+              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                <Form.Label>Produkti</Form.Label>
+                <Form.Control
+                  type="text"
+                  className="form-control styled-input"
+                  placeholder="Zgjedhni Partnerin"
+                  value={inputValue}
+                  onChange={handleInputChangeProdukti}
+                  onKeyDown={handleInputKeyDownProdukti}
+                  onFocus={handleInputChangeProdukti}
+                />
+                <div className="container" style={{ position: 'relative' }}>
+                  <ul className="list-group mt-2 searchBoxi">
+                    {filteredItemsProduktet.map((item, index) => (
+                      <li
+                        key={item.produktiId}
+                        className={`list-group-item${selectedIndexProduktet === index ? ' active' : ''}`}
+                        onClick={() => handleNdryshoProduktin(item)}
+                      >
+                        {item.emriProduktit}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Form.Group>
+            )}
+            {llojiOfertes == 'OfertaEKategorise' && (
+              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                <Form.Label>Kategoria</Form.Label>
+                <Form.Control
+                  type="text"
+                  className="form-control styled-input"
+                  placeholder="Zgjedhni Kategorin"
+                  value={inputValue}
+                  onChange={handleInputChangeKategoria}
+                  onKeyDown={handleInputKeyDownKategoria}
+                  onFocus={handleInputChangeKategoria}
+                />
+                <div className="container" style={{ position: 'relative' }}>
+                  <ul className="list-group mt-2 searchBoxi">
+                    {filteredItemsKategorit.map((item, index) => (
+                      <li
+                        key={item.kategoriaId}
+                        className={`list-group-item${selectedIndexKategorit === index ? ' active' : ''}`}
+                        onClick={() => handleNdryshoKategorin(item)}
+                      >
+                        {item.llojiKategoris}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Form.Group>
+            )}
+            {llojiOfertes == 'OferteEKompanise' && (
+              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                <Form.Label>Kompania</Form.Label>
+                <Form.Control
+                  type="text"
+                  className="form-control styled-input"
+                  placeholder="Zgjedhni Kompanin"
+                  value={inputValue}
+                  onChange={handleInputChangeKompania}
+                  onKeyDown={handleInputKeyDownKompania}
+                  onFocus={handleInputChangeKompania}
+                />
+                <div className="container" style={{ position: 'relative' }}>
+                  <ul className="list-group mt-2 searchBoxi">
+                    {filteredItemsKompanit.map((item, index) => (
+                      <li
+                        key={item.kompaniaID}
+                        className={`list-group-item${selectedIndexKompanit === index ? ' active' : ''}`}
+                        onClick={() => handleNdryshoKompania(item)}
+                      >
+                        {item.emriKompanis}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Form.Group>
+            )}
 
-              <div className="container" style={{ position: 'relative' }}>
-                <ul className="list-group mt-2 searchBoxi">
-                  {filteredItems.map((item, index) => (
-                    <li
-                      key={item.idPartneri}
-                      className={`list-group-item${selectedIndex === index ? ' active' : ''}`}
-                      onClick={() => handleNdryshoPartneri(item)}
-                    >
-                      {item.emriBiznesit}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>
                 Foto Ofertes<span style={{ color: 'red' }}>*</span>
               </Form.Label>
-              <Form.Control
-                type="file"
-                accept="image/*"
-                placeholder="Foto e Kompanis"
-                onChange={handleFotoChange}
-                required
-                disabled={llojiOfertes == 'OfertaEProduktit'}
-              />
+              <Form.Control type="file" accept="image/*" placeholder="Foto e Kompanis" onChange={handleFotoChange} required />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
               <Form.Label>Data Fillimit Ofertes</Form.Label>
@@ -232,7 +352,6 @@ function ShtoOfertenSlider(props) {
                 value={dataFillimitOfertes}
                 type="date"
                 placeholder="dataFillimitOfertes Kompanis"
-                disabled={llojiOfertes == 'OfertaEProduktit'}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
@@ -242,7 +361,6 @@ function ShtoOfertenSlider(props) {
                 value={dataMbarimtOfertes}
                 type="date"
                 placeholder="dataFillimitOfertes Kompanis"
-                disabled={llojiOfertes == 'OfertaEProduktit'}
               />
             </Form.Group>
           </Form>

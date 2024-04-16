@@ -11,8 +11,6 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-
-
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 function Home() {
@@ -68,9 +66,13 @@ function Home() {
           ofertatSlider.map((oferta) => (
             <SwiperSlide>
               <div key={oferta.sliderOfertatID}>
-                <Link to={oferta.linkuOfertes}>
+                {oferta.linkuOfertes != 'PaLink' ? (
+                  <Link to={oferta.linkuOfertes}>
+                    <img src={process.env.PUBLIC_URL + '/img/ofertat/' + oferta.fotoOferta} />
+                  </Link>
+                ) : (
                   <img src={process.env.PUBLIC_URL + '/img/ofertat/' + oferta.fotoOferta} />
-                </Link>
+                )}
               </div>
             </SwiperSlide>
           ))}
@@ -89,7 +91,6 @@ function Home() {
               sasiaNeStok={produkti.sasiaNeStok}
               cmimiMeZbritje={produkti.qmimiMeZbritjeProduktit}
             />
-            
           );
         })}
       </div>

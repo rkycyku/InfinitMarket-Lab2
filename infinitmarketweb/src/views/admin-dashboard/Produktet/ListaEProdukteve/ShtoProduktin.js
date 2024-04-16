@@ -14,6 +14,7 @@ const ShtoProduktin = (props) => {
   const [sasiaNeStok, setSasiaNeStok] = useState(0);
   const [qmimiBleres, setQmimiBleres] = useState(0);
   const [qmimiProduktit, setQmimiProduktit] = useState(0);
+  const [llojiTVSH, setLlojiTVSH] = useState(18);
   const [kategoriaId, setKategoriaId] = useState('');
   const [kompaniaId, setKompaniaId] = useState('');
   const [foto, setFoto] = useState(null);
@@ -74,9 +75,7 @@ const ShtoProduktin = (props) => {
                   kompaniaId: kompaniaId,
                   kategoriaId: kategoriaId,
                   teDhenatProduktit: {
-                    sasiaNeStok: sasiaNeStok,
-                    qmimiBleres: qmimiBleres,
-                    qmimiProduktit: qmimiProduktit
+                    llojiTVSH: llojiTVSH
                   }
                 },
                 authentikimi
@@ -106,9 +105,7 @@ const ShtoProduktin = (props) => {
             kompaniaId: kompaniaId,
             kategoriaId: kategoriaId,
             teDhenatProduktit: {
-              sasiaNeStok: sasiaNeStok,
-              qmimiBleres: qmimiBleres,
-              qmimiProduktit: qmimiProduktit
+              llojiTVSH: llojiTVSH
             }
           },
           authentikimi
@@ -198,7 +195,7 @@ const ShtoProduktin = (props) => {
             <Form.Group className="mb-3" controlId="emriProduktit">
               <Form.Label>Emri Produktit</Form.Label>
               <Form.Control
-                type="text"
+                as="textarea"
                 placeholder="Emri Produktit"
                 value={emriProduktit}
                 onChange={(e) => setEmriProduktit(e.target.value)}
@@ -218,34 +215,12 @@ const ShtoProduktin = (props) => {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="sasiaNeStok">
-              <Form.Label>Sasia në Stok</Form.Label>
+              <Form.Label>Lloji TVSH-s</Form.Label>
               <Form.Control
                 type="number"
-                placeholder="Sasia në Stok"
-                value={sasiaNeStok}
-                onChange={(e) => setSasiaNeStok(e.target.value)}
-                required
-              />
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="qmimiBleres">
-              <Form.Label>Qmimi Blerës</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="Qmimi Blerës"
-                value={qmimiBleres}
-                onChange={(e) => setQmimiBleres(e.target.value)}
-                required
-              />
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="qmimiProduktit">
-              <Form.Label>Qmimi Produktit</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="Qmimi Produktit"
-                value={qmimiProduktit}
-                onChange={(e) => setQmimiProduktit(e.target.value)}
+                placeholder="Lloji TVSH-sk"
+                value={llojiTVSH}
+                onChange={(e) => setLlojiTVSH(e.target.value)}
                 required
               />
             </Form.Group>

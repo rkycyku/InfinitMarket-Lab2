@@ -42,7 +42,8 @@ namespace InfinitMarket.Controllers.API.Produktet
                     p.TeDhenatProduktit.QmimiBleres,
                     p.TeDhenatProduktit.QmimiProduktit,
                     p.TeDhenatProduktit.DataKrijimit,
-                    p.TeDhenatProduktit.DataPerditsimit
+                    p.TeDhenatProduktit.DataPerditsimit,
+                    p.TeDhenatProduktit.llojiTVSH,
                 })
                 .ToListAsync();
 
@@ -54,20 +55,21 @@ namespace InfinitMarket.Controllers.API.Produktet
         [Route("Shfaq15ProduktetMeTeFundit")]
         public async Task<ActionResult> Shfaq15ProduktetMeTeFundit()
         {
-             var Kthe15TeFundit = await _context.Produkti
-                .Where(p => p.isDeleted == "false")
-                .OrderByDescending(x => x.ProduktiId)
-                .Take(15)
-                .Select(x => new
-                {
-                    x.ProduktiId,
-                    x.EmriProduktit,
-                    x.FotoProduktit,
-                    x.TeDhenatProduktit.SasiaNeStok,
-                    x.TeDhenatProduktit.QmimiBleres,
-                    x.TeDhenatProduktit.QmimiProduktit
-                })
-                .ToListAsync();
+            var Kthe15TeFundit = await _context.Produkti
+               .Where(p => p.isDeleted == "false")
+               .OrderByDescending(x => x.ProduktiId)
+               .Take(15)
+               .Select(x => new
+               {
+                   x.ProduktiId,
+                   x.EmriProduktit,
+                   x.FotoProduktit,
+                   x.TeDhenatProduktit.SasiaNeStok,
+                   x.TeDhenatProduktit.QmimiBleres,
+                   x.TeDhenatProduktit.QmimiProduktit,
+                   x.TeDhenatProduktit.llojiTVSH,
+               })
+               .ToListAsync();
 
             return Ok(Kthe15TeFundit);
         }
@@ -94,7 +96,8 @@ namespace InfinitMarket.Controllers.API.Produktet
                     x.TeDhenatProduktit.QmimiBleres,
                     x.TeDhenatProduktit.QmimiProduktit,
                     x.TeDhenatProduktit.DataKrijimit,
-                    x.TeDhenatProduktit.DataPerditsimit
+                    x.TeDhenatProduktit.DataPerditsimit,
+                    x.TeDhenatProduktit.llojiTVSH,
                 })
                 .ToListAsync();
 
@@ -122,7 +125,8 @@ namespace InfinitMarket.Controllers.API.Produktet
                     x.TeDhenatProduktit.QmimiBleres,
                     x.TeDhenatProduktit.QmimiProduktit,
                     x.TeDhenatProduktit.DataKrijimit,
-                    x.TeDhenatProduktit.DataPerditsimit
+                    x.TeDhenatProduktit.DataPerditsimit,
+                    x.TeDhenatProduktit.llojiTVSH,
                 })
                 .FirstOrDefaultAsync();
 
@@ -157,6 +161,7 @@ namespace InfinitMarket.Controllers.API.Produktet
                     SasiaNeStok = produktiData.TeDhenatProduktit.SasiaNeStok,
                     QmimiBleres = produktiData.TeDhenatProduktit.QmimiBleres,
                     QmimiProduktit = produktiData.TeDhenatProduktit.QmimiProduktit,
+                    llojiTVSH = produktiData.TeDhenatProduktit.llojiTVSH,
                     DataKrijimit = DateTime.Now,
                     DataPerditsimit = DateTime.Now
                 }
@@ -233,6 +238,7 @@ namespace InfinitMarket.Controllers.API.Produktet
                 existingProdukti.TeDhenatProduktit.QmimiBleres = produktiData.TeDhenatProduktit.QmimiBleres;
                 existingProdukti.TeDhenatProduktit.QmimiProduktit = produktiData.TeDhenatProduktit.QmimiProduktit;
                 existingProdukti.TeDhenatProduktit.DataPerditsimit = DateTime.Now;
+                existingProdukti.TeDhenatProduktit.llojiTVSH = produktiData.TeDhenatProduktit.llojiTVSH;
             }
 
             try
@@ -247,6 +253,25 @@ namespace InfinitMarket.Controllers.API.Produktet
             return Ok("Product u perditesua me sukses.");
         }
 
+        [AllowAnonymous]
+        [HttpPut]
+        [Route("PerditesoStokunQmimin")]
+        public async Task<ActionResult> PerditesoStokunQmimin(int id, int stoku, decimal qmimiBleres, decimal qmimiShites)
+        {
+            var produkti = await _context.Produkti.Include(x => x.TeDhenatProduktit).Where(x => x.ProduktiId == id).FirstOrDefaultAsync();
 
+            if (produkti == null)
+            {
+                return BadRequest("Produkti nuk u gjet!");
+            }
+
+            produkti.TeDhenatProduktit.SasiaNeStok += stoku;
+            produkti.TeDhenatProduktit.QmimiBleres = qmimiBleres;
+            produkti.TeDhenatProduktit.QmimiProduktit = qmimiShites;
+            produkti.TeDhenatProduktit.DataPerditsimit = DateTime.Now;
+            await _context.SaveChangesAsync();
+
+            return Ok("Produkti u perditesua me sukses.");
+        }
     }
 }
