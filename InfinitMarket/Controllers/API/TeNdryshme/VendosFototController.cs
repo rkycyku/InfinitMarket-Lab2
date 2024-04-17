@@ -17,7 +17,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             _context = context;
         }
 
-        [Authorize(Roles = "Admin, Menaxher")]
+        [AllowAnonymous]
         [HttpPost]
         [Route("EditoProduktin")]
         public async Task<IActionResult> EditoProduktin(IFormFile foto, string fotoVjeterProduktit)
@@ -51,7 +51,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             return Ok(emriUnikFotos);
         }
 
-        [Authorize(Roles = "Admin, Menaxher")]
+        [AllowAnonymous]
         [HttpPost]
         [Route("ShtoProduktin")]
         public async Task<IActionResult> ShtoProduktin(IFormFile foto)
@@ -73,7 +73,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             return Ok(emriUnikFotos);
         }
 
-        [Authorize(Roles = "Admin, Menaxher")]
+        [AllowAnonymous]
         [HttpPost]
         [Route("ShtoOfertenSlider")]
         public async Task<IActionResult> ShtoOfertenSlider(IFormFile foto)

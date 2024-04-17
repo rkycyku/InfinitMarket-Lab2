@@ -25,7 +25,7 @@ namespace InfinitMarket.Controllers
             _userManager = userManager;
         }
 
-        [Authorize(Roles = "Admin, Menaxher")]
+        [AllowAnonymous]
         [HttpGet]
         [Route("shfaqPerdoruesit")]
         public async Task<IActionResult> Get()

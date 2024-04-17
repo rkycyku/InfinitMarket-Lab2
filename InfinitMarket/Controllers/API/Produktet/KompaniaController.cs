@@ -34,7 +34,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return Ok(kompanit);
         }
 
-        // [Authorize(Roles = "Admin, Menaxher")]
+        // [AllowAnonymous]
         [AllowAnonymous]
         [HttpGet]
         [Route("shfaqKompaninSipasIDs")]
@@ -50,7 +50,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return Ok(kompania);
         }
 
-        //[Authorize(Roles = "Admin, Menaxher")]
+        //[AllowAnonymous]
         [AllowAnonymous]
         [HttpPost]
         [Route("shtoKompanin")]
@@ -62,7 +62,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return CreatedAtAction("get", kompaniaPartnere.KompaniaID, kompaniaPartnere);
         }
 
-        //[Authorize(Roles = "Admin, Menaxher")]
+        //[AllowAnonymous]
         [AllowAnonymous]
         [HttpPut]
         [Route("perditesoKompanin")]
@@ -84,7 +84,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return Ok(kompania);
         }
 
-        //[Authorize(Roles = "Admin, Menaxher")]
+        //[AllowAnonymous]
         [AllowAnonymous]
         [HttpDelete]
         [Route("fshijKompanin")]

@@ -23,7 +23,7 @@ namespace InfinitMarket.Controllers.API.Produktet
         [Route("ShfaqShporten")]
         public async Task<IActionResult> ShfaqShporten(string userID)
         {
-            var shporta = await _context.Shporta.Include(x => x.Perdoruesi).Where(x => x.Perdoruesi.AspNetUserId == userID).FirstOrDefaultAsync();
+            var shporta = await _context.Shporta.Include(x => x.Perdoruesi).Include(x => x.KodiZbritjes).Where(x => x.Perdoruesi.AspNetUserId == userID).FirstOrDefaultAsync();
 
             if (shporta == null)
             {
@@ -282,6 +282,33 @@ namespace InfinitMarket.Controllers.API.Produktet
                     return Ok(eshteNeShporte);
                 }
             }
+
+            return Ok();
+        }
+
+        [AllowAnonymous]
+        [HttpPut]
+        [Route("PerditesoKodinZbritjesNeShporte")]
+        public async Task<IActionResult> PerditesoKodinZbritjesNeShporte(string userID, string KodiZbritjes)
+        {
+            var perdoruesi = await _context.Perdoruesit.Where(x => x.AspNetUserId == userID).FirstOrDefaultAsync();
+
+            if (perdoruesi == null)
+            {
+                return BadRequest("Ndodhi nje gabim!");
+            }
+
+            var shporta = await _context.Shporta.Include(x => x.Perdoruesi).Where(x => x.PerdoruesiID == perdoruesi.UserID).FirstOrDefaultAsync();
+
+            if (shporta == null)
+            {
+                return BadRequest("Ndodhi nje gabim!");
+            }
+                shporta.KodiZbritjesID = KodiZbritjes;
+
+
+            _context.Shporta.Update(shporta);
+            await _context.SaveChangesAsync();  
 
             return Ok();
         }

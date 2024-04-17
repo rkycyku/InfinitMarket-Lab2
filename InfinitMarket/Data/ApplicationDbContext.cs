@@ -24,5 +24,6 @@ namespace InfinitMarket.Data
         public DbSet<TeDhenatProduktit> TeDhenatProduktit { get; set; }
         public DbSet<TeDhenatShporta> TeDhenatShporta { get; set; }
         public DbSet<ContactForm> ContactForm { get; set; }
+        public DbSet<KodiZbritjes> KodiZbritjes { get; set; }
     }
 }

@@ -75,9 +75,14 @@ const menuItems = {
               id: 'OfertatSliderHome',
               title: 'Ofertat Slider Home',
               type: 'item',
-              url: '/admin/ofertatslider'
+              url: '/admin/TeNdryshme/OfertatSlider'
             },
-            
+            {
+              id: 'KodiZbritjes',
+              title: 'Kodi Zbritjes',
+              type: 'item',
+              url: '/admin/TeNdryshme/KodiZbritjes'
+            },
           ]
         },
         {

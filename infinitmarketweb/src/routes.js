@@ -70,7 +70,7 @@ const routes = [
 
       {
         exact: 'true',
-        path: '/admin/ofertatslider',
+        path: '/admin/TeNdryshme/OfertatSlider',
         element: lazy(() => import('./views/admin-dashboard/TeNdryshme/OfertatSlider'))
       },
 
@@ -79,7 +79,11 @@ const routes = [
         path: '/admin/produktet/ListaEProdukteve',
         element: lazy(() => import('./views/admin-dashboard/Produktet/ListaEProdukteve'))
       },
-
+      {
+        exact: true,
+        path: '/admin/TeNdryshme/KodiZbritjes',
+        element: lazy(() => import('./views/admin-dashboard/TeNdryshme/KodiZbritjes'))
+      },
       {
         exact: 'true',
         path: '/admin/mesazhet',

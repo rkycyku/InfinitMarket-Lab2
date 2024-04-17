@@ -77,7 +77,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             return Ok(mesazhet);
         }
 
-        [Authorize(Roles = "Admin, Menaxher")]
+        [AllowAnonymous]
         [HttpGet]
         [Route("shfaqMesazhinSipasIDs")]
         public async Task<IActionResult> Get(int id)
@@ -99,7 +99,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
 
         }
 
-        [Authorize(Roles = "Admin, Menaxher")]
+        [AllowAnonymous]
         [HttpPut]
         [Route("konfirmoMesazhin")]
         public async Task<IActionResult> Put(int id, [FromBody] ContactForm m)
@@ -117,7 +117,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             return Ok(mesazhi);
         }
 
-        [Authorize(Roles = "Admin, Menaxher")]
+        [AllowAnonymous]
         [HttpDelete]
         [Route("fshiMesazhin")]
         public async Task<ActionResult> Delete(int id)

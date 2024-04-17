@@ -33,7 +33,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return Ok(kategorit);
         }
 
-        // [Authorize(Roles = "Admin, Menaxher")]
+        // [AllowAnonymous]
         [AllowAnonymous]
         [HttpGet]
         [Route("shfaqKategorinSipasIDs")]
@@ -48,7 +48,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return Ok(kategoria);
         }
 
-        //[Authorize(Roles = "Admin, Menaxher")]
+        //[AllowAnonymous]
         [AllowAnonymous]
         [HttpPost]
         [Route("shtoKategorin")]
@@ -60,7 +60,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return CreatedAtAction("get", kategoriaProduktit.KategoriaId, kategoriaProduktit);
         }
 
-        //[Authorize(Roles = "Admin, Menaxher")]
+        //[AllowAnonymous]
         [AllowAnonymous]
         [HttpPut]
         [Route("perditesoKategorin")]
@@ -82,7 +82,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return Ok(kategoria);
         }
 
-        //[Authorize(Roles = "Admin, Menaxher")]
+        //[AllowAnonymous]
         [AllowAnonymous]
         [HttpDelete]
         [Route("fshijKategorin")]

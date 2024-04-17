@@ -4,6 +4,7 @@ using InfinitMarket.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InfinitMarket.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240417155951_KrijimiKoditTeZbritjes")]
+    partial class KrijimiKoditTeZbritjes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -248,9 +250,6 @@ namespace InfinitMarket.Migrations
                     b.Property<DateTime?>("DataEFunditEPerditesimit")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("KodiZbritjesID")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<int?>("PerdoruesiID")
                         .HasColumnType("int");
 
@@ -270,8 +269,6 @@ namespace InfinitMarket.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("ShportaID");
-
-                    b.HasIndex("KodiZbritjesID");
 
                     b.HasIndex("PerdoruesiID");
 
@@ -670,15 +667,9 @@ namespace InfinitMarket.Migrations
 
             modelBuilder.Entity("InfinitMarket.Models.Shporta", b =>
                 {
-                    b.HasOne("InfinitMarket.Models.KodiZbritjes", "KodiZbritjes")
-                        .WithMany()
-                        .HasForeignKey("KodiZbritjesID");
-
                     b.HasOne("InfinitMarket.Models.Perdoruesi", "Perdoruesi")
                         .WithMany()
                         .HasForeignKey("PerdoruesiID");
-
-                    b.Navigation("KodiZbritjes");
 
                     b.Navigation("Perdoruesi");
                 });

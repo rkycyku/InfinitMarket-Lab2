@@ -14,8 +14,11 @@ namespace InfinitMarket.Models
         public decimal? Totali8TVSH { get; set; } = 0;
         public int? TotProd8TVSH { get; set; } = 0;
         public DateTime? DataEFunditEPerditesimit { get; set; } = DateTime.Now;
+        public string? KodiZbritjesID { get; set; } = "NukKaZbritje";
 
         [ForeignKey(nameof(PerdoruesiID))]
         public virtual Perdoruesi? Perdoruesi { get; set;}
+        [ForeignKey(nameof(KodiZbritjesID))]
+        public virtual KodiZbritjes? KodiZbritjes { get; set; }
     }
 }
