@@ -879,3 +879,4 @@ C:\Users\Administrator\Downloads\InfinitMarket-Lab2-main\InfinitMarket-Lab2-main
 C:\Users\Administrator\Downloads\InfinitMarket-Lab2-main\InfinitMarket-Lab2-main\InfinitMarket\obj\Debug\net6.0\ref\InfinitMarket.dll
 D:\Programim\GitHubProjekte\InfinitMarket-Lab2\InfinitMarket\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
 C:\react\InfinitMarket-Lab2\InfinitMarket\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+D:\Programim\GitHubProjekte\InfinitMarket-Lab2\InfinitMarket\bin\Debug\net6.0\Stripe.net.dll

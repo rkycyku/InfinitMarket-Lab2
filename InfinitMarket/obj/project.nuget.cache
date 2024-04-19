@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "aOQ6+cuXoCEDCy41LVZ4cP8FnDNxfYv2yCUqzGeqPN0uYUP835mL/ExL2cUdXpj82X95lVJ/70tEXAw3olxUYQ==",
+  "dgSpecHash": "U33f4BY1pJUcw60RYhXC/S40nW6wTIyYpShxtNfMlHDzl5EpARhPsEuCs6QlhB3rhjKfxWGUplQmnzIsFKXmGg==",
   "success": true,
   "projectFilePath": "D:\\Programim\\GitHubProjekte\\InfinitMarket-Lab2\\InfinitMarket\\InfinitMarket.csproj",
   "expectedPackageFiles": [
@@ -161,6 +161,7 @@
     "C:\\Users\\rkycy\\.nuget\\packages\\sqlitepclraw.core\\2.1.2\\sqlitepclraw.core.2.1.2.nupkg.sha512",
     "C:\\Users\\rkycy\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.2\\sqlitepclraw.lib.e_sqlite3.2.1.2.nupkg.sha512",
     "C:\\Users\\rkycy\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.1.2\\sqlitepclraw.provider.e_sqlite3.2.1.2.nupkg.sha512",
+    "C:\\Users\\rkycy\\.nuget\\packages\\stripe.net\\44.2.0\\stripe.net.44.2.0.nupkg.sha512",
     "C:\\Users\\rkycy\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
     "C:\\Users\\rkycy\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
     "C:\\Users\\rkycy\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512",

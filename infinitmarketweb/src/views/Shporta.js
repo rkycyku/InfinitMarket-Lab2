@@ -21,17 +21,18 @@ import { Link } from 'react-router-dom';
 import { faFaceFrown } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
+import Mesazhi from '../components/Mesazhi';
 
 export default function Shporta() {
   const [perditeso, setPerditeso] = useState(Date.now());
+  const [shfaqMesazhin, setShfaqMesazhin] = useState(false);
+  const [tipiMesazhit, setTipiMesazhit] = useState('');
+  const [pershkrimiMesazhit, setPershkrimiMesazhit] = useState('');
 
   const [shporta, setShporta] = useState('');
   const [detajetShporta, setDetajetShporta] = useState([]);
-  const [transporti, setTransporti] = useState(2);
 
   const [promoCode, setPromoCode] = useState('');
-  const [kontrollo, setKontrollo] = useState('');
-  const [largoKodinEZbritjes, setLargoKodinEZbritjes] = useState('');
   const [teDhenatZbritje, setTeDhenatZbritjes] = useState([]);
 
   const getToken = localStorage.getItem('token');
@@ -43,6 +44,8 @@ export default function Shporta() {
     }
   };
 
+  let perditesoKontrollinKodit = 0;
+
   useEffect(() => {
     const ShfaqTeDhenat = async () => {
       try {
@@ -53,6 +56,9 @@ export default function Shporta() {
         );
         setShporta(shporta.data);
         setDetajetShporta(detajetShporta.data);
+        if (shporta.data.kodiZbritjes.kodi !== 'NukKaZbritje') {
+          setPromoCode(shporta.data.kodiZbritjes.kodi);
+        }
       } catch (err) {
         console.log(err);
       }
@@ -61,78 +67,60 @@ export default function Shporta() {
     ShfaqTeDhenat();
   }, [perditeso]);
 
-  useEffect(() => {
-    let qmimiTot = shporta.totali18TVSH + shporta.totali8TVSH;
-    let kodiZbritjesNeShporte = shporta.kodiZbritjesID;
+  let qmimiTot = shporta.totali18TVSH + shporta.totali8TVSH;
+  const KontrolloKodin = async () => {
+    try {
+      const kodiZbritjes = await axios.get(`https://localhost:7251/api/TeNdryshme/KodiZbritje/GjejKodin?kodi=${promoCode}`, authentikimi);
 
-    console.log(shporta);
+      setTeDhenatZbritjes(kodiZbritjes.data);
+      console.log(kodiZbritjes.data);
 
-    const KontrolloKodin = async () => {
-      try {
-        const kodiZbritjes = await axios.get(
-          `https://localhost:7251/api/TeNdryshme/KodiZbritje/GjejKodin?kodi=${promoCode !== '' ? promoCode : kodiZbritjesNeShporte}`,
-          authentikimi
-        );
-
-        setTeDhenatZbritjes(kodiZbritjes.data);
-
-        if (kodiZbritjes.data.ProduktiId === null) {
-          if (
-            qmimiTot >= kodiZbritjes.data.qmimiZbritjes &&
-            kodiZbritjesNeShporte != kodiZbritjesNeShporte &&
-            kodiZbritjesNeShporte != promoCode
-          ) {
-            await axios.put(
-              `https://localhost:7251/api/Produktet/Shporta/PerditesoKodinZbritjesNeShporte?userID=${getID}&KodiZbritjes=${promoCode}`,
-              {},
-              authentikimi
-            );
-            setPerditeso(Date.now());
-          } else {
-            let shumaZbritjes = kodiZbritjes.data.qmimiZbritjes;
-
-            setTeDhenatZbritjes([]);
-            setTipiMesazhit('danger');
-            setPershkrimiMesazhit(
-              `Shuma e zbritjes eshte: <strong>${shumaZbritjes.toFixed(2)} €</strong> ndersa totali juaj eshte: <strong>${qmimiTot.toFixed(
-                2
-              )} € </strong>ju lutemi provoni nje kod tjeter ose shtoni produkte ne shporte!`
-            );
-            setShfaqMesazhin(true);
-            setPromoCode('');
-          }
+      if (kodiZbritjes.data.produktiId === null) {
+        if (qmimiTot >= kodiZbritjes.data.qmimiZbritjes) {
+          await axios.put(
+            `https://localhost:7251/api/Produktet/Shporta/PerditesoKodinZbritjesNeShporte?userID=${getID}&KodiZbritjes=${promoCode}`,
+            {},
+            authentikimi
+          );
+          setPerditeso(Date.now());
         } else {
-          {
-            detajetShporta.length !== 0 &&
-              detajetShporta.map((item) => {
-                if (
-                  detajetShporta.find((item) => item.id === kodiZbritjes.data.ProduktiId) &&
-                  kodiZbritjesNeShporte != kodiZbritjesNeShporte &&
-                  kodiZbritjesNeShporte != promoCode
-                ) {
-                  axios.put(
-                    `https://localhost:7251/api/Produktet/Shporta/PerditesoKodinZbritjesNeShporte?userID=${getID}&KodiZbritjes=${promoCode}`,
-                    {},
-                    authentikimi
-                  );
-                  setPerditeso(Date.now());
-                } else {
-                  setTeDhenatZbritjes([]);
-                  setTipiMesazhit('danger');
-                  setPershkrimiMesazhit(`Ky kod nuk vlen për produktet në shportën tuaj!`);
-                  setShfaqMesazhin(true);
-                  setPromoCode('');
-                }
-              });
-          }
-        }
-      } catch (err) {
-        console.log(err);
-      }
-    };
+          let shumaZbritjes = kodiZbritjes.data.qmimiZbritjes;
 
-    KontrolloKodin();
-  }, [kontrollo, perditeso, shporta]);
+          setTeDhenatZbritjes([]);
+          setTipiMesazhit('danger');
+          setPershkrimiMesazhit(
+            `Shuma e zbritjes eshte: <span>${shumaZbritjes.toFixed(2)} €</span> ndersa totali juaj eshte: <span>${qmimiTot.toFixed(
+              2
+            )} € </span>ju lutemi provoni nje kod tjeter ose shtoni produkte ne shporte!`
+          );
+          setShfaqMesazhin(true);
+          setPromoCode('');
+        }
+      } else {
+        {
+          detajetShporta.length !== 0 &&
+            detajetShporta.map(async (item) => {
+              if (detajetShporta.find((item) => item.produktiID === kodiZbritjes.data.produktiId)) {
+                await axios.put(
+                  `https://localhost:7251/api/Produktet/Shporta/PerditesoKodinZbritjesNeShporte?userID=${getID}&KodiZbritjes=${promoCode}`,
+                  {},
+                  authentikimi
+                );
+                setPerditeso(Date.now());
+              } else {
+                setTeDhenatZbritjes([]);
+                setTipiMesazhit('danger');
+                setPershkrimiMesazhit(`Ky kod nuk vlen për produktet në shportën tuaj!`);
+                setShfaqMesazhin(true);
+                setPromoCode('');
+              }
+            });
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const LargoKodinEZbritjes = async () => {
     try {
@@ -142,6 +130,7 @@ export default function Shporta() {
         authentikimi
       );
       setPerditeso(Date.now());
+      setPromoCode('');
     } catch (err) {
       console.log(err);
     }
@@ -153,7 +142,7 @@ export default function Shporta() {
     if (eshteNeShporte && eshteNeShporte.sasiaProduktitNeShporte >= eshteNeShporte.sasiaStokutAktual) {
       setTipiMesazhit('danger');
       setPershkrimiMesazhit(
-        `Sasia maksimale per <strong>${eshteNeShporte.emriProduktit}</strong> eshte <strong>${eshteNeShporte.sasiaStokutAktual}</strong> ne shporte!`
+        `Sasia maksimale per <span>${eshteNeShporte.emriProduktit}</span> eshte <span>${eshteNeShporte.sasiaStokutAktual}</span> ne shporte!`
       );
       setShfaqMesazhin(true);
     } else {
@@ -188,12 +177,9 @@ export default function Shporta() {
     setPromoCode(event.target.value);
   };
 
-  const handleApplyPromoCode = () => {
-    setKontrollo(Date.now());
-  };
-
   return (
     <>
+      {shfaqMesazhin && <Mesazhi setShfaqMesazhin={setShfaqMesazhin} pershkrimi={pershkrimiMesazhit} tipi={tipiMesazhit} />}
       <section className="h-100 h-custom">
         <MDBContainer className="py-5 h-100">
           <MDBRow className="justify-content-center align-items-center h-100">
@@ -315,63 +301,30 @@ export default function Shporta() {
                         </MDBTypography>
 
                         <hr className="my-4" />
-                        {teDhenatZbritje.length === 0 && shporta && shporta.kodiZbritjes && shporta.kodiZbritjes.qmimiZbritjes === '0' && (
-                          <>
-                            <MDBTypography tag="h6" className="text-uppercase mb-3">
-                              Kodi i zbritjes
-                            </MDBTypography>
 
-                            <MDBInputGroup className="mb-3">
-                              <MDBInput
-                                id="promo-input"
-                                className="form-control"
-                                type="text"
-                                placeholder="Kodi Zbritjes"
-                                value={promoCode}
-                                onChange={handlePromoCodeChange}
-                              />
-                              <Button onClick={handleApplyPromoCode}>
-                                <FontAwesomeIcon icon={faCheck} />
-                              </Button>
-                            </MDBInputGroup>
-                          </>
-                        )}
-                        {shporta && shporta.kodiZbritjes && (shporta.kodiZbritjes.qmimiZbritjes || shporta.kodiZbritjes.kodi != "NukKaZbritje")&& (
-                          <>
-                            <MDBTypography tag="h6" className="text-uppercase mb-3">
-                              Kodi i zbritjes
-                            </MDBTypography>
-
-                            <MDBInputGroup className="mb-3">
-                              <MDBInput
-                                id="promo-input"
-                                className="form-control"
-                                type="text"
-                                placeholder="Kodi Zbritjes"
-                                value={shporta && shporta.kodiZbritjes && shporta.kodiZbritjes.kodi}
-                                disabled
-                              />
-                              <Button onClick={() => LargoKodinEZbritjes()}>
-                                <FontAwesomeIcon icon={faXmark} />
-                              </Button>
-                            </MDBInputGroup>
-                          </>
-                        )}
-
-                        <MDBTypography tag="h6" className="text-uppercase mb-1">
-                          Shipping
+                        <MDBTypography tag="h6" className="text-uppercase mb-3">
+                          Kodi i zbritjes
                         </MDBTypography>
 
-                        <div className="mb-1 pb-2">
-                          <select
-                            className="select p-2 rounded bg-grey"
-                            style={{ width: '100%' }}
-                            onChange={(e) => setTransporti(e.target.value)}
-                          >
-                            <option value="2">Dergese ne Shtepi - 2.00€</option>
-                            <option value="0">Merre ne Zyre - 0.00€</option>
-                          </select>
-                        </div>
+                        <MDBInputGroup className="mb-3">
+                          <MDBInput
+                            id="promo-input"
+                            className="form-control"
+                            type="text"
+                            placeholder="Kodi Zbritjes"
+                            value={promoCode}
+                            onChange={handlePromoCodeChange}
+                          />
+                          {shporta && shporta.kodiZbritjes && shporta.kodiZbritjes.kodi == 'NukKaZbritje' ? (
+                            <Button onClick={() => KontrolloKodin()}>
+                              <FontAwesomeIcon icon={faCheck} />
+                            </Button>
+                          ) : (
+                            <Button onClick={() => LargoKodinEZbritjes()}>
+                              <FontAwesomeIcon icon={faXmark} />
+                            </Button>
+                          )}
+                        </MDBInputGroup>
 
                         <div className="d-flex justify-content-between">
                           <MDBTypography tag="h6" className="text-uppercase">
@@ -408,7 +361,7 @@ export default function Shporta() {
                           <MDBTypography tag="h6" className="text-uppercase">
                             Transporti
                           </MDBTypography>
-                          <MDBTypography tag="h6">{parseFloat(transporti).toFixed(2)} €</MDBTypography>
+                          <MDBTypography tag="h6">Kalkulohet gjate pageses</MDBTypography>
                         </div>
                         <div className="d-flex justify-content-between">
                           <MDBTypography tag="h6" className="text-uppercase">
@@ -418,24 +371,6 @@ export default function Shporta() {
                             - {parseFloat(shporta && shporta.kodiZbritjes && shporta.kodiZbritjes.qmimiZbritjes).toFixed(2)} €
                           </MDBTypography>
                         </div>
-                        <div className="d-flex justify-content-between">
-                          <MDBTypography tag="h6" className="text-uppercase">
-                            Kodi i Perdorur
-                          </MDBTypography>
-                          <MDBTypography tag="h6">{shporta && shporta.kodiZbritjes && shporta.kodiZbritjes.kodi}</MDBTypography>
-                        </div>
-                        {(teDhenatZbritje.length !== 0 || (shporta && shporta.kodiZbritjes && shporta.kodiZbritjes.qmimiZbritjes)) && (
-                          <div className="zbritja">
-                            <hr />
-                            <p>
-                              <strong>Kodi i Perdorur: </strong>
-                            </p>
-                            <p>
-                              <strong>Qmimi i Zbritjes: </strong>
-                              {shporta.kodiZbritjes.qmimiZbritjes.toFixed(2)} €
-                            </p>
-                          </div>
-                        )}
 
                         <hr className="my-4" />
 
@@ -446,8 +381,7 @@ export default function Shporta() {
                           <MDBTypography tag="h5">
                             {parseFloat(
                               shporta.totali18TVSH +
-                                shporta.totali8TVSH +
-                                transporti -
+                                shporta.totali8TVSH -
                                 (shporta && shporta.kodiZbritjes && shporta.kodiZbritjes.qmimiZbritjes
                                   ? shporta && shporta.kodiZbritjes && shporta.kodiZbritjes.qmimiZbritjes
                                   : 0)
@@ -455,10 +389,11 @@ export default function Shporta() {
                             €
                           </MDBTypography>
                         </div>
-
-                        <MDBBtn color="dark" block size="lg">
-                          Kalo tek Pagesa
-                        </MDBBtn>
+                        <Link to="/PaguajMeStripe">
+                          <MDBBtn color="dark" block size="lg">
+                            Kalo tek Pagesa
+                          </MDBBtn>
+                        </Link>
                       </div>
                     </MDBCol>
                   </MDBRow>

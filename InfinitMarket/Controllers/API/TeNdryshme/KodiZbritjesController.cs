@@ -43,7 +43,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
                 .Where(x => x.Kodi.Equals(kodi))
                 .FirstOrDefaultAsync();
 
-            if (kodiZbritjes == null || kodiZbritjes.isDeleted == "true" || kodiZbritjes.Kodi== "NukKaZbritje")
+            if (kodiZbritjes == null || kodiZbritjes.isDeleted == "true")
             {
                 return NotFound();
             }

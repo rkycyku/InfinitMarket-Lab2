@@ -6,6 +6,7 @@ using Microsoft.OpenApi.Models;
 using System.Security.Claims;
 using System.Text;
 using InfinitMarket.Data;
+using Stripe;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -114,6 +115,8 @@ builder.Services.AddSwaggerGen(c => {
 });
 
 var app = builder.Build();
+
+StripeConfiguration.ApiKey = "sk_test_51P6womKtaRnYlZxjj5ZKQQBsh6BP0F66jmJokn1Q4vSP6ex1poY5iMEt0nUWwUo4RKo7soyWLkvNN4tyry7PNM1m008EPxBTB5";
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

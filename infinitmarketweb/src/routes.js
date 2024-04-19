@@ -44,7 +44,7 @@ const routes = [
     routes: [
       {
         exact: 'true',
-        path: '/dashboard',
+        path: '/Dashboard',
         element: lazy(() => import('./views/dashboard'))
       },
       {
@@ -54,17 +54,17 @@ const routes = [
       },
       {
         exact: 'true',
-        path: '/admin/produktet/kategorite',
+        path: '/Admin/Produktet/Kategorite',
         element: lazy(() => import('./views/admin-dashboard/Produktet/Kategorite'))
       },
       {
         exact: 'true',
-        path: '/admin/produktet/kompanite',
+        path: '/Admin/Produktet/Kompanite',
         element: lazy(() => import('./views/admin-dashboard/Produktet/Kompanit'))
       },
       {
         exact: 'true',
-        path: '/admin/klientet',
+        path: '/Admin/Klientet',
         element: lazy(() => import('./views/admin-dashboard/Klientet'))
       },
 
@@ -119,6 +119,11 @@ const routes = [
         exact: true,
         path: '/shporta',
         element: lazy(() => import('./views/Shporta'))
+      },
+      {
+        exact: true,
+        path: '/PaguajMeStripe',
+        element: lazy(() => import('./views/PaguajMeStripe'))
       },
       {
         path: '*',
