@@ -273,5 +273,87 @@ namespace InfinitMarket.Controllers.API.Produktet
 
             return Ok("Produkti u perditesua me sukses.");
         }
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("ShtoKategorineEDetajet")]
+        public async Task<ActionResult> ShtoKategorineEDetajet([FromBody] KategoriteEDetajeve kategoriaData)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var kategoria = new KategoriteEDetajeve
+            {
+                EmriKategoriseDetajeve = kategoriaData.EmriKategoriseDetajeve,
+                DetajetJson = kategoriaData.DetajetJson
+            };
+
+            try
+            {
+                _context.KategoriteEDetajeve.Add(kategoria);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+
+            return Ok("Kategoria e detajeve u shtua me sukses.");
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("ShfaqKategoriteEDetajet")]
+        public async Task<ActionResult> ShfaqKategoriteEDetajet()
+        {
+            var kategorite = await _context.KategoriteEDetajeve.ToListAsync();
+
+            return Ok(kategorite);
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("ShfaqKategorineEDetajet/{id}")]
+        public async Task<ActionResult> ShfaqKategorineEDetajet(int id)
+        {
+            var kategoria = await _context.KategoriteEDetajeve.FindAsync(id);
+
+            if (kategoria == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(kategoria);
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("ShtoTeDhenatEDetajeve")]
+        public async Task<ActionResult> ShtoTeDhenatEDetajeve([FromBody] TeDhenatEDetajeve teDhenatData)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var teDhenat = new TeDhenatEDetajeve
+            {
+                KategoriaDetajeveId = teDhenatData.KategoriaDetajeveId,
+                TeDhenatJson = teDhenatData.TeDhenatJson
+            };
+
+            try
+            {
+                _context.TeDhenatEDetajeve.Add(teDhenat);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+
+            return Ok("TeDhenatEDetajeve u shtua me sukses.");
+        }
     }
 }
