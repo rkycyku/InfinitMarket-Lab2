@@ -4,6 +4,7 @@ using InfinitMarket.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InfinitMarket.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240419002328_KategoriteEDetajeve")]
+    partial class KategoriteEDetajeve
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -634,28 +636,6 @@ namespace InfinitMarket.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("TeDhenatEDetajeve", b =>
-                {
-                    b.Property<int>("TeDhenatEDetajeveId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TeDhenatEDetajeveId"), 1L, 1);
-
-                    b.Property<int>("KategoriaDetajeveId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("TeDhenatJson")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("TeDhenatEDetajeveId");
-
-                    b.HasIndex("KategoriaDetajeveId");
-
-                    b.ToTable("TeDhenatEDetajeve");
-                });
-
             modelBuilder.Entity("InfinitMarket.Models.AdresatPerdoruesit", b =>
                 {
                     b.HasOne("InfinitMarket.Models.Perdoruesi", "Perdoruesi")
@@ -816,17 +796,6 @@ namespace InfinitMarket.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("TeDhenatEDetajeve", b =>
-                {
-                    b.HasOne("InfinitMarket.Models.KategoriteEDetajeve", "KategoriteEDetajeve")
-                        .WithMany()
-                        .HasForeignKey("KategoriaDetajeveId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("KategoriteEDetajeve");
                 });
 
             modelBuilder.Entity("InfinitMarket.Models.Perdoruesi", b =>
