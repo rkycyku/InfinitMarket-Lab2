@@ -26,11 +26,62 @@ public class PaymentIntentApiController : Controller
             Description = description,
             Metadata = new Dictionary<string, string>
         {
+                { "key1", "value1" },
+                { "key2", "value2" },
         },
         });
 
         return Json(new { clientSecret = paymentIntent.ClientSecret });
     }
+
+    [HttpGet]
+    [Route("ShfaqPorosite")]
+    public List<CustomOrder> GetAllOrders()
+    {
+        var options = new PaymentIntentListOptions
+        {
+            
+        };
+
+        var service = new PaymentIntentService();
+        var paymentIntents = service.List(options);
+
+        // Map retrieved data to custom model while excluding unwanted fields
+        var customOrders = paymentIntents.Data.Select(intent => new CustomOrder
+        {
+            Id = intent.Id,
+            Amount = intent.Amount,
+            Created = intent.Created,
+            Currency = intent.Currency,
+            Description = intent.Description,
+            Metadata = intent.Metadata,
+            Status = intent.Status
+        }).ToList();
+
+        return customOrders;
+    }
+    [HttpDelete]
+    [Route("CancelOrder")]
+    public async void CancelOrder(string orderId)
+    {
+        var service = new PaymentIntentService();
+        var paymentIntent = service.CancelAsync(
+            orderId,
+            new PaymentIntentCancelOptions { CancellationReason = "abandoned" }
+        );
+    }
+
+    public class CustomOrder
+    {
+        public string Id { get; set; }
+        public long Amount { get; set; }
+        public DateTime Created { get; set; }
+        public string Currency { get; set; }
+        public string Description { get; set; }
+        public Dictionary<string, string> Metadata { get; set; }
+        public string Status { get; set; }
+    }
+
 
     public class Item
     {

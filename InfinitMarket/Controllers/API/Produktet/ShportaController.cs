@@ -23,7 +23,7 @@ namespace InfinitMarket.Controllers.API.Produktet
         [Route("ShfaqShporten")]
         public async Task<IActionResult> ShfaqShporten(string userID)
         {
-            var shporta = await _context.Shporta.Include(x => x.Perdoruesi).Include(x => x.KodiZbritjes).Where(x => x.Perdoruesi.AspNetUserId == userID).FirstOrDefaultAsync();
+            var shporta = await _context.Shporta.Include(x => x.Perdoruesi).Include(x => x.KodiZbritjes).Include(x => x.Adresa).Where(x => x.Perdoruesi.AspNetUserId == userID).FirstOrDefaultAsync();
 
             if (shporta == null)
             {

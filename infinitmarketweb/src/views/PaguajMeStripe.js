@@ -20,7 +20,7 @@ import {
   MDBTypography,
   MDBInputGroup
 } from 'mdb-react-ui-kit';
-import { Button } from 'react-bootstrap';
+import { Button, Tab, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 // Make sure to call loadStripe outside of a component’s render to avoid
@@ -72,9 +72,10 @@ export default function PaguajMeStripe() {
             shumaTot:
               (shporta.data.totali18TVSH +
                 shporta.data.totali8TVSH -
-              (shporta.data && shporta.data.kodiZbritjes && shporta.data.kodiZbritjes.qmimiZbritjes
-                ? shporta.data && shporta.data.kodiZbritjes && shporta.data.kodiZbritjes.qmimiZbritjes
-                : 0))* 100
+                (shporta.data && shporta.data.kodiZbritjes && shporta.data.kodiZbritjes.qmimiZbritjes
+                  ? shporta.data && shporta.data.kodiZbritjes && shporta.data.kodiZbritjes.qmimiZbritjes
+                  : 0)) *
+              100
           },
           authentikimi
         );
@@ -98,124 +99,135 @@ export default function PaguajMeStripe() {
 
   return (
     <div className="StripeDivMain">
-      <section className="h-100 h-custom">
-        <MDBContainer className="py-5 h-100">
-          <MDBRow className="justify-content-center align-items-center h-100">
-            <MDBCol size="12">
-              <MDBCard className="card-registration card-registration-2" style={{ borderRadius: '15px' }}>
-                <MDBCardBody className="p-0">
-                  <MDBRow className="g-0">
-                    <MDBCol lg="8">
-                      <div className="p-5">
-                        <div className="d-flex justify-content-between align-items-center mb-5">
-                          <MDBTypography tag="h1" className="fw-bold mb-0 text-black">
-                            Paguaj Me Stripe
-                          </MDBTypography>
-                          {/* <MDBTypography className="mb-0 text-muted">
-                            {shporta && shporta.totaliProdukteveNeShporte == 0
-                              ? 'Asnje produkt'
-                              : shporta.totaliProdukteveNeShporte == 1
-                              ? '1 produkt'
-                              : shporta.totaliProdukteveNeShporte + ' produkte'}{' '}
-                          </MDBTypography> */}
-                        </div>
-                        <hr className="my-4" />
-                        <MDBRow className="mb-4 d-none d-md-flex justify-content-between align-items-center">
-                          <MDBTypography tag="h5" className="text-uppercase">
-                            Total
-                          </MDBTypography>
-                          <MDBTypography tag="h5">
-                            {parseFloat(
-                              shporta.totali18TVSH +
-                                shporta.totali8TVSH -
-                                (shporta && shporta.kodiZbritjes && shporta.kodiZbritjes.qmimiZbritjes
-                                  ? shporta && shporta.kodiZbritjes && shporta.kodiZbritjes.qmimiZbritjes
-                                  : 0)
-                            ).toFixed(2)}{' '}
-                            €
-                          </MDBTypography>
-                        </MDBRow>
+      <div className="detajetPorosia">
+        <h1>Paguaj Me Stripe</h1>
+        <div className="adresaDorezimit">
+          <h3>Adresa Dorezimit</h3>
+          <div className="d-flex justify-content-between">
+            <MDBTypography tag="h6" className="text-uppercase">
+              Klienti
+            </MDBTypography>
+            <MDBTypography tag="h6">
+              {shporta && shporta.adresa && shporta.adresa.emri} {shporta && shporta.adresa && shporta.adresa.mbiemri}
+            </MDBTypography>
+          </div>
+          <div className="d-flex justify-content-between">
+            <MDBTypography tag="h6" className="text-uppercase">
+              Email
+            </MDBTypography>
+            <MDBTypography tag="h6">{shporta && shporta.adresa && shporta.adresa.email}</MDBTypography>
+          </div>
+          <div className="d-flex justify-content-between">
+            <MDBTypography tag="h6" className="text-uppercase">
+              Numri i telefonit
+            </MDBTypography>
+            <MDBTypography tag="h6">{shporta && shporta.adresa && shporta.adresa.nrKontaktit}</MDBTypography>
+          </div>
+          <div className="d-flex justify-content-between">
+            <MDBTypography tag="h6" className="text-uppercase">
+              Adresa dorezimit
+            </MDBTypography>
+            <MDBTypography tag="h6">
+              {shporta && shporta.adresa && shporta.adresa.adresa}
+              <br />
+              {shporta && shporta.adresa && shporta.adresa.qyteti}, {shporta && shporta.adresa && shporta.adresa.zipKodi}
+              <br />
+              {shporta && shporta.adresa && shporta.adresa.shteti}
+            </MDBTypography>
+          </div>
+        </div>
+        <div className="teDhenatShporta">
+          <h3>Detajet e Shportes</h3>
+          <div className="d-flex justify-content-between">
+            <MDBTypography tag="h6" className="text-uppercase">
+              Totali Produkteve
+            </MDBTypography>
+            <MDBTypography tag="h6">
+              {shporta && shporta.totaliProdukteveNeShporte == 0
+                ? 'Asnje produkt'
+                : shporta.totaliProdukteveNeShporte == 1
+                ? '1 produkt'
+                : shporta.totaliProdukteveNeShporte + ' produkte'}{' '}
+            </MDBTypography>
+          </div>
+          <div className="d-flex justify-content-between">
+            <MDBTypography tag="h6" className="text-uppercase">
+              Nentotali
+            </MDBTypography>
+            <MDBTypography tag="h6">
+              {parseFloat(
+                shporta.totali18TVSH +
+                  shporta.totali8TVSH -
+                  (shporta.totali18TVSH - (100 / (100 + 18)) * shporta.totali18TVSH) -
+                  shporta.totali8TVSH -
+                  (100 / (100 + 8)) * shporta.totali8TVSH
+              ).toFixed(2)}{' '}
+              €
+            </MDBTypography>
+          </div>
+          <div className="d-flex justify-content-between">
+            <MDBTypography tag="h6" className="text-uppercase">
+              TVSH 18%
+            </MDBTypography>
+            <MDBTypography tag="h6">
+              {parseFloat(shporta.totali18TVSH - (100 / (100 + 18)) * shporta.totali18TVSH).toFixed(2)} €
+            </MDBTypography>
+          </div>
+          <div className="d-flex justify-content-between">
+            <MDBTypography tag="h6" className="text-uppercase">
+              TVSH 8%
+            </MDBTypography>
+            <MDBTypography tag="h6">{parseFloat(shporta.totali8TVSH - (100 / (100 + 8)) * shporta.totali8TVSH).toFixed(2)}€</MDBTypography>
+          </div>
+          <div className="d-flex justify-content-between">
+            <MDBTypography tag="h6" className="text-uppercase">
+              Transporti
+            </MDBTypography>
+            <MDBTypography tag="h6">Kalkulohet gjate pageses</MDBTypography>
+          </div>
+          <div className="d-flex justify-content-between">
+            <MDBTypography tag="h6" className="text-uppercase">
+              Zbritja
+            </MDBTypography>
+            <MDBTypography tag="h6">
+              - {parseFloat(shporta && shporta.kodiZbritjes && shporta.kodiZbritjes.qmimiZbritjes).toFixed(2)} €
+            </MDBTypography>
+          </div>
 
-                        <hr className="my-4 d-none d-md-flex" />
-                        {items.map((produkti) => {
-                          return (
-                            <>
-                              <MDBRow className="mb-4 d-flex justify-content-between align-items-center">
-                                <MDBCol md="2" lg="2" xl="2">
-                                  <MDBCardImage
-                                    src={`${process.env.PUBLIC_URL}/img/produktet/${produkti.fotoProduktit}`}
-                                    fluid
-                                    className="rounded-3"
-                                    alt={produkti.fotoProduktit}
-                                  />
-                                </MDBCol>
-                                <MDBCol md="3" lg="3" xl="3">
-                                  <MDBTypography tag="h6" className="text-muted">
-                                    {produkti.emriKategoris}
-                                  </MDBTypography>
-                                  <MDBTypography tag="h6" className="text-black mb-0">
-                                    {produkti.emriProduktit}
-                                  </MDBTypography>
-                                </MDBCol>
-                                <MDBCol md="3" lg="3" xl="3" className="d-flex align-items-center">
-                                  <Button
-                                    disabled={produkti.sasiaProduktitNeShporte <= 1}
-                                    variant="link"
-                                    className="px-2"
-                                    onClick={() => UleSasin(produkti.produktiID)}
-                                  >
-                                    <MDBIcon fas icon="minus" />
-                                  </Button>
-                                  <MDBTypography tag="h6" className="text-black mb-0">
-                                    {produkti.sasiaProduktitNeShporte}
-                                  </MDBTypography>
-                                  <Button variant="link" className="px-2" onClick={() => RritSasin(produkti.produktiID)}>
-                                    <MDBIcon fas icon="plus" />
-                                  </Button>
-                                </MDBCol>
-                                <MDBCol md="3" lg="2" xl="2" className="text-end">
-                                  <MDBTypography tag="h6" className="mb-0">
-                                    {parseFloat(produkti.qmimiProduktit).toFixed(2)} €
-                                  </MDBTypography>
-                                </MDBCol>
-                                <MDBCol md="1" lg="1" xl="1" className="text-end">
-                                  <Button variant="link" className="px-2" onClick={() => LargoProduktin(produkti.produktiID)}>
-                                    <MDBIcon fas icon="times" />
-                                  </Button>
-                                </MDBCol>
-                              </MDBRow>
+          <hr className="my-4" />
 
-                              <hr className="my-4" />
-                            </>
-                          );
-                        })}
-                        <div className="pt-5">
-                          <Link to={'/'}>
-                            <MDBTypography tag="h6" className="mb-0">
-                              <MDBCardText tag="a" href="#!" className="text-body">
-                                <MDBIcon fas icon="long-arrow-alt-left me-2" /> Vazhdo Blerjen
-                              </MDBCardText>
-                            </MDBTypography>
-                          </Link>
-                        </div>
-                      </div>
-                    </MDBCol>
-                    <MDBCol lg="4" className="bg-grey">
-                      <div className="p-5">
-                        {clientSecret && (
-                          <Elements options={options} stripe={stripePromise}>
-                            <CheckoutForm />
-                          </Elements>
-                        )}
-                      </div>
-                    </MDBCol>
-                  </MDBRow>
-                </MDBCardBody>
-              </MDBCard>
-            </MDBCol>
-          </MDBRow>
-        </MDBContainer>
-      </section>
+          <div className="d-flex justify-content-between mb-5">
+            <MDBTypography tag="h5" className="text-uppercase">
+              Total
+            </MDBTypography>
+            <MDBTypography tag="h5">
+              {parseFloat(
+                shporta.totali18TVSH +
+                  shporta.totali8TVSH -
+                  (shporta && shporta.kodiZbritjes && shporta.kodiZbritjes.qmimiZbritjes
+                    ? shporta && shporta.kodiZbritjes && shporta.kodiZbritjes.qmimiZbritjes
+                    : 0)
+              ).toFixed(2)}{' '}
+              €
+            </MDBTypography>
+          </div>
+        </div>
+        <Link to={'/'}>
+          <MDBTypography tag="h6" className="mb-0">
+            <MDBCardText tag="a" href="#!" className="text-body">
+              <MDBIcon fas icon="long-arrow-alt-left me-2" /> Vazhdo Blerjen
+            </MDBCardText>
+          </MDBTypography>
+        </Link>
+      </div>
+
+      <div className="stripePagesa">
+        {clientSecret && (
+          <Elements options={options} stripe={stripePromise}>
+            <CheckoutForm />
+          </Elements>
+        )}
+      </div>
     </div>
   );
 }
