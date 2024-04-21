@@ -28,7 +28,7 @@ namespace InfinitMarket.Controllers
         [AllowAnonymous]
         [HttpGet]
         [Route("shfaqPerdoruesit")]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> ShfaqPerdoruesit()
         {
             var perdoruesit = await _context.Perdoruesit
                 .Include(p => p.TeDhenatPerdoruesit)
@@ -56,7 +56,7 @@ namespace InfinitMarket.Controllers
         [AllowAnonymous]
         [HttpGet]
         [Route("shfaqSipasID")]
-        public async Task<IActionResult> GetbyId(string idUserAspNet)
+        public async Task<IActionResult> ShfaqSipasID(string idUserAspNet)
         {
             var user = await _userManager.FindByIdAsync(idUserAspNet);
 
@@ -76,6 +76,34 @@ namespace InfinitMarket.Controllers
             };
 
             return Ok(result);
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("ShfaqAdresatPerdoruesit")]
+        public async Task<IActionResult> ShfaqShfaqAdresatPerdoruesitSipasID(string idUserAspNet)
+        {
+            var perdoruesi = await _context.Perdoruesit.Where(x => x.AspNetUserId == idUserAspNet).FirstOrDefaultAsync();
+
+            if(perdoruesi == null)
+            {
+                return NotFound();
+            }
+
+            var adresat = await _context.AdresatPerdoruesit.Where(x => x.PerdoruesiID == perdoruesi.UserID).Select(x => new
+            {
+                x.AdresaID,
+                x.Qyteti,
+                x.ZipKodi,
+                x.Adresa,
+                x.Shteti,
+                x.Email,
+                x.NrKontaktit,
+                x.Emri,
+                x.Mbiemri
+            }).ToListAsync();
+
+            return Ok(adresat);
         }
     }
 

@@ -121,11 +121,6 @@ const routes = [
         element: lazy(() => import('./views/Shporta'))
       },
       {
-        exact: true,
-        path: '/PaguajMeStripe',
-        element: lazy(() => import('./views/PaguajMeStripe'))
-      },
-      {
         path: '*',
         exact: 'true',
         element: () => <Navigate to={BASE_URL} />

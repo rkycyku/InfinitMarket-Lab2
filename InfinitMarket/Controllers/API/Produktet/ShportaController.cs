@@ -313,6 +313,33 @@ namespace InfinitMarket.Controllers.API.Produktet
             return Ok();
         }
 
+        [AllowAnonymous]
+        [HttpPut]
+        [Route("PerditesoAdresenNeShporte")]
+        public async Task<IActionResult> PerditesoAdresenNeShporte(string userID, int adresaID)
+        {
+            var perdoruesi = await _context.Perdoruesit.Where(x => x.AspNetUserId == userID).FirstOrDefaultAsync();
+
+            if (perdoruesi == null)
+            {
+                return BadRequest("Ndodhi nje gabim!");
+            }
+
+            var shporta = await _context.Shporta.Include(x => x.Perdoruesi).Where(x => x.PerdoruesiID == perdoruesi.UserID).FirstOrDefaultAsync();
+
+            if (shporta == null)
+            {
+                return BadRequest("Ndodhi nje gabim!");
+            }
+
+            shporta.AdresaPorosisID = adresaID;
+
+            _context.Shporta.Update(shporta);
+            await _context.SaveChangesAsync();
+
+            return Ok();
+        }
+
     }
 
     public class ShportaPerKthim

@@ -57,25 +57,19 @@ export default function PaguajMeStripe() {
           authentikimi
         );
 
-        // Map the response data to the format expected by the backend
-        const formattedItems = response.data.map((item) => ({
-          id: item.emriProduktit,
-          amount: item.qmimiProduktit * 100 // Convert price to cents
-        }));
-
         setItems(response.data);
 
         const paymentIntentResponse = await axios.post(
-          'https://localhost:7251/create-payment-intent',
+          'https://localhost:7251/api/TeNdryshme/Stripe/KrijoPagesenStripe',
           {
-            items: formattedItems,
-            shumaTot:
-              (shporta.data.totali18TVSH +
+            shportaID: shporta.data.shportaID,
+            shumaTotale:
+              ((shporta.data.totali18TVSH +
                 shporta.data.totali8TVSH -
                 (shporta.data && shporta.data.kodiZbritjes && shporta.data.kodiZbritjes.qmimiZbritjes
                   ? shporta.data && shporta.data.kodiZbritjes && shporta.data.kodiZbritjes.qmimiZbritjes
                   : 0)) *
-              100
+              100).toFixed()
           },
           authentikimi
         );
