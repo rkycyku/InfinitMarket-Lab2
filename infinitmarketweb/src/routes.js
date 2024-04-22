@@ -89,7 +89,11 @@ const routes = [
         path: '/admin/mesazhet',
         element: lazy(() => import('./views/admin-dashboard/Mesazhet'))
       },
-
+      {
+        exact: 'true',
+        path: '/admin/porosite',
+        element: lazy(() => import('./views/admin-dashboard/Porosite'))
+      },
       {
         exact: 'true',
         path: '/',
@@ -119,6 +123,11 @@ const routes = [
         exact: true,
         path: '/shporta',
         element: lazy(() => import('./views/Shporta'))
+      },
+      {
+        exact: true,
+        path: '/Fatura/:nrFatures',
+        element: lazy(() => import('./components/Fatura/Fatura'))
       },
       {
         path: '*',

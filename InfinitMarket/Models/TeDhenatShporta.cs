@@ -10,6 +10,7 @@ namespace InfinitMarket.Models
         public int ShportaID { get; set; }
         public int ProduktiID { get; set; }
         public int? SasiaProduktit { get; set; } = 0;
+        public decimal? QmimiPorduktit { get; set; } = 0;
         public DateTime? KohaEVendosjesNeShportes { get; set; }  = DateTime.Now;
 
         [ForeignKey(nameof(ShportaID))]

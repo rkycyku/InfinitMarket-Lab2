@@ -27,5 +27,7 @@ namespace InfinitMarket.Data
         public DbSet<KodiZbritjes> KodiZbritjes { get; set; }
         public DbSet<KategoriteEDetajeve> KategoriteEDetajeve { get; set; }
         public DbSet<TeDhenatEDetajeve> TeDhenatEDetajeve { get; set; }
+        public DbSet<Porosit> Porosit { get; set; }
+        public DbSet<TeDhenatEPorosis> TeDhenatEPorosis { get; set; }
     }
 }

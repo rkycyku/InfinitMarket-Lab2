@@ -133,6 +133,7 @@ namespace InfinitMarket.Controllers.API.Produktet
                     ProduktiID = ProduktiID,
                     SasiaProduktit = 1,
                     ShportaID = shporta.ShportaID,
+                    QmimiPorduktit = TVSHProduktit.QmimiProduktit
                 };
 
                 await _context.TeDhenatShporta.AddAsync(shtoNeShporte);

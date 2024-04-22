@@ -4,6 +4,7 @@ using InfinitMarket.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InfinitMarket.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240422074321_KrijimiITabelesSePorosive")]
+    partial class KrijimiITabelesSePorosive
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -231,23 +233,11 @@ namespace InfinitMarket.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdPorosia"), 1L, 1);
 
-                    b.Property<int?>("AdresaID")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("DataPorosis")
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("IdKlienti")
                         .HasColumnType("int");
-
-                    b.Property<string>("LlojiPageses")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LlojiTransportit")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("QmimiTransportit")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StatusiPorosis")
                         .HasColumnType("nvarchar(max)");
@@ -265,8 +255,6 @@ namespace InfinitMarket.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("IdPorosia");
-
-                    b.HasIndex("AdresaID");
 
                     b.HasIndex("IdKlienti");
 
@@ -399,6 +387,9 @@ namespace InfinitMarket.Migrations
                     b.Property<decimal?>("QmimiProduktit")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<decimal?>("QmimiTotal")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<int?>("SasiaPorositur")
                         .HasColumnType("int");
 
@@ -504,9 +495,6 @@ namespace InfinitMarket.Migrations
 
                     b.Property<int>("ProduktiID")
                         .HasColumnType("int");
-
-                    b.Property<decimal?>("QmimiPorduktit")
-                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int?>("SasiaProduktit")
                         .HasColumnType("int");
@@ -785,15 +773,9 @@ namespace InfinitMarket.Migrations
 
             modelBuilder.Entity("InfinitMarket.Models.Porosit", b =>
                 {
-                    b.HasOne("InfinitMarket.Models.AdresatPerdoruesit", "AdresaDorezimit")
-                        .WithMany()
-                        .HasForeignKey("AdresaID");
-
                     b.HasOne("InfinitMarket.Models.Perdoruesi", "Klienti")
                         .WithMany()
                         .HasForeignKey("IdKlienti");
-
-                    b.Navigation("AdresaDorezimit");
 
                     b.Navigation("Klienti");
                 });
@@ -837,7 +819,7 @@ namespace InfinitMarket.Migrations
             modelBuilder.Entity("InfinitMarket.Models.TeDhenatEPorosis", b =>
                 {
                     b.HasOne("InfinitMarket.Models.Porosit", "Porosia")
-                        .WithMany("TeDhenatEPorosis")
+                        .WithMany()
                         .HasForeignKey("IdPorosia");
 
                     b.HasOne("InfinitMarket.Models.Produkti", "Produkti")
@@ -955,11 +937,6 @@ namespace InfinitMarket.Migrations
             modelBuilder.Entity("InfinitMarket.Models.Perdoruesi", b =>
                 {
                     b.Navigation("TeDhenatPerdoruesit");
-                });
-
-            modelBuilder.Entity("InfinitMarket.Models.Porosit", b =>
-                {
-                    b.Navigation("TeDhenatEPorosis");
                 });
 
             modelBuilder.Entity("InfinitMarket.Models.Produkti", b =>

@@ -90,7 +90,7 @@ const menuItems = {
           title: 'Porosit',
           type: 'item',
           icon: 'feather icon-package',
-          url: '/'
+          url: '/admin/porosite'
         },
         {
           id: 'Klientet',

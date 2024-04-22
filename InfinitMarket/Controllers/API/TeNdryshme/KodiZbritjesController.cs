@@ -33,7 +33,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             return Ok(kodet);
         }
 
-        [Authorize(Roles = "Admin, Menaxher, User")]
+        [AllowAnonymous]
         [HttpGet]
         [Route("GjejKodin")]
         public async Task<IActionResult> GjejKodin(string kodi)

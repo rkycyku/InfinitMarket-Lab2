@@ -47,7 +47,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             return Ok(ContactForm);
         }
 
-        [Authorize(Roles = "Admin, Menaxher, User")]
+        [AllowAnonymous]
         [HttpGet]
         [Route("shfaqMesazhetNgaUseri")]
         public async Task<IActionResult> GetMesazhetUserit(int idUserit)

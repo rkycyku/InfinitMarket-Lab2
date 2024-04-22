@@ -32,6 +32,9 @@ function Checkout(props) {
   const [shporta, setShporta] = useState('');
   const [detajetShporta, setDetajetShporta] = useState([]);
 
+  const [qmimiTransportit, setQmimiTransportit] = useState('');
+  const [llojiTransportit, setLlojiTransportit] = useState('');
+
   const getID = localStorage.getItem('id');
   const navigate = useNavigate();
   const [nrFatures, setNrFatures] = useState(0);
@@ -85,56 +88,22 @@ function Checkout(props) {
     try {
       await axios
         .post(
-          'https://localhost:7285/api/Porosia/vendosPorosine',
+          `https://localhost:7251/api/TeNdryshme/Porosia/VendosPorosine?AspNetUserID=${getID}`,
           {
-            totaliPorosis: props.qmimiTotal,
-            idKlienti: teDhenat.perdoruesi.userId,
-            zbritja: props.zbritja,
-            totaliProdukteve: props.totaliProdukteve
+            llojiTransportit: 'Dergese ne Shtepi',
+            qmimiTransportit: '2'
           },
           authentikimi
         )
         .then((response) => {
+            console.log(response);
           if (response.status === 201 || response.status === 200) {
             setVendosjaPorosisSukses(true);
-            setNrFatures(nrFatures + response.data.idPorosia);
+            setNrFatures(response.data)
           }
-
-          let vendosjetESakta = 0;
-          const totaliPerVendosje = detajetShporta.length;
-
-          detajetShporta.forEach((produkti) => {
-            axios
-              .post(
-                'https://localhost:7285/api/Porosia/vendosTeDhenatPorosise',
-                {
-                  qmimiTotal: produkti.cmimi * produkti.sasia,
-                  sasiaPorositur: produkti.sasia,
-                  idPorosia: response.data.idPorosia,
-                  idProdukti: produkti.id,
-                  qmimiProduktit: produkti.cmimi
-                },
-                authentikimi
-              )
-              .then((r) => {
-                if (r.status === 201 || r.status === 200) {
-                  vendosjetESakta++;
-                  if (vendosjetESakta === totaliPerVendosje) {
-                    setVendosjaTeDhenaveSukses(true);
-                  }
-                }
-              });
-          });
         })
         .finally(() => {
-          setTimeout(() => {
-            if (rregulloUseEffect) {
-              setRregulloUseEffect(false);
-            } else {
-              setVendosjaTeDhenaveSukses(vendosjaTeDhenaveSukses);
-              setVendosjaPorosisSukses(vendosjaPorosisSukses);
-            }
-          }, 0);
+            setPagesaMeSukses(true);
         });
     } catch (e) {
       console.error(e);
@@ -146,12 +115,13 @@ function Checkout(props) {
       return;
     }
 
-    if (vendosjaTeDhenaveSukses && vendosjaPorosisSukses) {
+    if (vendosjaPorosisSukses) {
       setPagesaMeSukses(true);
-    } else if (!vendosjaTeDhenaveSukses || !vendosjaPorosisSukses) {
+    } else if (!vendosjaPorosisSukses) {
       setPagesaDeshtoi(true);
     }
-  }, [vendosjaTeDhenaveSukses, vendosjaPorosisSukses]);
+  }, [vendosjaPorosisSukses]);
+
   return (
     <>
       <h1 style={{ textAlign: 'center', marginBottom: '1em' }}>Konfirmimi Porosis</h1>
@@ -167,7 +137,7 @@ function Checkout(props) {
         />
       )}
       {paguajMeStripe && <PaguajMeStripe />}
-      {pagesaMeSukses === false && pagesaDeshtoi === false && paguajMeStripe === false &&(
+      {pagesaMeSukses === false && pagesaDeshtoi === false && paguajMeStripe === false && (
         <div className="StripeDivMain">
           <div className="detajetPorosia">
             <div className="adresaDorezimit">
@@ -205,7 +175,7 @@ function Checkout(props) {
                 </MDBTypography>
               </div>
             </div>
-            <div className="teDhenatShporta"> 
+            <div className="teDhenatShporta">
               <h3>Detajet e Shportes</h3>
               <div className="d-flex justify-content-between">
                 <MDBTypography tag="h6" className="text-uppercase">
@@ -285,13 +255,13 @@ function Checkout(props) {
             </div>
           </div>
 
-          <div className="stripePagesa" style={{width: "100%"}}>
+          <div className="stripePagesa" style={{ width: '100%' }}>
             <form id="payment-form">
               <div className="adresaDorezimit">
                 <h5>Lloji i Transportit</h5>
-                <Form.Select className='mb-2'>
+                <Form.Select className="mb-2">
                   <option hidden disabled>
-                    Zgjedhni Shtetin
+                    Zgjedhni Llojin e Transportit
                   </option>
                   <option>Dergese ne shtepi - Pa Pagese</option>
                   <option>Dergese ne shtepi - 1.50 €</option>
@@ -299,13 +269,21 @@ function Checkout(props) {
                   <option>Merre ne zyre - Pa Pagese</option>
                 </Form.Select>
                 <div className="d-flex justify-content-between">
-                  <Button onClick={() => navigate("/")}>Vazhdo Blerjen <FontAwesomeIcon icon={faCartArrowDown} /></Button>
-                  
-                  <Button onClick={() => setMbyllPerditesoTeDhenat(false)}>Ndrysho Adresen <FontAwesomeIcon icon={faMapLocationDot} /></Button>
+                  <Button onClick={() => navigate('/')}>
+                    Vazhdo Blerjen <FontAwesomeIcon icon={faCartArrowDown} />
+                  </Button>
+
+                  <Button onClick={() => setMbyllPerditesoTeDhenat(false)}>
+                    Ndrysho Adresen <FontAwesomeIcon icon={faMapLocationDot} />
+                  </Button>
                 </div>
                 <div className="d-flex justify-content-between">
-                  <Button>Paguaj pas Pranimit <FontAwesomeIcon icon={faMoneyBill} /></Button>
-                  <Button onClick={() => setPaguajMeStripe(true)}>Paguaj me Stripe <FontAwesomeIcon icon={faStripe} style={{color: "#0A2540"}}/></Button>
+                  <Button onClick={() => handlePerfundoPorosine()}>
+                    Paguaj pas Pranimit <FontAwesomeIcon icon={faMoneyBill} />
+                  </Button>
+                  <Button onClick={() => setPaguajMeStripe(true)}>
+                    Paguaj me Stripe <FontAwesomeIcon icon={faStripe} style={{ color: '#0A2540' }} />
+                  </Button>
                 </div>
               </div>
             </form>
