@@ -86,8 +86,8 @@ namespace InfinitMarket.Areas.Identity.Pages.Account
             public string Email { get; set; }
 
             [Required(ErrorMessage = "Ju lutem shenoni Fjalekalimin!")]
-            [StringLength(100, ErrorMessage = "{0} duhet te jetese se paku {2} dhe me se shumti {1} karaktere i gjate.", MinimumLength = 6)]
             [DataType(DataType.Password)]
+            [ValidimiIFjalekalimit(6, 100, true, true, true, true, ErrorMessage = "Formati i fjalekalimit eshte gabim!")]
             [Display(Name = "Fjalekalimi")]
             public string Password { get; set; }
 
@@ -185,9 +185,26 @@ namespace InfinitMarket.Areas.Identity.Pages.Account
                     await _context.TeDhenatPerdoruesit.AddAsync(teDhenatPerdoruesit);
                     await _context.SaveChangesAsync();
 
+                    AdresatPerdoruesit adresat = new()
+                    {
+                        PerdoruesiID = perdoruesi.UserID,
+                        Adresa = Input.Adresa,
+                        Qyteti = Input.Qyteti,
+                        Email = Input.Email,
+                        Emri = Input.Emri,
+                        Mbiemri = Input.Mbiemri,
+                        NrKontaktit = Input.NrTelefonit,
+                        Shteti = Input.ShtetiZgjedhur,
+                        ZipKodi = Input.ZipKodi
+                    };
+
+                    await _context.AdresatPerdoruesit.AddAsync(adresat);
+                    await _context.SaveChangesAsync();
+
                     Shporta shporta = new()
                     {
                        PerdoruesiID = perdoruesi.UserID,
+                       AdresaPorosisID = adresat.AdresaID
                     };
 
                     await _context.Shporta.AddAsync(shporta);

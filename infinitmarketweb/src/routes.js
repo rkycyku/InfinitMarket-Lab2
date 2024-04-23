@@ -130,6 +130,11 @@ const routes = [
         element: lazy(() => import('./components/Fatura/Fatura'))
       },
       {
+        exact: true,
+        path: '/Dashboard/PorositEMia',
+        element: lazy(() => import('./views/dashboard/PorositeUserit'))
+      },
+      {
         path: '*',
         exact: 'true',
         element: () => <Navigate to={BASE_URL} />

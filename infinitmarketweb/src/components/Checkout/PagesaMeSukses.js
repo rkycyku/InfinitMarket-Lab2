@@ -15,6 +15,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 export default function PagesaMeSukses(props) {
   const [perditeso, setPerditeso] = useState('');
@@ -179,7 +180,11 @@ export default function PagesaMeSukses(props) {
                     {fatura && fatura.zbritja === 0.0 && (
                       <p className="text-muted mb-0">
                         <span className="fw-bold me-2">Totali pa TVSH:</span>{' '}
-                        {fatura && parseFloat(fatura.totali8TVSH + fatura.totali18TVSH - (fatura.totali18TVSH * 0.152542 + fatura.totali8TVSH * 0.074074)).toFixed(2)} €
+                        {fatura &&
+                          parseFloat(
+                            fatura.totali8TVSH + fatura.totali18TVSH - (fatura.totali18TVSH * 0.152542 + fatura.totali8TVSH * 0.074074)
+                          ).toFixed(2)}{' '}
+                        €
                       </p>
                     )}
                   </div>
@@ -207,25 +212,25 @@ export default function PagesaMeSukses(props) {
                       </p>
                     </div>
                   )}
-                    <div className="d-flex justify-content-between">
-                      <p className="text-muted mb-0"></p>
-                      <p className="text-muted mb-0">
-                        <span className="fw-bold me-2">Lloji Transporti:</span> {fatura.llojiTransportit}
-                      </p>
-                    </div>
-                    <div className="d-flex justify-content-between">
-                      <p className="text-muted mb-0"></p>
-                      <p className="text-muted mb-0">
-                        <span className="fw-bold me-2">Qmimi Transporti:</span> {parseFloat(fatura.qmimiTransportit).toFixed(2)} €
-                      </p>
-                    </div>
-                    <div className="d-flex justify-content-between mb-5">
-                      <p className="text-muted mb-0"></p>
-                      <p className="text-muted mb-0">
-                        <span className="fw-bold me-2">Pagesa:</span>{' '}
-                        {fatura.llojiPageses == 'Cash' ? 'Paguaj pas pranimit' : fatura.llojiPageses}
-                      </p>
-                    </div>
+                  <div className="d-flex justify-content-between">
+                    <p className="text-muted mb-0"></p>
+                    <p className="text-muted mb-0">
+                      <span className="fw-bold me-2">Lloji Transporti:</span> {fatura.llojiTransportit}
+                    </p>
+                  </div>
+                  <div className="d-flex justify-content-between">
+                    <p className="text-muted mb-0"></p>
+                    <p className="text-muted mb-0">
+                      <span className="fw-bold me-2">Qmimi Transporti:</span> {parseFloat(fatura.qmimiTransportit).toFixed(2)} €
+                    </p>
+                  </div>
+                  <div className="d-flex justify-content-between mb-5">
+                    <p className="text-muted mb-0"></p>
+                    <p className="text-muted mb-0">
+                      <span className="fw-bold me-2">Pagesa:</span>{' '}
+                      {fatura.llojiPageses == 'Cash' ? 'Paguaj pas pranimit' : fatura.llojiPageses}
+                    </p>
+                  </div>
                 </MDBCardBody>
                 <MDBCardFooter
                   className="border-0 px-4 py-5"
@@ -248,22 +253,18 @@ export default function PagesaMeSukses(props) {
                 </MDBCardFooter>
               </MDBCard>
               <div className="butonatNeQender">
-                <Link to={`/Fatura/${nrFatures}`}>
-                  <button className="button" name="complete" type="submit" value="Perfundo Porosin ">
-                    Printo Faturen
-                  </button>
-                </Link>
+                <Button name="complete" type="submit" value="Perfundo Porosin" onClick={() => navigate(`/Fatura/${nrFatures}`)}>
+                  Printo Faturen
+                </Button>
                 {!props.handleMbyll && (
-                  <Link to={'/dashboard'}>
-                    <button className="button" name="complete" type="submit" value="Perfundo Porosin ">
-                      Mbyll Detajet
-                    </button>
-                  </Link>
+                  <Button name="complete" type="submit" value="Perfundo Porosin" onClick={() => navigate('/Dashboard')}>
+                    Mbyll Detajet
+                  </Button>
                 )}
                 {props.handleMbyll && (
-                  <button className="button" name="complete" type="submit" onClick={() => props.handleMbyll()}>
+                  <Button name="complete" type="submit" onClick={() => props.handleMbyll()}>
                     Mbyll Detajet
-                  </button>
+                  </Button>
                 )}
               </div>
             </MDBCol>

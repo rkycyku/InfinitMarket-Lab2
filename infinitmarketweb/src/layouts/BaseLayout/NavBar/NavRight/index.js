@@ -62,15 +62,15 @@ const NavRight = () => {
   const handleSignOut = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('id');
-    setPerditeso(Date.now())
+    setPerditeso(Date.now());
   };
 
   return (
     <React.Fragment>
       <ListGroup as="ul" bsPrefix=" " className="navbar-nav ml-auto" id="navbar-right">
-      <ListGroup.Item as="li" bsPrefix=" " className="nav-item">
+        <ListGroup.Item as="li" bsPrefix=" " className="nav-item">
           <Link to="/shporta">
-          <i className="icon feather icon-shopping-cart" />
+            <i className="icon feather icon-shopping-cart" />
           </Link>
         </ListGroup.Item>
         <ListGroup.Item as="li" bsPrefix=" ">
@@ -80,7 +80,12 @@ const NavRight = () => {
             </Dropdown.Toggle>
             <Dropdown.Menu align="end" className="profile-notification">
               <div className="pro-head">
-                <span>{teDhenat && teDhenat.emri} {teDhenat && teDhenat.mbiemri}</span>
+                <Link to="/Dashboard">
+                  <span style={{color:"white"}}>
+                    {teDhenat && teDhenat.emri} {teDhenat && teDhenat.mbiemri}
+                  </span>
+                </Link>
+
                 <Link to="/" className="dud-logout" title="Logout" onClick={handleSignOut}>
                   <i className="feather icon-log-out" />
                 </Link>
@@ -92,7 +97,7 @@ const NavRight = () => {
                   </Link>
                 </ListGroup.Item>
                 <ListGroup.Item as="li" bsPrefix=" ">
-                  <Link to="#" className="dropdown-item">
+                  <Link to="/Dashboard/PorositEMia" className="dropdown-item">
                     <i className="feather icon-shopping-cart" /> Porosite
                   </Link>
                 </ListGroup.Item>

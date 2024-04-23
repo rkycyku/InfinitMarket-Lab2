@@ -51,10 +51,17 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
         [AllowAnonymous]
         [HttpGet]
         [Route("ShfaqPorositeKlientit")]
-        public async Task<IActionResult> ShfaqPorositeKlientit(int idPerdoruesi)
+        public async Task<IActionResult> ShfaqPorositeKlientit(string idPerdoruesi)
         {
-            List<Porosit> porosit = await _context.Porosit
-                .Where(p => p.IdKlienti == idPerdoruesi)
+            var perdoruesi = await _context.Perdoruesit.Where(x => x.AspNetUserId == idPerdoruesi).FirstOrDefaultAsync();
+
+            if(perdoruesi == null)
+            {
+                return NotFound();
+            }
+
+            var porosit = await _context.Porosit
+                .Where(p => p.IdKlienti == perdoruesi.UserID)
                 .OrderByDescending(p => p.IdPorosia)
                 .ToListAsync();
 

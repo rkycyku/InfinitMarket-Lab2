@@ -261,9 +261,26 @@ namespace InfinitMarket.Areas.Identity.Pages.Account
                         await _context.TeDhenatPerdoruesit.AddAsync(teDhenatPerdoruesit);
                         await _context.SaveChangesAsync();
 
+                        AdresatPerdoruesit adresat = new()
+                        {
+                            PerdoruesiID = perdoruesi.UserID,
+                            Adresa = Input.Adresa,
+                            Qyteti = Input.Qyteti,
+                            Email = Input.Email,
+                            Emri = Input.Emri,
+                            Mbiemri = Input.Mbiemri,
+                            NrKontaktit = Input.NrTelefonit,
+                            Shteti = Input.ShtetiZgjedhur,
+                            ZipKodi = Input.ZipKodi
+                        };
+
+                        await _context.AdresatPerdoruesit.AddAsync(adresat);
+                        await _context.SaveChangesAsync();
+
                         Shporta shporta = new()
                         {
                             PerdoruesiID = perdoruesi.UserID,
+                            AdresaPorosisID = adresat.AdresaID
                         };
 
                         await _context.Shporta.AddAsync(shporta);

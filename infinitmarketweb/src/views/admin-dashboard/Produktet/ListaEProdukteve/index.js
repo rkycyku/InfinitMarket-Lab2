@@ -204,7 +204,7 @@ function TabelaEProdukteve() {
         <LargoProduktin
           id={produktIdToDelete}
           largo={handleCloseLargoModal}
-          perditesoTeDhenat={fetchData}
+          perditesoTeDhenat={() => setPerditeso(Date.now())}
           shfaqmesazhin={() => setShfaqMesazhin(true)}
           setTipiMesazhit={setTipiMesazhit}
           setPershkrimiMesazhit={setPershkrimiMesazhit}
