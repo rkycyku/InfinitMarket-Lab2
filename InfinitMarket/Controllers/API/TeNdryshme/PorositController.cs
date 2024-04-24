@@ -127,7 +127,17 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
         [Route("ShfaqTeDhenatEPorosis")]
         public async Task<IActionResult> ShfaqTeDhenatEPorosis(int nrPorosis)
         {
-            var porsia = await _context.TeDhenatEPorosis.Where(x => x.IdPorosia == nrPorosis).ToListAsync();
+            var porsia = await _context.TeDhenatEPorosis.Include(x => x.Produkti).ThenInclude(x => x.TeDhenatProduktit).Where(x => x.IdPorosia == nrPorosis).Select(p => new
+            {
+                p.IdDetajet,
+                p.IdPorosia,
+                p.SasiaPorositur,
+                p.IdProdukti,
+                p.QmimiProduktit,
+                p.Produkti.EmriProduktit,
+                p.Produkti.TeDhenatProduktit.llojiTVSH
+            }).ToListAsync();
+
             return Ok(porsia);
         }
 
@@ -179,7 +189,21 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
                 produkti.DataPerditsimit = DateTime.Now;
 
                 await _context.SaveChangesAsync();
+
+                _context.TeDhenatShporta.Remove(produktiNeShporte);
+                await _context.SaveChangesAsync();
             }
+
+            shporta.TotaliProdukteveNeShporte = 0;
+            shporta.KodiZbritjesID = "NukKaZbritje";
+            shporta.DataEFunditEPerditesimit = DateTime.Now;
+            shporta.TotProd8TVSH = 0;
+            shporta.TotProd18TVSH = 0;
+            shporta.Totali8TVSH = 0;
+            shporta.Totali18TVSH = 0;
+
+            _context.Shporta.Update(shporta);
+            await _context.SaveChangesAsync();
 
             return Ok(porosia.IdPorosia);
         }

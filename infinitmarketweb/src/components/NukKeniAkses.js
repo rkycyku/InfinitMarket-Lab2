@@ -10,8 +10,8 @@ function NukKeniAkses(props) {
         <div className="teDhenatAplikimit">
           <div className="teDhenatAplikimitHeader">
             <img
-              src={`${process.env.PUBLIC_URL}/Ubtlogo.png`}
-              style={{ width: "100px", height: "auto", marginTop: "0.5em" }}
+              src={`${process.env.PUBLIC_URL}/img/InfiniteMarketLogo/default_crop.png`}
+              style={{  marginTop: "0.5em" }}
             />
             <h4>Infinit Market - We don't have any limit. We are Infinit</h4>
             <h1 style={{marginTop: "2em"}}>403 - Nuk keni akses per kete pjese</h1>

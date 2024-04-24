@@ -95,6 +95,40 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             return Ok(emriUnikFotos);
         }
 
+        [Authorize(Roles = "Admin, Menaxher")]
+        [HttpPost]
+        [Route("PerditesoTeDhenatBiznesit")]
+        public async Task<IActionResult> PerditesoTeDhenatBiznesit(IFormFile foto, string logoVjeter)
+        {
+            if (foto == null || foto.Length == 0)
+            {
+                return BadRequest("Ju lutem vendosni foton");
+            }
+
+            var follderi = Path.Combine("..", "infinitmarketweb", "public", "img", "web");
+
+            if (!logoVjeter.Equals("PaLogo.png"))
+            {
+                var fotoVjeter = Path.Combine(follderi, logoVjeter);
+
+                if (System.IO.File.Exists(fotoVjeter))
+                {
+                    System.IO.File.Delete(fotoVjeter);
+                }
+            }
+
+            var emriUnikFotos = GjeneroEmrinUnikFotos(foto.FileName);
+
+            var fotoERe = Path.Combine(follderi, emriUnikFotos);
+
+            using (var stream = new FileStream(fotoERe, FileMode.Create))
+            {
+                await foto.CopyToAsync(stream);
+            }
+
+            return Ok(emriUnikFotos);
+        }
+
         private string GjeneroEmrinUnikFotos(string emriFotos)
         {
             string emriUnikIFotos = Guid.NewGuid().ToString("N") + Path.GetExtension(emriFotos);

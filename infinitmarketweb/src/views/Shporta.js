@@ -330,7 +330,7 @@ export default function Shporta() {
                                 onChange={handlePromoCodeChange}
                               />
                               {shporta && shporta.kodiZbritjes && shporta.kodiZbritjes.kodi == 'NukKaZbritje' ? (
-                                <Button onClick={() => KontrolloKodin()}>
+                                <Button onClick={() => KontrolloKodin()} disabled={shporta && shporta.totaliProdukteveNeShporte == 0}>
                                   <FontAwesomeIcon icon={faCheck} />
                                 </Button>
                               ) : (
@@ -403,7 +403,7 @@ export default function Shporta() {
                                 €
                               </MDBTypography>
                             </div>
-                              <Button onClick={() => setCheckout(true)}>
+                              <Button disabled={shporta && shporta.totaliProdukteveNeShporte == 0} onClick={() => setCheckout(true)}>
                                 Kalo tek Pagesa
                               </Button>
                           </div>

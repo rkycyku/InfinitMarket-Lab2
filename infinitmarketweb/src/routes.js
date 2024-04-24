@@ -135,6 +135,21 @@ const routes = [
         element: lazy(() => import('./views/dashboard/PorositeUserit'))
       },
       {
+        exact: true,
+        path: '/Admin/Biznesi/TeDhenatEBiznesit',
+        element: lazy(() => import('./views/admin-dashboard/Biznesi/TeDhenatBiznesit'))
+      },
+      {
+        exact: true,
+        path: '/Admin/Biznesi/Bankat',
+        element: lazy(() => import('./views/admin-dashboard/Biznesi/TeDhenatBiznesit/Bankat'))
+      },
+      {
+        exact: true,
+        path: '/NukKeniAkses',
+        element: lazy(() => import('./components/NukKeniAkses'))
+      },
+      {
         path: '*',
         exact: 'true',
         element: () => <Navigate to={BASE_URL} />

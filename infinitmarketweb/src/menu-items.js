@@ -86,6 +86,26 @@ const menuItems = {
           ]
         },
         {
+          id: 'Biznesi',
+          title: 'Biznesi',
+          type: 'collapse',
+          icon: 'feather icon-info',
+          children: [
+            {
+              id: 'TeDhenatEBiznesit',
+              title: 'Te Dhenat E Biznesit',
+              type: 'item',
+              url: '/Admin/Biznesi/TeDhenatEBiznesit'
+            },
+            {
+              id: 'Bankat',
+              title: 'Bankat',
+              type: 'item',
+              url: '/Admin/Biznesi/Bankat'
+            },
+          ]
+        },
+        {
           id: 'Porosit',
           title: 'Porosit',
           type: 'item',

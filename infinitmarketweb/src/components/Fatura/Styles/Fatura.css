@@ -1,4 +1,4 @@
-.fatura *, .PjesaNenshkrimeve * {
+.fatura *{
   /* styles specific to elements inside .fatura */
   margin: 0;
   padding: 0;
@@ -9,7 +9,7 @@
   font-size: 18pt;
 }
 
-.fatura, .PjesaNenshkrimeve {
+.fatura{
   margin: 2em;
 }
 
@@ -36,8 +36,11 @@
 }
 
 .data {
-  text-align: end;
+  display: flex;
   width: 100%;
+  justify-content: flex-start;
+  align-items: flex-end;
+  flex-direction: column;
 }
 
 .tabelaETeDhenaveProduktit {
@@ -80,22 +83,22 @@ td {
   align-items: flex-end;
 }
 
-.fatura h1, .PjesaNenshkrimeve h1 {
+.fatura h1 {
   font-size: 30pt;
 }
 
-.fatura h2, .PjesaNenshkrimeve h2 {
+.fatura  h2 {
   font-size: 25pt;
 }
 
-.fatura h3, .PjesaNenshkrimeve h3 {
+.fatura h3 {
   font-size: 20pt;
 }
 
 .nenshkrimet {
   display: flex;
   justify-content: space-between;
-  margin-top: 18em;
+  margin-top: 10em;
 }
 
 .nenshkrimet2Faqe {
@@ -119,3 +122,22 @@ td {
 .nenshkrimi span:first-child {
   margin-bottom: 0.5em;
 }
+
+.barkodi{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.teDhenatEKlientit {
+  width: 50%;
+  border: 1px solid black;
+  display: flex;
+  justify-content: flex-end; 
+  align-items: flex-start; 
+  flex-direction: column;
+  align-self: flex-end; 
+  padding: 1em;
+}
+

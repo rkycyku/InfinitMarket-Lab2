@@ -1,449 +1,487 @@
-import "./Fatura.css";
-import axios from "axios";
-import { useState, useEffect, useRef } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
-import Barkodi from "./Barkodi";
-
+import './Styles/Fatura.css';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+import DetajeFatura from './DetajeFatura';
+import { MDBBtn } from 'mdb-react-ui-kit';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft, faDownload } from '@fortawesome/free-solid-svg-icons';
+import { Navigate } from 'react-router-dom';
 
 function Fatura(props) {
-    const [perditeso, setPerditeso] = useState("");
-    const [fatura, setFatura] = useState([]);
-    const [vendosFature, setVendosFature] = useState(false);
-    const [teDhenatBiznesit, setTeDhenatBiznesit] = useState([]);
-    const [teDhenat, setTeDhenat] = useState();
+  const { nrFatures } = useParams();
 
-    const { nrFatures } = useParams();
+  const [perditeso, setPerditeso] = useState('');
+  const [vendosFature, setVendosFature] = useState(false);
+  const [teDhenatBiznesit, setTeDhenatBiznesit] = useState([]);
+  const [teDhenat, setTeDhenat] = useState([]);
 
-    const dataPorosise = new Date(fatura.dataPorosis);
-    const dita = dataPorosise.getDate().toString().padStart(2, '0');
-    const muaji = (dataPorosise.getMonth() + 1).toString().padStart(2, '0');
-    const viti = dataPorosise.getFullYear().toString().slice(-2);
-    const dataMberritjes = new Date(dataPorosise.setDate(dataPorosise.getDate() + 4));
-    const skadimiGarancionit = new Date(dataPorosise.setDate(dataPorosise.getDate() + 365));
+  const [meShumeSe15, setMeShumeSe15] = useState(false);
+  const [meShumeSe30, setMeShumeSe30] = useState(false);
+  const [meShumeSe45, setMeShumeSe45] = useState(false);
+  const [meShumeSe60, setMeShumeSe60] = useState(false);
+  const [meShumeSe75, setMeShumeSe75] = useState(false);
+  const [meShumeSe90, setMeShumeSe90] = useState(false);
 
-    const barkodi = `${"INF"}-${dita}${muaji}${viti}-${fatura.idKlienti}-${nrFatures}`;
-    // const barkodi = `${teDhenatBiznesit && teDhenatBiznesit.shkurtesaEmritBiznesit}-${dita}${muaji}${viti}-${fatura.idKlienti}-${nrFatures}`;
+  const [nrFaqeve, setNrFaqeve] = useState(1);
 
-    const getID = localStorage.getItem("id");
-    const navigate = useNavigate();
+  const [teDhenatFat, setteDhenatFat] = useState('');
 
-    const getToken = localStorage.getItem("token");
+  const [kaAkses, setKaAkses] = useState(true);
 
-    const authentikimi = {
-        headers: {
-            Authorization: `Bearer ${getToken}`,
-        },
+  const dataPorosise = new Date(teDhenatFat && teDhenatFat.dataPorosis);
+  const dita = dataPorosise.getDate().toString().padStart(2, '0');
+  const muaji = (dataPorosise.getMonth() + 1).toString().padStart(2, '0');
+  const viti = dataPorosise.getFullYear().toString().slice(-2);
+
+  const barkodi = `${teDhenatBiznesit && teDhenatBiznesit.shkurtesaEmritBiznesit}-${dita}${muaji}${viti}-${
+    teDhenatFat && teDhenatFat.idKlienti
+  }-${teDhenatFat && teDhenatFat.idPorosia}`;
+
+  const getID = localStorage.getItem('id');
+
+  const navigate = useNavigate();
+
+  const getToken = localStorage.getItem('token');
+
+  const authentikimi = {
+    headers: {
+      Authorization: `Bearer ${getToken}`
+    }
+  };
+
+  useEffect(() => {
+    if (getID) {
+      const vendosFature = async () => {
+        try {
+          const produktet = await axios.get(
+            `https://localhost:7251/api/TeNdryshme/Porosia/ShfaqTeDhenatEPorosis?nrPorosis=${nrFatures}`,
+            authentikimi
+          );
+          const teDhenat = await axios.get(
+            `https://localhost:7251/api/TeNdryshme/Porosia/ShfaqPorosineNgaID?nrFatures=${nrFatures}`,
+            authentikimi
+          );
+
+          console.log(teDhenat.data);
+          console.log(produktet.data);
+          setteDhenatFat(teDhenat.data);
+
+          if (produktet.data.length >= 15) {
+            setMeShumeSe15(true);
+            setNrFaqeve(2);
+          }
+
+          if (produktet.data.length >= 40) {
+            setMeShumeSe30(true);
+            setNrFaqeve(3);
+          }
+
+          if (produktet.data.length >= 65) {
+            setMeShumeSe45(true);
+            setNrFaqeve(4);
+          }
+
+          if (produktet.data.length >= 90) {
+            setMeShumeSe60(true);
+            setNrFaqeve(5);
+          }
+          if (produktet.data.length >= 115) {
+            setMeShumeSe75(true);
+            setNrFaqeve(6);
+          }
+          if (produktet.data.length >= 140) {
+            setMeShumeSe90(true);
+            setNrFaqeve(7);
+          }
+
+          setVendosFature(true);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+
+      vendosFature();
+    } else {
+      navigate('/login');
+    }
+  }, [perditeso]);
+
+  useEffect(() => {
+    const vendosTeDhenatBiznesit = async () => {
+      try {
+        const teDhenat = await axios.get('https://localhost:7251/api/Biznesi/TeDhenatBiznesit/ShfaqTeDhenat', authentikimi);
+        setTeDhenatBiznesit(teDhenat.data);
+      } catch (err) {
+        console.log(err);
+      }
     };
 
-    useEffect(() => {
-        if (getID) {
-            const vendosFature = async () => {
-                try {
-                    const fatura = await axios.get(
-                        `https://localhost:7251/api/TeNdryshme/Porosia/ShfaqPorosineNgaID?nrFatures=${nrFatures}`, authentikimi
-                    );
-                    setFatura(fatura.data);
+    vendosTeDhenatBiznesit();
+  }, [getID]);
 
-                    console.log(fatura)
+  useEffect(() => {
+    if (getID) {
+      const vendosTeDhenatUserit = async () => {
+        try {
+          const teDhenatUser = await axios.get(`https://localhost:7251/api/Perdoruesi/shfaqSipasID?idUserAspNet=${getID}`, authentikimi);
+          setTeDhenat(teDhenatUser.data);
+          if (!teDhenatUser.data.rolet.includes('Admin', 'Menaxher')) {
+            setKaAkses(false);
+          }
+          console.log(teDhenatUser.data);
+        } catch (err) {
+          console.log(err);
+        }
+      };
 
-                    if (fatura.status == "200") {
-                        setVendosFature(true);
-                    }
-                } catch (err) {
-                    console.log(err);
-                }
-            }
+      vendosTeDhenatUserit();
+    } else {
+      navigate('/login');
+    }
+  }, [getID]);
 
-            vendosFature();
+  useEffect(() => {
+    console.log(teDhenat);
+    if (teDhenat) {
+      if (!kaAkses) {
+        navigate('/dashboard');
+      } else {
+        if (vendosFature === true) {
+          // FaturaPerRuajtje();
+        }
+      }
+    }
+  }, [vendosFature]);
+
+  function FaturaPerRuajtje() {
+    const mePakSe25Ref = document.querySelector('.mePakSe25');
+    const meShumeSe15Ref = document.querySelector('.meShumeSe15');
+    const meShumeSe30Ref = document.querySelector('.meShumeSe30');
+    const meShumeSe45Ref = document.querySelector('.meShumeSe45');
+    const meShumeSe60Ref = document.querySelector('.meShumeSe60');
+    const meShumeSe75Ref = document.querySelector('.meShumeSe75');
+    const meShumeSe90Ref = document.querySelector('.meShumeSe90');
+
+    html2canvas(mePakSe25Ref, { useCORS: true })
+      .then((invoiceCanvas) => {
+        var contentWidth = invoiceCanvas.width;
+        var contentHeight = invoiceCanvas.height;
+        var pageHeight = (contentWidth / 592.28) * 841.89;
+        var leftHeight = contentHeight;
+        var position = 0;
+        var imgWidth = 555.28;
+        var imgHeight = (imgWidth / contentWidth) * contentHeight;
+        var invoicePageData = invoiceCanvas.toDataURL('image/jpeg', 1.0);
+        var pdf = new jsPDF('', 'pt', 'a4');
+
+        if (leftHeight < pageHeight) {
+          pdf.addImage(invoicePageData, 'JPEG', 20, 0, imgWidth, imgHeight);
         } else {
-            navigate("/login");
-        }
-    }, [perditeso]);
-
-    useEffect(() => {
-        if (teDhenat && fatura) {
-            if (!teDhenat.rolet.includes("Admin", "Menaxher") && teDhenat.perdoruesi.userId !== fatura.idKlienti) {
-                navigate("/dashboard")
-            }
-            else {
-                if (vendosFature === true) {
-                    FaturaPerRuajtje();
-                }
-            }
-        }
-    }, [teDhenat, vendosFature])
-
-    useEffect(() => {
-        const vendosTeDhenatBiznesit = async () => {
-            try {
-                const teDhenat = await axios.get(
-                    "https://localhost:7285/api/TeDhenatBiznesit/ShfaqTeDhenat", authentikimi
-                );
-                setTeDhenatBiznesit(teDhenat.data);
-            } catch (err) {
-                console.log(err);
-            }
+          while (leftHeight > 0) {
+            pdf.addImage(invoicePageData, 'JPEG', 20, position, imgWidth, imgHeight);
+            leftHeight -= pageHeight;
+            position -= 841.89;
+          }
         }
 
-        vendosTeDhenatBiznesit();
-    }, [perditeso]);
-
-    useEffect(() => {
-        if (getID) {
-            const vendosTeDhenatUserit = async () => {
-                try {
-                    const teDhenatUser = await axios.get(
-                        `https://localhost:7251/api/Perdoruesi/shfaqSipasID?idUserAspNet=${getID}`, authentikimi
-                    );
-                    setTeDhenat(teDhenatUser.data);
-
-                } catch (err) {
-                    console.log(err);
-                }
-            }
-
-            vendosTeDhenatUserit();
-        } else {
-            navigate("/login");
+        if (!meShumeSe15) {
+          ruajFaturen(pdf);
         }
-    }, [perditeso]);
 
-    function FaturaPerRuajtje() {
-        const FaturaRef = document.querySelector('.fatura');
-        const PjesaNenshkrimeveRef = document.querySelector('.PjesaNenshkrimeve');
+        if (meShumeSe15) {
+          html2canvas(meShumeSe15Ref, { useCORS: true })
+            .then((meShumeSe15Canvas) => {
+              var meShumeSe15Width = meShumeSe15Canvas.width;
+              var meShumeSe15Height = meShumeSe15Canvas.height;
+              var meShumeSe15PageHeight = (meShumeSe15Width / 592.28) * 841.89;
+              var meShumeSe15LeftHeight = meShumeSe15Height;
+              var meShumeSe15Position = 0;
+              var meShumeSe15ImgWidth = 555.28;
+              var meShumeSe15ImgHeight = (meShumeSe15ImgWidth / meShumeSe15Width) * meShumeSe15Height;
+              var meShumeSe15PageData = meShumeSe15Canvas.toDataURL('image/jpeg', 1.0);
 
-        html2canvas(FaturaRef, { useCORS: true })
-            .then((invoiceCanvas) => {
-                var contentWidth = invoiceCanvas.width;
-                var contentHeight = invoiceCanvas.height;
-                var pageHeight = (contentWidth / 592.28) * 841.89;
-                var leftHeight = contentHeight;
-                var position = 0;
-                var imgWidth = 555.28;
-                var imgHeight = (imgWidth / contentWidth) * contentHeight;
-                var invoicePageData = invoiceCanvas.toDataURL('image/jpeg', 1.0);
-                var pdf = new jsPDF('', 'pt', 'a4');
-
-                if (leftHeight < pageHeight) {
-                    pdf.addImage(invoicePageData, 'JPEG', 20, 0, imgWidth, imgHeight);
-                } else {
-                    while (leftHeight > 0) {
-                        pdf.addImage(invoicePageData, 'JPEG', 20, position, imgWidth, imgHeight);
-                        leftHeight -= pageHeight;
-                        position -= 841.89;
-                        if (leftHeight > 0) {
-                            pdf.addPage();
-                        }
-                    }
+              if (meShumeSe15LeftHeight < meShumeSe15PageHeight) {
+                pdf.addPage();
+                pdf.addImage(meShumeSe15PageData, 'JPEG', 20, 0, meShumeSe15ImgWidth, meShumeSe15ImgHeight);
+              } else {
+                while (meShumeSe15LeftHeight > 0) {
+                  pdf.addPage();
+                  pdf.addImage(meShumeSe15PageData, 'JPEG', 20, meShumeSe15Position, meShumeSe15ImgWidth, meShumeSe15ImgHeight);
+                  meShumeSe15LeftHeight -= meShumeSe15PageHeight;
+                  meShumeSe15Position -= 841.89;
                 }
+              }
 
-                if (PjesaNenshkrimeveRef) {
-                    html2canvas(PjesaNenshkrimeveRef, { useCORS: true })
-                        .then((PjesaNenshkrimeveCanvas) => {
-                            var PjesaNenshkrimeveWidth = PjesaNenshkrimeveCanvas.width;
-                            var PjesaNenshkrimeveHeight = PjesaNenshkrimeveCanvas.height;
-                            var PjesaNenshkrimevePageHeight = (PjesaNenshkrimeveWidth / 592.28) * 841.89;
-                            var PjesaNenshkrimeveLeftHeight = PjesaNenshkrimeveHeight;
-                            var PjesaNenshkrimevePosition = 0;
-                            var PjesaNenshkrimeveImgWidth = 555.28;
-                            var PjesaNenshkrimeveImgHeight = (PjesaNenshkrimeveImgWidth / PjesaNenshkrimeveWidth) * PjesaNenshkrimeveHeight;
-                            var PjesaNenshkrimevePageData = PjesaNenshkrimeveCanvas.toDataURL('image/jpeg', 1.0);
-
-                            if (PjesaNenshkrimeveLeftHeight < PjesaNenshkrimevePageHeight) {
-                                pdf.addPage();
-                                pdf.addImage(PjesaNenshkrimevePageData, 'JPEG', 20, 0, PjesaNenshkrimeveImgWidth, PjesaNenshkrimeveImgHeight);
-                            } else {
-                                while (PjesaNenshkrimeveLeftHeight > 0) {
-                                    pdf.addPage();
-                                    pdf.addImage(PjesaNenshkrimevePageData, 'JPEG', 20, PjesaNenshkrimevePosition, PjesaNenshkrimeveImgWidth, PjesaNenshkrimeveImgHeight);
-                                    PjesaNenshkrimeveLeftHeight -= PjesaNenshkrimevePageHeight;
-                                    PjesaNenshkrimevePosition -= 841.89;
-                                    if (PjesaNenshkrimeveLeftHeight > 0) {
-                                        pdf.addPage();
-                                    }
-                                }
-                            }
-
-                            ruajFaturen(pdf);
-                        })
-                        .catch((error) => {
-                            ruajFaturen(pdf);
-                        });
-                } else {
-                    ruajFaturen(pdf);
-                }
+              if (!meShumeSe30) {
+                ruajFaturen(pdf);
+              }
             })
             .catch((error) => {
-                console.error(error);
+              ruajFaturen(pdf);
             });
-    }
+        }
+        if (meShumeSe30) {
+          html2canvas(meShumeSe30Ref, { useCORS: true })
+            .then((meShumeSe30Canvas) => {
+              var meShumeSe30Width = meShumeSe30Canvas.width;
+              var meShumeSe30Height = meShumeSe30Canvas.height;
+              var meShumeSe30PageHeight = (meShumeSe30Width / 592.28) * 841.89;
+              var meShumeSe30LeftHeight = meShumeSe30Height;
+              var meShumeSe30Position = 0;
+              var meShumeSe30ImgWidth = 555.28;
+              var meShumeSe30ImgHeight = (meShumeSe30ImgWidth / meShumeSe30Width) * meShumeSe30Height;
+              var meShumeSe30PageData = meShumeSe30Canvas.toDataURL('image/jpeg', 1.0);
 
-    function ruajFaturen(pdf) {
-        var klienti = (fatura ? fatura.emri + " " + fatura.mbiemri : "");
-        var dataFatures = (fatura ? new Date(fatura.dataPorosis).toLocaleDateString('en-GB', { dateStyle: 'short' }) : "");
+              if (meShumeSe30LeftHeight < meShumeSe30PageHeight) {
+                pdf.addPage();
+                pdf.addImage(meShumeSe30PageData, 'JPEG', 20, 0, meShumeSe30ImgWidth, meShumeSe30ImgHeight);
+              } else {
+                while (meShumeSe30LeftHeight > 0) {
+                  pdf.addPage();
+                  pdf.addImage(meShumeSe30PageData, 'JPEG', 20, meShumeSe30Position, meShumeSe30ImgWidth, meShumeSe30ImgHeight);
+                  meShumeSe30LeftHeight -= meShumeSe30PageHeight;
+                  meShumeSe30Position -= 841.89;
+                }
+              }
 
-        pdf.save(klienti + " - " + barkodi + " - " + dataFatures + ".pdf");
-        navigate("/dashboard");
-    }
+              if (!meShumeSe45) {
+                ruajFaturen(pdf);
+              }
+            })
+            .catch((error) => {
+              ruajFaturen(pdf);
+            });
+        }
+        if (meShumeSe45) {
+          html2canvas(meShumeSe45Ref, { useCORS: true })
+            .then((meShumeSe45Canvas) => {
+              var meShumeSe45Width = meShumeSe45Canvas.width;
+              var meShumeSe45Height = meShumeSe45Canvas.height;
+              var meShumeSe45PageHeight = (meShumeSe45Width / 592.28) * 841.89;
+              var meShumeSe45LeftHeight = meShumeSe45Height;
+              var meShumeSe45Position = 0;
+              var meShumeSe45ImgWidth = 555.28;
+              var meShumeSe45ImgHeight = (meShumeSe45ImgWidth / meShumeSe45Width) * meShumeSe45Height;
+              var meShumeSe45PageData = meShumeSe45Canvas.toDataURL('image/jpeg', 1.0);
 
+              if (meShumeSe45LeftHeight < meShumeSe45PageHeight) {
+                pdf.addPage();
+                pdf.addImage(meShumeSe45PageData, 'JPEG', 20, 0, meShumeSe45ImgWidth, meShumeSe45ImgHeight);
+              } else {
+                while (meShumeSe45LeftHeight > 0) {
+                  pdf.addPage();
+                  pdf.addImage(meShumeSe45PageData, 'JPEG', 20, meShumeSe45Position, meShumeSe45ImgWidth, meShumeSe45ImgHeight);
+                  meShumeSe45LeftHeight -= meShumeSe45PageHeight;
+                  meShumeSe45Position -= 841.89;
+                }
+              }
+              if (!meShumeSe60) {
+                ruajFaturen(pdf);
+              }
+            })
+            .catch((error) => {
+              ruajFaturen(pdf);
+            });
+        }
+        if (meShumeSe60) {
+          html2canvas(meShumeSe60Ref, { useCORS: true })
+            .then((meShumeSe60Canvas) => {
+              var meShumeSe60Width = meShumeSe60Canvas.width;
+              var meShumeSe60Height = meShumeSe60Canvas.height;
+              var meShumeSe60PageHeight = (meShumeSe60Width / 592.28) * 841.89;
+              var meShumeSe60LeftHeight = meShumeSe60Height;
+              var meShumeSe60Position = 0;
+              var meShumeSe60ImgWidth = 555.28;
+              var meShumeSe60ImgHeight = (meShumeSe60ImgWidth / meShumeSe60Width) * meShumeSe60Height;
+              var meShumeSe60PageData = meShumeSe60Canvas.toDataURL('image/jpeg', 1.0);
 
+              if (meShumeSe60LeftHeight < meShumeSe60PageHeight) {
+                pdf.addPage();
+                pdf.addImage(meShumeSe60PageData, 'JPEG', 20, 0, meShumeSe60ImgWidth, meShumeSe60ImgHeight);
+              } else {
+                while (meShumeSe60LeftHeight > 0) {
+                  pdf.addPage();
+                  pdf.addImage(meShumeSe60PageData, 'JPEG', 20, meShumeSe60Position, meShumeSe60ImgWidth, meShumeSe60ImgHeight);
+                  meShumeSe60LeftHeight -= meShumeSe60PageHeight;
+                  meShumeSe60Position -= 841.89;
+                }
+              }
+              if (!meShumeSe75) {
+                ruajFaturen(pdf);
+              }
+            })
+            .catch((error) => {
+              ruajFaturen(pdf);
+            });
+        }
+        if (meShumeSe75) {
+          html2canvas(meShumeSe75Ref, { useCORS: true })
+            .then((meShumeSe75Canvas) => {
+              var meShumeSe75Width = meShumeSe75Canvas.width;
+              var meShumeSe75Height = meShumeSe75Canvas.height;
+              var meShumeSe75PageHeight = (meShumeSe75Width / 592.28) * 841.89;
+              var meShumeSe75LeftHeight = meShumeSe75Height;
+              var meShumeSe75Position = 0;
+              var meShumeSe75ImgWidth = 555.28;
+              var meShumeSe75ImgHeight = (meShumeSe75ImgWidth / meShumeSe75Width) * meShumeSe75Height;
+              var meShumeSe75PageData = meShumeSe75Canvas.toDataURL('image/jpeg', 1.0);
 
-    return (
-        <>
-            <div className="fatura">
-                <div className="header">
-                    <div className="teDhenatKompanis">
-                        {/* <img src={`${process.env.PUBLIC_URL}/img/web/${teDhenatBiznesit.logo}`} style={{ width: "150px", height: "auto", marginTop: "0.5em" }} />
-                        <h1 style={{ fontSize: "24pt" }}>{teDhenatBiznesit && teDhenatBiznesit.emriIbiznesit}</h1>
-                        <p><strong>NUI: </strong>{teDhenatBiznesit && teDhenatBiznesit.nui}</p>
-                        <p><strong>NF: </strong>{teDhenatBiznesit && teDhenatBiznesit.nf}</p>
-                        <p><strong>TVSH: </strong>{teDhenatBiznesit && teDhenatBiznesit.nrtvsh}</p>
-                        <p><strong>Adresa: </strong>{teDhenatBiznesit && teDhenatBiznesit.adresa}</p>
-                        <p><strong>Telefoni: </strong>{teDhenatBiznesit && teDhenatBiznesit.nrKontaktit}</p>
-                        <p><strong>Email: </strong>{teDhenatBiznesit && teDhenatBiznesit.email}</p> */}
-                        <img src={`${process.env.PUBLIC_URL}/img/InfiniteMarketLogo/favico.png`} style={{ width: "150px", height: "auto", marginTop: "0.5em" }} />
-                        <h1 style={{ fontSize: "24pt" }}>InfinitMarket Online SH.P.K.</h1>
-                        <p><strong>NUI: </strong>111222333</p>
-                        <p><strong>NF: </strong>111222333</p>
-                        <p><strong>TVSH: </strong>111222333</p>
-                        <p><strong>Adresa: </strong>P.A., Prishtine, Kosove 71000</p>
-                        <p><strong>Telefoni: </strong>+38344111222</p>
-                        <p><strong>Email: </strong>contact@infinitmarket.com</p>
+              if (meShumeSe75LeftHeight < meShumeSe75PageHeight) {
+                pdf.addPage();
+                pdf.addImage(meShumeSe75PageData, 'JPEG', 20, 0, meShumeSe75ImgWidth, meShumeSe75ImgHeight);
+              } else {
+                while (meShumeSe75LeftHeight > 0) {
+                  pdf.addPage();
+                  pdf.addImage(meShumeSe75PageData, 'JPEG', 20, meShumeSe75Position, meShumeSe75ImgWidth, meShumeSe75ImgHeight);
+                  meShumeSe75LeftHeight -= meShumeSe75PageHeight;
+                  meShumeSe75Position -= 841.89;
+                }
+              }
+              if (!meShumeSe90) {
+                ruajFaturen(pdf);
+              }
+            })
+            .catch((error) => {
+              ruajFaturen(pdf);
+            });
+        }
+        if (meShumeSe90) {
+          html2canvas(meShumeSe90Ref, { useCORS: true })
+            .then((meShumeSe90Canvas) => {
+              var meShumeSe90Width = meShumeSe90Canvas.width;
+              var meShumeSe90Height = meShumeSe90Canvas.height;
+              var meShumeSe90PageHeight = (meShumeSe90Width / 592.28) * 841.89;
+              var meShumeSe90LeftHeight = meShumeSe90Height;
+              var meShumeSe90Position = 0;
+              var meShumeSe90ImgWidth = 555.28;
+              var meShumeSe90ImgHeight = (meShumeSe90ImgWidth / meShumeSe90Width) * meShumeSe90Height;
+              var meShumeSe90PageData = meShumeSe90Canvas.toDataURL('image/jpeg', 1.0);
 
-                        <div className="teDhenatKlientit">
-                            <h1 style={{ fontSize: "24pt" }}>
-                                <span id="emriKlientit">{fatura && fatura.emri} {fatura && fatura.mbiemri}</span>
-                            </h1>
-                            <p style={{ fontSize: "18pt" }}>{fatura && fatura.nrKontaktit}</p>
-                            <p style={{ fontSize: "18pt" }}>{fatura && fatura.email}</p>
-                        </div>
-                    </div>
+              if (meShumeSe90LeftHeight < meShumeSe90PageHeight) {
+                pdf.addPage();
+                pdf.addImage(meShumeSe90PageData, 'JPEG', 20, 0, meShumeSe90ImgWidth, meShumeSe90ImgHeight);
+              } else {
+                while (meShumeSe90LeftHeight > 0) {
+                  pdf.addPage();
+                  pdf.addImage(meShumeSe90PageData, 'JPEG', 20, meShumeSe90Position, meShumeSe90ImgWidth, meShumeSe90ImgHeight);
+                  meShumeSe90LeftHeight -= meShumeSe90PageHeight;
+                  meShumeSe90Position -= 841.89;
+                }
+              }
+              ruajFaturen(pdf);
+            })
+            .catch((error) => {
+              ruajFaturen(pdf);
+            });
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
 
-                    <div className="data">
-                        <span id="nrFatures">
-                            <Barkodi value={barkodi} />
-                        </span>
-                        <br />
-                        <br />
-                        <h3>Data e Porosis:
-                            <span style={{ fontSize: "18pt" }} id="dataPorosis">
-                                &nbsp;{fatura && (new Date(fatura.dataPorosis).toLocaleDateString('en-GB', { dateStyle: 'short' }))}
-                            </span>
-                        </h3>
-                        <h3>Statusi:
-                            <span style={{ fontSize: "18pt" }} id="dataPorosis">
-                                &nbsp;{fatura && fatura.statusiPorosis}
-                            </span>
-                        </h3>
-                    </div>
-                </div>
+  function ruajFaturen(pdf) {
+    pdf.save(barkodi + '.pdf');
+    props.mbyllFaturen();
+  }
 
-                <br />
-                <hr style={{ height: "2px", borderWidth: "0", color: "gray", backgroundColor: "black" }} />
-                <br />
-                <br />
-
-                <h1 style={{ textAlign: "center", fontSize: "24pt" }}>Detajet e Porosis</h1>
-                <div className="tabelaETeDhenaveProduktit">
-                    <table>
-                        <tr>
-                            <th>
-                                <h3 style={{ fontSize: "18pt" }}>Emri Produktit</h3>
-                            </th>
-                            <th>
-                                <h3 style={{ fontSize: "18pt" }}>Qmimi Produktit</h3>
-                            </th>
-                            <th>
-                                <h3 style={{ fontSize: "18pt" }}>Sasia</h3>
-                            </th>
-                            <th>
-                                <h3 style={{ fontSize: "18pt" }}>Qmimi Total</h3>
-                            </th>
-                        </tr>
-                        {fatura && fatura.teDhenatEPorosis && fatura.teDhenatEPorosis.map((item) => {
-                            return (
-                                <tr>
-                                    <td style={{ fontSize: "18pt" }}>{item.emriProduktit}</td>
-                                    <td style={{ fontSize: "18pt" }}>{parseFloat(item.qmimiProduktit).toFixed(2)} €</td>
-                                    <td style={{ fontSize: "18pt" }}>{item.sasiaPorositur}</td>
-                                    <td style={{ fontSize: "18pt" }}>{parseFloat(item.qmimiProduktit * item.sasiaPorositur).toFixed(2)} €</td>
-                                </tr>
-                            );
-                        })}
-                    </table>
-                </div>
-
-                <br />
-                <hr style={{ height: "2px", borderWidth: "0", color: "gray", backgroundColor: "black" }} />
-                <br />
-                <br />
-                <br />
-                <br />
-                <div className="containerFatura">
-                    <div className="detajetDorezimit">
-                        <h1 style={{ fontSize: "24pt" }}>Detajet e dorezimit</h1>
-                        <br />
-                        <table>
-                            <tr>
-                                <td>
-                                    <strong>Klienti: </strong>
-                                </td>
-                                <td>
-                                    {fatura && fatura.emri} {fatura && fatura.mbiemri}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <strong>Numri Kontaktit: </strong>
-                                </td>
-                                <td>
-                                    {fatura && fatura.nrKontaktit}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <strong>Email: </strong>
-                                </td>
-                                <td>
-                                    {fatura && fatura.email}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <strong>Adresa: </strong>
-                                </td>
-                                <td>
-                                    {fatura && (fatura.adresa + ", ")} {fatura && (fatura.qyteti + ", ")} {fatura && fatura.shteti} {fatura && fatura.zipKodi}
-                                </td>
-                            </tr>
-                        </table>
-
-                        <br />
-
-                        <h1 style={{ fontSize: "24pt" }}>Shenime shtes</h1>
-                        <br />
-                        <h3 style={{ fontSize: "18pt" }}>Paguani pas pranimit te porosis ose me transfer bankar!</h3>
-                        <p style={{ fontSize: "18pt" }}>Ne rast te pageses me transfer bankar vendosni numrin e references <strong>{barkodi}</strong></p>
-
-
-                        <p style={{ fontSize: "18pt" }}>Porosia arrin me se largu:
-                            <strong> {dataMberritjes.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: '2-digit' })}</strong>
-                        </p>
-                        <br />
-                    </div>
-                    <div className="detajetPoresis">
-                        <table className="tabelaQmimit">
-                            {(fatura && fatura.zbritja !== 0.00) && (
-                                <>
-                                    <tr>
-                                        <td>
-                                            <strong>Nentotali: </strong>
-                                        </td>
-                                        <td>{fatura && (parseFloat(fatura.totali18TVSH + fatura.totali8TVSH)).toFixed(2)} €</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>Zbritja: </strong>
-                                        </td>
-                                        <td>- {fatura && parseFloat(fatura.zbritja).toFixed(2)} €</td>
-                                    </tr>
-                                </>
-                            )}
-                            <tr>
-                                <td>
-                                    <strong>Totali Pa TVSH: </strong>
-                                </td>
-                                <td>{fatura && parseFloat(fatura.totali8TVSH + fatura.totali18TVSH - (fatura.totali18TVSH * 0.152542 + fatura.totali8TVSH * 0.074074)).toFixed(2)} €</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <strong>TVSH 18%: </strong>
-                                </td>
-                                <td>{fatura && parseFloat(fatura.totali18TVSH * 0.152542).toFixed(2)} €</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <strong>TVSH 8%: </strong>
-                                </td>
-                                <td>{fatura && parseFloat(fatura.totali8TVSH * 0.074074).toFixed(2)} €</td>
-                            </tr>
-                            <tr>
-                                <td style={{ fontSize: "18pt" }}>
-                                    <strong>Qmimi Total: </strong>
-                                </td>
-                                <td style={{ fontSize: "18pt" }}>
-                                    <strong>{(fatura.totali8TVSH + fatura.totali18TVSH - fatura.zbritja + parseFloat(fatura.qmimiTransportit)).toFixed(2)} €</strong>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-
-
-            </div>
-
-            <div className="PjesaNenshkrimeve">
-                <div className="header">
-                    <div className="teDhenatKompanis">
-                        {/* <img src={`${process.env.PUBLIC_URL}/img/web/${teDhenatBiznesit.logo}`} style={{ width: "150px", height: "auto", marginTop: "0.5em" }} />
-                        <h1 style={{ fontSize: "24pt" }}>{teDhenatBiznesit && teDhenatBiznesit.emriIbiznesit}</h1>
-                        <p><strong>NUI: </strong>{teDhenatBiznesit && teDhenatBiznesit.nui}</p>
-                        <p><strong>NF: </strong>{teDhenatBiznesit && teDhenatBiznesit.nf}</p>
-                        <p><strong>TVSH: </strong>{teDhenatBiznesit && teDhenatBiznesit.nrtvsh}</p>
-                        <p><strong>Adresa: </strong>{teDhenatBiznesit && teDhenatBiznesit.adresa}</p>
-                        <p><strong>Telefoni: </strong>{teDhenatBiznesit && teDhenatBiznesit.nrKontaktit}</p>
-                        <p><strong>Email: </strong>{teDhenatBiznesit && teDhenatBiznesit.email}</p> */}
-                        <img src={`${process.env.PUBLIC_URL}/img/InfiniteMarketLogo/favico.png`} style={{ width: "150px", height: "auto", marginTop: "0.5em" }} />
-                        <h1 style={{ fontSize: "24pt" }}>InfinitMarket Online SH.P.K.</h1>
-                        <p><strong>NUI: </strong>111222333</p>
-                        <p><strong>NF: </strong>111222333</p>
-                        <p><strong>TVSH: </strong>111222333</p>
-                        <p><strong>Adresa: </strong>P.A., Prishtine, Kosove 71000</p>
-                        <p><strong>Telefoni: </strong>+38344111222</p>
-                        <p><strong>Email: </strong>contact@infinitmarket.com</p>
-                    </div>
-
-                    <div className="data">
-                        <span id="nrFatures">
-                            <Barkodi value={barkodi} />
-                        </span>
-                        <br />
-                        <br />
-                        <h3>Data e Porosis:
-                            <span style={{ fontSize: "18pt" }} id="dataPorosis">
-                                &nbsp;{fatura && (new Date(fatura.dataPorosis).toLocaleDateString('en-GB', { dateStyle: 'short' }))}
-                            </span>
-                        </h3>
-                        <h3>Statusi:
-                            <span style={{ fontSize: "18pt" }} id="dataPorosis">
-                                &nbsp;{fatura && fatura.statusiPorosis}
-                            </span>
-                        </h3>
-                    </div>
-                </div>
-                <div className="nenshkrimet">
-                    <div className="nenshkrimi">
-                        <span>_________________________________________________________________</span>
-                        <span>(Emri, Mbiemri, Nenshkrimi & Vula)</span>
-                        <span>(Personi Përgjegjës)</span>
-                    </div>
-                    <div className="nenshkrimi">
-                        <span>_________________________________________________________________</span>
-                        <span>(Emri, Mbiemri, Nenshkrimi)</span>
-                        <span>(Klienti)</span>
-                    </div>
-
-                </div>
-                <br />
-                <h3 style={{ fontSize: "18pt" }}>Ne rast te pageses me transfer bankar ju lutem kontaktoni me stafin!</h3>
-                <h3 style={{ fontSize: "18pt" }}>Te gjitha produktet ne kete fature kane garancion 1 Vjet!</h3>
-                <h3 style={{ fontSize: "18pt" }}>Garancioni vlene deri me: {skadimiGarancionit.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: '2-digit' })}</h3>
-            </div>
-
-        </>
-    )
+  return (
+    <>
+      <h1 className="title">
+        Fatura NR: {barkodi}
+        <MDBBtn className="mb-3 Butoni" onClick={() => FaturaPerRuajtje()}>
+          Ruaj <FontAwesomeIcon icon={faDownload} />
+        </MDBBtn>
+        <MDBBtn className="mb-3 Butoni" onClick={() => navigate("/dashboard")}>
+          <FontAwesomeIcon icon={faArrowLeft} /> Mbyll
+        </MDBBtn>
+      </h1>
+      <div className="mePakSe25">
+        <DetajeFatura
+          nrFatures={nrFatures}
+          Barkodi={barkodi}
+          ProduktiPare={0}
+          ProduktiFundit={meShumeSe15 ? 25 : 15}
+          LargoFooter={meShumeSe15}
+          NrFaqes={1}
+          NrFaqeve={nrFaqeve}
+        />
+      </div>
+      {meShumeSe15 && (
+        <div className="meShumeSe15">
+          <DetajeFatura
+            nrFatures={nrFatures}
+            Barkodi={barkodi}
+            ProduktiPare={25}
+            ProduktiFundit={meShumeSe30 ? 50 : 40}
+            LargoFooter={meShumeSe30}
+            NrFaqes={2}
+            NrFaqeve={nrFaqeve}
+          />
+        </div>
+      )}
+      {meShumeSe30 && (
+        <div className="meShumeSe30">
+          <DetajeFatura
+            nrFatures={nrFatures}
+            Barkodi={barkodi}
+            ProduktiPare={50}
+            ProduktiFundit={meShumeSe45 ? 75 : 65}
+            LargoFooter={meShumeSe45}
+            NrFaqes={3}
+            NrFaqeve={nrFaqeve}
+          />
+        </div>
+      )}
+      {meShumeSe45 && (
+        <div className="meShumeSe45">
+          <DetajeFatura
+            nrFatures={nrFatures}
+            Barkodi={barkodi}
+            ProduktiPare={75}
+            ProduktiFundit={meShumeSe45 ? 100 : 90}
+            LargoFooter={meShumeSe60}
+            NrFaqes={4}
+            NrFaqeve={nrFaqeve}
+          />
+        </div>
+      )}
+      {meShumeSe60 && (
+        <div className="meShumeSe60">
+          <DetajeFatura
+            nrFatures={nrFatures}
+            Barkodi={barkodi}
+            ProduktiPare={100}
+            ProduktiFundit={meShumeSe75 ? 125 : 115}
+            LargoFooter={meShumeSe75}
+            NrFaqes={5}
+            NrFaqeve={nrFaqeve}
+          />
+        </div>
+      )}
+      {meShumeSe75 && (
+        <div className="meShumeSe75">
+          <DetajeFatura
+            nrFatures={nrFatures}
+            Barkodi={barkodi}
+            ProduktiPare={125}
+            ProduktiFundit={meShumeSe90 ? 150 : 140}
+            LargoFooter={meShumeSe90}
+            NrFaqes={6}
+            NrFaqeve={nrFaqeve}
+          />
+        </div>
+      )}
+      {meShumeSe90 && (
+        <div className="meShumeSe90">
+          <DetajeFatura nrFatures={nrFatures} Barkodi={barkodi} ProduktiPare={150} ProduktiFundit={165} NrFaqes={7} NrFaqeve={nrFaqeve} />
+        </div>
+      )}
+    </>
+  );
 }
 
-export default Fatura
+export default Fatura;
