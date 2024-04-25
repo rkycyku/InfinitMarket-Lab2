@@ -1,0 +1,10 @@
+.DataPerFiltrim{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1em;
+  margin-bottom: 0.5em;
+  flex-wrap: wrap;
+  margin-left: 1em;
+}

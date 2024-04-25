@@ -6,6 +6,7 @@ import { faInfoCircle, faClose } from '@fortawesome/free-solid-svg-icons';
 import { TailSpin } from 'react-loader-spinner';
 import { useNavigate } from 'react-router-dom';
 import PagesaMeSukses from '../../components/Checkout/PagesaMeSukses';
+import EksportoTeDhenat from '../../components/EksportoTeDhenat';
 
 function PorositeUserit(props) {
   const [porosite, setPorosite] = useState([]);
@@ -52,6 +53,21 @@ function PorositeUserit(props) {
     setShfaqDetajet(true);
   };
 
+  function PergatitjaTeDhenavePerEksport() {
+    return porosite.map((user) => {
+      const { idPorosia, totaliProdukteve, totali8TVSH, totali18TVSH, zbritja, dataPorosis, statusiPorosis, qmimiTransportit } = user;
+
+      return {
+        'ID Porosia': idPorosia,
+        'Totali Produkteve': totaliProdukteve,
+        'Totali €': parseFloat(totali8TVSH + totali18TVSH - zbritja + parseFloat(qmimiTransportit)).toFixed(2),
+        'Zbritja €': zbritja !== 0 ? parseFloat(zbritja).toFixed(2) : 'Nuk Ka Zbritje',
+        'Data e Porosise': new Date(dataPorosis).toLocaleDateString('en-GB', { dateStyle: 'short' }),
+        'Statusi Porosis': statusiPorosis
+      };
+    });
+  }
+
   return (
     <div>
       {loading ? (
@@ -84,6 +100,7 @@ function PorositeUserit(props) {
               <Button className="mb-3 Butoni" onClick={() => navigate('/Dashboard')}>
                 Mbyll Porosite <FontAwesomeIcon icon={faClose} />
               </Button>
+              <EksportoTeDhenat teDhenatJSON={PergatitjaTeDhenavePerEksport()} emriDokumentit="Porosit e Juaja" />
 
               <Table>
                 <thead>
@@ -103,12 +120,7 @@ function PorositeUserit(props) {
                       <td>{k.idPorosia}</td>
                       <td>{new Date(k.dataPorosis).toLocaleDateString('en-GB', { dateStyle: 'short' })}</td>
                       <td>{k.totaliProdukteve}</td>
-                      <td>
-                        {parseFloat(
-                          k.totali8TVSH + k.totali18TVSH - k.zbritja + parseFloat(k.qmimiTransportit)
-                        ).toFixed(2)}{' '}
-                        €
-                      </td>
+                      <td>{parseFloat(k.totali8TVSH + k.totali18TVSH - k.zbritja + parseFloat(k.qmimiTransportit)).toFixed(2)} €</td>
                       <td>{k.zbritja !== 0 ? parseFloat(k.zbritja).toFixed(2) + ' €' : 'Nuk Ka Zbritje'}</td>
                       <td>{k.statusiPorosis}</td>
                       <td>

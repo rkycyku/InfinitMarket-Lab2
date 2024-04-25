@@ -10,6 +10,7 @@ import LargoKategorin from './LargoKategorin';
 import { TailSpin } from 'react-loader-spinner';
 import { Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import EksportoTeDhenat from '../../../../components/EksportoTeDhenat';
 
 function TabelaEKategorive(props) {
   const [kategorit, setKategorit] = useState([]);
@@ -64,6 +65,17 @@ function TabelaEKategorive(props) {
   };
   const handleFshijMbyll = () => setFshij(false);
 
+  function PergatitjaTeDhenavePerEksport() {
+    return kategorit.map((proukti) => {
+      const { llojiKategoris, pershkrimiKategoris } = proukti;
+
+      return {
+        'Emri Kategoris': llojiKategoris,
+        'Pershkrimi Kategoris': pershkrimiKategoris !== null && pershkrimiKategoris.trim() !== '' ? pershkrimiKategoris : 'Nuk Ka Pershkrim'
+      };
+    });
+  }
+
   return (
     <div>
       {shto && (
@@ -86,8 +98,6 @@ function TabelaEKategorive(props) {
           setTipiMesazhit={setTipiMesazhit}
           setPershkrimiMesazhit={setPershkrimiMesazhit}
         />
-
-        
       )}
       {fshij && (
         <LargoKategorin
@@ -123,6 +133,7 @@ function TabelaEKategorive(props) {
           <Button className="mb-3 Butoni" onClick={handleShow}>
             Shto Kategori <FontAwesomeIcon icon={faPlus} />
           </Button>
+          <EksportoTeDhenat teDhenatJSON={PergatitjaTeDhenavePerEksport()} emriDokumentit="Lista e Kategorive te Produkteve" />
 
           <Table responsive>
             <thead>

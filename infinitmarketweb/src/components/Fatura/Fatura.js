@@ -385,7 +385,7 @@ function Fatura(props) {
 
   function ruajFaturen(pdf) {
     pdf.save(barkodi + '.pdf');
-    props.mbyllFaturen();
+    window.close();
   }
 
   return (
@@ -395,7 +395,7 @@ function Fatura(props) {
         <MDBBtn className="mb-3 Butoni" onClick={() => FaturaPerRuajtje()}>
           Ruaj <FontAwesomeIcon icon={faDownload} />
         </MDBBtn>
-        <MDBBtn className="mb-3 Butoni" onClick={() => navigate("/dashboard")}>
+        <MDBBtn className="mb-3 Butoni" onClick={() => window.close()}>
           <FontAwesomeIcon icon={faArrowLeft} /> Mbyll
         </MDBBtn>
       </h1>

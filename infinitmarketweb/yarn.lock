@@ -5068,6 +5068,11 @@ expect@^29.0.0:
     jest-message-util "^29.5.0"
     jest-util "^29.5.0"
 
+export-from-json@^1.7.4:
+  version "1.7.4"
+  resolved "https://registry.npmjs.org/export-from-json/-/export-from-json-1.7.4.tgz"
+  integrity sha512-FjmpluvZS2PTYyhkoMfQoyEJMfe2bfAyNpa5Apa6C9n7SWUWyJkG/VFnzERuj3q9Jjo3iwBjwVsDQ7Z7sczthA==
+
 express@^4.17.3:
   version "4.18.2"
   resolved "https://registry.npmjs.org/express/-/express-4.18.2.tgz"

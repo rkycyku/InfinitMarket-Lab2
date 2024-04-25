@@ -9,6 +9,7 @@ import Mesazhi from '../../../../components/Mesazhi';
 import { TailSpin } from 'react-loader-spinner';
 import LargoProduktin from './LargoProduktin';
 import EditoStokunQmimin from './EditoStokunQmimin';
+import EksportoTeDhenat from '../../../../components/EksportoTeDhenat';
 
 function TabelaEProdukteve() {
   const [produktet, setProduktet] = useState([]);
@@ -97,6 +98,22 @@ function TabelaEProdukteve() {
     setProduktIdToDelete(null);
   };
 
+  function PergatitjaTeDhenavePerEksport() {
+    return produktetEFiltruara.map((proukti) => {
+      const { qmimiProduktit, emriProduktit, pershkrimi, emriKompanis, llojiKategoris, llojiTVSH, sasiaNeStok } = proukti;
+
+      return {
+        'Emri i Produktit': emriProduktit,
+        Pershkrimi: pershkrimi !== null && pershkrimi.trim() !== '' ? pershkrimi : 'Nuk Ka Pershkrim',
+        Kompania: emriKompanis,
+        Kategoria: llojiKategoris,
+        'Lloji TVSH-s': llojiTVSH,
+        'Sasia në Stok': sasiaNeStok,
+        Çmimi: parseFloat(qmimiProduktit).toFixed(2)
+      };
+    });
+  }
+
   return (
     <div>
       {edito && (
@@ -138,6 +155,7 @@ function TabelaEProdukteve() {
           <Button className="mb-3" variant="primary" onClick={handleShow}>
             Shto Produkt <FontAwesomeIcon icon={faPlus} />
           </Button>
+          <EksportoTeDhenat teDhenatJSON={PergatitjaTeDhenavePerEksport()} emriDokumentit="Lista e Produkteve" />
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Control
               type="text"

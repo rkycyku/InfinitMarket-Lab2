@@ -6,8 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBan, faPlus, faClose } from '@fortawesome/free-solid-svg-icons';
 import { TailSpin } from 'react-loader-spinner';
 import { Table } from 'react-bootstrap';
-
-
+import EksportoTeDhenat from '../../components/EksportoTeDhenat';
 
 function Klientet(props) {
   const [klientet, setKlientet] = useState([]);
@@ -43,6 +42,20 @@ function Klientet(props) {
     shfaqKlientet();
   }, [perditeso]);
 
+  function PergatitjaTeDhenavePerEksport() {
+    return klientet.map((user) => {
+      const { perdoruesi } = user;
+
+      return {
+        'Emri & Mbiemri': perdoruesi.emri + ' ' + perdoruesi.mbiemri,
+        Email: perdoruesi.email,
+        'Nr. Kontaktit': perdoruesi.teDhenatPerdoruesit.nrKontaktit,
+        'Data e Lindjes': new Date(perdoruesi.teDhenatPerdoruesit.dataLindjes).toLocaleDateString('en-GB', { dateStyle: 'short' }),
+        Adresa: perdoruesi.teDhenatPerdoruesit.qyteti + ', ' + perdoruesi.teDhenatPerdoruesit.shteti
+      };
+    });
+  }
+
   return (
     <div>
       {shfaqMesazhin && <Mesazhi setShfaqMesazhin={setShfaqMesazhin} pershkrimi={pershkrimiMesazhit} tipi={tipiMesazhit} />}
@@ -62,7 +75,7 @@ function Klientet(props) {
       ) : (
         <>
           <h1>Lista e Klienteve</h1>
-
+          <EksportoTeDhenat teDhenatJSON={PergatitjaTeDhenavePerEksport()} emriDokumentit="Lista e Klienteve" />
           <Table responsive>
             <thead>
               <tr>

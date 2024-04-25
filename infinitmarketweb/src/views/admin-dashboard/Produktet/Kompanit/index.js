@@ -10,6 +10,7 @@ import LargoKompanin from './LargoKompanin';
 import { TailSpin } from 'react-loader-spinner';
 import { Link } from 'react-router-dom';
 import { Table } from 'react-bootstrap';
+import EksportoTeDhenat from '../../../../components/EksportoTeDhenat';
 
 function TabelaEKompanive(props) {
   const [kompanit, setKompanit] = useState([]);
@@ -63,6 +64,17 @@ function TabelaEKompanive(props) {
     setId(id);
   };
   const handleFshijMbyll = () => setFshij(false);
+
+  function PergatitjaTeDhenavePerEksport() {
+    return kompanit.map((proukti) => {
+      const { emriKompanis, adresa } = proukti;
+
+      return {
+        'Emri i Kompanise': emriKompanis,
+        'Adresa': adresa !== null && adresa.trim() !== '' ? adresa : 'Nuk Ka Adrese'
+      };
+    });
+  }
 
   return (
     <div>
@@ -121,6 +133,7 @@ function TabelaEKompanive(props) {
           <Button className="mb-3 Butoni" onClick={handleShow}>
             Shto Kompanin <FontAwesomeIcon icon={faPlus} />
           </Button>
+          <EksportoTeDhenat teDhenatJSON={PergatitjaTeDhenavePerEksport()} emriDokumentit="Lista e Kompanive Partnere" />
 
           <Table responsive>
             <thead>

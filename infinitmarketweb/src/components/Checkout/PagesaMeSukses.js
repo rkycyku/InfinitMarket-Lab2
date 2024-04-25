@@ -54,7 +54,7 @@ export default function PagesaMeSukses(props) {
       navigate('/login');
     }
   }, [perditeso]);
-
+  
   return (
     <>
       <section className="h-100 gradient-custom" style={{ backgroundColor: '#eee' }}>
@@ -253,9 +253,11 @@ export default function PagesaMeSukses(props) {
                 </MDBCardFooter>
               </MDBCard>
               <div className="butonatNeQender">
-                <Button name="complete" type="submit" value="Perfundo Porosin" onClick={() => navigate(`/Fatura/${nrFatures}`)}>
-                  Printo Faturen
-                </Button>
+                <a href={`/Fatura/${nrFatures}`} target="_blank" rel="noopener noreferrer">
+                  <Button name="complete" type="submit" value="Perfundo Porosin">
+                    Printo Faturen
+                  </Button>
+                </a>
                 {!props.handleMbyll && (
                   <Button name="complete" type="submit" value="Perfundo Porosin" onClick={() => navigate('/Dashboard')}>
                     Mbyll Detajet
