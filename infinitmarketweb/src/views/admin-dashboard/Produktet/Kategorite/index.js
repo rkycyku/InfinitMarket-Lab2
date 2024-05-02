@@ -10,7 +10,7 @@ import LargoKategorin from './LargoKategorin';
 import { TailSpin } from 'react-loader-spinner';
 import { Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import EksportoTeDhenat from '../../../../components/EksportoTeDhenat';
+import EksportoTeDhenat from '../../../../components/Tabela/EksportoTeDhenat';
 
 function TabelaEKategorive(props) {
   const [kategorit, setKategorit] = useState([]);

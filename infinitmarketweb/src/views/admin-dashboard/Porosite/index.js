@@ -9,9 +9,11 @@ import { TailSpin } from 'react-loader-spinner';
 import PagesaMeSukses from '../../../components/Checkout/PagesaMeSukses';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { Table } from 'react-bootstrap';
+import { Form, InputGroup, Pagination, Table } from 'react-bootstrap';
 import './Styles/TabelaEPorosive.css';
-import EksportoTeDhenat from '../../../components/EksportoTeDhenat';
+import EksportoTeDhenat from '../../../components/Tabela/EksportoTeDhenat';
+import useSortableData from '../../../hooks/useSortableData';
+import SortIcon from '../../../components/Tabela/SortIcon';
 
 function TabelaEPorosive() {
   const [porosite, setPorosite] = useState([]);
@@ -30,6 +32,15 @@ function TabelaEPorosive() {
   const [dataFillestare, setDataFillestare] = useState(null);
   const [dataFundit, setDataFundit] = useState(null);
 
+  const [searchQuery, setSearchQuery] = useState('');
+  const [itemsPerPage, setItemsPerPage] = useState(10);
+  const { items, requestSort, sortConfig, currentPage, pageCount, goToPage } = useSortableData(
+    porosite,
+    perditeso,
+    searchQuery,
+    itemsPerPage
+  );
+
   const getToken = localStorage.getItem('token');
 
   const authentikimi = {
@@ -43,7 +54,19 @@ function TabelaEPorosive() {
       try {
         setLoading(true);
         const porosia = await axios.get('https://localhost:7251/api/TeNdryshme/Porosia/ShfaqPorosit', authentikimi);
-        setPorosite(porosia.data);
+        setPorosite(
+          porosia.data.map((k) => ({
+            IDPorosia: k.idPorosia,
+            Klienti: k.idKlienti + ' - ' + k.emri + ' ' + k.mbiemri,
+            TotaliProdukteve: k.totaliProdukteve,
+            TotaliEuro: parseFloat(k.totali8TVSH + k.totali18TVSH).toFixed(2),
+            TotaliPaTVSH: parseFloat(k.totali8TVSH + k.totali18TVSH - (k.totali18TVSH * 0.152542 + k.totali8TVSH * 0.074074)).toFixed(2),
+            TVSH: parseFloat(k.totali18TVSH * 0.152542 + k.totali8TVSH * 0.074074).toFixed(2),
+            Zbritja: k.zbritja,
+            DataEPorosise: new Date(k.dataPorosis).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: '2-digit' }),
+            StatusiPorosis: k.statusiPorosis
+          }))
+        );
         setLoading(false);
       } catch (err) {
         console.log(err);
@@ -66,33 +89,13 @@ function TabelaEPorosive() {
     setShfaqDetajet(true);
   };
 
-  function PergatitjaTeDhenavePerEksport() {
-    return porosite
-      .filter((p) => {
-        if (!dataFillestare || !dataFundit) {
-          return true;
-        } else {
-          const dataPorosise = new Date(p.dataPorosis);
-          return dataPorosise >= dataFillestare && dataPorosise <= dataFundit;
-        }
-      })
-      .map((user) => {
-        const { idPorosia, idKlienti, emri, mbiemri, totaliProdukteve, totali8TVSH, totali18TVSH, zbritja, dataPorosis, statusiPorosis } =
-          user;
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+  }; // Sherben per te kerkuar permes rreshtave
 
-        return {
-          'ID Porosia': idPorosia,
-          Klienti: idKlienti + ' - ' + emri + ' ' + mbiemri,
-          'Totali Produkteve': totaliProdukteve,
-          'Totali €': parseFloat(totali8TVSH + totali18TVSH).toFixed(2),
-          'Totali pa TVSH €': parseFloat(totali8TVSH + totali18TVSH - (totali18TVSH * 0.152542 + totali8TVSH * 0.074074)).toFixed(2),
-          'TVSH €': parseFloat(totali18TVSH * 0.152542 + totali8TVSH * 0.074074).toFixed(2),
-          'Zbritja €': zbritja,
-          'Data e Porosise': dataPorosis,
-          'Statusi Porosis': statusiPorosis
-        };
-      });
-  }
+  const handleItemsPerPageChange = (newItemsPerPage) => {
+    setItemsPerPage(newItemsPerPage);
+  }; //Per caktimin se sa rreshta mund te shfaqen ne nje faqe te vetme
 
   return (
     <div>
@@ -123,13 +126,6 @@ function TabelaEPorosive() {
       ) : (
         <>
           <h1 className="title">Porosite e Klienteve</h1>
-          {dataFillestare && dataFundit && (
-            <h1 className="title">
-              Porosit e datave:{' '}
-              {new Date(dataFillestare).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: '2-digit' })} deri me{' '}
-              {new Date(dataFundit).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: '2-digit' })}
-            </h1>
-          )}
           {shfaqDetajet && (
             <PagesaMeSukses
               handleMbyll={() => {
@@ -141,90 +137,122 @@ function TabelaEPorosive() {
           )}
           {shfaqPorosite && (
             <>
-              <div className="DataPerFiltrim">
-                <div className="datat">
-                  <p>Data Fillimit:</p>
-                  <DatePicker
-                    selected={dataFillestare}
-                    onChange={(date) => setDataFillestare(date)}
-                    dateFormat="dd/MM/yyyy"
-                    maxDate={dataFundit}
-                  />
-                </div>
-                <div>
-                  <p>Data Mbarimit:</p>
-                  <DatePicker selected={dataFundit} onChange={(date) => setDataFundit(date)} dateFormat="dd/MM/yyyy" />
-                </div>
-                <div className="datat">
-                  <p>Reseto:</p>
-                  <Button
-                    style={{ marginRight: '0.5em' }}
-                    variant="success"
-                    onClick={() => {
-                      setDataFillestare(null);
-                      setDataFundit(null);
-                    }}
-                  >
-                    Shfaq Te Gjitha porosite
-                  </Button>
-                </div>
-
-                <EksportoTeDhenat teDhenatJSON={PergatitjaTeDhenavePerEksport()} emriDokumentit="Porosite" />
-              </div>
-              <Table>
+              <Table striped bordered hover responsive>
                 <thead>
                   <tr>
-                    <th>ID Porosia</th>
-                    <th>Klienti</th>
-                    <th>Totali Produkteve</th>
-                    <th>Totali €</th>
-                    <th>Totali pa TVSH €</th>
-                    <th>TVSH €</th>
-                    <th>Zbritja €</th>
-                    <th>Data e Porosise</th>
-                    <th>Statusi Porosis</th>
+                    <th colSpan={10}>
+                      <InputGroup>
+                        <Form.Select
+                          value={itemsPerPage}
+                          onChange={(e) => {
+                            handleItemsPerPageChange(parseInt(e.target.value));
+                            goToPage(0);
+                          }}
+                        >
+                          <option value={5}>5 per page</option>
+                          <option value={10}>10 per page</option>
+                          <option value={15}>15 per page</option>
+                        </Form.Select>
+                        <Form.Control type="text" placeholder="Search..." value={searchQuery} onChange={handleSearch} />
+                        <Button
+                          variant="secondary"
+                          onClick={() => {
+                            setSearchQuery('');
+                            requestSort(null);
+                            goToPage(0);
+                          }}
+                          id="button-addon2"
+                        >
+                          Pastro Filtrat
+                        </Button>
+
+                        {porosite.length > 0 && <EksportoTeDhenat teDhenatJSON={porosite} emriDokumentit="Porosite e Klienteve" />}
+                      </InputGroup>
+                    </th>
+                  </tr>
+                  <tr>
+                    <th onClick={() => requestSort('IDPorosia')}>
+                      ID Porosia{' '}
+                      {sortConfig.key === 'IDPorosia' ? <SortIcon direction={sortConfig.direction} type="number" /> : <SortIcon />}
+                    </th>
+                    <th onClick={() => requestSort('Klienti')}>
+                      Klienti {sortConfig.key === 'Klienti' ? <SortIcon direction={sortConfig.direction} type="text" /> : <SortIcon />}
+                    </th>
+                    <th onClick={() => requestSort('TotaliProdukteve')}>
+                      Totali Produkteve{' '}
+                      {sortConfig.key === 'TotaliProdukteve' ? <SortIcon direction={sortConfig.direction} type="number" /> : <SortIcon />}
+                    </th>
+                    <th onClick={() => requestSort('TotaliEuro')}>
+                      Totali €{' '}
+                      {sortConfig.key === 'TotaliEuro' ? <SortIcon direction={sortConfig.direction} type="number" /> : <SortIcon />}
+                    </th>
+                    <th onClick={() => requestSort('TotaliPaTVSH')}>
+                      Totali pa TVSH €{' '}
+                      {sortConfig.key === 'TotaliPaTVSH' ? <SortIcon direction={sortConfig.direction} type="number" /> : <SortIcon />}
+                    </th>
+                    <th onClick={() => requestSort('TVSH')}>
+                      TVSH € {sortConfig.key === 'TVSH' ? <SortIcon direction={sortConfig.direction} type="number" /> : <SortIcon />}
+                    </th>
+                    <th onClick={() => requestSort('Zbritja')}>
+                      Zbritja € {sortConfig.key === 'Zbritja' ? <SortIcon direction={sortConfig.direction} type="number" /> : <SortIcon />}
+                    </th>
+                    <th onClick={() => requestSort('DataEPorosise')}>
+                      Data e Porosise{' '}
+                      {sortConfig.key === 'DataEPorosise' ? <SortIcon direction={sortConfig.direction} type="date" /> : <SortIcon />}
+                    </th>
+                    <th onClick={() => requestSort('StatusiPorosis')}>
+                      Statusi Porosis{' '}
+                      {sortConfig.key === 'StatusiPorosis' ? <SortIcon direction={sortConfig.direction} type="text" /> : <SortIcon />}
+                    </th>
                     <th>Funksione</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {porosite
+                  {items
                     .filter((p) => {
                       if (!dataFillestare || !dataFundit) {
                         return true;
                       } else {
-                        const dataPorosise = new Date(p.dataPorosis);
+                        const dataPorosise = new Date(p.DataEPorosise);
                         return dataPorosise >= dataFillestare && dataPorosise <= dataFundit;
                       }
                     })
                     .map((p) => (
-                      <tr key={p.idPorosia}>
-                        <td>{p.idPorosia}</td>
+                      <tr key={p.IDPorosia}>
+                        <td>{p.IDPorosia}</td>
+                        <td>{p.Klienti}</td>
+                        <td>{p.TotaliProdukteve}</td>
+                        <td>{p.TotaliEuro} €</td>
+                        <td>{p.TotaliPaTVSH} €</td>
+                        <td>{p.TVSH} €</td>
+                        <td>{p.Zbritja} €</td>
+                        <td>{p.DataEPorosise}</td>
+                        <td>{p.StatusiPorosis}</td>
                         <td>
-                          {p.idKlienti} - {p.emri} {p.mbiemri}
-                        </td>
-                        <td>{p.totaliProdukteve}</td>
-                        <td>{parseFloat(p.totali8TVSH + p.totali18TVSH).toFixed(2)} €</td>
-                        <td>
-                          {parseFloat(p.totali8TVSH + p.totali18TVSH - (p.totali18TVSH * 0.152542 + p.totali8TVSH * 0.074074)).toFixed(2)} €
-                        </td>
-                        <td>{parseFloat(p.totali18TVSH * 0.152542 + p.totali8TVSH * 0.074074).toFixed(2)} €</td>
-                        <td>{parseFloat(p.zbritja).toFixed(2)} €</td>
-                        <td>
-                          {new Date(p.dataPorosis).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: '2-digit' })}
-                        </td>
-                        <td>{p.statusiPorosis}</td>
-                        <td>
-                          <Button style={{ marginRight: '0.5em' }} variant="success" onClick={() => handleShfaqFaturen(p.idPorosia)}>
+                          <Button style={{ marginRight: '0.5em' }} variant="success" onClick={() => handleShfaqFaturen(p.IDPorosia)}>
                             <FontAwesomeIcon icon={faInfoCircle} />
                           </Button>
-                          {p.statusiPorosis !== 'E Pranuar nga Klienti' && (
-                            <Button style={{ marginRight: '0.5em' }} variant="success" onClick={() => handleEdito(p.idPorosia)}>
+                          {p.StatusiPorosis !== 'E Pranuar nga Klienti' && (
+                            <Button style={{ marginRight: '0.5em' }} variant="success" onClick={() => handleEdito(p.IDPorosia)}>
                               <FontAwesomeIcon icon={faPenToSquare} />
                             </Button>
                           )}
                         </td>
                       </tr>
                     ))}
+                  <tr>
+                    <td colSpan={10}>
+                      <Pagination>
+                        <Pagination.Prev onClick={() => goToPage(currentPage - 1)} disabled={currentPage === 0} />
+                        {Array.from({ length: pageCount }, (_, index) => (
+                          <Pagination.Item key={index} active={index === currentPage} onClick={() => goToPage(index)}>
+                            {index + 1}
+                          </Pagination.Item>
+                        ))}
+                        <Pagination.Next onClick={() => goToPage(currentPage + 1)} disabled={currentPage === pageCount - 1} />
+                      </Pagination>
+                    </td>
+                  </tr>
                 </tbody>
               </Table>
             </>

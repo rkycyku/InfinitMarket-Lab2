@@ -6,7 +6,7 @@ import { faInfoCircle, faClose } from '@fortawesome/free-solid-svg-icons';
 import { TailSpin } from 'react-loader-spinner';
 import { useNavigate } from 'react-router-dom';
 import PagesaMeSukses from '../../components/Checkout/PagesaMeSukses';
-import EksportoTeDhenat from '../../components/EksportoTeDhenat';
+import EksportoTeDhenat from '../../components/Tabela/EksportoTeDhenat';
 
 function PorositeUserit(props) {
   const [porosite, setPorosite] = useState([]);

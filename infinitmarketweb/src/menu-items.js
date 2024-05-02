@@ -106,18 +106,31 @@ const menuItems = {
           ]
         },
         {
+          id: 'Klientet',
+          title: 'Klientet',
+          type: 'collapse',
+          icon: 'feather icon-info',
+          children: [
+            {
+              id: 'ListaEKlienteve',
+              title: 'Lista e Klienteve',
+              type: 'item',
+              url: '/Admin/Klientet/ListaEKlienteve'
+            },
+            {
+              id: 'ShportatEKlienteve',
+              title: 'Shportat e Klienteve',
+              type: 'item',
+              url: '/Admin/Klientet/ShportaEKlienteve'
+            },
+          ]
+        },
+        {
           id: 'Porosit',
           title: 'Porosit',
           type: 'item',
           icon: 'feather icon-package',
           url: '/admin/porosite'
-        },
-        {
-          id: 'Klientet',
-          title: 'Klientet',
-          type: 'item',
-          icon: 'feather icon-info',
-          url: '/admin/klientet'
         },
         {
           id: 'Mesazhet',

@@ -6,7 +6,7 @@ import { faPenToSquare, faBan } from '@fortawesome/free-solid-svg-icons';
 import Button from 'react-bootstrap/Button';
 import { Table } from 'react-bootstrap';
 import Mesazhi from '../../components/Mesazhi';
-import EksportoTeDhenat from '../../components/EksportoTeDhenat';
+import EksportoTeDhenat from '../../components/Tabela/EksportoTeDhenat';
 
 function Mesazhet() {
   const [mesazhet, setMesazhet] = useState([]);

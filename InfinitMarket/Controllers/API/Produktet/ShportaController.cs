@@ -20,6 +20,21 @@ namespace InfinitMarket.Controllers.API.Produktet
 
         [AllowAnonymous]
         [HttpGet]
+        [Route("ShfaqShportatEKlienteve")]
+        public async Task<IActionResult> ShfaqShportatEKlienteve()
+        {
+            var shportat = await _context.Shporta.Include(x => x.Perdoruesi).Include(x => x.KodiZbritjes).Include(x => x.Adresa).OrderBy(x => x.TotaliProdukteveNeShporte).ToListAsync();
+
+            if (shportat == null)
+            {
+                return BadRequest("Ndodhi nje gabim gjate shfaqjes se shportes!");
+            }
+
+            return Ok(shportat);
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
         [Route("ShfaqShporten")]
         public async Task<IActionResult> ShfaqShporten(string userID)
         {

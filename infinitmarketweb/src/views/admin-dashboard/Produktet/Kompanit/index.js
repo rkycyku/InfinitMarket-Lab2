@@ -10,7 +10,7 @@ import LargoKompanin from './LargoKompanin';
 import { TailSpin } from 'react-loader-spinner';
 import { Link } from 'react-router-dom';
 import { Table } from 'react-bootstrap';
-import EksportoTeDhenat from '../../../../components/EksportoTeDhenat';
+import EksportoTeDhenat from '../../../../components/Tabela/EksportoTeDhenat';
 
 function TabelaEKompanive(props) {
   const [kompanit, setKompanit] = useState([]);

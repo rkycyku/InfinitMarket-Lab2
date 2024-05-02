@@ -11,7 +11,7 @@ import LargoBanken from './LargoBanken';
 import { TailSpin } from 'react-loader-spinner';
 import { MDBBtn, MDBTable, MDBTableBody, MDBTableHead } from 'mdb-react-ui-kit';
 import { Link } from 'react-router-dom';
-import EksportoTeDhenat from '../../../../../components/EksportoTeDhenat';
+import EksportoTeDhenat from '../../../../../components/Tabela/EksportoTeDhenat';
 
 function Bankat(props) {
   const [njesiteMatese, setNjesiteMatese] = useState([]);

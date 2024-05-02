@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
-import Mesazhi from '../../components/Mesazhi';
+import Mesazhi from '../../../components/Mesazhi';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBan, faPlus, faClose } from '@fortawesome/free-solid-svg-icons';
 import { TailSpin } from 'react-loader-spinner';
 import { Table } from 'react-bootstrap';
-import EksportoTeDhenat from '../../components/EksportoTeDhenat';
+import EksportoTeDhenat from '../../../components/EksportoTeDhenat';
+import DataTable from '../../../components/DataTable';
 
-function Klientet(props) {
+function ShportaEKlienteve(props) {
   const [klientet, setKlientet] = useState([]);
   const [perditeso, setPerditeso] = useState('');
   const [shfaqMesazhin, setShfaqMesazhin] = useState(false);
@@ -55,6 +56,21 @@ function Klientet(props) {
       };
     });
   }
+  const headers = ['Emri & Mbiemri', 'Email', 'Nr. Kontaktit', 'Data e Lindjes', 'Adresa'];
+  const UsersData = klientet.map((k) => ({
+    ID: k.perdoruesi.userID,
+    'Emri & Mbiemri': k.perdoruesi.emri + ' ' + k.perdoruesi.mbiemri,
+    Email: k.perdoruesi.email,
+    'Nr. Kontaktit': k.perdoruesi.teDhenatPerdoruesit && k.perdoruesi.teDhenatPerdoruesit.nrKontaktit,
+    'Data e Lindjes': new Date(k.perdoruesi.teDhenatPerdoruesit && k.perdoruesi.teDhenatPerdoruesit.dataLindjes).toLocaleDateString(
+      'en-GB',
+      { dateStyle: 'short' }
+    ),
+    Adresa:
+      k.perdoruesi.teDhenatPerdoruesit &&
+      k.perdoruesi.teDhenatPerdoruesit.qyteti + ' ' + k.perdoruesi.teDhenatPerdoruesit &&
+      k.perdoruesi.teDhenatPerdoruesit.shteti
+  }));
 
   return (
     <div>
@@ -76,42 +92,11 @@ function Klientet(props) {
         <>
           <h1>Lista e Klienteve</h1>
           <EksportoTeDhenat teDhenatJSON={PergatitjaTeDhenavePerEksport()} emriDokumentit="Lista e Klienteve" />
-          <Table responsive>
-            <thead>
-              <tr>
-                <th>Emri & Mbiemri</th>
-                <th>Email</th>
-                <th>Nr. Kontaktit</th>
-                <th>Data e Lindjes</th>
-                <th>Adresa</th>
-              </tr>
-            </thead>
-            <tbody>
-              {klientet.map((k) => (
-                <tr key={k.perdoruesi.userID}>
-                  <td>
-                    {k.perdoruesi.emri} {k.perdoruesi.mbiemri}
-                  </td>
-                  <td>{k.perdoruesi.email}</td>
-                  <td>{k.perdoruesi.teDhenatPerdoruesit && k.perdoruesi.teDhenatPerdoruesit.nrKontaktit}</td>
-                  <td>
-                    {new Date(k.perdoruesi.teDhenatPerdoruesit && k.perdoruesi.teDhenatPerdoruesit.dataLindjes).toLocaleDateString(
-                      'en-GB',
-                      { dateStyle: 'short' }
-                    )}
-                  </td>
-                  <td>
-                    {k.perdoruesi.teDhenatPerdoruesit && k.perdoruesi.teDhenatPerdoruesit.qyteti},{' '}
-                    {k.perdoruesi.teDhenatPerdoruesit && k.perdoruesi.teDhenatPerdoruesit.shteti}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
+          <DataTable headers={headers} data={UsersData} />
         </>
       )}
     </div>
   );
 }
 
-export default Klientet;
+export default ShportaEKlienteve;

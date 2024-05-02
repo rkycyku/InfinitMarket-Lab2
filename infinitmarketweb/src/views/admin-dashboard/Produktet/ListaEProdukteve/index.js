@@ -9,7 +9,7 @@ import Mesazhi from '../../../../components/Mesazhi';
 import { TailSpin } from 'react-loader-spinner';
 import LargoProduktin from './LargoProduktin';
 import EditoStokunQmimin from './EditoStokunQmimin';
-import EksportoTeDhenat from '../../../../components/EksportoTeDhenat';
+import EksportoTeDhenat from '../../../../components/Tabela/EksportoTeDhenat';
 
 function TabelaEProdukteve() {
   const [produktet, setProduktet] = useState([]);
