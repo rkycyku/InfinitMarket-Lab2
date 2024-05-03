@@ -1,12 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { TailSpin } from 'react-loader-spinner';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPenToSquare, faBan } from '@fortawesome/free-solid-svg-icons';
-import Button from 'react-bootstrap/Button';
-import { Table } from 'react-bootstrap';
 import Mesazhi from '../../components/Mesazhi';
-import EksportoTeDhenat from '../../components/Tabela/EksportoTeDhenat';
+import Tabela from '../../components/Tabela/Tabela';
 
 function Mesazhet() {
   const [mesazhet, setMesazhet] = useState([]);
@@ -63,7 +59,17 @@ function Mesazhet() {
       try {
         setLoading(true);
         const mesazhet = await axios.get('https://localhost:7251/api/TeNdryshme/ContactForm/shfaqMesazhet', authentikimi);
-        setMesazhet(mesazhet.data);
+        setMesazhet(
+          mesazhet.data.map((k) => ({
+            ID: k.mesazhiId,
+            Perdoruesi: k.user ? k.user.userID + ' - ' + k.user.emri + ' ' + k.user.mbiemri : 'Nuk ka Llogari',
+            Emri: k.emri,
+            Email: k.email,
+            Mesazhi: k.mesazhi,
+            'Data Dergeses': new Date(k.dataDergeses).toLocaleDateString('en-GB', { dateStyle: 'short' }),
+            Statusi: k.statusi
+          }))
+        );
         console.log(mesazhet.data);
         setLoading(false);
       } catch (err) {
@@ -82,13 +88,13 @@ function Mesazhet() {
       const klienti = user ? user.userID + ' - ' + user.emri + ' ' + user.mbiemri : 'Nuk ka Llogari';
 
       return {
-        'ID Mesazhit': mesazhiId,
+        ID: mesazhiId,
         Perdoruesi: klienti,
-        Emri: emri, 
-        Email: email, 
-        Mesazhi: mesazhi, 
-        'Data Dergeses': new Date(dataDergeses).toLocaleDateString('en-GB', { dateStyle: 'short' }), 
-        'Statusi Porosis': statusi
+        Emri: emri,
+        Email: email,
+        Mesazhi: mesazhi,
+        'Data Dergeses': new Date(dataDergeses).toLocaleDateString('en-GB', { dateStyle: 'short' }),
+        Statusi: statusi
       };
     });
   }
@@ -111,44 +117,17 @@ function Mesazhet() {
         </div>
       ) : (
         <>
-          <h1 className="title">Mesazhet e derguara nga Perdoruesit</h1>
-          <EksportoTeDhenat teDhenatJSON={PergatitjaTeDhenavePerEksport()} emriDokumentit="Mesazhet" />
-
-          <Table>
-            <thead>
-              <tr>
-                <th>ID Mesazhit</th>
-                <th>Perdoruesi</th>
-                <th>Emri</th>
-                <th>Email</th>
-                <th>Mesazhi</th>
-                <th>Data Dergeses</th>
-                <th>Statusi</th>
-                <th>Funksione</th>
-              </tr>
-            </thead>
-            <tbody>
-              {mesazhet.map((m) => (
-                <tr key={m.mesazhiId}>
-                  <td>{m.mesazhiId}</td>
-                  <td>{m.user ? m.user.userID + ' - ' + m.user.emri + ' ' + m.user.mbiemri : 'Nuk ka Llogari'}</td>
-                  <td> {m.emri} </td>
-                  <td> {m.email} </td>
-                  <td> {m.mesazhi} </td>
-                  <td>{new Date(m.dataDergeses).toLocaleDateString('en-GB', { dateStyle: 'short' })}</td>
-                  <td>{m.statusi}</td>
-                  <td>
-                    <Button style={{ marginRight: '0.5em' }} variant="success" onClick={() => handleEdito(m.mesazhiId)}>
-                      <FontAwesomeIcon icon={faPenToSquare} />
-                    </Button>
-                    <Button variant="danger" onClick={() => handleFshij(m.mesazhiId)}>
-                      <FontAwesomeIcon icon={faBan} />
-                    </Button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
+          {mesazhet.length > 0 ? (
+            <Tabela
+              data={mesazhet}
+              tableName="Mesazhet e derguara nga Perdoruesit"
+              kaButona
+              funksionButonEdit={(e) => handleEdito(e)}
+              funksionButonFshij={(e) => handleFshij(e)}
+            />
+          ) : (
+            'Nuk ka te Dhena'
+          )}
         </>
       )}
     </div>

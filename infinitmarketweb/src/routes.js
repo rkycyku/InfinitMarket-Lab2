@@ -149,11 +149,11 @@ const routes = [
         path: '/NukKeniAkses',
         element: lazy(() => import('./components/NukKeniAkses'))
       },
-      // {
-      //   exact: true,
-      //   path: '/Admin/Klientet/ShportaEKlienteve',
-      //   element: lazy(() => import('./views/admin-dashboard/Klientet/ShportaEKlienteve'))
-      // },
+      {
+        exact: true,
+        path: '/Admin/Klientet/ShportaEKlienteve',
+        element: lazy(() => import('./views/admin-dashboard/Klientet/ShportaEKlienteve'))
+      },
       {
         path: '*',
         exact: 'true',

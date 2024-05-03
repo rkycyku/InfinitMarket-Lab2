@@ -6,8 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBan, faPlus, faClose } from '@fortawesome/free-solid-svg-icons';
 import { TailSpin } from 'react-loader-spinner';
 import { Table } from 'react-bootstrap';
-import EksportoTeDhenat from '../../../components/EksportoTeDhenat';
-import DataTable from '../../../components/DataTable';
+import EksportoTeDhenat from '../../../components/Tabela/EksportoTeDhenat';
+import Tabela from '../../../components/Tabela/Tabela';
 
 function ShportaEKlienteve(props) {
   const [klientet, setKlientet] = useState([]);
@@ -32,8 +32,6 @@ function ShportaEKlienteve(props) {
         const klientet = await axios.get('https://localhost:7251/api/Perdoruesi/shfaqPerdoruesit', authentikimi);
         setKlientet(klientet.data.filter((x) => x.rolet.includes('Klient')));
         setLoading(false);
-
-        console.log(klientet.data);
       } catch (err) {
         console.log(err);
         setLoading(false);
@@ -43,20 +41,6 @@ function ShportaEKlienteve(props) {
     shfaqKlientet();
   }, [perditeso]);
 
-  function PergatitjaTeDhenavePerEksport() {
-    return klientet.map((user) => {
-      const { perdoruesi } = user;
-
-      return {
-        'Emri & Mbiemri': perdoruesi.emri + ' ' + perdoruesi.mbiemri,
-        Email: perdoruesi.email,
-        'Nr. Kontaktit': perdoruesi.teDhenatPerdoruesit.nrKontaktit,
-        'Data e Lindjes': new Date(perdoruesi.teDhenatPerdoruesit.dataLindjes).toLocaleDateString('en-GB', { dateStyle: 'short' }),
-        Adresa: perdoruesi.teDhenatPerdoruesit.qyteti + ', ' + perdoruesi.teDhenatPerdoruesit.shteti
-      };
-    });
-  }
-  const headers = ['Emri & Mbiemri', 'Email', 'Nr. Kontaktit', 'Data e Lindjes', 'Adresa'];
   const UsersData = klientet.map((k) => ({
     ID: k.perdoruesi.userID,
     'Emri & Mbiemri': k.perdoruesi.emri + ' ' + k.perdoruesi.mbiemri,
@@ -89,11 +73,7 @@ function ShportaEKlienteve(props) {
           />
         </div>
       ) : (
-        <>
-          <h1>Lista e Klienteve</h1>
-          <EksportoTeDhenat teDhenatJSON={PergatitjaTeDhenavePerEksport()} emriDokumentit="Lista e Klienteve" />
-          <DataTable headers={headers} data={UsersData} />
-        </>
+        <>{UsersData.length > 0 ? <Tabela data={UsersData} tableName="Shporta e Klienteve" /> : 'Nuk ka te Dhena'}</>
       )}
     </div>
   );

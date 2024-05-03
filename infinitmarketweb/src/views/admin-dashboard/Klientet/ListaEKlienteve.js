@@ -153,6 +153,7 @@ function ListaEKlienteve(props) {
             </thead>
             <tbody>
               {items.map((k) => (
+                console.log(typeof(k.DataLindjes)),
                 <tr key={k.ID}>
                   <td>{k.EmriMbiemri}</td>
                   <td>{k.Email}</td>

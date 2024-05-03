@@ -9,8 +9,7 @@ import LargoOfertenSlider from './LargoOfertenSlider';
 import { TailSpin } from 'react-loader-spinner';
 import { Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
-
+import Tabela from '../../../../components/Tabela/Tabela';
 
 function OfertatSlider(props) {
   const [kategorit, setKategorit] = useState([]);
@@ -36,7 +35,18 @@ function OfertatSlider(props) {
       try {
         setLoading(true);
         const kategoria = await axios.get('https://localhost:7251/api/TeNdryshme/OfertatSlider/ShfaqOfertatSlider', authentikimi);
-        setKategorit(kategoria.data);
+        setKategorit(
+          kategoria.data.map((k) => ({
+            ID: k.sliderOfertatID,
+            'Linku Ofertes': k.linkuOfertes,
+            'Oferta Aktive':
+              new Date(k.dataFillimitOfertes).toLocaleDateString('en-GB', { dateStyle: 'short' }) +
+              ' - ' +
+              new Date(k.dataMbarimitOfertes).toLocaleDateString('en-GB', { dateStyle: 'short' }),
+            'Foto Oferta': '<img style="height: 70px;" src="' + process.env.PUBLIC_URL + '/img/ofertat/' + k.fotoOferta + '" />'
+          }))
+        );
+
         setLoading(false);
       } catch (err) {
         console.log(err);
@@ -56,7 +66,6 @@ function OfertatSlider(props) {
     setFshij(true);
     setId(id);
   };
-  
 
   return (
     <div>
@@ -97,47 +106,17 @@ function OfertatSlider(props) {
         </div>
       ) : (
         <>
-          <h1>Ofertat e Sliderit</h1>
-          <Link to="/admin/produktet">
-            <Button className="mb-3 Butoni">
-              Mbyll Ofertat <FontAwesomeIcon icon={faClose} />
-            </Button>
-          </Link>
-          <Button className="mb-3 Butoni" onClick={handleShow}>
-            Shto Oferten <FontAwesomeIcon icon={faPlus} />
-          </Button>
-
-          <Table responsive>
-            <thead>
-              <tr>
-                <th>ID Oferta</th>
-                <th>Linku Ofertes</th>
-                <th>Oferta Aktive</th>
-                <th>Foto Oferta</th>
-                <th>Funksione</th>
-              </tr>
-            </thead>
-            <tbody>
-              {kategorit.map((k) => (
-                <tr key={k.sliderOfertatID}>
-                  <td>{k.sliderOfertatID}</td>
-                  <td>{k.linkuOfertes}</td>
-                  <td>
-                    {new Date(k.dataFillimitOfertes).toLocaleDateString('en-GB', { dateStyle: 'short' })} -{' '}
-                    {new Date(k.dataMbarimitOfertes).toLocaleDateString('en-GB', { dateStyle: 'short' })}
-                  </td>
-                  <td>
-                    <img style={{ height: '70px' }} src={process.env.PUBLIC_URL + '/img/ofertat/' + k.fotoOferta} />
-                  </td>
-                  <td>
-                    <Button variant="danger" onClick={() => handleFshij(k.sliderOfertatID)}>
-                      <FontAwesomeIcon icon={faBan} />
-                    </Button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
+          {kategorit.length > 0 ? (
+            <Tabela
+              data={kategorit}
+              tableName="Ofertat e Sliderit"
+              kaButona
+              funksionButonShto={() => handleShow()}
+              funksionButonFshij={(e) => handleFshij(e)}
+            />
+          ) : (
+            'Nuk ka te Dhena'
+          )}
         </>
       )}
     </div>

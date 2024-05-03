@@ -19,6 +19,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             _context = context;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("ShfaqOfertatSlider")]
         public async Task<IActionResult> ShfaqOfertatESlider()
@@ -28,6 +29,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             return Ok(ofertat);
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [Route("VendosOfertatSlider")]
         public async Task<IActionResult> VendosOfertatSlider(SliderOfertat so)
@@ -38,6 +40,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             return CreatedAtAction("get", so.SliderOfertatID, so);
         }
 
+        [AllowAnonymous]
         [HttpDelete]
         [Route("FshijOfertenSlider")]
         public async Task<IActionResult> FshijOfertenSlider(int id)

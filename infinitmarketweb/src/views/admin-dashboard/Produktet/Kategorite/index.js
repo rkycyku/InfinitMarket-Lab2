@@ -11,6 +11,7 @@ import { TailSpin } from 'react-loader-spinner';
 import { Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import EksportoTeDhenat from '../../../../components/Tabela/EksportoTeDhenat';
+import Tabela from '../../../../components/Tabela/Tabela';
 
 function TabelaEKategorive(props) {
   const [kategorit, setKategorit] = useState([]);
@@ -37,7 +38,11 @@ function TabelaEKategorive(props) {
       try {
         setLoading(true);
         const kategoria = await axios.get('https://localhost:7251/api/Produktet/Kategoria/shfaqKategorit', authentikimi);
-        setKategorit(kategoria.data);
+        setKategorit(kategoria.data.map((k) => ({
+          ID: k.kategoriaId,
+          'Emri Kategoris': k.llojiKategoris,
+          "Pershkrimi Kategoris": k.pershkrimiKategoris !== null && k.pershkrimiKategoris.trim() !== '' ? k.pershkrimiKategoris : 'Nuk Ka Pershkrim'
+        })));
         setLoading(false);
       } catch (err) {
         console.log(err);
@@ -64,17 +69,6 @@ function TabelaEKategorive(props) {
     setId(id);
   };
   const handleFshijMbyll = () => setFshij(false);
-
-  function PergatitjaTeDhenavePerEksport() {
-    return kategorit.map((proukti) => {
-      const { llojiKategoris, pershkrimiKategoris } = proukti;
-
-      return {
-        'Emri Kategoris': llojiKategoris,
-        'Pershkrimi Kategoris': pershkrimiKategoris !== null && pershkrimiKategoris.trim() !== '' ? pershkrimiKategoris : 'Nuk Ka Pershkrim'
-      };
-    });
-  }
 
   return (
     <div>
@@ -124,44 +118,18 @@ function TabelaEKategorive(props) {
         </div>
       ) : (
         <>
-          <h1>Lista e Kategorive te Produkteve</h1>
-          <Link to="/admin/produktet/ListaEProdukteve">
-            <Button className="mb-3 Butoni">
-              Mbyll Kategorite <FontAwesomeIcon icon={faClose} />
-            </Button>
-          </Link>
-          <Button className="mb-3 Butoni" onClick={handleShow}>
-            Shto Kategori <FontAwesomeIcon icon={faPlus} />
-          </Button>
-          <EksportoTeDhenat teDhenatJSON={PergatitjaTeDhenavePerEksport()} emriDokumentit="Lista e Kategorive te Produkteve" />
-
-          <Table responsive>
-            <thead>
-              <tr>
-                <th>Emri Kategoris</th>
-                <th>Pershkrimi Kategoris</th>
-                <th>Funksione</th>
-              </tr>
-            </thead>
-            <tbody>
-              {kategorit.map((k) => (
-                <tr key={k.kategoriaId}>
-                  <td>{k.llojiKategoris}</td>
-                  <td>
-                    {k.pershkrimiKategoris !== null && k.pershkrimiKategoris.trim() !== '' ? k.pershkrimiKategoris : 'Nuk Ka Pershkrim'}
-                  </td>
-                  <td>
-                    <Button style={{ marginRight: '0.5em' }} variant="success" onClick={() => handleEdito(k.kategoriaId)}>
-                      <FontAwesomeIcon icon={faPenToSquare} />
-                    </Button>
-                    <Button variant="danger" onClick={() => handleFshij(k.kategoriaId)}>
-                      <FontAwesomeIcon icon={faBan} />
-                    </Button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
+          {kategorit.length > 0 ? (
+            <Tabela
+              data={kategorit}
+              tableName="Lista e Kategorive te Produkteve"
+              kaButona
+              funksionButonShto={() => handleShow()}
+              funksionButonFshij={(e) => handleFshij(e)}
+              funksionButonEdit={(e) => handleEdito(e)}
+            />
+          ) : (
+            'Nuk ka te Dhena'
+          )}
         </>
       )}
     </div>

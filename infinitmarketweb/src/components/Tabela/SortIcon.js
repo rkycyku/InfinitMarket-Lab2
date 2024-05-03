@@ -7,10 +7,6 @@ const SortIcon = ({ configKey, type, direction }) => {
     switch (type) {
       case 'text':
         return direction === 'ascending' ? <FontAwesomeIcon icon={faArrowDownAZ} /> : <FontAwesomeIcon icon={faArrowUpZA} />;
-      case 'number':
-        return direction === 'ascending' ? <FontAwesomeIcon icon={faArrowDown19} /> : <FontAwesomeIcon icon={faArrowUp91} />;
-      case 'date':
-        return direction === 'ascending' ? <FontAwesomeIcon icon={faArrowDownShortWide} /> : <FontAwesomeIcon icon={faArrowUpWideShort} />;
       default:
         return <FontAwesomeIcon icon={faArrowsUpDown} />;
     }

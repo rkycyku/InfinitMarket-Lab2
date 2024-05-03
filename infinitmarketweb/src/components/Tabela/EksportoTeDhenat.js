@@ -102,7 +102,7 @@ function EksportoTeDhenat(props) {
         </Modal>
       )}
 
-      <Button variant="success" onClick={() => setEksportoTeDhenat(true)}>
+      <Button variant="outline-success" onClick={() => setEksportoTeDhenat(true)}>
         Eksporto te Dhenat
       </Button>
 

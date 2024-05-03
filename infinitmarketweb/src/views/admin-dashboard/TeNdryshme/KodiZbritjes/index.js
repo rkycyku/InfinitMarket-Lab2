@@ -1,14 +1,11 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Button from 'react-bootstrap/Button';
 import Mesazhi from '../../../../components/Mesazhi';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBan, faPenToSquare, faPlus } from '@fortawesome/free-solid-svg-icons';
-import EditoKompanin from './EditoKodin';
-import LargoKompanin from './FshijKodin';
+import EditoKodin from './EditoKodin';
+import FshijKodin from './FshijKodin';
 import { TailSpin } from 'react-loader-spinner';
 import ShtoKodin from './ShtoKodin';
-import { Table } from 'react-bootstrap';
+import Tabela from '../../../../components/Tabela/Tabela';
 
 function KodiZbritjes() {
   const [kodetEZbritjeve, setKodetEZbritjeve] = useState([]);
@@ -35,7 +32,12 @@ function KodiZbritjes() {
       try {
         setLoading(true);
         const kodi = await axios.get('https://localhost:7251/api/TeNdryshme/KodiZbritje/ShfaqKodet', authentikimi);
-        setKodetEZbritjeve(kodi.data);
+        setKodetEZbritjeve(kodi.data.map((k) => ({
+          "ID": k.kodi,
+          "Qmimi Zbritjes €":k.qmimiZbritjes.toFixed(2),
+          "Vlen per": k.produktiId !== null ? k.produkti && k.produkti.emriProduktit : 'Kodi vlene per komplet shporten',
+          "Data Krijimit": new Date(k.dataKrijimit).toLocaleDateString('en-GB', { dateStyle: 'short' })
+        })));
         setLoading(false);
       } catch (err) {
         console.log(err);
@@ -77,7 +79,7 @@ function KodiZbritjes() {
       )}
       {shfaqMesazhin && <Mesazhi setShfaqMesazhin={setShfaqMesazhin} pershkrimi={pershkrimiMesazhit} tipi={tipiMesazhit} />}
       {edito && (
-        <EditoKompanin
+        <EditoKodin
           largo={handleEditoMbyll}
           id={id}
           shfaqmesazhin={() => setShfaqMesazhin(true)}
@@ -87,7 +89,7 @@ function KodiZbritjes() {
         />
       )}
       {fshij && (
-        <LargoKompanin
+        <FshijKodin
           largo={handleFshijMbyll}
           id={id}
           shfaqmesazhin={() => setShfaqMesazhin(true)}
@@ -111,41 +113,18 @@ function KodiZbritjes() {
         </div>
       ) : (
         <>
-          <h1 className="title">Kodet e Zbritjeve</h1>
-
-          <Button className="mb-3 Butoni" onClick={handleShow}>
-            Shto Kodin <FontAwesomeIcon icon={faPlus} />
-          </Button>
-
-          <Table>
-            <thead>
-              <tr>
-                <th>Kodi Zbritjes</th>
-                <th>Qmimi Zbritjes</th>
-                <th>Vlen per</th>
-                <th>Data Krijimit</th>
-                <th>Funksione</th>
-              </tr>
-            </thead>
-            <tbody>
-              {kodetEZbritjeve.map((k) => (
-                <tr key={k.kodi}>
-                  <td>{k.kodi}</td>
-                  <td>{k.qmimiZbritjes.toFixed(2)} €</td>
-                  <td>{k.produktiId !== null ? k.produkti && k.produkti.emriProduktit : 'Kodi vlene per komplet shporten'}</td>
-                  <td>{new Date(k.dataKrijimit).toLocaleDateString('en-GB', { dateStyle: 'short' })}</td>
-                  <td>
-                    <Button style={{ marginRight: '0.5em' }} variant="success" onClick={() => handleEdito(k.kodi)}>
-                      <FontAwesomeIcon icon={faPenToSquare} />
-                    </Button>
-                    <Button variant="danger" onClick={() => handleFshij(k.kodi)}>
-                      <FontAwesomeIcon icon={faBan} />
-                    </Button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
+          {kodetEZbritjeve.length > 0 ? (
+            <Tabela
+              data={kodetEZbritjeve}
+              tableName="Kodet e Zbritjeve"
+              kaButona
+              funksionButonEdit={(e) => handleEdito(e)}
+              funksionButonShto={() => handleShow()}
+              funksionButonFshij={(e) => handleFshij(e)}
+            />
+          ) : (
+            'Nuk ka te Dhena'
+          )}
         </>
       )}
     </div>

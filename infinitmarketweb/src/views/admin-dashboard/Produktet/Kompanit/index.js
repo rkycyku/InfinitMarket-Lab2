@@ -1,16 +1,11 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Button from 'react-bootstrap/Button';
 import ShtoKompanit from './ShtoKompanit';
 import Mesazhi from '../../../../components/Mesazhi';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBan, faPenToSquare, faPlus, faClose } from '@fortawesome/free-solid-svg-icons';
 import EditoKompanin from './EditoKompanin';
 import LargoKompanin from './LargoKompanin';
 import { TailSpin } from 'react-loader-spinner';
-import { Link } from 'react-router-dom';
-import { Table } from 'react-bootstrap';
-import EksportoTeDhenat from '../../../../components/Tabela/EksportoTeDhenat';
+import Tabela from '../../../../components/Tabela/Tabela';
 
 function TabelaEKompanive(props) {
   const [kompanit, setKompanit] = useState([]);
@@ -37,7 +32,13 @@ function TabelaEKompanive(props) {
       try {
         setLoading(true);
         const kompania = await axios.get('https://localhost:7251/api/Produktet/Kompania/shfaqKompanit', authentikimi);
-        setKompanit(kompania.data);
+        setKompanit(
+          kompania.data.map((k) => ({
+            ID: k.kompaniaId,
+            'Emri i Kompanise': k.emriKompanis,
+            Adresa: k.adresa !== null && k.adresa.trim() !== '' ? k.adresa : 'Nuk Ka Adrese'
+          }))
+        );
         setLoading(false);
       } catch (err) {
         console.log(err);
@@ -64,17 +65,6 @@ function TabelaEKompanive(props) {
     setId(id);
   };
   const handleFshijMbyll = () => setFshij(false);
-
-  function PergatitjaTeDhenavePerEksport() {
-    return kompanit.map((proukti) => {
-      const { emriKompanis, adresa } = proukti;
-
-      return {
-        'Emri i Kompanise': emriKompanis,
-        'Adresa': adresa !== null && adresa.trim() !== '' ? adresa : 'Nuk Ka Adrese'
-      };
-    });
-  }
 
   return (
     <div>
@@ -124,42 +114,18 @@ function TabelaEKompanive(props) {
         </div>
       ) : (
         <>
-          <h1>Lista e Kompanive Partnere</h1>
-          <Link to="/admin/produktet/ListaEProdukteve">
-            <Button className="mb-3 Butoni">
-              Mbyll Kategorite <FontAwesomeIcon icon={faClose} />
-            </Button>
-          </Link>
-          <Button className="mb-3 Butoni" onClick={handleShow}>
-            Shto Kompanin <FontAwesomeIcon icon={faPlus} />
-          </Button>
-          <EksportoTeDhenat teDhenatJSON={PergatitjaTeDhenavePerEksport()} emriDokumentit="Lista e Kompanive Partnere" />
-
-          <Table responsive>
-            <thead>
-              <tr>
-                <th>Emri i Kompanis</th>
-                <th>Adresa</th>
-                <th>Funksione</th>
-              </tr>
-            </thead>
-            <tbody>
-              {kompanit.map((k) => (
-                <tr key={k.kompaniaId}>
-                  <td>{k.emriKompanis}</td>
-                  <td>{k.adresa !== null && k.adresa.trim() !== '' ? k.adresa : 'Nuk Ka Adrese'}</td>
-                  <td>
-                    <Button style={{ marginRight: '0.5em' }} variant="success" onClick={() => handleEdito(k.kompaniaId)}>
-                      <FontAwesomeIcon icon={faPenToSquare} />
-                    </Button>
-                    <Button variant="danger" onClick={() => handleFshij(k.kompaniaId)}>
-                      <FontAwesomeIcon icon={faBan} />
-                    </Button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
+          {kompanit.length > 0 ? (
+            <Tabela
+              data={kompanit}
+              tableName="Lista e Kompanive Partnere"
+              kaButona
+              funksionButonShto={() => handleShow()}
+              funksionButonFshij={(e) => handleFshij(e)}
+              funksionButonEdit={(e) => handleEdito(e)}
+            />
+          ) : (
+            'Nuk ka te Dhena'
+          )}
         </>
       )}
     </div>

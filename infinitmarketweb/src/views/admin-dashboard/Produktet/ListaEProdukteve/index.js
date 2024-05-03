@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Button, Form, Table } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faTrashAlt, faPlus, faCheck, faXmark, faMoneyBill } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faTrashAlt, faPlus, faCheck, faXmark, faMoneyBill, faTimes } from '@fortawesome/free-solid-svg-icons';
 import EditoProduktin from './EditoProduktin';
 import ShtoProduktin from './ShtoProduktin';
 import Mesazhi from '../../../../components/Mesazhi';
@@ -10,6 +10,7 @@ import { TailSpin } from 'react-loader-spinner';
 import LargoProduktin from './LargoProduktin';
 import EditoStokunQmimin from './EditoStokunQmimin';
 import EksportoTeDhenat from '../../../../components/Tabela/EksportoTeDhenat';
+import Tabela from '../../../../components/Tabela/Tabela';
 
 function TabelaEProdukteve() {
   const [produktet, setProduktet] = useState([]);
@@ -22,11 +23,8 @@ function TabelaEProdukteve() {
   const [tipiMesazhit, setTipiMesazhit] = useState('');
   const [pershkrimiMesazhit, setPershkrimiMesazhit] = useState('');
   const [kategorite, setKategorite] = useState([]);
-  const [showLargoModal, setShowLargoModal] = useState(false);
+  const [fshij, setFshij] = useState(false);
   const [produktIdToDelete, setProduktIdToDelete] = useState(null);
-
-  const [inputValue, setInputValue] = useState();
-  const [produktetEFiltruara, setProduktetEFiltruara] = useState(produktet);
 
   const [perditeso, setPerditeso] = useState(Date.now());
 
@@ -42,8 +40,21 @@ function TabelaEProdukteve() {
     const fetchProduktet = async () => {
       try {
         const response = await axios.get('https://localhost:7251/api/Produktet/Produkti/ShfaqProduktet', authentikimi);
-        setProduktet(response.data);
-        setProduktetEFiltruara(response.data);
+        setProduktet(
+          response.data.map((k) => ({
+            ID: k.produktiId,
+            'Emri i Produktit': k.emriProduktit,
+            Pershkrimi: k.pershkrimi
+              ? '<i class="fas fa-check" style="color: green"></i>'
+              : '<i class="fas fa-times" style="color: red"></i>',
+            'Foto Produktit': '<img width="50" alt="" src="' + process.env.PUBLIC_URL + '/img/produktet/' + k.fotoProduktit + '" />',
+            Kompania: k.emriKompanis,
+            Kategoria: k.llojiKategoris,
+            'Lloji TVSH-s': k.llojiTVSH,
+            'Sasia në Stok': k.sasiaNeStok,
+            'Çmimi €': parseFloat(k.qmimiProduktit).toFixed(2)
+          }))
+        );
 
         console.log(response.data);
       } catch (error) {
@@ -77,15 +88,20 @@ function TabelaEProdukteve() {
 
   const handleShow = () => setShto(true);
 
-  const handleDelete = (produktId) => {
+  const handleFshij = (produktId) => {
     setProduktIdToDelete(produktId);
-    setShowLargoModal(true);
+    setFshij(true);
+  };
+
+  const handleEditoStokunQmimin = (id) => {
+    setEditoStokunQmimin(true);
+    setId(id);
   };
 
   const handleDeleteConfirm = async () => {
     try {
       await axios.delete(`https://localhost:7251/api/Produktet/Produkti/LargoProduktin/${produktIdToDelete}`);
-      setShowLargoModal(false);
+      setFshij(false);
       setProduktIdToDelete(null);
       setPerditeso(Date.now());
     } catch (error) {
@@ -94,25 +110,9 @@ function TabelaEProdukteve() {
   };
 
   const handleCloseLargoModal = () => {
-    setShowLargoModal(false);
+    setFshij(false);
     setProduktIdToDelete(null);
   };
-
-  function PergatitjaTeDhenavePerEksport() {
-    return produktetEFiltruara.map((proukti) => {
-      const { qmimiProduktit, emriProduktit, pershkrimi, emriKompanis, llojiKategoris, llojiTVSH, sasiaNeStok } = proukti;
-
-      return {
-        'Emri i Produktit': emriProduktit,
-        Pershkrimi: pershkrimi !== null && pershkrimi.trim() !== '' ? pershkrimi : 'Nuk Ka Pershkrim',
-        Kompania: emriKompanis,
-        Kategoria: llojiKategoris,
-        'Lloji TVSH-s': llojiTVSH,
-        'Sasia në Stok': sasiaNeStok,
-        Çmimi: parseFloat(qmimiProduktit).toFixed(2)
-      };
-    });
-  }
 
   return (
     <div>
@@ -147,78 +147,8 @@ function TabelaEProdukteve() {
           setPershkrimiMesazhit={setPershkrimiMesazhit}
         />
       )}
-      {loading ? (
-        <div>Loading...</div>
-      ) : (
-        <>
-          <h1>Lista e Produkteve</h1>
-          <Button className="mb-3" variant="primary" onClick={handleShow}>
-            Shto Produkt <FontAwesomeIcon icon={faPlus} />
-          </Button>
-          <EksportoTeDhenat teDhenatJSON={PergatitjaTeDhenavePerEksport()} emriDokumentit="Lista e Produkteve" />
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Control
-              type="text"
-              className="form-control styled-input"
-              placeholder="Kerkoni Produktin"
-              value={inputValue}
-              onChange={handleInputChange}
-            />
-          </Form.Group>
-          <Table responsive>
-            <thead>
-              <tr>
-                <th>Emri i Produktit</th>
-                <th>Pershkrimi</th>
-                <th>Foto Produktit</th>
-                <th>Kompania</th>
-                <th>Kategoria</th>
-                <th>Lloji TVSH-s</th>
-                <th>Sasia në Stok</th>
-                <th>Çmimi</th>
-                <th>Funksione</th>
-              </tr>
-            </thead>
-            <tbody>
-              {produktetEFiltruara.map((produkt) => (
-                <tr key={produkt.produktiId}>
-                  <td>{produkt.emriProduktit}</td>
-                  <td>
-                    {produkt.pershkrimi ? <FontAwesomeIcon icon={faCheck} color="green" /> : <FontAwesomeIcon icon={faXmark} color="red" />}
-                  </td>
-                  <td>
-                    <img src={`${process.env.PUBLIC_URL}/img/produktet/${produkt.fotoProduktit}`} width="50" alt="" />
-                  </td>
-                  <td>{produkt.emriKompanis}</td>
-                  <td>{produkt.llojiKategoris}</td>
-                  <td>{produkt.llojiTVSH}</td>
-                  <td>{produkt.sasiaNeStok}</td>
-                  <td>{parseFloat(produkt.qmimiProduktit).toFixed(2)}</td>
-                  <td>
-                    <Button style={{ marginRight: '0.5em' }} variant="info" onClick={() => handleEdito(produkt.produktiId)}>
-                      <FontAwesomeIcon icon={faEdit} />
-                    </Button>
-                    <Button
-                      style={{ marginRight: '0.5em' }}
-                      variant="info"
-                      onClick={() => {
-                        setEditoStokunQmimin(true);
-                        setId(produkt.produktiId);
-                      }}
-                    >
-                      <FontAwesomeIcon icon={faMoneyBill} />
-                    </Button>
-                    <Button variant="danger" onClick={() => handleDelete(produkt.produktiId)}>
-                      <FontAwesomeIcon icon={faTrashAlt} />
-                    </Button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        </>
-      )}
-      {showLargoModal && (
+
+      {fshij && (
         <LargoProduktin
           id={produktIdToDelete}
           largo={handleCloseLargoModal}
@@ -228,6 +158,36 @@ function TabelaEProdukteve() {
           setPershkrimiMesazhit={setPershkrimiMesazhit}
           handleDeleteConfirm={handleDeleteConfirm}
         />
+      )}
+      {loading ? (
+        <div className="Loader">
+          <TailSpin
+            height="80"
+            width="80"
+            color="#009879"
+            ariaLabel="tail-spin-loading"
+            radius="1"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+          />
+        </div>
+      ) : (
+        <>
+          {produktet.length > 0 ? (
+            <Tabela
+              data={produktet}
+              tableName="Lista e Produkteve"
+              kaButona
+              funksionButonShto={() => handleShow()}
+              funksionButonFshij={(e) => handleFshij(e)}
+              funksionButonEdit={(e) => handleEdito(e)}
+              funksioniEditoStokunQmimin={(e) => handleEditoStokunQmimin(e)}
+            />
+          ) : (
+            'Nuk ka te Dhena'
+          )}
+        </>
       )}
     </div>
   );
