@@ -1,91 +1,70 @@
-import { useEffect, useState } from "react";
-import classes from './Styles/PorositeUserit.module.css';
-import axios from "axios";
-import Button from "react-bootstrap/Button";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClose } from '@fortawesome/free-solid-svg-icons'
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import { TailSpin } from 'react-loader-spinner';
-
-
+import Tabela from '../../components/Tabela/Tabela';
 
 function MesazhetUserit(props) {
-    const [mesazhet, setMesazhet] = useState([]);
-    const [perditeso, setPerditeso] = useState('');
-    const [loading, setLoading] = useState(false);
+  const [mesazhet, setMesazhet] = useState([]);
+  const [perditeso, setPerditeso] = useState('');
+  const [loading, setLoading] = useState(false);
+  const getID = localStorage.getItem('id');
 
-    const getToken = localStorage.getItem("token");
+  const getToken = localStorage.getItem('token');
 
-    const authentikimi = {
-        headers: {
-            Authorization: `Bearer ${getToken}`,
-        },
-    };
+  const authentikimi = {
+    headers: {
+      Authorization: `Bearer ${getToken}`
+    }
+  };
 
-    useEffect(() => {
-        const vendosMesazhet = async () => {
-            try {
-                setLoading(true);
-                const mesazhi = await axios.get(`https://localhost:7251/api/TeNdryshme/ContactForm/shfaqMesazhetNgaUseri?idUserit=${props.idUseri}`, authentikimi);
-                setMesazhet(mesazhi.data);
-                setLoading(false);
-            } catch (err) {
-                console.log(err);
-                setLoading(false);
-            }
-        };
+  useEffect(() => {
+    if (getID) {
+      const vendosMesazhet = async () => {
+        try {
+          await axios
+            .get(`https://localhost:7251/api/Perdoruesi/shfaqSipasID?idUserAspNet=${getID}`, authentikimi)
+            .then(async (response) => {
+              const mesazhi = await axios.get(
+                `https://localhost:7251/api/TeNdryshme/ContactForm/shfaqMesazhetNgaUseri?idUserit=${response.data.teDhenatPerdoruesit.userID}`,
+                authentikimi
+              );
+              setMesazhet(
+                mesazhi.data.map((k) => ({
+                  ID: k.mesazhiId,
+                  Mesazhi: k.mesazhi,
+                  'Data Dergeses': new Date(k.dataDergeses).toLocaleDateString('en-GB', { dateStyle: 'short' }),
+                  Statusi: k.statusi
+                }))
+              );
+            });
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      vendosMesazhet();
+    }
+  }, [perditeso]);
 
-        vendosMesazhet();
-    }, [perditeso]);
-
-
-    return (
-        <div className={classes.containerDashboardP}>
-
-            {loading ? (
-                <div className="Loader">
-                    <TailSpin
-                        height="80"
-                        width="80"
-                        color="#009879"
-                        ariaLabel="tail-spin-loading"
-                        radius="1"
-                        wrapperStyle={{}}
-                        wrapperClass=""
-                        visible={true}
-                    />
-                </div>
-            ) : (<>
-                <h1 className="title">
-                    Mesazhet e derguara nga Ju
-                </h1>
-                <Button
-                    className="mb-3 Butoni"
-                    onClick={() => props.setShfaqMesazhet()}
-
-                >
-                    Mbyll Mesazhet <FontAwesomeIcon icon={faClose} />
-                </Button>
-
-
-                <table className="tableBig">
-                    <tr>
-                        <th>Mesazhi</th>
-                        <th>Data Dergeses</th>
-                        <th>Statusi</th>
-                    </tr>
-
-                    {mesazhet.map((m) => (
-                        <tr key={m.mesazhiId}>
-                            <td > {m.mesazhi} </td>
-                            <td>{new Date(m.dataDergeses).toLocaleDateString('en-GB', { dateStyle: 'short' })}</td>
-                            <td>{m.statusi}</td>
-                        </tr>
-                    ))}
-                </table>
-            </>
-            )}
-        </div >
-    );
-};
+  return (
+    <div>
+      {loading ? (
+        <div className="Loader">
+          <TailSpin
+            height="80"
+            width="80"
+            color="#009879"
+            ariaLabel="tail-spin-loading"
+            radius="1"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+          />
+        </div>
+      ) : (
+        <Tabela data={mesazhet} tableName="Mesazhet e derguara nga Ju" />
+      )}
+    </div>
+  );
+}
 
 export default MesazhetUserit;

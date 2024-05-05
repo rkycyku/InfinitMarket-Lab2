@@ -1,29 +1,27 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Button from 'react-bootstrap/Button';
-import Mesazhi from '../../../components/Mesazhi';
+import EditoProduktin from './EditoProduktin';
+import ShtoProduktin from './ShtoProduktin';
+import Mesazhi from '../../../../components/Mesazhi';
 import { TailSpin } from 'react-loader-spinner';
-import { Form, InputGroup, Pagination, Table } from 'react-bootstrap';
-import EksportoTeDhenat from './EksportoTeDhenat';
-import SortIcon from './SortIcon';
-import useSortableData from '../../hooks/useSortableData';
+import LargoProduktin from './LargoProduktin';
+import EditoStokunQmimin from './EditoStokunQmimin';
+import Tabela from '../../../../components/Tabela/Tabela';
 
-function TemplateTabela(props) {
-  const [klientet, setKlientet] = useState([]);
-  const [perditeso, setPerditeso] = useState('');
+function TemplateTabela() {
+  const [produktet, setProduktet] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [edito, setEdito] = useState(false);
+  const [editoStokunQmimin, setEditoStokunQmimin] = useState(false);
+  const [id, setId] = useState(0);
+  const [shto, setShto] = useState(false);
   const [shfaqMesazhin, setShfaqMesazhin] = useState(false);
   const [tipiMesazhit, setTipiMesazhit] = useState('');
   const [pershkrimiMesazhit, setPershkrimiMesazhit] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [fshij, setFshij] = useState(false);
+  const [produktIdToDelete, setProduktIdToDelete] = useState(null);
 
-  const [searchQuery, setSearchQuery] = useState('');
-  const [itemsPerPage, setItemsPerPage] = useState(10);
-  const { items, requestSort, sortConfig, currentPage, pageCount, goToPage } = useSortableData(
-    klientet,
-    perditeso,
-    searchQuery,
-    itemsPerPage
-  );
+  const [perditeso, setPerditeso] = useState(Date.now());
 
   const getToken = localStorage.getItem('token');
 
@@ -34,51 +32,128 @@ function TemplateTabela(props) {
   };
 
   useEffect(() => {
-    const shfaqKlientet = async () => {
+    const fetchProduktet = async () => {
       try {
-        setLoading(true);
-        const klientet = await axios.get('https://localhost:7251/api/Perdoruesi/shfaqPerdoruesit', authentikimi); //Duhet te zevendesohet me API e cila kjo tabele do te sherbeje
+        const response = await axios.get('https://localhost:7251/api/Produktet/Produkti/ShfaqProduktet', authentikimi);
+        setProduktet(
+          response.data.map((k) => ({
+            ID: k.produktiId,
+            'Emri i Produktit': k.emriProduktit,
+            Pershkrimi: k.pershkrimi
+              ? '<i class="fas fa-check" style="color: green"></i>'
+              : '<i class="fas fa-times" style="color: red"></i>',
+            'Foto Produktit': '<img width="50" alt="" src="' + process.env.PUBLIC_URL + '/img/produktet/' + k.fotoProduktit + '" />',
+            Kompania: k.emriKompanis,
+            Kategoria: k.llojiKategoris,
+            'Lloji TVSH-s': k.llojiTVSH,
+            'Sasia në Stok': k.sasiaNeStok,
+            'Çmimi €': parseFloat(k.qmimiProduktit).toFixed(2)
+          }))
+        );
 
-        setKlientet(
-          klientet.data
-            .filter((x) => x.rolet.includes('Klient'))
-            .map((k) => ({
-              ID: k.perdoruesi.userID,
-              EmriMbiemri: k.perdoruesi.emri + ' ' + k.perdoruesi.mbiemri,
-              Email: k.perdoruesi.email,
-              NrKontaktit: k.perdoruesi.teDhenatPerdoruesit && k.perdoruesi.teDhenatPerdoruesit.nrKontaktit,
-              DataLindjes:
-                k.perdoruesi.teDhenatPerdoruesit &&
-                k.perdoruesi.teDhenatPerdoruesit.dataLindjes &&
-                new Date(k.perdoruesi.teDhenatPerdoruesit.dataLindjes).toLocaleDateString('en-GB', { dateStyle: 'short' }),
-              Adresa:
-                k.perdoruesi.teDhenatPerdoruesit &&
-                k.perdoruesi.teDhenatPerdoruesit.qyteti &&
-                k.perdoruesi.teDhenatPerdoruesit.shteti &&
-                `${k.perdoruesi.teDhenatPerdoruesit.qyteti}, ${k.perdoruesi.teDhenatPerdoruesit.shteti}`
-            }))
-        ); //Keto te dhena duhet te perditesohen me ato te cilat nevojiten per te u shfaqur ne tabele
-        setLoading(false);
-      } catch (err) {
-        console.log(err);
-        setLoading(false);
+        console.log(response.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
       }
     };
 
-    shfaqKlientet();
+    fetchProduktet();
   }, [perditeso]);
 
-  const handleSearch = (e) => {
-    setSearchQuery(e.target.value);
-  }; // Sherben per te kerkuar permes rreshtave
+  const handleInputChange = (e) => {
+    const value = e.target.value.toLowerCase();
+    setInputValue(value);
+    const filtered = produktet.filter((item) => item.emriProduktit.toLowerCase().includes(value));
+    setProduktetEFiltruara(filtered);
+  };
 
-  const handleItemsPerPageChange = (newItemsPerPage) => {
-    setItemsPerPage(newItemsPerPage);
-  }; //Per caktimin se sa rreshta mund te shfaqen ne nje faqe te vetme
+  const handleEdito = (id) => {
+    setEdito(true);
+    setId(id);
+  };
+
+  const handleEditoMbyll = () => {
+    setEdito(false);
+    setId(0);
+  };
+
+  const handleClose = () => {
+    setShto(false);
+  };
+
+  const handleShow = () => setShto(true);
+
+  const handleFshij = (produktId) => {
+    setProduktIdToDelete(produktId);
+    setFshij(true);
+  };
+
+  const handleEditoStokunQmimin = (id) => {
+    setEditoStokunQmimin(true);
+    setId(id);
+  };
+
+  const handleDeleteConfirm = async () => {
+    try {
+      await axios.delete(`https://localhost:7251/api/Produktet/Produkti/LargoProduktin/${produktIdToDelete}`);
+      setFshij(false);
+      setProduktIdToDelete(null);
+      setPerditeso(Date.now());
+    } catch (error) {
+      console.error('Error deleting product:', error);
+    }
+  };
+
+  const handleCloseLargoModal = () => {
+    setFshij(false);
+    setProduktIdToDelete(null);
+  };
 
   return (
     <div>
+      {edito && (
+        <EditoProduktin
+          id={id}
+          largo={handleEditoMbyll}
+          shfaqmesazhin={() => setShfaqMesazhin(true)}
+          perditesoTeDhenat={() => setPerditeso(Date.now())}
+          setTipiMesazhit={setTipiMesazhit}
+          setPershkrimiMesazhit={setPershkrimiMesazhit}
+        />
+      )}
       {shfaqMesazhin && <Mesazhi setShfaqMesazhin={setShfaqMesazhin} pershkrimi={pershkrimiMesazhit} tipi={tipiMesazhit} />}
+      {shto && (
+        <ShtoProduktin
+          shfaq={handleShow}
+          largo={handleClose}
+          shfaqmesazhin={() => setShfaqMesazhin(true)}
+          perditesoTeDhenat={() => setPerditeso(Date.now())}
+          setTipiMesazhit={setTipiMesazhit}
+          setPershkrimiMesazhit={setPershkrimiMesazhit}
+        />
+      )}
+      {editoStokunQmimin && (
+        <EditoStokunQmimin
+          id={id}
+          largo={() => setEditoStokunQmimin(false)}
+          shfaqmesazhin={() => setShfaqMesazhin(true)}
+          perditesoTeDhenat={() => setPerditeso(Date.now())}
+          setTipiMesazhit={setTipiMesazhit}
+          setPershkrimiMesazhit={setPershkrimiMesazhit}
+        />
+      )}
+
+      {fshij && (
+        <LargoProduktin
+          id={produktIdToDelete}
+          largo={handleCloseLargoModal}
+          perditesoTeDhenat={() => setPerditeso(Date.now())}
+          shfaqmesazhin={() => setShfaqMesazhin(true)}
+          setTipiMesazhit={setTipiMesazhit}
+          setPershkrimiMesazhit={setPershkrimiMesazhit}
+          handleDeleteConfirm={handleDeleteConfirm}
+        />
+      )}
       {loading ? (
         <div className="Loader">
           <TailSpin
@@ -94,88 +169,15 @@ function TemplateTabela(props) {
         </div>
       ) : (
         <>
-          <h1>Lista e Klienteve</h1> {/* Emri i Tabeles */}
-          <Table striped bordered hover responsive>
-            <thead>
-              <tr>
-                <th colSpan={5}>
-                  <InputGroup>
-                    <Form.Select
-                      value={itemsPerPage}
-                      onChange={(e) => {
-                        handleItemsPerPageChange(parseInt(e.target.value));
-                        goToPage(0);
-                      }}
-                    >
-                      <option value={5}>5 per page</option>
-                      <option value={10}>10 per page</option>
-                      <option value={15}>15 per page</option>
-                    </Form.Select>
-                    <Form.Control type="text" placeholder="Search..." value={searchQuery} onChange={handleSearch} />
-                    <Button
-                      variant="secondary"
-                      onClick={() => {
-                        setSearchQuery('');
-                        requestSort(null);
-                        goToPage(0);
-                      }}
-                      id="button-addon2"
-                    >
-                      Pastro Filtrat
-                    </Button>
-
-                    {klientet.length > 0 && <EksportoTeDhenat teDhenatJSON={klientet} emriDokumentit="Lista e Klienteve" />}
-                  </InputGroup>
-                </th>
-              </tr>
-              <tr>
-                {/* Duhen te editohen sipas nevojes */}
-                <th onClick={() => requestSort('EmriMbiemri')}>
-                  Emri & Mbiemri{' '}
-                  {sortConfig.key === 'EmriMbiemri' ? <SortIcon direction={sortConfig.direction} type="text" /> : <SortIcon />}
-                </th>
-                <th onClick={() => requestSort('Email')}>
-                  Email {sortConfig.key === 'Email' ? <SortIcon direction={sortConfig.direction} type="text" /> : <SortIcon />}
-                </th>
-                <th onClick={() => requestSort('NrKontaktit')}>
-                  Nr. Kontaktit{' '}
-                  {sortConfig.key === 'NrKontaktit' ? <SortIcon direction={sortConfig.direction} type="number" /> : <SortIcon />}
-                </th>
-                <th onClick={() => requestSort('DataLindjes')}>
-                  Data e Lindjes{' '}
-                  {sortConfig.key === 'DataLindjes' ? <SortIcon direction={sortConfig.direction} type="date" /> : <SortIcon />}
-                </th>
-                <th onClick={() => requestSort('Adresa')}>
-                  Adresa {sortConfig.key === 'Adresa' ? <SortIcon direction={sortConfig.direction} type="text" /> : <SortIcon />}
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* Duhen te jene te caktuar tek pjesa e useEffect me larte tek setKlienti */}
-              {items.map((k) => (
-                <tr key={k.ID}>
-                  <td>{k.EmriMbiemri}</td>
-                  <td>{k.Email}</td>
-                  <td>{k.NrKontaktit}</td>
-                  <td>{k.DataLindjes}</td>
-                  <td>{k.Adresa}</td>
-                </tr>
-              ))}
-              <tr>
-                <td colSpan={5}>
-                  <Pagination>
-                    <Pagination.Prev onClick={() => goToPage(currentPage - 1)} disabled={currentPage === 0} />
-                    {Array.from({ length: pageCount }, (_, index) => (
-                      <Pagination.Item key={index} active={index === currentPage} onClick={() => goToPage(index)}>
-                        {index + 1}
-                      </Pagination.Item>
-                    ))}
-                    <Pagination.Next onClick={() => goToPage(currentPage + 1)} disabled={currentPage === pageCount - 1} />
-                  </Pagination>
-                </td>
-              </tr>
-            </tbody>
-          </Table>
+          <Tabela
+            data={produktet}
+            tableName="Lista e Produkteve"
+            kaButona
+            funksionButonShto={() => handleShow()}
+            funksionButonFshij={(e) => handleFshij(e)}
+            funksionButonEdit={(e) => handleEdito(e)}
+            funksioniEditoStokunQmimin={(e) => handleEditoStokunQmimin(e)}
+          />
         </>
       )}
     </div>

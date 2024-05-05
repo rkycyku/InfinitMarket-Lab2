@@ -32,12 +32,14 @@ function KodiZbritjes() {
       try {
         setLoading(true);
         const kodi = await axios.get('https://localhost:7251/api/TeNdryshme/KodiZbritje/ShfaqKodet', authentikimi);
-        setKodetEZbritjeve(kodi.data.map((k) => ({
-          "ID": k.kodi,
-          "Qmimi Zbritjes €":k.qmimiZbritjes.toFixed(2),
-          "Vlen per": k.produktiId !== null ? k.produkti && k.produkti.emriProduktit : 'Kodi vlene per komplet shporten',
-          "Data Krijimit": new Date(k.dataKrijimit).toLocaleDateString('en-GB', { dateStyle: 'short' })
-        })));
+        setKodetEZbritjeve(
+          kodi.data.map((k) => ({
+            ID: k.kodi,
+            'Qmimi Zbritjes €': k.qmimiZbritjes.toFixed(2),
+            'Vlen per': k.produktiId !== null ? k.produkti && k.produkti.emriProduktit : 'Kodi vlene per komplet shporten',
+            'Data Krijimit': new Date(k.dataKrijimit).toLocaleDateString('en-GB', { dateStyle: 'short' })
+          }))
+        );
         setLoading(false);
       } catch (err) {
         console.log(err);
@@ -113,18 +115,14 @@ function KodiZbritjes() {
         </div>
       ) : (
         <>
-          {kodetEZbritjeve.length > 0 ? (
-            <Tabela
-              data={kodetEZbritjeve}
-              tableName="Kodet e Zbritjeve"
-              kaButona
-              funksionButonEdit={(e) => handleEdito(e)}
-              funksionButonShto={() => handleShow()}
-              funksionButonFshij={(e) => handleFshij(e)}
-            />
-          ) : (
-            'Nuk ka te Dhena'
-          )}
+          <Tabela
+            data={kodetEZbritjeve}
+            tableName="Kodet e Zbritjeve"
+            kaButona
+            funksionButonEdit={(e) => handleEdito(e)}
+            funksionButonShto={() => handleShow()}
+            funksionButonFshij={(e) => handleFshij(e)}
+          />
         </>
       )}
     </div>

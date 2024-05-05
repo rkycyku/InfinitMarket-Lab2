@@ -3,6 +3,7 @@ using InfinitMarket.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace InfinitMarket.Controllers.API.Produktet
 {
@@ -23,7 +24,7 @@ namespace InfinitMarket.Controllers.API.Produktet
         [Route("ShfaqShportatEKlienteve")]
         public async Task<IActionResult> ShfaqShportatEKlienteve()
         {
-            var shportat = await _context.Shporta.Include(x => x.Perdoruesi).Include(x => x.KodiZbritjes).Include(x => x.Adresa).OrderBy(x => x.TotaliProdukteveNeShporte).ToListAsync();
+            var shportat = await _context.Shporta.Include(x => x.Perdoruesi).Include(x => x.KodiZbritjes).Include(x => x.Adresa).OrderByDescending(x => x.TotaliProdukteveNeShporte).ToListAsync();
 
             if (shportat == null)
             {
@@ -55,7 +56,7 @@ namespace InfinitMarket.Controllers.API.Produktet
         {
             var shporta = await _context.Shporta.Include(x => x.Perdoruesi).Where(x => x.Perdoruesi.AspNetUserId == userID).FirstOrDefaultAsync();
 
-            if(shporta == null)
+            if (shporta == null)
             {
                 return BadRequest("Ndodhi nje gabim gjate shfaqjes se shportes!");
             }
@@ -68,9 +69,9 @@ namespace InfinitMarket.Controllers.API.Produktet
                 .Where(x => x.ShportaID == shporta.ShportaID)
                 .ToListAsync();
 
-            foreach(var prd in TeDhenatShporta)
+            foreach (var prd in TeDhenatShporta)
             {
-                if(prd.Produkti?.isDeleted == "true")
+                if (prd.Produkti?.isDeleted == "true")
                 {
                     _context.TeDhenatShporta.Remove(prd);
                     await _context.SaveChangesAsync();
@@ -78,7 +79,7 @@ namespace InfinitMarket.Controllers.API.Produktet
                     shporta.DataEFunditEPerditesimit = DateTime.Now;
                     shporta.TotaliProdukteveNeShporte -= 1;
 
-                    if(prd.Produkti.TeDhenatProduktit.llojiTVSH == 18)
+                    if (prd.Produkti.TeDhenatProduktit.llojiTVSH == 18)
                     {
                         shporta.Totali18TVSH -= prd.SasiaProduktit * prd.Produkti.TeDhenatProduktit.QmimiProduktit;
                         shporta.TotProd18TVSH -= prd.SasiaProduktit;
@@ -96,7 +97,7 @@ namespace InfinitMarket.Controllers.API.Produktet
 
             var ListaProdukteve = new List<ShportaPerKthim>();
 
-            foreach(var prd in TeDhenatShporta)
+            foreach (var prd in TeDhenatShporta)
             {
                 var produkti = new ShportaPerKthim()
                 {
@@ -141,7 +142,7 @@ namespace InfinitMarket.Controllers.API.Produktet
 
             var eshteNeShporte = await _context.TeDhenatShporta.Where(x => x.ShportaID == shporta.ShportaID && x.ProduktiID == ProduktiID).FirstOrDefaultAsync();
 
-            if(eshteNeShporte == null)
+            if (eshteNeShporte == null)
             {
                 TeDhenatShporta shtoNeShporte = new()
                 {
@@ -196,8 +197,6 @@ namespace InfinitMarket.Controllers.API.Produktet
 
                 return Ok(eshteNeShporte);
             }
-
-            
         }
 
         [AllowAnonymous]
@@ -320,11 +319,11 @@ namespace InfinitMarket.Controllers.API.Produktet
             {
                 return BadRequest("Ndodhi nje gabim!");
             }
-                shporta.KodiZbritjesID = KodiZbritjes;
+            shporta.KodiZbritjesID = KodiZbritjes;
 
 
             _context.Shporta.Update(shporta);
-            await _context.SaveChangesAsync();  
+            await _context.SaveChangesAsync();
 
             return Ok();
         }
@@ -356,7 +355,77 @@ namespace InfinitMarket.Controllers.API.Produktet
             return Ok();
         }
 
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("ShfaqListenEDeshirave")]
+        public async Task<IActionResult> ShfaqListenEDeshirave(string userID)
+        {
+            var listaEDeshirave = await _context.ListaEDeshirave.Include(x => x.Klienti).Include(x => x.Produkti).Where(x => x.Klienti.AspNetUserId == userID).ToListAsync();
+
+            if (listaEDeshirave == null)
+            {
+                return BadRequest("Ndodhi nje gabim gjate shfaqjes se Listes Te Deshirave!");
+            }
+
+            return Ok(listaEDeshirave);
+        }
+
+
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("ShtoProduktinNeListenEDeshirave")]
+        public async Task<IActionResult> ShtoProduktinNeListenEDeshirave(string userID, int ProduktiID)
+        {
+            var perdoruesi = await _context.Perdoruesit.Where(x => x.AspNetUserId == userID).FirstOrDefaultAsync();
+
+            if (perdoruesi == null)
+            {
+                return BadRequest("Ndodhi nje gabim!");
+            }
+
+            var eshteNeListe = await _context.ListaEDeshirave.Where(x => x.KlientiID == perdoruesi.UserID && x.ProduktiID == ProduktiID).FirstOrDefaultAsync();
+
+            if (eshteNeListe == null)
+            {
+                ListaEDeshirave shtoNeListe = new()
+                {
+                    ProduktiID = ProduktiID,
+                    KlientiID = perdoruesi.UserID,
+                };
+
+                await _context.ListaEDeshirave.AddAsync(shtoNeListe);
+                await _context.SaveChangesAsync();
+
+                return CreatedAtAction("ShfaqListenEDeshirave", shtoNeListe.ListaEDeshiraveID, eshteNeListe);
+            }
+            else
+            {
+                return Ok(eshteNeListe);
+            }
+        }
+
+        [AllowAnonymous]
+        [HttpDelete]
+        [Route("LargoProduktinNgaListaEDeshirave")]
+        public async Task<IActionResult> LargoProduktinNgaListaEDeshirave(int ListaEDeshiraveID)
+        {
+            var produktiNeListe = await _context.ListaEDeshirave.FindAsync(ListaEDeshiraveID);
+
+            if (produktiNeListe == null)
+            {
+                return NotFound("Ndodhi nje gabim!");
+            }
+
+            _context.ListaEDeshirave.Remove(produktiNeListe);
+            await _context.SaveChangesAsync();
+
+            return Ok("Produkti u largua nga lista e deshirave!");
+
+        }
+
     }
+
+
 
     public class ShportaPerKthim
     {
@@ -365,7 +434,7 @@ namespace InfinitMarket.Controllers.API.Produktet
         public int? ProduktiID { get; set; }
         public string? EmriProduktit { get; set; }
         public string? FotoProduktit { get; set; }
-        public string? EmriKategoris {  get; set; }
+        public string? EmriKategoris { get; set; }
         public decimal? QmimiProduktit { get; set; }
         public decimal? SasiaProduktitNeShporte { get; set; }
         public decimal? SasiaStokutAktual { get; set; }

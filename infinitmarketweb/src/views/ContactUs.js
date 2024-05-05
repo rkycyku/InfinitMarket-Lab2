@@ -23,7 +23,7 @@ const ContactUs = () => {
 
   const authentikimi = {
     headers: {
-      Authorization: 'Bearer ${getToken}'
+      Authorization: `Bearer ${getToken}`
     }
   };
 

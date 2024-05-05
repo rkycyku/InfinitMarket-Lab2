@@ -1,16 +1,10 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Button from 'react-bootstrap/Button';
 import ShtoKategori from './ShtoKategori';
 import Mesazhi from '../../../../components/Mesazhi';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBan, faPenToSquare, faPlus, faClose } from '@fortawesome/free-solid-svg-icons';
 import EditoKategorin from './EditoKategorin';
 import LargoKategorin from './LargoKategorin';
 import { TailSpin } from 'react-loader-spinner';
-import { Table } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import EksportoTeDhenat from '../../../../components/Tabela/EksportoTeDhenat';
 import Tabela from '../../../../components/Tabela/Tabela';
 
 function TabelaEKategorive(props) {
@@ -118,7 +112,6 @@ function TabelaEKategorive(props) {
         </div>
       ) : (
         <>
-          {kategorit.length > 0 ? (
             <Tabela
               data={kategorit}
               tableName="Lista e Kategorive te Produkteve"
@@ -127,9 +120,6 @@ function TabelaEKategorive(props) {
               funksionButonFshij={(e) => handleFshij(e)}
               funksionButonEdit={(e) => handleEdito(e)}
             />
-          ) : (
-            'Nuk ka te Dhena'
-          )}
         </>
       )}
     </div>

@@ -7,6 +7,7 @@ import { TailSpin } from 'react-loader-spinner';
 import { useNavigate } from 'react-router-dom';
 import PagesaMeSukses from '../../components/Checkout/PagesaMeSukses';
 import EksportoTeDhenat from '../../components/Tabela/EksportoTeDhenat';
+import Tabela from '../../components/Tabela/Tabela';
 
 function PorositeUserit(props) {
   const [porosite, setPorosite] = useState([]);
@@ -32,11 +33,17 @@ function PorositeUserit(props) {
     const vendosPorosite = async () => {
       try {
         setLoading(true);
-        const porosija = await axios.get(
-          `https://localhost:7251/api/TeNdryshme/Porosia/ShfaqPorositeKlientit?idPerdoruesi=${getID}`,
-          authentikimi
+        const porosia = await axios.get('https://localhost:7251/api/TeNdryshme/Porosia/ShfaqPorosit', authentikimi);
+        setPorosite(
+          porosia.data.map((k) => ({
+            ID: k.idPorosia,
+            'Data e Porosise': new Date(k.dataPorosis).toLocaleDateString('en-GB', { dateStyle: 'short' }),
+            'Totali Produkteve ne Porosi': k.totaliProdukteve,
+            'Totali Porosise €': parseFloat(k.totali8TVSH + k.totali18TVSH - k.zbritja + parseFloat(k.qmimiTransportit)).toFixed(2) + ' €',
+            'Zbritja €': k.zbritja !== 0 ? parseFloat(k.zbritja).toFixed(2) + ' €' : 'Nuk Ka Zbritje',
+            'Statusi Porosis': k.statusiPorosis
+          }))
         );
-        setPorosite(porosija.data);
         setLoading(false);
       } catch (err) {
         console.log(err);
@@ -52,21 +59,6 @@ function PorositeUserit(props) {
     setNumriFatures(nrFatures);
     setShfaqDetajet(true);
   };
-
-  function PergatitjaTeDhenavePerEksport() {
-    return porosite.map((user) => {
-      const { idPorosia, totaliProdukteve, totali8TVSH, totali18TVSH, zbritja, dataPorosis, statusiPorosis, qmimiTransportit } = user;
-
-      return {
-        'ID Porosia': idPorosia,
-        'Totali Produkteve': totaliProdukteve,
-        'Totali €': parseFloat(totali8TVSH + totali18TVSH - zbritja + parseFloat(qmimiTransportit)).toFixed(2),
-        'Zbritja €': zbritja !== 0 ? parseFloat(zbritja).toFixed(2) : 'Nuk Ka Zbritje',
-        'Data e Porosise': new Date(dataPorosis).toLocaleDateString('en-GB', { dateStyle: 'short' }),
-        'Statusi Porosis': statusiPorosis
-      };
-    });
-  }
 
   return (
     <div>
@@ -95,44 +87,7 @@ function PorositeUserit(props) {
             />
           )}
           {shfaqPorosite && (
-            <>
-              <h1 className="title">Porosit e Juaja</h1>
-              <Button className="mb-3 Butoni" onClick={() => navigate('/Dashboard')}>
-                Mbyll Porosite <FontAwesomeIcon icon={faClose} />
-              </Button>
-              <EksportoTeDhenat teDhenatJSON={PergatitjaTeDhenavePerEksport()} emriDokumentit="Porosit e Juaja" />
-
-              <Table>
-                <thead>
-                  <tr>
-                    <th>ID Porosise</th>
-                    <th>Data Porosise</th>
-                    <th>Totali Produkteve ne Porosi</th>
-                    <th>Totali Porosise €</th>
-                    <th>Zbritja €</th>
-                    <th>Statusi Porosise</th>
-                    <th>Funksione</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {porosite.map((k) => (
-                    <tr key={k.idPorosia}>
-                      <td>{k.idPorosia}</td>
-                      <td>{new Date(k.dataPorosis).toLocaleDateString('en-GB', { dateStyle: 'short' })}</td>
-                      <td>{k.totaliProdukteve}</td>
-                      <td>{parseFloat(k.totali8TVSH + k.totali18TVSH - k.zbritja + parseFloat(k.qmimiTransportit)).toFixed(2)} €</td>
-                      <td>{k.zbritja !== 0 ? parseFloat(k.zbritja).toFixed(2) + ' €' : 'Nuk Ka Zbritje'}</td>
-                      <td>{k.statusiPorosis}</td>
-                      <td>
-                        <Button style={{ marginRight: '0.5em' }} variant="success" onClick={() => handleShfaqFaturen(k.idPorosia)}>
-                          <FontAwesomeIcon icon={faInfoCircle} />
-                        </Button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </Table>
-            </>
+            <Tabela data={porosite} tableName="Porosite e Juaja" kaButona funksionShfaqFature={(e) => handleShfaqFaturen(e)} />
           )}
         </>
       )}

@@ -106,6 +106,11 @@ const NavRight = () => {
                     <i className="feather icon-heart" /> Lista e Deshirave
                   </Link>
                 </ListGroup.Item>
+                <ListGroup.Item as="li" bsPrefix=" ">
+                  <Link to="/Dashboard/MesazhetEMia" className="dropdown-item">
+                    <i className="feather icon-message-circle" /> Mesazhet e Mia
+                  </Link>
+                </ListGroup.Item>
               </ListGroup>
             </Dropdown.Menu>
           </Dropdown>

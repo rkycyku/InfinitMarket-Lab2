@@ -136,6 +136,11 @@ const routes = [
       },
       {
         exact: true,
+        path: '/Dashboard/MesazhetEMia',
+        element: lazy(() => import('./views/dashboard/MesazhetUserit'))
+      },
+      {
+        exact: true,
         path: '/Admin/Biznesi/TeDhenatEBiznesit',
         element: lazy(() => import('./views/admin-dashboard/Biznesi/TeDhenatBiznesit'))
       },

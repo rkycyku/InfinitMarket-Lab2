@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Button, Form, Table } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faTrashAlt, faPlus, faCheck, faXmark, faMoneyBill, faTimes } from '@fortawesome/free-solid-svg-icons';
 import EditoProduktin from './EditoProduktin';
 import ShtoProduktin from './ShtoProduktin';
 import Mesazhi from '../../../../components/Mesazhi';
 import { TailSpin } from 'react-loader-spinner';
 import LargoProduktin from './LargoProduktin';
 import EditoStokunQmimin from './EditoStokunQmimin';
-import EksportoTeDhenat from '../../../../components/Tabela/EksportoTeDhenat';
 import Tabela from '../../../../components/Tabela/Tabela';
 
 function TabelaEProdukteve() {
@@ -22,7 +18,6 @@ function TabelaEProdukteve() {
   const [shfaqMesazhin, setShfaqMesazhin] = useState(false);
   const [tipiMesazhit, setTipiMesazhit] = useState('');
   const [pershkrimiMesazhit, setPershkrimiMesazhit] = useState('');
-  const [kategorite, setKategorite] = useState([]);
   const [fshij, setFshij] = useState(false);
   const [produktIdToDelete, setProduktIdToDelete] = useState(null);
 
@@ -174,19 +169,15 @@ function TabelaEProdukteve() {
         </div>
       ) : (
         <>
-          {produktet.length > 0 ? (
-            <Tabela
-              data={produktet}
-              tableName="Lista e Produkteve"
-              kaButona
-              funksionButonShto={() => handleShow()}
-              funksionButonFshij={(e) => handleFshij(e)}
-              funksionButonEdit={(e) => handleEdito(e)}
-              funksioniEditoStokunQmimin={(e) => handleEditoStokunQmimin(e)}
-            />
-          ) : (
-            'Nuk ka te Dhena'
-          )}
+          <Tabela
+            data={produktet}
+            tableName="Lista e Produkteve"
+            kaButona
+            funksionButonShto={() => handleShow()}
+            funksionButonFshij={(e) => handleFshij(e)}
+            funksionButonEdit={(e) => handleEdito(e)}
+            funksioniEditoStokunQmimin={(e) => handleEditoStokunQmimin(e)}
+          />
         </>
       )}
     </div>

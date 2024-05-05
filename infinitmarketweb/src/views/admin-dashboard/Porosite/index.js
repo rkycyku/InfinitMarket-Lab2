@@ -40,12 +40,11 @@ function TabelaEPorosive() {
             ID: k.idPorosia,
             Klienti: k.idKlienti + ' - ' + k.emri + ' ' + k.mbiemri,
             'Totali Produkteve': k.totaliProdukteve,
-            'Totali €': parseFloat(k.totali8TVSH + k.totali18TVSH).toFixed(2),
-            'Totali pa TVSH €': parseFloat(k.totali8TVSH + k.totali18TVSH - (k.totali18TVSH * 0.152542 + k.totali8TVSH * 0.074074)).toFixed(
-              2
-            ),
-            'TVSH €': parseFloat(k.totali18TVSH * 0.152542 + k.totali8TVSH * 0.074074).toFixed(2),
-            'Zbritja €': k.zbritja,
+            'Totali €': parseFloat(k.totali8TVSH + k.totali18TVSH).toFixed(2) + ' €',
+            'Totali pa TVSH €':
+              parseFloat(k.totali8TVSH + k.totali18TVSH - (k.totali18TVSH * 0.152542 + k.totali8TVSH * 0.074074)).toFixed(2) + ' €',
+            'TVSH €': parseFloat(k.totali18TVSH * 0.152542 + k.totali8TVSH * 0.074074).toFixed(2) + ' €',
+            'Zbritja €': parseFloat(k.zbritja).toFixed(2) + ' €',
             'Data e Porosise': new Date(k.dataPorosis).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: '2-digit' }),
             'Statusi Porosis': k.statusiPorosis
           }))
@@ -111,18 +110,13 @@ function TabelaEPorosive() {
           )}
           {shfaqPorosite && (
             <>
-              {porosite.length > 0 ? (
-                <Tabela
-                  data={porosite}
-                  tableName="Porosite e Klienteve"
-                  kaButona
-                  funksionButonEdit={(e) => handleEdito(e)}
-                  funksionShfaqFature={(e) => handleShfaqFaturen(e)}
-                />
-              ) : (
-                'Nuk ka te Dhena'
-              )}
-              
+              <Tabela
+                data={porosite}
+                tableName="Porosite e Klienteve"
+                kaButona
+                funksionButonEdit={(e) => handleEdito(e)}
+                funksionShfaqFature={(e) => handleShfaqFaturen(e)}
+              />
             </>
           )}
         </>

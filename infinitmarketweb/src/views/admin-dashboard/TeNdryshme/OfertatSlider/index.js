@@ -1,14 +1,9 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Button from 'react-bootstrap/Button';
 import ShtoOfertenSlider from './ShtoOfertenSlider';
 import Mesazhi from '../../../../components/Mesazhi';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBan, faPlus, faClose } from '@fortawesome/free-solid-svg-icons';
 import LargoOfertenSlider from './LargoOfertenSlider';
 import { TailSpin } from 'react-loader-spinner';
-import { Table } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import Tabela from '../../../../components/Tabela/Tabela';
 
 function OfertatSlider(props) {
@@ -106,17 +101,13 @@ function OfertatSlider(props) {
         </div>
       ) : (
         <>
-          {kategorit.length > 0 ? (
-            <Tabela
-              data={kategorit}
-              tableName="Ofertat e Sliderit"
-              kaButona
-              funksionButonShto={() => handleShow()}
-              funksionButonFshij={(e) => handleFshij(e)}
-            />
-          ) : (
-            'Nuk ka te Dhena'
-          )}
+          <Tabela
+            data={kategorit}
+            tableName="Ofertat e Sliderit"
+            kaButona
+            funksionButonShto={() => handleShow()}
+            funksionButonFshij={(e) => handleFshij(e)}
+          />
         </>
       )}
     </div>

@@ -1,12 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Button from 'react-bootstrap/Button';
 import Mesazhi from '../../../components/Mesazhi';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBan, faPlus, faClose } from '@fortawesome/free-solid-svg-icons';
 import { TailSpin } from 'react-loader-spinner';
-import { Table } from 'react-bootstrap';
-import EksportoTeDhenat from '../../../components/Tabela/EksportoTeDhenat';
 import Tabela from '../../../components/Tabela/Tabela';
 
 function ShportaEKlienteve(props) {
@@ -29,8 +24,17 @@ function ShportaEKlienteve(props) {
     const shfaqKlientet = async () => {
       try {
         setLoading(true);
-        const klientet = await axios.get('https://localhost:7251/api/Perdoruesi/shfaqPerdoruesit', authentikimi);
-        setKlientet(klientet.data.filter((x) => x.rolet.includes('Klient')));
+        const klientet = await axios.get('https://localhost:7251/api/Produktet/Shporta/ShfaqShportatEKlienteve', authentikimi);
+        setKlientet(
+          klientet.data.map((k) => ({
+            ID: k.shportaID,
+            Klienti: k.perdoruesi.emri + ' ' + k.perdoruesi.mbiemri,
+            Email: k.perdoruesi.email,
+            'Totali produkteve ne shporte': k.totaliProdukteveNeShporte,
+            'Totali Shportes €': parseFloat(k.totali18TVSH + k.totali8TVSH).toFixed(2) + ' €',
+            'Kodi Zbritjes': k.kodiZbritjes.kodi + ' - ' + parseFloat(k.kodiZbritjes.qmimiZbritjes).toFixed(2) + ' €'
+          }))
+        );
         setLoading(false);
       } catch (err) {
         console.log(err);
@@ -40,21 +44,6 @@ function ShportaEKlienteve(props) {
 
     shfaqKlientet();
   }, [perditeso]);
-
-  const UsersData = klientet.map((k) => ({
-    ID: k.perdoruesi.userID,
-    'Emri & Mbiemri': k.perdoruesi.emri + ' ' + k.perdoruesi.mbiemri,
-    Email: k.perdoruesi.email,
-    'Nr. Kontaktit': k.perdoruesi.teDhenatPerdoruesit && k.perdoruesi.teDhenatPerdoruesit.nrKontaktit,
-    'Data e Lindjes': new Date(k.perdoruesi.teDhenatPerdoruesit && k.perdoruesi.teDhenatPerdoruesit.dataLindjes).toLocaleDateString(
-      'en-GB',
-      { dateStyle: 'short' }
-    ),
-    Adresa:
-      k.perdoruesi.teDhenatPerdoruesit &&
-      k.perdoruesi.teDhenatPerdoruesit.qyteti + ' ' + k.perdoruesi.teDhenatPerdoruesit &&
-      k.perdoruesi.teDhenatPerdoruesit.shteti
-  }));
 
   return (
     <div>
@@ -73,7 +62,7 @@ function ShportaEKlienteve(props) {
           />
         </div>
       ) : (
-        <>{UsersData.length > 0 ? <Tabela data={UsersData} tableName="Shporta e Klienteve" /> : 'Nuk ka te Dhena'}</>
+        <Tabela data={klientet} tableName="Shporta e Klienteve" />
       )}
     </div>
   );

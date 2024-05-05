@@ -34,7 +34,7 @@ function TabelaEKompanive(props) {
         const kompania = await axios.get('https://localhost:7251/api/Produktet/Kompania/shfaqKompanit', authentikimi);
         setKompanit(
           kompania.data.map((k) => ({
-            ID: k.kompaniaId,
+            ID: k.kompaniaID,
             'Emri i Kompanise': k.emriKompanis,
             Adresa: k.adresa !== null && k.adresa.trim() !== '' ? k.adresa : 'Nuk Ka Adrese'
           }))
@@ -114,18 +114,14 @@ function TabelaEKompanive(props) {
         </div>
       ) : (
         <>
-          {kompanit.length > 0 ? (
-            <Tabela
-              data={kompanit}
-              tableName="Lista e Kompanive Partnere"
-              kaButona
-              funksionButonShto={() => handleShow()}
-              funksionButonFshij={(e) => handleFshij(e)}
-              funksionButonEdit={(e) => handleEdito(e)}
-            />
-          ) : (
-            'Nuk ka te Dhena'
-          )}
+          <Tabela
+            data={kompanit}
+            tableName="Lista e Kompanive Partnere"
+            kaButona
+            funksionButonShto={() => handleShow()}
+            funksionButonFshij={(e) => handleFshij(e)}
+            funksionButonEdit={(e) => handleEdito(e)}
+          />
         </>
       )}
     </div>

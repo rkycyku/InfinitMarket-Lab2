@@ -117,7 +117,6 @@ function Mesazhet() {
         </div>
       ) : (
         <>
-          {mesazhet.length > 0 ? (
             <Tabela
               data={mesazhet}
               tableName="Mesazhet e derguara nga Perdoruesit"
@@ -125,9 +124,6 @@ function Mesazhet() {
               funksionButonEdit={(e) => handleEdito(e)}
               funksionButonFshij={(e) => handleFshij(e)}
             />
-          ) : (
-            'Nuk ka te Dhena'
-          )}
         </>
       )}
     </div>
