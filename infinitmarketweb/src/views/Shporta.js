@@ -17,7 +17,7 @@ import './Styles/Shporta.css';
 import { Button } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { faFaceFrown } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
@@ -40,6 +40,28 @@ export default function Shporta() {
 
   const getToken = localStorage.getItem('token');
   const getID = localStorage.getItem('id');
+
+  const location = useLocation();
+
+  useEffect(() => {
+    // Function to parse query parameters from URL
+    const getQueryParam = (name) => {
+      const params = new URLSearchParams(location.search);
+      return params.get(name);
+    };
+
+    // Get the redirect_status from the query parameters
+    const redirectStatus = getQueryParam('redirect_status');
+
+    // Check if the redirect_status is "succeeded"
+    if (redirectStatus === 'succeeded') {
+      // Perform your action here
+      console.log('Redirect status is succeeded. Perform action...');
+      // Example: Redirect to a different page
+      // window.location.href = '/success'; // Assuming '/success' is your success page route
+      setCheckout(true)
+    }
+  }, [location.search]);
 
   const authentikimi = {
     headers: {

@@ -30,7 +30,7 @@ const stripePromise = loadStripe(
   'pk_test_51P6womKtaRnYlZxjkkG6JxfliwVl2PdZ4Jt9XdUQDuOqyhfZS5vAXPsi55xtdgoHcGxXtu3xGHvihAvBgeTxmqkZ00WCF43SgM'
 );
 
-export default function PaguajMeStripe() {
+export default function PaguajMeStripe({llojiTransportit, qmimiTransportit}) {
   const [clientSecret, setClientSecret] = useState('');
   const [items, setItems] = useState([]);
 
@@ -63,13 +63,15 @@ export default function PaguajMeStripe() {
           'https://localhost:7251/api/TeNdryshme/Stripe/KrijoPagesenStripe',
           {
             shportaID: shporta.data.shportaID,
-            shumaTotale:
-              ((shporta.data.totali18TVSH +
+            shumaTotale: (
+              (shporta.data.totali18TVSH +
                 shporta.data.totali8TVSH -
                 (shporta.data && shporta.data.kodiZbritjes && shporta.data.kodiZbritjes.qmimiZbritjes
                   ? shporta.data && shporta.data.kodiZbritjes && shporta.data.kodiZbritjes.qmimiZbritjes
-                  : 0)) *
-              100).toFixed()
+                  : 0) +
+                qmimiTransportit) *
+              100
+            ).toFixed()
           },
           authentikimi
         );
@@ -177,7 +179,9 @@ export default function PaguajMeStripe() {
             <MDBTypography tag="h6" className="text-uppercase">
               Transporti
             </MDBTypography>
-            <MDBTypography tag="h6">Kalkulohet gjate pageses</MDBTypography>
+            <MDBTypography tag="h6">
+              {llojiTransportit} - {parseFloat(qmimiTransportit).toFixed(2)} €
+            </MDBTypography>
           </div>
           <div className="d-flex justify-content-between">
             <MDBTypography tag="h6" className="text-uppercase">
@@ -200,7 +204,8 @@ export default function PaguajMeStripe() {
                   shporta.totali8TVSH -
                   (shporta && shporta.kodiZbritjes && shporta.kodiZbritjes.qmimiZbritjes
                     ? shporta && shporta.kodiZbritjes && shporta.kodiZbritjes.qmimiZbritjes
-                    : 0)
+                    : 0) +
+                    qmimiTransportit
               ).toFixed(2)}{' '}
               €
             </MDBTypography>
@@ -218,7 +223,7 @@ export default function PaguajMeStripe() {
       <div className="stripePagesa">
         {clientSecret && (
           <Elements options={options} stripe={stripePromise}>
-            <CheckoutForm />
+            <CheckoutForm llojiTransportit={llojiTransportit} qmimiTransportit={qmimiTransportit}/>
           </Elements>
         )}
       </div>

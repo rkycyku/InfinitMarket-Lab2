@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import PagesaMeSukses from './PagesaMeSukses';
 import EditoTeDhenat from './EditoTeDhenat';
 import Mesazhi from '../Mesazhi';
@@ -32,8 +32,9 @@ function Checkout(props) {
   const [shporta, setShporta] = useState('');
   const [detajetShporta, setDetajetShporta] = useState([]);
 
-  const [qmimiTransportit, setQmimiTransportit] = useState('');
-  const [llojiTransportit, setLlojiTransportit] = useState('');
+  const [qmimiTransportit, setQmimiTransportit] = useState(0);
+  const [llojiTransportit, setLlojiTransportit] = useState('Merre ne zyre');
+  const [llojiPageses, setLlojiPageses] = useState('Cash');
 
   const getID = localStorage.getItem('id');
   const navigate = useNavigate();
@@ -46,6 +47,50 @@ function Checkout(props) {
       Authorization: `Bearer ${getToken}`
     }
   };
+
+  const location = useLocation();
+
+  useEffect(() => {
+    const getQueryParam = (name) => {
+      const params = new URLSearchParams(location.search);
+      return params.get(name);
+    };
+
+    const redirectStatus = getQueryParam('redirect_status');
+    const llojiTransportitParam = getQueryParam('llojiTransportit');
+    const qmimiTransportitParam = getQueryParam('qmimiTransportit');
+
+    async function PerdfundoPorosineStripe() {
+      if (redirectStatus === 'succeeded') {
+        try {
+          await axios
+            .post(
+              `https://localhost:7251/api/TeNdryshme/Porosia/VendosPorosine?AspNetUserID=${getID}`,
+              {
+                llojiTransportit: llojiTransportitParam,
+                qmimiTransportit: qmimiTransportitParam.toString(),
+                llojiPageses: 'Stripe'
+              },
+              authentikimi
+            )
+            .then((response) => {
+              console.log(response);
+              if (response.status === 201 || response.status === 200) {
+                setVendosjaPorosisSukses(true);
+                setNrFatures(response.data);
+              }
+            })
+            .finally(() => {
+              setPagesaMeSukses(true);
+            });
+        } catch (e) {
+          console.error(e);
+        }
+      }
+    }
+
+    PerdfundoPorosineStripe();
+  }, [location.search]);
 
   useEffect(() => {
     if (getID) {
@@ -90,20 +135,21 @@ function Checkout(props) {
         .post(
           `https://localhost:7251/api/TeNdryshme/Porosia/VendosPorosine?AspNetUserID=${getID}`,
           {
-            llojiTransportit: 'Dergese ne Shtepi',
-            qmimiTransportit: '2'
+            llojiTransportit: llojiTransportit,
+            qmimiTransportit: qmimiTransportit.toString(),
+            llojiPageses: llojiPageses
           },
           authentikimi
         )
         .then((response) => {
-            console.log(response);
+          console.log(response);
           if (response.status === 201 || response.status === 200) {
             setVendosjaPorosisSukses(true);
-            setNrFatures(response.data)
+            setNrFatures(response.data);
           }
         })
         .finally(() => {
-            setPagesaMeSukses(true);
+          setPagesaMeSukses(true);
         });
     } catch (e) {
       console.error(e);
@@ -122,6 +168,29 @@ function Checkout(props) {
     }
   }, [vendosjaPorosisSukses]);
 
+  function handleTransporti(lloji) {
+    switch (lloji) {
+      case 'DSHPP':
+        setLlojiTransportit('Dergese ne shtepi');
+        setQmimiTransportit(0);
+        break;
+      case 'DSH1.5':
+        setLlojiTransportit('Dergese ne shtepi');
+        setQmimiTransportit(1.5);
+        break;
+      case 'DSH2.5':
+        setLlojiTransportit('Dergese ne shtepi');
+        setQmimiTransportit(2.5);
+        break;
+      case 'MZPP':
+        setLlojiTransportit('Merre ne zyre');
+        setQmimiTransportit(0);
+        break;
+      default:
+        break;
+    }
+  }
+
   return (
     <>
       <h1 style={{ textAlign: 'center', marginBottom: '1em' }}>Konfirmimi Porosis</h1>
@@ -136,7 +205,9 @@ function Checkout(props) {
           tipi={setTipiMesazhit}
         />
       )}
-      {paguajMeStripe && <PaguajMeStripe />}
+      {paguajMeStripe && (
+        <PaguajMeStripe llojiPageses={llojiPageses} llojiTransportit={llojiTransportit} qmimiTransportit={qmimiTransportit} />
+      )}
       {pagesaMeSukses === false && pagesaDeshtoi === false && paguajMeStripe === false && (
         <div className="StripeDivMain">
           <div className="detajetPorosia">
@@ -224,7 +295,9 @@ function Checkout(props) {
                 <MDBTypography tag="h6" className="text-uppercase">
                   Transporti
                 </MDBTypography>
-                <MDBTypography tag="h6">Kalkulohet gjate pageses</MDBTypography>
+                <MDBTypography tag="h6">
+                  {llojiTransportit} - {parseFloat(qmimiTransportit).toFixed(2)} €
+                </MDBTypography>
               </div>
               <div className="d-flex justify-content-between">
                 <MDBTypography tag="h6" className="text-uppercase">
@@ -247,7 +320,8 @@ function Checkout(props) {
                       shporta.totali8TVSH -
                       (shporta && shporta.kodiZbritjes && shporta.kodiZbritjes.qmimiZbritjes
                         ? shporta && shporta.kodiZbritjes && shporta.kodiZbritjes.qmimiZbritjes
-                        : 0)
+                        : 0) +
+                      qmimiTransportit
                   ).toFixed(2)}{' '}
                   €
                 </MDBTypography>
@@ -259,14 +333,13 @@ function Checkout(props) {
             <form id="payment-form">
               <div className="adresaDorezimit">
                 <h5>Lloji i Transportit</h5>
-                <Form.Select className="mb-2">
-                  <option hidden disabled>
-                    Zgjedhni Llojin e Transportit
+                <Form.Select className="mb-2" onChange={(e) => handleTransporti(e.target.value)}>
+                  <option value={'DSHPP'}>Dergese ne shtepi - Pa Pagese</option>
+                  <option value={'DSH1.5'}>Dergese ne shtepi - 1.50 €</option>
+                  <option value={'DSH2.5'}>Dergese ne shtepi - 2.50 €</option>
+                  <option value={'MZPP'} selected>
+                    Merre ne zyre - Pa Pagese
                   </option>
-                  <option>Dergese ne shtepi - Pa Pagese</option>
-                  <option>Dergese ne shtepi - 1.50 €</option>
-                  <option>Dergese ne shtepi - 2.50 €</option>
-                  <option>Merre ne zyre - Pa Pagese</option>
                 </Form.Select>
                 <div className="d-flex justify-content-between">
                   <Button onClick={() => navigate('/')}>
@@ -281,7 +354,12 @@ function Checkout(props) {
                   <Button onClick={() => handlePerfundoPorosine()}>
                     Paguaj pas Pranimit <FontAwesomeIcon icon={faMoneyBill} />
                   </Button>
-                  <Button onClick={() => setPaguajMeStripe(true)}>
+                  <Button
+                    onClick={() => {
+                      setLlojiPageses('Stripe');
+                      setPaguajMeStripe(true);
+                    }}
+                  >
                     Paguaj me Stripe <FontAwesomeIcon icon={faStripe} style={{ color: '#0A2540' }} />
                   </Button>
                 </div>

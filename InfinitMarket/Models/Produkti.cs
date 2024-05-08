@@ -28,5 +28,7 @@ namespace InfinitMarket.Models
         public string? isDeleted { get; set; } = "false";
 
         public virtual TeDhenatProduktit? TeDhenatProduktit { get; set; }
+
+        public virtual ZbritjaQmimitProduktit? ZbritjaQmimitProduktit { get; set; }
     }
 }

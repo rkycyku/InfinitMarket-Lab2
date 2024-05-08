@@ -56,7 +56,7 @@ function HeaderFatura(props) {
             src={`${process.env.PUBLIC_URL}/img/web/${teDhenatBiznesit.logo}`}
             style={{ width: '150px', height: 'auto', marginTop: '0.5em' }}
           />
-          <h2 style={{ fontSize: '24pt' }}>{teDhenatBiznesit && teDhenatBiznesit.emriIbiznesit}</h2>
+          <h2 style={{ fontSize: '24pt' }}>{teDhenatBiznesit && teDhenatBiznesit.emriIBiznesit}</h2>
           <p>
             <strong>Adresa: </strong>
             {teDhenatBiznesit && teDhenatBiznesit.adresa}

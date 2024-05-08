@@ -24,6 +24,13 @@
   color: #0f243b;
 }
 
+.emri-foto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .artikulli {
   position: relative;
   display: flex;
@@ -31,13 +38,12 @@
   justify-content: space-between;
   align-items: center;
   align-self: stretch;
-  flex-basis: 205px;
+  flex-basis: 250px;
   background-color: #fff;
   box-shadow: 0 0 10px #d3d3d3;
   box-sizing: border-box;
   padding: 1em;
 }
-
 
 .artikulliLabel {
   text-align: center;
@@ -61,22 +67,30 @@
   color: black;
 }
 
-.cmimet{
+.butonatDiv {
+  display: flex;
+  justify-content: space-between;
+}
+
+.butonatDiv button{
+  font-size: 12px;
+}
+
+.cmimet {
   display: flex;
   /* justify-content: space-between; */
-  align-items:center;
+  align-items: center;
   gap: 0.5em;
   margin-top: auto;
-
 }
 
 .cmimi {
   font-weight: bold;
-  color:#676464;
+  color: #676464;
   font-size: 13pt;
 }
 
-.cmimiPaZbritje{
+.cmimiPaZbritje {
   font-size: 10pt;
   text-decoration: line-through;
 }
@@ -117,7 +131,7 @@
   top: 0;
   right: 0;
   padding: 6px;
-  border-radius: 0 0 0 25px  ;
+  border-radius: 0 0 0 25px;
   background-color: #ec3d08;
   color: #fff;
   font-size: 12px;
@@ -125,11 +139,8 @@
   line-height: 1;
 }
 
-.zbritjaBadge p{
+.zbritjaBadge p {
   margin: 10px;
   margin-left: 0;
   margin-right: 0;
 }
-
-
-

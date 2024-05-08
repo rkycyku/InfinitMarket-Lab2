@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import './Styles/produktet.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartShopping, faFaceFrown } from '@fortawesome/free-solid-svg-icons';
+import { faCartPlus, faCartShopping, faFaceFrown, faHeart, faHeartCrack } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as faHeartZbarzur } from '@fortawesome/free-regular-svg-icons';
 import Mesazhi from './Mesazhi';
 import { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/esm/Button';
@@ -12,7 +13,9 @@ function ProduktetNeHome(props) {
   const [tipiMesazhit, setTipiMesazhit] = useState('success');
   const [pershkrimiMesazhit, setPershkrimiMesazhit] = useState('');
   const [perditeso, setPerditeso] = useState(Date.now());
+
   const [shporta, setShporta] = useState([]);
+  const [eshteNeListenEDeshirave, setEshteNeListenEDeshirave] = useState();
 
   const getToken = localStorage.getItem('token');
   const getID = localStorage.getItem('id');
@@ -31,6 +34,12 @@ function ProduktetNeHome(props) {
           authentikimi
         );
         setShporta(shporta.data);
+
+        const listaEDeshirave = await axios.get(
+          `https://localhost:7251/api/Produktet/Shporta/KontrolloProduktinNeListenEDeshirave?userID=${getID}&ProduktiID=${props.produktiID}`,
+          authentikimi
+        );
+        setEshteNeListenEDeshirave(listaEDeshirave.data);
       } catch (err) {
         console.log(err);
       }
@@ -42,12 +51,10 @@ function ProduktetNeHome(props) {
   const handleShtoNeShporte = async () => {
     const eshteNeShporte = shporta.find((item) => item.produktiID === props.produktiID);
 
-    console.log(eshteNeShporte);
-
     if (eshteNeShporte && eshteNeShporte.sasiaProduktitNeShporte >= eshteNeShporte.sasiaStokutAktual) {
       setTipiMesazhit('danger');
       setPershkrimiMesazhit(
-        `Sasia maksimale per <strong>${props.emriProduktit}</strong> eshte <strong>${eshteNeShporte.sasiaStokutAktual}</strong> ne shporte!`
+        `Sasia maksimale per <span>${props.emriProduktit}</span> eshte <span>${eshteNeShporte.sasiaStokutAktual}</span> ne shporte!`
       );
       setShfaqMesazhin(true);
     } else {
@@ -57,10 +64,36 @@ function ProduktetNeHome(props) {
         authentikimi
       );
       setTipiMesazhit('success');
-      setPershkrimiMesazhit(`<strong>${props.emriProduktit}</strong> u shtua ne shporte!`);
+      setPershkrimiMesazhit(`<span>${props.emriProduktit}</span> u shtua ne shporte!`);
       setShfaqMesazhin(true);
     }
   };
+
+  async function handleListenEDeshirave(lloji) {
+    if (lloji == 'shto') {
+      await axios.post(
+        `https://localhost:7251/api/Produktet/Shporta/ShtoProduktinNeListenEDeshirave?userID=${getID}&ProduktiID=${props.produktiID}`,
+        {},
+        authentikimi
+      );
+      setTipiMesazhit('success');
+      setPershkrimiMesazhit(`<span>${props.emriProduktit}</span> u shtua në listën e dëshirave!`);
+    } else {
+      await axios.delete(
+        `https://localhost:7251/api/Produktet/Shporta/LargoProduktinNgaListaEDeshirave?ListaEDeshiraveID=${eshteNeListenEDeshirave.listaEDeshiraveID}`,
+        authentikimi
+      );
+      setTipiMesazhit('success');
+      setPershkrimiMesazhit(`<span>${props.emriProduktit}</span> u largua nga lista e dëshirave!`);
+    }
+    setShfaqMesazhin(true);
+
+    if (props.perditeso) {
+      props.perditeso;
+      console.log(props.perditeso);
+    }
+    setPerditeso(Date.now());
+  }
 
   return (
     <div className="artikulli" key={props.produktiID} data-aos="zoom-in">
@@ -84,13 +117,22 @@ function ProduktetNeHome(props) {
       </div>
       <div className="butonatDiv">
         {props.sasiaNeStok > 0 && (
-          <Button onClick={handleShtoNeShporte}>
-            Shto ne Shporte <FontAwesomeIcon icon={faCartShopping} />
+          <Button variant="success" onClick={handleShtoNeShporte}>
+            SHTO NË SHPORTË
           </Button>
         )}
         {props.sasiaNeStok <= 0 && (
-          <Button disabled style={{ backgroundColor: 'lightgray', color: 'black', cursor: 'unset', marginTop: '0' }}>
-            Out of Stock
+          <Button disabled variant="secondary">
+            JASHTË STOKU
+          </Button>
+        )}
+        {eshteNeListenEDeshirave ? (
+          <Button variant='info' onClick={() => handleListenEDeshirave('largo')}>
+            <FontAwesomeIcon icon={faHeartCrack} />
+          </Button>
+        ) : (
+          <Button variant='outline-info' onClick={() => handleListenEDeshirave('shto')}>
+            <FontAwesomeIcon icon={faHeart} />
           </Button>
         )}
       </div>

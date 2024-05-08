@@ -81,12 +81,12 @@ namespace InfinitMarket.Controllers.API.Produktet
 
                     if (prd.Produkti.TeDhenatProduktit.llojiTVSH == 18)
                     {
-                        shporta.Totali18TVSH -= prd.SasiaProduktit * prd.Produkti.TeDhenatProduktit.QmimiProduktit;
+                        shporta.Totali18TVSH -= prd.SasiaProduktit * prd.QmimiPorduktit;
                         shporta.TotProd18TVSH -= prd.SasiaProduktit;
                     }
                     if (prd.Produkti.TeDhenatProduktit.llojiTVSH == 8)
                     {
-                        shporta.Totali8TVSH -= prd.SasiaProduktit * prd.Produkti.TeDhenatProduktit.QmimiProduktit;
+                        shporta.Totali8TVSH -= prd.SasiaProduktit * prd.QmimiPorduktit;
                         shporta.TotProd18TVSH -= prd.SasiaProduktit;
                     }
 
@@ -104,7 +104,7 @@ namespace InfinitMarket.Controllers.API.Produktet
                     EmriProduktit = prd.Produkti.EmriProduktit,
                     isDeleted = prd.Produkti.isDeleted,
                     ProduktiID = prd.ProduktiID,
-                    QmimiProduktit = prd.Produkti.TeDhenatProduktit.QmimiProduktit,
+                    QmimiProduktit = prd.QmimiPorduktit,
                     SasiaProduktitNeShporte = prd.SasiaProduktit,
                     SasiaStokutAktual = prd.Produkti.TeDhenatProduktit.SasiaNeStok,
                     ShportaID = prd.ShportaID,
@@ -126,7 +126,13 @@ namespace InfinitMarket.Controllers.API.Produktet
         {
             var perdoruesi = await _context.Perdoruesit.Where(x => x.AspNetUserId == userID).FirstOrDefaultAsync();
 
-            var TVSHProduktit = await _context.TeDhenatProduktit.Where(x => x.ProduktiId == ProduktiID).FirstOrDefaultAsync();
+            var TVSHProduktit = await _context.TeDhenatProduktit.Include(x => x.Produkti).ThenInclude(x => x.ZbritjaQmimitProduktit).Select(x => new
+            {
+                x.Produkti.ProduktiId,
+                x.QmimiProduktit,
+                x.Produkti.ZbritjaQmimitProduktit.QmimiMeZbritjeProduktit,
+                x.llojiTVSH
+            }).Where(x => x.ProduktiId == ProduktiID).FirstOrDefaultAsync();
 
             if (perdoruesi == null)
             {
@@ -149,7 +155,7 @@ namespace InfinitMarket.Controllers.API.Produktet
                     ProduktiID = ProduktiID,
                     SasiaProduktit = 1,
                     ShportaID = shporta.ShportaID,
-                    QmimiPorduktit = TVSHProduktit.QmimiProduktit
+                    QmimiPorduktit = TVSHProduktit.QmimiMeZbritjeProduktit == null? TVSHProduktit.QmimiProduktit : TVSHProduktit.QmimiMeZbritjeProduktit
                 };
 
                 await _context.TeDhenatShporta.AddAsync(shtoNeShporte);
@@ -160,12 +166,12 @@ namespace InfinitMarket.Controllers.API.Produktet
 
                 if (TVSHProduktit.llojiTVSH == 18)
                 {
-                    shporta.Totali18TVSH += TVSHProduktit.QmimiProduktit;
+                    shporta.Totali18TVSH += TVSHProduktit.QmimiMeZbritjeProduktit == null ? TVSHProduktit.QmimiProduktit : TVSHProduktit.QmimiMeZbritjeProduktit;
                     shporta.TotProd18TVSH += 1;
                 }
                 if (TVSHProduktit.llojiTVSH == 8)
                 {
-                    shporta.Totali18TVSH += TVSHProduktit.QmimiProduktit;
+                    shporta.Totali18TVSH += TVSHProduktit.QmimiMeZbritjeProduktit == null ? TVSHProduktit.QmimiProduktit : TVSHProduktit.QmimiMeZbritjeProduktit;
                     shporta.TotProd18TVSH += 1;
                 }
 
@@ -185,11 +191,11 @@ namespace InfinitMarket.Controllers.API.Produktet
 
                 if (TVSHProduktit.llojiTVSH == 18)
                 {
-                    shporta.Totali18TVSH += TVSHProduktit.QmimiProduktit;
+                    shporta.Totali18TVSH += TVSHProduktit.QmimiMeZbritjeProduktit == null ? TVSHProduktit.QmimiProduktit : TVSHProduktit.QmimiMeZbritjeProduktit;
                 }
                 if (TVSHProduktit.llojiTVSH == 8)
                 {
-                    shporta.Totali18TVSH += TVSHProduktit.QmimiProduktit;
+                    shporta.Totali18TVSH += TVSHProduktit.QmimiMeZbritjeProduktit == null ? TVSHProduktit.QmimiProduktit : TVSHProduktit.QmimiMeZbritjeProduktit;
                 }
 
                 _context.Shporta.Update(shporta);
@@ -220,7 +226,13 @@ namespace InfinitMarket.Controllers.API.Produktet
 
             var eshteNeShporte = await _context.TeDhenatShporta.Where(x => x.ShportaID == shporta.ShportaID && x.ProduktiID == ProduktiID).FirstOrDefaultAsync();
 
-            var TVSHProduktit = await _context.TeDhenatProduktit.Where(x => x.ProduktiId == ProduktiID).FirstOrDefaultAsync();
+            var TVSHProduktit = await _context.TeDhenatProduktit.Include(x => x.Produkti).ThenInclude(x => x.ZbritjaQmimitProduktit).Select(x => new
+            {
+                x.Produkti.ProduktiId,
+                x.QmimiProduktit,
+                x.Produkti.ZbritjaQmimitProduktit.QmimiMeZbritjeProduktit,
+                x.llojiTVSH
+            }).Where(x => x.ProduktiId == ProduktiID).FirstOrDefaultAsync();
 
             if (eshteNeShporte != null)
             {
@@ -235,11 +247,11 @@ namespace InfinitMarket.Controllers.API.Produktet
 
                     if (TVSHProduktit.llojiTVSH == 18)
                     {
-                        shporta.Totali18TVSH += TVSHProduktit.QmimiProduktit;
+                        shporta.Totali18TVSH += TVSHProduktit.QmimiMeZbritjeProduktit == null? TVSHProduktit.QmimiProduktit : TVSHProduktit.QmimiMeZbritjeProduktit;
                     }
                     if (TVSHProduktit.llojiTVSH == 8)
                     {
-                        shporta.Totali18TVSH += TVSHProduktit.QmimiProduktit;
+                        shporta.Totali18TVSH += TVSHProduktit.QmimiMeZbritjeProduktit == null? TVSHProduktit.QmimiProduktit : TVSHProduktit.QmimiMeZbritjeProduktit;
                     }
 
                     _context.Shporta.Update(shporta);
@@ -259,11 +271,11 @@ namespace InfinitMarket.Controllers.API.Produktet
 
                     if (TVSHProduktit.llojiTVSH == 18)
                     {
-                        shporta.Totali18TVSH -= TVSHProduktit.QmimiProduktit;
+                        shporta.Totali18TVSH -= TVSHProduktit.QmimiMeZbritjeProduktit == null? TVSHProduktit.QmimiProduktit : TVSHProduktit.QmimiMeZbritjeProduktit;
                     }
                     if (TVSHProduktit.llojiTVSH == 8)
                     {
-                        shporta.Totali18TVSH -= TVSHProduktit.QmimiProduktit;
+                        shporta.Totali18TVSH -= TVSHProduktit.QmimiMeZbritjeProduktit == null? TVSHProduktit.QmimiProduktit : TVSHProduktit.QmimiMeZbritjeProduktit;
                     }
 
                     _context.Shporta.Update(shporta);
@@ -282,12 +294,12 @@ namespace InfinitMarket.Controllers.API.Produktet
 
                     if (TVSHProduktit.llojiTVSH == 18)
                     {
-                        shporta.Totali18TVSH -= eshteNeShporte.SasiaProduktit * TVSHProduktit.QmimiProduktit;
+                        shporta.Totali18TVSH -= eshteNeShporte.SasiaProduktit * TVSHProduktit.QmimiMeZbritjeProduktit == null? TVSHProduktit.QmimiProduktit : TVSHProduktit.QmimiMeZbritjeProduktit;
                         shporta.TotProd18TVSH -= 1;
                     }
                     if (TVSHProduktit.llojiTVSH == 8)
                     {
-                        shporta.Totali18TVSH -= eshteNeShporte.SasiaProduktit * TVSHProduktit.QmimiProduktit;
+                        shporta.Totali18TVSH -= eshteNeShporte.SasiaProduktit * TVSHProduktit.QmimiMeZbritjeProduktit == null? TVSHProduktit.QmimiProduktit : TVSHProduktit.QmimiMeZbritjeProduktit;
                         shporta.TotProd18TVSH -= 1;
                     }
 
@@ -360,14 +372,62 @@ namespace InfinitMarket.Controllers.API.Produktet
         [Route("ShfaqListenEDeshirave")]
         public async Task<IActionResult> ShfaqListenEDeshirave(string userID)
         {
-            var listaEDeshirave = await _context.ListaEDeshirave.Include(x => x.Klienti).Include(x => x.Produkti).Where(x => x.Klienti.AspNetUserId == userID).ToListAsync();
+            var listaEDeshirave = await _context.ListaEDeshirave.Include(x => x.Klienti).Include(x => x.Produkti).ThenInclude(x => x.TeDhenatProduktit).Where(x => x.Klienti.AspNetUserId == userID).ToListAsync();
 
-            if (listaEDeshirave == null)
+            if (listaEDeshirave == null || listaEDeshirave.Count == 0)
             {
-                return BadRequest("Ndodhi nje gabim gjate shfaqjes se Listes Te Deshirave!");
+                return BadRequest("Nuk ka asnje produkt ne Listen e Deshirave!");
             }
 
-            return Ok(listaEDeshirave);
+            var ListaEDeshirave = listaEDeshirave.Select(x => new
+            {
+                x.ListaEDeshiraveID,
+                x.Produkti.ProduktiId,
+                x.Produkti.EmriProduktit,
+                x.Produkti.FotoProduktit,
+                x.Produkti.TeDhenatProduktit.SasiaNeStok,
+                x.Produkti.TeDhenatProduktit.QmimiProduktit,
+                x.Klienti.Emri,
+                x.Klienti.Mbiemri,
+                x.KlientiID
+            }).ToList();
+
+            return Ok(ListaEDeshirave);
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("KontrolloProduktinNeListenEDeshirave")]
+        public async Task<IActionResult> KontrolloProduktinNeListenEDeshirave(string userID, int ProduktiID)
+        {
+            var perdoruesi = await _context.Perdoruesit.Where(x => x.AspNetUserId == userID).FirstOrDefaultAsync();
+
+            if (perdoruesi == null)
+            {
+                return BadRequest("Ndodhi nje gabim!");
+            }
+
+            var eshteNeListe = await _context.ListaEDeshirave.Where(x => x.KlientiID == perdoruesi.UserID && x.ProduktiID == ProduktiID).Select(x => new
+            {
+                x.ListaEDeshiraveID,
+                x.Produkti.ProduktiId,
+                x.Produkti.EmriProduktit,
+                x.Produkti.FotoProduktit,
+                x.Produkti.TeDhenatProduktit.SasiaNeStok,
+                x.Produkti.TeDhenatProduktit.QmimiProduktit,
+                x.Klienti.Emri,
+                x.Klienti.Mbiemri,
+                x.KlientiID
+            }).FirstOrDefaultAsync();
+
+            if (eshteNeListe == null)
+            {
+                return Ok(false);
+            }
+            else
+            {
+                return Ok(eshteNeListe);
+            }
         }
 
 

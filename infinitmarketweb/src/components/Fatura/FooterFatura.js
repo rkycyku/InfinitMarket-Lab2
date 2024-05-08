@@ -95,10 +95,10 @@ function FooterFatura(props) {
             Porosia arrin me se largu:
             <strong> {dataMberritjes.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: '2-digit' })}</strong>
           </p>
-          <p>Te gjitha produktet ne kete fature kane garancion 1 Vjet!</p>
+          <p>Te gjitha produktet ne kete fature kane garancion <strong>1 Vjet!</strong></p>
           <p>
-            Garancioni vlene deri me:{' '}
-            {skadimiGarancionit.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: '2-digit' })}
+            Garancioni vlene deri me:
+            <strong> {skadimiGarancionit.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: '2-digit' })}</strong>
           </p>
         </div>
 

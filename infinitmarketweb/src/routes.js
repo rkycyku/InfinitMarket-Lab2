@@ -67,17 +67,20 @@ const routes = [
         path: '/Admin/Klientet/ListaEKlienteve',
         element: lazy(() => import('./views/admin-dashboard/Klientet/ListaEKlienteve'))
       },
-
       {
         exact: 'true',
         path: '/admin/TeNdryshme/OfertatSlider',
         element: lazy(() => import('./views/admin-dashboard/TeNdryshme/OfertatSlider'))
       },
-
       {
         exact: 'true',
         path: '/admin/produktet/ListaEProdukteve',
         element: lazy(() => import('./views/admin-dashboard/Produktet/ListaEProdukteve'))
+      },
+      {
+        exact: 'true',
+        path: '/admin/produktet/Zbritjet',
+        element: lazy(() => import('./views/admin-dashboard/Produktet/Zbritjet'))
       },
       {
         exact: true,
@@ -123,6 +126,11 @@ const routes = [
         exact: true,
         path: '/shporta',
         element: lazy(() => import('./views/Shporta'))
+      },
+      {
+        exact: true,
+        path: '/ListaEDeshirave',
+        element: lazy(() => import('./views/ListaEDeshirave'))
       },
       {
         exact: true,

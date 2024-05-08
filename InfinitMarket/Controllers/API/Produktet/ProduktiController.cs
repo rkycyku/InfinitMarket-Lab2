@@ -44,6 +44,7 @@ namespace InfinitMarket.Controllers.API.Produktet
                     p.TeDhenatProduktit.DataKrijimit,
                     p.TeDhenatProduktit.DataPerditsimit,
                     p.TeDhenatProduktit.llojiTVSH,
+                    p.ZbritjaQmimitProduktit.QmimiMeZbritjeProduktit
                 })
                 .ToListAsync();
 
@@ -68,6 +69,7 @@ namespace InfinitMarket.Controllers.API.Produktet
                    x.TeDhenatProduktit.QmimiBleres,
                    x.TeDhenatProduktit.QmimiProduktit,
                    x.TeDhenatProduktit.llojiTVSH,
+                   x.ZbritjaQmimitProduktit.QmimiMeZbritjeProduktit
                })
                .ToListAsync();
 
@@ -98,6 +100,7 @@ namespace InfinitMarket.Controllers.API.Produktet
                     x.TeDhenatProduktit.DataKrijimit,
                     x.TeDhenatProduktit.DataPerditsimit,
                     x.TeDhenatProduktit.llojiTVSH,
+                    x.ZbritjaQmimitProduktit.QmimiMeZbritjeProduktit
                 })
                 .ToListAsync();
 
@@ -127,6 +130,7 @@ namespace InfinitMarket.Controllers.API.Produktet
                     x.TeDhenatProduktit.DataKrijimit,
                     x.TeDhenatProduktit.DataPerditsimit,
                     x.TeDhenatProduktit.llojiTVSH,
+                    x.ZbritjaQmimitProduktit.QmimiMeZbritjeProduktit
                 })
                 .FirstOrDefaultAsync();
 

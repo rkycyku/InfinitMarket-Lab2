@@ -155,6 +155,19 @@ function Tabela({
                 <h1 style={{ textAlign: 'center' }}>{tableName}</h1>
               </th>
             </tr>
+            <tr>
+              <th colSpan={headeri.length + 1}>
+                <Row className="align-items-center">
+                  <Col xs="auto" className="pe-0">
+                    {funksionButonShto && (
+                      <Button variant="outline-success" onClick={() => funksionButonShto()}>
+                        <FontAwesomeIcon icon={faPlus} />
+                      </Button>
+                    )}
+                  </Col>
+                </Row>
+              </th>
+            </tr>
           </thead>
           <tbody>
             <tr>

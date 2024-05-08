@@ -52,6 +52,12 @@ const menuItems = {
               url: '/admin/produktet/ListaEProdukteve'
             },
             {
+              id: 'Zbritjet',
+              title: 'Zbritjet',
+              type: 'item',
+              url: '/admin/produktet/zbritjet'
+            },
+            {
               id: 'Kategorite',
               title: 'Kategorite',
               type: 'item',

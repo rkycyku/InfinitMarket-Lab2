@@ -102,7 +102,7 @@ const NavRight = () => {
                   </Link>
                 </ListGroup.Item>
                 <ListGroup.Item as="li" bsPrefix=" ">
-                  <Link to="#" className="dropdown-item">
+                  <Link to="/ListaEDeshirave" className="dropdown-item">
                     <i className="feather icon-heart" /> Lista e Deshirave
                   </Link>
                 </ListGroup.Item>

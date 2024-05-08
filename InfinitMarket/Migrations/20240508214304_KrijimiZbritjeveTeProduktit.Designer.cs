@@ -4,6 +4,7 @@ using InfinitMarket.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InfinitMarket.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240508214304_KrijimiZbritjeveTeProduktit")]
+    partial class KrijimiZbritjeveTeProduktit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,7 +63,7 @@ namespace InfinitMarket.Migrations
 
                     b.HasIndex("PerdoruesiID");
 
-                    b.ToTable("AdresatPerdoruesit", (string)null);
+                    b.ToTable("AdresatPerdoruesit");
                 });
 
             modelBuilder.Entity("InfinitMarket.Models.Bankat", b =>
@@ -86,7 +88,7 @@ namespace InfinitMarket.Migrations
 
                     b.HasKey("BankaID");
 
-                    b.ToTable("Bankat", (string)null);
+                    b.ToTable("Bankat");
                 });
 
             modelBuilder.Entity("InfinitMarket.Models.ContactForm", b =>
@@ -119,7 +121,7 @@ namespace InfinitMarket.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("ContactForm", (string)null);
+                    b.ToTable("ContactForm");
                 });
 
             modelBuilder.Entity("InfinitMarket.Models.KategoriaProduktit", b =>
@@ -141,7 +143,7 @@ namespace InfinitMarket.Migrations
 
                     b.HasKey("KategoriaId");
 
-                    b.ToTable("KategoriaProduktit", (string)null);
+                    b.ToTable("KategoriaProduktit");
                 });
 
             modelBuilder.Entity("InfinitMarket.Models.KategoriteEDetajeve", b =>
@@ -162,7 +164,7 @@ namespace InfinitMarket.Migrations
 
                     b.HasKey("KategoriaDetajeveId");
 
-                    b.ToTable("KategoriteEDetajeve", (string)null);
+                    b.ToTable("KategoriteEDetajeve");
                 });
 
             modelBuilder.Entity("InfinitMarket.Models.KodiZbritjes", b =>
@@ -186,7 +188,7 @@ namespace InfinitMarket.Migrations
 
                     b.HasIndex("ProduktiId");
 
-                    b.ToTable("KodiZbritjes", (string)null);
+                    b.ToTable("KodiZbritjes");
                 });
 
             modelBuilder.Entity("InfinitMarket.Models.KompanitePartnere", b =>
@@ -208,7 +210,7 @@ namespace InfinitMarket.Migrations
 
                     b.HasKey("KompaniaID");
 
-                    b.ToTable("KompanitePartnere", (string)null);
+                    b.ToTable("KompanitePartnere");
                 });
 
             modelBuilder.Entity("InfinitMarket.Models.ListaEDeshirave", b =>
@@ -234,7 +236,7 @@ namespace InfinitMarket.Migrations
 
                     b.HasIndex("ProduktiID");
 
-                    b.ToTable("ListaEDeshirave", (string)null);
+                    b.ToTable("ListaEDeshirave");
                 });
 
             modelBuilder.Entity("InfinitMarket.Models.Perdoruesi", b =>
@@ -271,7 +273,7 @@ namespace InfinitMarket.Migrations
 
                     b.HasIndex("AspNetUserId");
 
-                    b.ToTable("Perdoruesit", (string)null);
+                    b.ToTable("Perdoruesit");
                 });
 
             modelBuilder.Entity("InfinitMarket.Models.Porosit", b =>
@@ -321,7 +323,7 @@ namespace InfinitMarket.Migrations
 
                     b.HasIndex("IdKlienti");
 
-                    b.ToTable("Porosit", (string)null);
+                    b.ToTable("Porosit");
                 });
 
             modelBuilder.Entity("InfinitMarket.Models.Produkti", b =>
@@ -356,7 +358,7 @@ namespace InfinitMarket.Migrations
 
                     b.HasIndex("KompaniaId");
 
-                    b.ToTable("Produkti", (string)null);
+                    b.ToTable("Produkti");
                 });
 
             modelBuilder.Entity("InfinitMarket.Models.Shporta", b =>
@@ -402,7 +404,7 @@ namespace InfinitMarket.Migrations
 
                     b.HasIndex("PerdoruesiID");
 
-                    b.ToTable("Shporta", (string)null);
+                    b.ToTable("Shporta");
                 });
 
             modelBuilder.Entity("InfinitMarket.Models.SliderOfertat", b =>
@@ -430,7 +432,7 @@ namespace InfinitMarket.Migrations
 
                     b.HasKey("SliderOfertatID");
 
-                    b.ToTable("SliderOfertat", (string)null);
+                    b.ToTable("SliderOfertat");
                 });
 
             modelBuilder.Entity("InfinitMarket.Models.TeDhenatBiznesit", b =>
@@ -470,7 +472,7 @@ namespace InfinitMarket.Migrations
 
                     b.HasKey("IDTeDhenatBiznesit");
 
-                    b.ToTable("TeDhenatBiznesit", (string)null);
+                    b.ToTable("TeDhenatBiznesit");
                 });
 
             modelBuilder.Entity("InfinitMarket.Models.TeDhenatEPorosis", b =>
@@ -499,7 +501,7 @@ namespace InfinitMarket.Migrations
 
                     b.HasIndex("IdProdukti");
 
-                    b.ToTable("TeDhenatEPorosis", (string)null);
+                    b.ToTable("TeDhenatEPorosis");
                 });
 
             modelBuilder.Entity("InfinitMarket.Models.TeDhenatPerdoruesit", b =>
@@ -542,7 +544,7 @@ namespace InfinitMarket.Migrations
                     b.HasIndex("UserID")
                         .IsUnique();
 
-                    b.ToTable("TeDhenatPerdoruesit", (string)null);
+                    b.ToTable("TeDhenatPerdoruesit");
                 });
 
             modelBuilder.Entity("InfinitMarket.Models.TeDhenatProduktit", b =>
@@ -579,7 +581,7 @@ namespace InfinitMarket.Migrations
                     b.HasIndex("ProduktiId")
                         .IsUnique();
 
-                    b.ToTable("TeDhenatProduktit", (string)null);
+                    b.ToTable("TeDhenatProduktit");
                 });
 
             modelBuilder.Entity("InfinitMarket.Models.TeDhenatShporta", b =>
@@ -611,7 +613,7 @@ namespace InfinitMarket.Migrations
 
                     b.HasIndex("ShportaID");
 
-                    b.ToTable("TeDhenatShporta", (string)null);
+                    b.ToTable("TeDhenatShporta");
                 });
 
             modelBuilder.Entity("InfinitMarket.Models.ZbritjaQmimitProduktit", b =>
@@ -642,7 +644,7 @@ namespace InfinitMarket.Migrations
                     b.HasIndex("ProduktiId")
                         .IsUnique();
 
-                    b.ToTable("ZbritjaQmimitProduktit", (string)null);
+                    b.ToTable("ZbritjaQmimitProduktit");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -862,7 +864,7 @@ namespace InfinitMarket.Migrations
 
                     b.HasIndex("KategoriaDetajeveId");
 
-                    b.ToTable("TeDhenatEDetajeve", (string)null);
+                    b.ToTable("TeDhenatEDetajeve");
                 });
 
             modelBuilder.Entity("InfinitMarket.Models.AdresatPerdoruesit", b =>

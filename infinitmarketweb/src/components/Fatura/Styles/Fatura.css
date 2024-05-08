@@ -1,3 +1,7 @@
+strong{
+  font-weight: bold;
+}
+
 .fatura *{
   /* styles specific to elements inside .fatura */
   margin: 0;

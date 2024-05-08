@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { Button } from 'react-bootstrap';
 
-export default function CheckoutForm() {
+export default function CheckoutForm({ llojiTransportit, qmimiTransportit }) {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -55,7 +55,7 @@ export default function CheckoutForm() {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: 'http://localhost:3000',
+        return_url: `http://localhost:3000/shporta?llojiTransportit=${llojiTransportit}&qmimiTransportit=${qmimiTransportit}`,
         receipt_email: email
       }
     });

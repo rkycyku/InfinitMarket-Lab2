@@ -259,7 +259,7 @@ export default function PagesaMeSukses(props) {
                   </Button>
                 </a>
                 {!props.handleMbyll && (
-                  <Button name="complete" type="submit" value="Perfundo Porosin" onClick={() => navigate('/Dashboard')}>
+                  <Button name="complete" type="submit" value="Perfundo Porosin" onClick={() => navigate('/Dashboard/PorositEMia')}>
                     Mbyll Detajet
                   </Button>
                 )}
