@@ -114,6 +114,8 @@ builder.Services.AddSwaggerGen(c => {
     });
 });
 
+builder.Services.AddSingleton<MongoDBService>();
+
 var app = builder.Build();
 
 StripeConfiguration.ApiKey = "sk_test_51P6womKtaRnYlZxjj5ZKQQBsh6BP0F66jmJokn1Q4vSP6ex1poY5iMEt0nUWwUo4RKo7soyWLkvNN4tyry7PNM1m008EPxBTB5";

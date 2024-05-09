@@ -880,3 +880,16 @@ D:\Programim\GitHubProjekte\InfinitMarket-Lab2\InfinitMarket\obj\Debug\net6.0\re
 D:\Programim\GitHubProjekte\InfinitMarket-Lab2\InfinitMarket\obj\Debug\net6.0\InfinitMarket.pdb
 D:\Programim\GitHubProjekte\InfinitMarket-Lab2\InfinitMarket\obj\Debug\net6.0\InfinitMarket.genruntimeconfig.cache
 D:\Programim\GitHubProjekte\InfinitMarket-Lab2\InfinitMarket\obj\Debug\net6.0\ref\InfinitMarket.dll
+D:\Programim\GitHubProjekte\InfinitMarket-Lab2\InfinitMarket\bin\Debug\net6.0\AWSSDK.Core.dll
+D:\Programim\GitHubProjekte\InfinitMarket-Lab2\InfinitMarket\bin\Debug\net6.0\AWSSDK.SecurityToken.dll
+D:\Programim\GitHubProjekte\InfinitMarket-Lab2\InfinitMarket\bin\Debug\net6.0\DnsClient.dll
+D:\Programim\GitHubProjekte\InfinitMarket-Lab2\InfinitMarket\bin\Debug\net6.0\MongoDB.Bson.dll
+D:\Programim\GitHubProjekte\InfinitMarket-Lab2\InfinitMarket\bin\Debug\net6.0\MongoDB.Driver.dll
+D:\Programim\GitHubProjekte\InfinitMarket-Lab2\InfinitMarket\bin\Debug\net6.0\MongoDB.Driver.Core.dll
+D:\Programim\GitHubProjekte\InfinitMarket-Lab2\InfinitMarket\bin\Debug\net6.0\MongoDB.Libmongocrypt.dll
+D:\Programim\GitHubProjekte\InfinitMarket-Lab2\InfinitMarket\bin\Debug\net6.0\SharpCompress.dll
+D:\Programim\GitHubProjekte\InfinitMarket-Lab2\InfinitMarket\bin\Debug\net6.0\Snappier.dll
+D:\Programim\GitHubProjekte\InfinitMarket-Lab2\InfinitMarket\bin\Debug\net6.0\ZstdSharp.dll
+D:\Programim\GitHubProjekte\InfinitMarket-Lab2\InfinitMarket\bin\Debug\net6.0\runtimes\linux\native\libmongocrypt.so
+D:\Programim\GitHubProjekte\InfinitMarket-Lab2\InfinitMarket\bin\Debug\net6.0\runtimes\osx\native\libmongocrypt.dylib
+D:\Programim\GitHubProjekte\InfinitMarket-Lab2\InfinitMarket\bin\Debug\net6.0\runtimes\win\native\mongocrypt.dll

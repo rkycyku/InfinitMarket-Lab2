@@ -13,6 +13,13 @@ import EditoProduktin from './admin-dashboard/Produktet/ListaEProdukteve/EditoPr
 import Footer from '../components/Footer';
 import { Button } from 'react-bootstrap';
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import '../assets/css/swiperSlider.css';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+
 function Produkti() {
   const { id } = useParams();
   const [produkti, setProdukti] = useState([]);
@@ -26,6 +33,8 @@ function Produkti() {
   const [teDhenat, setTeDhenat] = useState([]);
 
   const [shporta, setShporta] = useState([]);
+
+  const [fototGallery, setFototGallery] = useState([]);
 
   const getToken = localStorage.getItem('token');
 
@@ -75,6 +84,13 @@ function Produkti() {
           `https://localhost:7251/api/Produktet/Produkti/ShfaqProduktinSipasIDsAll/${id}`,
           authentikimi
         );
+        const vendosFototProd = await axios.get(
+          `https://localhost:7251/api/Produktet/FototProduktit/ShfaqFototEProduktitPerGallery?produktiId=${id}`,
+          authentikimi
+        );
+
+        setFototGallery(vendosFototProd.data);
+
         setProdukti(teDhenatProduktit.data);
         if (teDhenatProduktit.data.pershkrimi !== '') {
           setKaPershkrim(true);
@@ -169,7 +185,33 @@ function Produkti() {
       <div className="produkti">
         <div className="detajet">
           <div className="foto">
-            <img src={`${process.env.PUBLIC_URL}/img/produktet/${produkti.fotoProduktit}`} alt={produkti.emriProduktit} />
+            {fototGallery.length > 0 ? (
+              <Swiper
+                spaceBetween={30}
+                centeredSlides={true}
+                autoplay={{
+                  delay: 2500,
+                  disableOnInteraction: false
+                }}
+                pagination={{
+                  clickable: true
+                }}
+                navigation={true}
+                modules={[Autoplay, Pagination, Navigation]}
+                className="mySwiper"
+              >
+                {fototGallery &&
+                  fototGallery.map((foto) => (
+                    <SwiperSlide>
+                      <div key={foto.id}>
+                        <img src={`${process.env.PUBLIC_URL}/img/produktet/${foto.emriFotos}`} alt={foto.emriFotos} />
+                      </div>
+                    </SwiperSlide>
+                  ))}
+              </Swiper>
+            ) : (
+              <img src={`${process.env.PUBLIC_URL}/img/produktet/${produkti.fotoProduktit}`} alt={produkti.fotoProduktit} />
+            )}
           </div>
           <div>
             <div className="teDhenatProduktit">
