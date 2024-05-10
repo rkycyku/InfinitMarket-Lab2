@@ -84,6 +84,8 @@ function Produkti() {
           `https://localhost:7251/api/Produktet/Produkti/ShfaqProduktinSipasIDsAll/${id}`,
           authentikimi
         );
+
+        console.log(teDhenatProduktit.data);
         const vendosFototProd = await axios.get(
           `https://localhost:7251/api/Produktet/FototProduktit/ShfaqFototEProduktitPerGallery?produktiId=${id}`,
           authentikimi
@@ -92,7 +94,7 @@ function Produkti() {
         setFototGallery(vendosFototProd.data);
 
         setProdukti(teDhenatProduktit.data);
-        if (teDhenatProduktit.data.pershkrimi !== '') {
+        if (teDhenatProduktit.data.produkti.pershkrimi !== '') {
           setKaPershkrim(true);
         } else {
           setKaPershkrim(false);
@@ -118,24 +120,26 @@ function Produkti() {
   }, []);
 
   const handleShtoNeShporte = async () => {
-    const eshteNeShporte = shporta.find((item) => item.produktiID === produkti.produktiId);
-
-    console.log(eshteNeShporte);
+    const eshteNeShporte = shporta.find((item) => item.produktiID === produkti && produkti.produkti && produkti.produkti.produktiId);
 
     if (eshteNeShporte && eshteNeShporte.sasiaProduktitNeShporte >= eshteNeShporte.sasiaStokutAktual) {
       setTipiMesazhit('danger');
       setPershkrimiMesazhit(
-        `Sasia maksimale per <strong>${produkti.emriProduktit}</strong> eshte <strong>${eshteNeShporte.sasiaStokutAktual}</strong> ne shporte!`
+        `Sasia maksimale per <strong>${produkti && produkti.produkti && produkti.produkti.emriProduktit}</strong> eshte <strong>${
+          eshteNeShporte.sasiaStokutAktual
+        }</strong> ne shporte!`
       );
       setShfaqMesazhin(true);
     } else {
       await axios.post(
-        `https://localhost:7251/api/Produktet/Shporta/shtoProduktinNeShporte?userID=${getID}&ProduktiID=${produkti.produktiId}`,
+        `https://localhost:7251/api/Produktet/Shporta/shtoProduktinNeShporte?userID=${getID}&ProduktiID=${
+          produkti && produkti.produkti && produkti.produkti.produktiId
+        }`,
         {},
         authentikimi
       );
       setTipiMesazhit('success');
-      setPershkrimiMesazhit(`<strong>${produkti.emriProduktit}</strong> u shtua ne shporte!`);
+      setPershkrimiMesazhit(`<strong>${produkti && produkti.produkti && produkti.produkti.emriProduktit}</strong> u shtua ne shporte!`);
       setShfaqMesazhin(true);
     }
   };
@@ -168,14 +172,18 @@ function Produkti() {
   return (
     <div className="container">
       <Helmet>
-        <title>{produkti.emriProduktit !== '' ? produkti.emriProduktit + ' | Tech Store' : 'Tech Store'}</title>
+        <title>
+          {produkti && produkti.produkti && produkti.produkti.emriProduktit !== ''
+            ? produkti && produkti.produkti && produkti.produkti.emriProduktit + ' | Infinit Market'
+            : 'Infinit Market'}
+        </title>
       </Helmet>
       {shfaqMesazhin && <Mesazhi setShfaqMesazhin={setShfaqMesazhin} pershkrimi={pershkrimiMesazhit} tipi={tipiMesazhit} />}
       {edito && (
         <EditoProduktin
           shfaq={edito}
           largo={() => setEdito(false)}
-          id={produkti.produktiId}
+          id={produkti && produkti.produkti && produkti.produkti.produktiId}
           shfaqmesazhin={() => setShfaqMesazhin(true)}
           perditesoTeDhenat={() => setPerditeso(Date.now())}
           setTipiMesazhit={setTipiMesazhit}
@@ -185,7 +193,7 @@ function Produkti() {
       <div className="produkti">
         <div className="detajet">
           <div className="foto">
-            {fototGallery.length > 0 ? (
+            {produkti && produkti.fotoProduktit && produkti.fotoProduktit.length > 0 ? (
               <Swiper
                 spaceBetween={30}
                 centeredSlides={true}
@@ -196,12 +204,11 @@ function Produkti() {
                 pagination={{
                   clickable: true
                 }}
-                navigation={true}
                 modules={[Autoplay, Pagination, Navigation]}
                 className="mySwiper"
               >
-                {fototGallery &&
-                  fototGallery.map((foto) => (
+                {produkti.fotoProduktit &&
+                  produkti.fotoProduktit.map((foto) => (
                     <SwiperSlide>
                       <div key={foto.id}>
                         <img src={`${process.env.PUBLIC_URL}/img/produktet/${foto.emriFotos}`} alt={foto.emriFotos} />
@@ -210,7 +217,10 @@ function Produkti() {
                   ))}
               </Swiper>
             ) : (
-              <img src={`${process.env.PUBLIC_URL}/img/produktet/${produkti.fotoProduktit}`} alt={produkti.fotoProduktit} />
+              <img
+                src={`${process.env.PUBLIC_URL}/img/produktet/${produkti && produkti.produkti && produkti.produkti.fotoProduktit}`}
+                alt={produkti && produkti.produkti && produkti.produkti.fotoProduktit}
+              />
             )}
           </div>
           <div>
@@ -219,19 +229,23 @@ function Produkti() {
                 <tbody>
                   <tr>
                     <th colSpan="2">
-                      <h1 className="emriProd">{produkti.emriProduktit}</h1>
+                      <h1 className="emriProd">{produkti && produkti.produkti && produkti.produkti.emriProduktit}</h1>
                     </th>
                   </tr>
                   <tr>
                     <td>Kompania:</td>
                     <td>
-                      <Link to={`/Produktet/kompania/${produkti.emriKompanis}`}>{produkti.emriKompanis}</Link>
+                      <Link to={`/Produktet/kompania/${produkti && produkti.produkti && produkti.produkti.emriKompanis}`}>
+                        {produkti && produkti.produkti && produkti.produkti.emriKompanis}
+                      </Link>
                     </td>
                   </tr>
                   <tr>
                     <td>Kategoria:</td>
                     <td>
-                      <Link to={`/Produktet/kategoria/${produkti.llojiKategoris}`}>{produkti.llojiKategoris}</Link>
+                      <Link to={`/Produktet/kategoria/${produkti && produkti.produkti && produkti.produkti.llojiKategoris}`}>
+                        {produkti && produkti.produkti && produkti.produkti.llojiKategoris}
+                      </Link>
                     </td>
                   </tr>
                 </tbody>
@@ -240,47 +254,76 @@ function Produkti() {
             <div className="blerja">
               <form>
                 <h5 className="qmimiPaZbritje">
-                  {produkti.qmimiMeZbritjeProduktit != null && parseFloat(produkti.qmimiProduktit).toFixed(2) + ' €'}
+                  {produkti &&
+                    produkti.produkti &&
+                    produkti.produkti.qmimiMeZbritjeProduktit != null &&
+                    parseFloat(produkti && produkti.produkti && produkti.produkti.qmimiProduktit).toFixed(2) + ' €'}
                 </h5>
                 <h5>
-                  {produkti.qmimiMeZbritjeProduktit != null &&
+                  {produkti &&
+                    produkti.produkti &&
+                    produkti.produkti.qmimiMeZbritjeProduktit != null &&
                     'Ju Kureseni: ' +
-                      (produkti.qmimiProduktit - produkti.qmimiMeZbritjeProduktit).toFixed(2) +
+                      parseFloat(
+                        (produkti && produkti.produkti && produkti.produkti.qmimiProduktit) -
+                          (produkti && produkti.produkti && produkti.produkti.qmimiMeZbritjeProduktit)
+                      ).toFixed(2) +
                       ' €' +
                       ' (' +
-                      (((produkti.qmimiProduktit - produkti.qmimiMeZbritjeProduktit) / produkti.qmimiProduktit) * 100).toFixed(0) +
+                      (
+                        (((produkti && produkti.produkti && produkti.produkti.qmimiProduktit) -
+                          (produkti && produkti.produkti && produkti.produkti.qmimiMeZbritjeProduktit)) /
+                          (produkti && produkti.produkti && produkti.produkti.qmimiProduktit)) *
+                        100
+                      ).toFixed(0) +
                       '%)'}
                 </h5>
                 <h1 className="">
-                  {produkti.qmimiMeZbritjeProduktit != null
-                    ? parseFloat(produkti.qmimiMeZbritjeProduktit).toFixed(2)
-                    : parseFloat(produkti.qmimiProduktit).toFixed(2)}{' '}
+                  {produkti && produkti.produkti && produkti.produkti.qmimiMeZbritjeProduktit != null
+                    ? parseFloat(produkti && produkti.produkti && produkti.produkti.qmimiMeZbritjeProduktit).toFixed(2)
+                    : parseFloat(produkti && produkti.produkti && produkti.produkti.qmimiProduktit).toFixed(2)}{' '}
                   €
                 </h1>
                 <p>
-                  {produkti.qmimiMeZbritjeProduktit != null
-                    ? parseFloat(produkti.qmimiMeZbritjeProduktit - produkti.qmimiMeZbritjeProduktit * 0.152542).toFixed(2)
-                    : parseFloat(produkti.qmimiProduktit - produkti.qmimiProduktit * 0.152542).toFixed(2)}{' '}
+                  {produkti && produkti.produkti && produkti.produkti.qmimiMeZbritjeProduktit != null
+                    ? parseFloat(
+                        (produkti && produkti.produkti && produkti.produkti.qmimiMeZbritjeProduktit) -
+                          (produkti && produkti.produkti && produkti.produkti.qmimiMeZbritjeProduktit) *
+                            ((produkti && produkti.produkti && produkti.produkti.llojiTVSH) /
+                              (100 + (produkti && produkti.produkti && produkti.produkti.llojiTVSH)))
+                      ).toFixed(2)
+                    : parseFloat(
+                        produkti &&
+                          produkti.produkti &&
+                          produkti.produkti.qmimiProduktit - produkti &&
+                          produkti.produkti &&
+                          produkti.produkti.qmimiProduktit *
+                            ((produkti && produkti.produkti && produkti.produkti.llojiTVSH) /
+                              (100 + (produkti && produkti.produkti && produkti.produkti.llojiTVSH)))
+                      ).toFixed(2)}{' '}
                   € pa TVSH
                 </p>
-                <p>Disponueshmëria: {produkti.sasiaNeStok > 10 ? 'Me shume se 10 artikuj' : produkti.sasiaNeStok + ' artikuj'}</p>
+                <p>
+                  Disponueshmëria:{' '}
+                  {produkti && produkti.produkti && produkti.produkti.sasiaNeStok > 10
+                    ? 'Me shume se 10 artikuj'
+                    : produkti && produkti.produkti && produkti.produkti.sasiaNeStok + ' artikuj'}
+                </p>
 
                 <div style={{ display: 'flex', gap: '1em' }}>
-                  {produkti.sasiaNeStok > 0 && (
+                  {produkti && produkti.produkti && produkti.produkti.sasiaNeStok > 0 && (
                     <Button onClick={handleShtoNeShporte}>
                       Shto ne Shporte <FontAwesomeIcon icon={faCartShopping} />
                     </Button>
                   )}
-                  {teDhenat != '' &&
-                    (teDhenat.rolet.includes('Admin') || teDhenat.rolet.includes('Menaxher')) &&
-                    produkti.sasiaNeStok > 0 && (
-                      <Button onClick={(e) => handleEdito(e)}>
-                        Perditeso <FontAwesomeIcon icon={faPenToSquare} />
-                      </Button>
-                    )}
-                  {produkti.sasiaNeStok <= 0 && (
+                  {produkti && produkti.produkti && produkti.produkti.sasiaNeStok <= 0 && (
                     <Button disabled style={{ backgroundColor: 'lightgray', color: 'black', cursor: 'unset' }}>
                       Out of Stock
+                    </Button>
+                  )}
+                  {teDhenat != '' && (teDhenat.rolet.includes('Admin') || teDhenat.rolet.includes('Menaxher')) && (
+                    <Button onClick={(e) => handleEdito(e)}>
+                      Perditeso <FontAwesomeIcon icon={faPenToSquare} />
                     </Button>
                   )}
                 </div>
@@ -291,7 +334,7 @@ function Produkti() {
         {kaPershkrim && (
           <div className="pershkrimi">
             <h2>Pershkrimi: </h2>
-            <p>{produkti.pershkrimi}</p>
+            <p>{produkti && produkti.produkti && produkti.produkti.pershkrimi}</p>
           </div>
         )}
       </div>
@@ -303,12 +346,12 @@ function Produkti() {
         {produktet.map((produkti) => {
           return (
             <ProduktetNeHome
-              produktiID={produkti.produktiId}
-              fotoProduktit={produkti.fotoProduktit}
-              emriProduktit={produkti.emriProduktit}
-              cmimi={produkti.qmimiProduktit}
-              sasiaNeStok={produkti.sasiaNeStok}
-              cmimiMeZbritje={produkti.qmimiProduktit}
+              produktiID={produkti && produkti.produktiId}
+              fotoProduktit={produkti && produkti.fotoProduktit}
+              emriProduktit={produkti && produkti.emriProduktit}
+              cmimi={produkti && produkti.qmimiProduktit}
+              sasiaNeStok={produkti && produkti.sasiaNeStok}
+              cmimiMeZbritje={produkti && produkti.qmimiMeZbritjeProduktit}
             />
           );
         })}

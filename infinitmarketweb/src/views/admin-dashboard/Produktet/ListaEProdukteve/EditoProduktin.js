@@ -40,10 +40,10 @@ function EditoProduktin(props) {
           axios.get('https://localhost:7251/api/Produktet/Kompania/shfaqKompanit')
         ]);
 
-        const isDeleted = responseProdukti.data.isDeleted ? 'true' : 'false';
+        const isDeleted = responseProdukti.data.produkti.isDeleted ? 'true' : 'false';
 
         setProdukti({
-          ...responseProdukti.data,
+          ...responseProdukti.data.produkti,
           isDeleted: isDeleted
         });
         setCategories(responseCategories.data);

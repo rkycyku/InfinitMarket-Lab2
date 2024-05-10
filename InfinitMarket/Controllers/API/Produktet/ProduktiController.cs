@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using InfinitMarket.Models;
 using Microsoft.AspNetCore.Authorization;
 using InfinitMarket.Data;
+using InfinitMarket.Entities;
+using MongoDB.Driver;
 
 namespace InfinitMarket.Controllers.API.Produktet
 {
@@ -14,10 +16,12 @@ namespace InfinitMarket.Controllers.API.Produktet
     public class ProduktiController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly IMongoCollection<FototProduktit>? _fototProduktit;
 
-        public ProduktiController(ApplicationDbContext context)
+        public ProduktiController(ApplicationDbContext context, MongoDBService mongoDBService)
         {
             _context = context;
+            _fototProduktit = mongoDBService.Database?.GetCollection<FototProduktit>("fotoProduktit");
         }
 
         [AllowAnonymous]
@@ -134,12 +138,22 @@ namespace InfinitMarket.Controllers.API.Produktet
                 })
                 .FirstOrDefaultAsync();
 
+            var filter = Builders<FototProduktit>.Filter.Eq(x => x.ProduktiID, id);
+            var fotoProduktit = await _fototProduktit.Find(filter).ToListAsync();
+
+            var ProduktiMeFotoGallery = new
+            {
+                produkti,
+                fotoProduktit
+            };
+
+
             if (produkti == null)
             {
                 return NotFound();
             }
 
-            return Ok(produkti);
+            return Ok(ProduktiMeFotoGallery);
         }
 
         [AllowAnonymous]
