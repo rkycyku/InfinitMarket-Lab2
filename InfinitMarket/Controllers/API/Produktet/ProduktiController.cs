@@ -117,7 +117,7 @@ namespace InfinitMarket.Controllers.API.Produktet
         public async Task<ActionResult> shfaqSipasIDsAll(int id)
         {
             var produkti = await _context.Produkti
-                .Where(x => x.ProduktiId == id)
+                .Where(x => x.ProduktiId == id && x.isDeleted == "false")
                 .Select(x => new
                 {
                     x.ProduktiId,
@@ -176,9 +176,9 @@ namespace InfinitMarket.Controllers.API.Produktet
                 isDeleted = produktiData.isDeleted,
                 TeDhenatProduktit = new TeDhenatProduktit
                 {
-                    SasiaNeStok = produktiData.TeDhenatProduktit.SasiaNeStok,
-                    QmimiBleres = produktiData.TeDhenatProduktit.QmimiBleres,
-                    QmimiProduktit = produktiData.TeDhenatProduktit.QmimiProduktit,
+                    SasiaNeStok = 0,
+                    QmimiBleres = 0,
+                    QmimiProduktit = 0,
                     llojiTVSH = produktiData.TeDhenatProduktit.llojiTVSH,
                     DataKrijimit = DateTime.Now,
                     DataPerditsimit = DateTime.Now
@@ -195,7 +195,7 @@ namespace InfinitMarket.Controllers.API.Produktet
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
 
-            return Ok("Data saved successfully.");
+            return Ok(produkti.ProduktiId);
         }
 
         [AllowAnonymous]

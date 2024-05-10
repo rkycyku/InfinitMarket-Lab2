@@ -17,8 +17,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import '../assets/css/swiperSlider.css';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import 'swiper/css/navigation';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { useNavigate } from 'react-router-dom';
 
 function Produkti() {
   const { id } = useParams();
@@ -34,9 +34,8 @@ function Produkti() {
 
   const [shporta, setShporta] = useState([]);
 
-  const [fototGallery, setFototGallery] = useState([]);
-
   const getToken = localStorage.getItem('token');
+  const navigate = useNavigate();
 
   const authentikimi = {
     headers: {
@@ -80,31 +79,32 @@ function Produkti() {
   useEffect(() => {
     const teDhenatProd = async () => {
       try {
-        const teDhenatProduktit = await axios.get(
-          `https://localhost:7251/api/Produktet/Produkti/ShfaqProduktinSipasIDsAll/${id}`,
-          authentikimi
-        );
-
-        console.log(teDhenatProduktit.data);
-        const vendosFototProd = await axios.get(
-          `https://localhost:7251/api/Produktet/FototProduktit/ShfaqFototEProduktitPerGallery?produktiId=${id}`,
-          authentikimi
-        );
-
-        setFototGallery(vendosFototProd.data);
-
-        setProdukti(teDhenatProduktit.data);
-        if (teDhenatProduktit.data.produkti.pershkrimi !== '') {
-          setKaPershkrim(true);
+        const response = await axios.get(`https://localhost:7251/api/Produktet/Produkti/ShfaqProduktinSipasIDsAll/${id}`, authentikimi);
+        const teDhenatProduktit = response.data;
+        
+        if (!teDhenatProduktit.produkti) {
+          navigate('/404'); // Redirect to 404 page if product not found
         } else {
-          setKaPershkrim(false);
+          setProdukti(teDhenatProduktit);
+          if (teDhenatProduktit.produkti.pershkrimi !== '') {
+            setKaPershkrim(true);
+          } else {
+            setKaPershkrim(false);
+          }
         }
-      } catch (err) {
-        console.log(err);
+      } catch (error) {
+        if (error.response && (error.response.status === 404 || error.response.status === 0)) {
+          navigate('/404'); // Redirect to 404 page if resource not found
+        } else {
+          console.error('An error occurred:', error);
+          // Handle other errors here
+        }
       }
     };
+  
     teDhenatProd();
   }, [perditeso, id]);
+  
 
   useEffect(() => {
     const shfaqProduktet = async () => {
@@ -192,27 +192,19 @@ function Produkti() {
       )}
       <div className="produkti">
         <div className="detajet">
-          <div className="foto">
+          <div className={produkti && produkti.fotoProduktit && produkti.fotoProduktit.length > 0 ? 'MeGallery' : 'PaGallery'}>
             {produkti && produkti.fotoProduktit && produkti.fotoProduktit.length > 0 ? (
               <Swiper
-                spaceBetween={30}
-                centeredSlides={true}
-                autoplay={{
-                  delay: 2500,
-                  disableOnInteraction: false
-                }}
                 pagination={{
                   clickable: true
                 }}
-                modules={[Autoplay, Pagination, Navigation]}
+                modules={[Pagination]}
                 className="mySwiper"
               >
                 {produkti.fotoProduktit &&
                   produkti.fotoProduktit.map((foto) => (
                     <SwiperSlide>
-                      <div key={foto.id}>
-                        <img src={`${process.env.PUBLIC_URL}/img/produktet/${foto.emriFotos}`} alt={foto.emriFotos} />
-                      </div>
+                      <img src={`${process.env.PUBLIC_URL}/img/produktet/${foto.emriFotos}`} alt={foto.emriFotos} />
                     </SwiperSlide>
                   ))}
               </Swiper>
@@ -223,7 +215,7 @@ function Produkti() {
               />
             )}
           </div>
-          <div>
+          <div className="ContainerTeDhenat">
             <div className="teDhenatProduktit">
               <table>
                 <tbody>

@@ -31,8 +31,8 @@ namespace InfinitMarket.Controllers.API.Produktet
 
         [AllowAnonymous]
         [HttpPost]
-        [Route("ShfaqFotonEProduktitPerGallery")]
-        public async Task<IActionResult> ShfaqFotonEProduktitPerGallery(FototProduktit foto)
+        [Route("VendosFotonEProduktitPerGallery")]
+        public async Task<IActionResult> VendosFotonEProduktitPerGallery(FototProduktit foto)
         {
             await _fototProduktit.InsertOneAsync(foto);
             return CreatedAtAction(nameof(ShfaqFototEProduktit), new { id = foto.Id }, foto);

@@ -11,13 +11,10 @@ const ShtoProduktin = (props) => {
   const [perditeso, setPerditeso] = useState('');
   const [emriProduktit, setEmriProduktit] = useState('');
   const [pershkrimi, setPershkrimi] = useState('');
-  const [sasiaNeStok, setSasiaNeStok] = useState(0);
-  const [qmimiBleres, setQmimiBleres] = useState(0);
-  const [qmimiProduktit, setQmimiProduktit] = useState(0);
   const [llojiTVSH, setLlojiTVSH] = useState(18);
   const [kategoriaId, setKategoriaId] = useState('');
   const [kompaniaId, setKompaniaId] = useState('');
-  const [foto, setFoto] = useState(null);
+  const [fotot, setFotot] = useState([]);
 
   const [produktet, setProduktet] = useState([]);
   const [kompanit, setKompanit] = useState([]);
@@ -53,13 +50,18 @@ const ShtoProduktin = (props) => {
   };
 
   const handleFotoChange = (event) => {
-    setFoto(event.target.files[0]);
+    const files = event.target.files;
+    if (files && files.length > 0) {
+      setFotot(Array.from(files)); // Convert FileList to an array
+    }
   };
 
   async function handleSubmit() {
-    if (foto) {
+    if (fotot.length > 0) {
       const formData = new FormData();
-      formData.append('foto', foto);
+      fotot.forEach((foto) => {
+        formData.append('fotot', foto);
+      });
 
       try {
         await axios
@@ -71,7 +73,7 @@ const ShtoProduktin = (props) => {
                 {
                   emriProduktit: emriProduktit,
                   pershkrimi: pershkrimi,
-                  fotoProduktit: response.data,
+                  fotoProduktit: response.data[0],
                   kompaniaId: kompaniaId,
                   kategoriaId: kategoriaId,
                   teDhenatProduktit: {
@@ -80,12 +82,24 @@ const ShtoProduktin = (props) => {
                 },
                 authentikimi
               )
-              .then(async (response) => {
+              .then(async (produktiID) => {
                 props.setTipiMesazhit('success');
                 props.setPershkrimiMesazhit('Produkti u insertua me sukses!');
                 props.perditesoTeDhenat();
                 props.largo();
                 props.shfaqmesazhin();
+                response.data.forEach(async (foto) => {
+                  await axios
+                    .post(
+                      'https://localhost:7251/api/Produktet/FototProduktit/VendosFotonEProduktitPerGallery',
+                      {
+                        id: null,
+                        produktiID: produktiID.data,
+                        emriFotos: foto
+                      },
+                      authentikimi
+                    );
+                });
               })
               .catch((error) => {
                 console.log(error);
@@ -227,7 +241,7 @@ const ShtoProduktin = (props) => {
 
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Foto Produktit</Form.Label>
-              <Form.Control type="file" accept="image/*" placeholder="Foto e Produktit" onChange={handleFotoChange} />
+              <Form.Control type="file" accept="image/*" placeholder="Foto e Produktit" onChange={handleFotoChange} multiple />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using InfinitMarket.Data;
+using System.Drawing;
 
 namespace InfinitMarket.Controllers.API.TeNdryshme
 {
@@ -54,23 +55,29 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
         [AllowAnonymous]
         [HttpPost]
         [Route("ShtoProduktin")]
-        public async Task<IActionResult> ShtoProduktin(IFormFile foto)
+        public async Task<IActionResult> ShtoProduktin(List<IFormFile> fotot)
         {
-            if (foto == null || foto.Length == 0)
+            List<string> emriUnikFotosList = new List<string>();
+
+            foreach (var foto in fotot)
             {
-                return BadRequest("Ju lutem vendosni foton");
+                if (foto == null || foto.Length == 0)
+                {
+                    return BadRequest("Ju lutem vendosni fotot");
+                }
+
+                var emriUnikFotos = GjeneroEmrinUnikFotos(foto.FileName);
+                var folderPath = Path.Combine("..", "infinitmarketweb", "public", "img", "produktet", emriUnikFotos);
+
+                using (var stream = new FileStream(folderPath, FileMode.Create))
+                {
+                    await foto.CopyToAsync(stream);
+                }
+
+                emriUnikFotosList.Add(emriUnikFotos);
             }
 
-            var emriUnikFotos = GjeneroEmrinUnikFotos(foto.FileName);
-
-            var follderi = Path.Combine("..", "infinitmarketweb", "public", "img", "produktet", emriUnikFotos);
-
-            using (var stream = new FileStream(follderi, FileMode.Create))
-            {
-                await foto.CopyToAsync(stream);
-            }
-
-            return Ok(emriUnikFotos);
+            return Ok(emriUnikFotosList);
         }
 
         [AllowAnonymous]

@@ -36,9 +36,9 @@ function EditoStokunQmimin(props) {
           authentikimi
         );
 
-        setProdukti(produkti.data);
-        setQmimiBleres(produkti.data.qmimiBleres);
-        setQmimiProduktit(produkti.data.qmimiProduktit);
+        setProdukti(produkti.data.produkti);
+        setQmimiBleres(produkti.data.produkti.qmimiBleres);
+        setQmimiProduktit(produkti.data.produkti.qmimiProduktit);
       } catch (error) {
         setError('Error fetching data.');
       } finally {

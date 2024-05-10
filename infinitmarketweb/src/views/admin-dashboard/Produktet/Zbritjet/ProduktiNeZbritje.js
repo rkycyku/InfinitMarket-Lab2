@@ -51,10 +51,10 @@ function ProduktiNeZbritje(props) {
         await axios.get(
           `https://localhost:7251/api/Produktet/Produkti/ShfaqProduktinSipasIDsAll/${produkti}`, authentikimi
         ).then((response) => {
-          setQmimiBleresProduktit((response.data.qmimiBleres).toFixed(2));
-          setQmimiShitesProduktit((response.data.qmimiProduktit).toFixed(2));
-          if (response.data.qmimiMeZbritjeProduktit != null) {
-            setQmimiZbritur(response.data.qmimiMeZbritjeProduktit);
+          setQmimiBleresProduktit((response.data.produkti.qmimiBleres).toFixed(2));
+          setQmimiShitesProduktit((response.data.produkti.qmimiProduktit).toFixed(2));
+          if (response.data.produkti.qmimiMeZbritjeProduktit != null) {
+            setQmimiZbritur(response.data.produkti.qmimiMeZbritjeProduktit);
             setKaZbritje(true);
             setPershkrimiMesazhit("Ky produkt ka Zbritje!");
             setTipiMesazhit("danger");

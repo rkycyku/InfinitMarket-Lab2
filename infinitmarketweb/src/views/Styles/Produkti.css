@@ -17,42 +17,8 @@
   display: flex;
   gap: 7px;
 }
-
-.buttonat {
-  border: none;
-  box-shadow: 0 0 10px #d3d3d3;
-  background-color: white;
-  color: black;
-  padding: 10px;
-  width: 4em;
-  border-radius: 25px;
-  cursor: pointer;
-  font-weight: 600;
-}
-.buttonat:hover {
-  background-color: #01df93;
-  color: white;
-}
-
-.remove-button {
-  border: none;
-  box-shadow: 0 0 10px #d3d3d3;
-  background-color: white;
-  color: black;
-  padding: 10px;
-  width: fit-content;
-  border-radius: 25px;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.remove-button {
-  background-color: rgb(177, 51, 51);
-  color: white;
-}
-.remove-button:hover {
-  background-color: transparent;
-  color: black;
+.ContainerTeDhenat{
+  margin-left: 2em;
 }
 
 .teDhenatProduktit td {
@@ -63,14 +29,21 @@ table {
   width: 90%;
 }
 
-.foto {
+.PaGallery {
   width: 20em;
 }
 
-.foto img {
+.PaGallery img {
   width: 80%;
   aspect-ratio: 3/2;
   object-fit: contain;
+} 
+
+.MeGallery {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
 }
 
 .produkti {
@@ -82,11 +55,11 @@ table {
   gap: 1.3em;
   border: none;
   padding: 5em;
-  border-radius: 30px;
+  border-radius: 10px;
   box-shadow: 0 0 10px #d3d3d3;
   background-color: white;
   flex-direction: column;
-  width: 80%;
+  width: 90%;
 }
 
 .detajet {

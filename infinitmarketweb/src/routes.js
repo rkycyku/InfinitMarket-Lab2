@@ -6,8 +6,6 @@ import BaseLayout from './layouts/BaseLayout';
 
 import { BASE_URL } from './config/constant';
 
-import ContactUs from './views/ContactUs';
-
 export const renderRoutes = (routes = []) => (
   <Suspense fallback={<Loader />}>
     <Routes>
@@ -159,13 +157,20 @@ const routes = [
       },
       {
         exact: true,
-        path: '/NukKeniAkses',
-        element: lazy(() => import('./components/NukKeniAkses'))
+        path: '/Admin/Klientet/ShportaEKlienteve',
+        element: lazy(() => import('./views/admin-dashboard/Klientet/ShportaEKlienteve'))
+      },
+
+
+      {
+        exact: true,
+        path: '/403',
+        element: lazy(() => import('./components/ErrorPages/403'))
       },
       {
         exact: true,
-        path: '/Admin/Klientet/ShportaEKlienteve',
-        element: lazy(() => import('./views/admin-dashboard/Klientet/ShportaEKlienteve'))
+        path: '/404',
+        element: lazy(() => import('./components/ErrorPages/404'))
       },
       {
         path: '*',

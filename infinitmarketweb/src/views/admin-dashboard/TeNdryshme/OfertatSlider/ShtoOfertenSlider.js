@@ -248,12 +248,24 @@ function ShtoOfertenSlider(props) {
               />
               <Form.Check
                 type="radio"
+                label="Link i Ndryshem"
+                name="llojiOfertes"
+                id="LinkINdryshem"
+                onClick={() => {
+                  setLlojiOfertes('LinkINdryshem');
+                  setInputValue('');
+                  setLinkuOfertes("")
+                }}
+              />
+              <Form.Check
+                type="radio"
                 label="Njoftim"
                 name="llojiOfertes"
                 id="Njoftim"
                 onClick={() => {
                   setLlojiOfertes('Njoftim');
                   setInputValue('');
+                  setLinkuOfertes("PaLink")
                 }}
               />
             </Form.Group>
@@ -336,6 +348,19 @@ function ShtoOfertenSlider(props) {
                     ))}
                   </ul>
                 </div>
+              </Form.Group>
+            )}
+            {llojiOfertes == 'LinkINdryshem' && (
+              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                <Form.Label>Linku</Form.Label>
+                <Form.Control
+                  type="text"
+                  className="form-control styled-input"
+                  placeholder="Vendosni Linkun"
+                  value={linkuOfertes}
+                  onChange={(e) => setLinkuOfertes(e.target.value)}
+                  autoFocus
+                />
               </Form.Group>
             )}
 
