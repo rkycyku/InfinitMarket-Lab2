@@ -81,7 +81,7 @@ function Produkti() {
       try {
         const response = await axios.get(`https://localhost:7251/api/Produktet/Produkti/ShfaqProduktinSipasIDsAll/${id}`, authentikimi);
         const teDhenatProduktit = response.data;
-        
+
         if (!teDhenatProduktit.produkti) {
           navigate('/404'); // Redirect to 404 page if product not found
         } else {
@@ -100,10 +100,9 @@ function Produkti() {
         }
       }
     };
-  
+
     teDhenatProd();
   }, [perditeso, id]);
-  
 
   useEffect(() => {
     const shfaqProduktet = async () => {
@@ -191,7 +190,7 @@ function Produkti() {
       )}
       <div className="produkti">
         <div className="detajet">
-          <div className={produkti && produkti.fotoProduktit && produkti.fotoProduktit.length > 0 ? 'MeGallery' : 'PaGallery'}>
+          <div className='foto'>
             {produkti && produkti.fotoProduktit && produkti.fotoProduktit.length > 0 ? (
               <Swiper
                 pagination={{
@@ -208,10 +207,20 @@ function Produkti() {
                   ))}
               </Swiper>
             ) : (
-              <img
-                src={`${process.env.PUBLIC_URL}/img/produktet/${produkti && produkti.produkti && produkti.produkti.fotoProduktit}`}
-                alt={produkti && produkti.produkti && produkti.produkti.fotoProduktit}
-              />
+              <Swiper
+                pagination={{
+                  clickable: true
+                }}
+                modules={[Pagination]}
+                className="mySwiper"
+              >
+                <SwiperSlide>
+                  <img
+                    src={`${process.env.PUBLIC_URL}/img/produktet/${produkti && produkti.produkti && produkti.produkti.fotoProduktit}`}
+                    alt={produkti && produkti.produkti && produkti.produkti.fotoProduktit}
+                  />
+                </SwiperSlide>
+              </Swiper>
             )}
           </div>
           <div className="ContainerTeDhenat">

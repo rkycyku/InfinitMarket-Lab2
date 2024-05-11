@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using InfinitMarket.Data;
 using InfinitMarket.Entities;
 using MongoDB.Driver;
+using Microsoft.IdentityModel.Tokens;
 
 namespace InfinitMarket.Controllers.API.Produktet
 {
@@ -242,20 +243,42 @@ namespace InfinitMarket.Controllers.API.Produktet
                 return NotFound("Produkti nuk u gjet.");
             }
 
-            existingProdukti.EmriProduktit = produktiData.EmriProduktit;
-            existingProdukti.Pershkrimi = produktiData.Pershkrimi;
-            existingProdukti.FotoProduktit = produktiData.FotoProduktit;
-            existingProdukti.KompaniaId = produktiData.KompaniaId;
-            existingProdukti.KategoriaId = produktiData.KategoriaId;
-            existingProdukti.isDeleted = produktiData.isDeleted;
+            if (!produktiData.EmriProduktit.IsNullOrEmpty()) {
+                existingProdukti.EmriProduktit = produktiData.EmriProduktit;
+            }
 
-            if (existingProdukti.TeDhenatProduktit != null && produktiData.TeDhenatProduktit != null)
+            if (!produktiData.Pershkrimi.IsNullOrEmpty())
+                existingProdukti.Pershkrimi = produktiData.Pershkrimi;
+
+            if (!produktiData.FotoProduktit.IsNullOrEmpty())
+                existingProdukti.FotoProduktit = produktiData.FotoProduktit;
+
+            if (produktiData.KompaniaId > 0 || produktiData.KompaniaId != null)
+                existingProdukti.KompaniaId = produktiData.KompaniaId;
+
+            if (produktiData.KategoriaId > 0 || produktiData.KategoriaId != null)
+                existingProdukti.KategoriaId = produktiData.KategoriaId;
+
+            if (!produktiData.isDeleted.IsNullOrEmpty())
+                existingProdukti.isDeleted = produktiData.isDeleted;
+
+            if (existingProdukti.TeDhenatProduktit != null)
             {
-                existingProdukti.TeDhenatProduktit.SasiaNeStok = produktiData.TeDhenatProduktit.SasiaNeStok;
-                existingProdukti.TeDhenatProduktit.QmimiBleres = produktiData.TeDhenatProduktit.QmimiBleres;
-                existingProdukti.TeDhenatProduktit.QmimiProduktit = produktiData.TeDhenatProduktit.QmimiProduktit;
-                existingProdukti.TeDhenatProduktit.DataPerditsimit = DateTime.Now;
-                existingProdukti.TeDhenatProduktit.llojiTVSH = produktiData.TeDhenatProduktit.llojiTVSH;
+                var teDhenatProduktit = existingProdukti.TeDhenatProduktit;
+
+                if (produktiData.TeDhenatProduktit.SasiaNeStok > 0 || produktiData.TeDhenatProduktit.SasiaNeStok != null)
+                    teDhenatProduktit.SasiaNeStok = produktiData.TeDhenatProduktit.SasiaNeStok;
+
+                if (produktiData.TeDhenatProduktit.QmimiBleres > 0 || produktiData.TeDhenatProduktit.QmimiBleres != null)
+                    teDhenatProduktit.QmimiBleres = produktiData.TeDhenatProduktit.QmimiBleres;
+
+                if (produktiData.TeDhenatProduktit.QmimiProduktit > 0 || produktiData.TeDhenatProduktit.QmimiProduktit != null)
+                    teDhenatProduktit.QmimiProduktit = produktiData.TeDhenatProduktit.QmimiProduktit;
+
+                teDhenatProduktit.DataPerditsimit = DateTime.Now; // Always update modification date
+
+                if (produktiData.TeDhenatProduktit.llojiTVSH > 0 || produktiData.TeDhenatProduktit.llojiTVSH != null)
+                    teDhenatProduktit.llojiTVSH = produktiData.TeDhenatProduktit.llojiTVSH;
             }
 
             try
@@ -269,6 +292,7 @@ namespace InfinitMarket.Controllers.API.Produktet
 
             return Ok("Product u perditesua me sukses.");
         }
+
 
         [AllowAnonymous]
         [HttpPut]

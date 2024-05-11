@@ -17,7 +17,7 @@
   display: flex;
   gap: 7px;
 }
-.ContainerTeDhenat{
+.ContainerTeDhenat {
   margin-left: 2em;
 }
 
@@ -29,21 +29,11 @@ table {
   width: 90%;
 }
 
-.PaGallery {
+.foto {
   width: 20em;
 }
 
-.PaGallery img {
-  width: 100%;
-  aspect-ratio: 3/2;
-  object-fit: contain;
-} 
-
-.MeGallery {
-  width: 20em;
-}
-
-.MeGallery .swiper-slide img {
+.foto .swiper-slide img {
   width: 100%;
   aspect-ratio: 3/2;
   object-fit: contain;

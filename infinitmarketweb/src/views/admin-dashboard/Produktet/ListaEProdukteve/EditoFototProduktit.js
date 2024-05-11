@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Button, Form, Modal, Spinner, Alert, Card, Row, Col, Table, InputGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPenToSquare, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faPenToSquare, faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
 import './Styles/style.css';
 
 function EditoFototProduktit(props) {
@@ -77,6 +77,29 @@ function EditoFototProduktit(props) {
     }
   }
 
+  async function fshijFoton(fotoID, emriFotos) {
+    try {
+      await axios.delete(`https://localhost:7251/api/Produktet/FototProduktit/FshijFotonEProduktitPerGallery?id=${fotoID}`, authentikimi);
+      setPerditeso(Date.now());
+
+      // Update the product's main photo only if the deleted photo was the main one
+      if (produkti && produkti.produkti && produkti.produkti.fotoProduktit === emriFotos) {
+        await axios.put(
+          `https://localhost:7251/api/Produktet/Produkti/PerditesoProduktin/${props.id}`,
+          {
+            ProduktiId: props.id,
+            FotoProduktit: produkti.fotoProduktit.length > 1 ? produkti.fotoProduktit[0].emriFotos : 'ProduktPaFoto.png',
+            TeDhenatProduktit: {}
+          },
+          authentikimi
+        );
+        setPerditeso(Date.now());
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   const handleFotoChange = (event) => {
     const files = event.target.files;
     if (files && files.length > 0) {
@@ -103,6 +126,10 @@ function EditoFototProduktit(props) {
                     <td>Emri Produktit:</td>
                     <td>{produkti && produkti.produkti && produkti.produkti.emriProduktit}</td>
                   </tr>
+                  <tr>
+                    <td>Foto Kryesore:</td>
+                    <td>{produkti && produkti.produkti && produkti.produkti.fotoProduktit}</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -111,7 +138,9 @@ function EditoFototProduktit(props) {
                 <Form.Label>Foto Produktit</Form.Label>
                 <InputGroup className="mb-3">
                   <Form.Control type="file" accept="image/*" placeholder="Foto e Produktit" onChange={handleFotoChange} multiple />
-                  <Button variant="outline-secondary" onClick={() => handleSubmit()}>Vendos Fotot</Button>
+                  <Button variant="outline-secondary" onClick={() => handleSubmit()}>
+                    Vendos Fotot
+                  </Button>
                 </InputGroup>
               </Form.Group>
             </Form>
@@ -122,11 +151,33 @@ function EditoFototProduktit(props) {
             produkti.fotoProduktit &&
             produkti.fotoProduktit.map((foto) => (
               <Col>
-                <Card className="PaGallery">
+                <Card style={{ width: '25em' }} className="PaGallery">
                   <Card.Img variant="top" src={`${process.env.PUBLIC_URL}/img/produktet/${foto.emriFotos}`} />
                   <Card.Body>
-                    <Button variant="primary">Zgjedh Foton Kryesore</Button>
-                    <Button variant="primary">Largo Foton</Button>
+                    <div className="teDhenatProduktit mb-3">
+                      <table>
+                        <tbody>
+                          <tr>
+                            <td>ID:</td>
+                            <td>{foto.id}</td>
+                          </tr>
+                          <tr>
+                            <td>Emri:</td>
+                            <td>{foto.emriFotos}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    {produkti && produkti.produkti && produkti.produkti.fotoProduktit != foto.emriFotos ? (
+                      <Button variant="primary">Vendos Foton Kryesore</Button>
+                    ) : (
+                      <Button variant="primary" disabled>
+                        Eshte Foto Kryesore
+                      </Button>
+                    )}
+                    <Button variant="danger" onClick={() => fshijFoton(foto.id, foto.emriFotos)} >
+                      <FontAwesomeIcon icon={faTrash} />
+                    </Button>
                   </Card.Body>
                 </Card>
               </Col>
