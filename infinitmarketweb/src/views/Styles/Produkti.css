@@ -34,16 +34,19 @@ table {
 }
 
 .PaGallery img {
-  width: 80%;
+  width: 100%;
   aspect-ratio: 3/2;
   object-fit: contain;
 } 
 
 .MeGallery {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 20%;
+  width: 20em;
+}
+
+.MeGallery .swiper-slide img {
+  width: 100%;
+  aspect-ratio: 3/2;
+  object-fit: contain;
 }
 
 .produkti {

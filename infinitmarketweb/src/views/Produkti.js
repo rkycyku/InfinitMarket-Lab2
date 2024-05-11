@@ -94,10 +94,9 @@ function Produkti() {
         }
       } catch (error) {
         if (error.response && (error.response.status === 404 || error.response.status === 0)) {
-          navigate('/404'); // Redirect to 404 page if resource not found
+          navigate('/404');
         } else {
           console.error('An error occurred:', error);
-          // Handle other errors here
         }
       }
     };

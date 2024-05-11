@@ -1,0 +1,15 @@
+.PaGallery {
+  width: 20em;
+  align-items: center;
+}
+
+.PaGallery img {
+  width: 80%;
+  aspect-ratio: 3/2;
+  object-fit: contain;
+  margin-top: 1em;
+}
+
+.card {
+  border-radius: 10px;
+}

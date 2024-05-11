@@ -147,7 +147,6 @@ namespace InfinitMarket.Controllers.API.Produktet
                 fotoProduktit
             };
 
-
             if (produkti == null)
             {
                 return NotFound();

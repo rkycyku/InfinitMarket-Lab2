@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Button, Form, Modal, Spinner, Alert } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faTimes } from '@fortawesome/free-solid-svg-icons';
+import EditoFototProduktit from './EditoFototProduktit';
 
 function EditoProduktin(props) {
   const [produkti, setProdukti] = useState({
@@ -21,6 +22,8 @@ function EditoProduktin(props) {
   const [success, setSuccess] = useState(false);
 
   const [foto, setFoto] = useState(null);
+
+  const [shfaqEditoFotot, setShfaqEditoFotot] = useState(false);
 
   const getToken = localStorage.getItem('token');
 
@@ -151,64 +154,81 @@ function EditoProduktin(props) {
   };
 
   return (
-    <Modal show={true} onHide={props.largo}>
-      <Modal.Header closeButton>
-        <Modal.Title>Edito Produktin</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        {error && <Alert variant="danger">{error}</Alert>}
-        {success && <Alert variant="success">Product updated successfully.</Alert>}
-        <Form>
-          <Form.Group className="mb-3" controlId="emriProduktit">
-            <Form.Label>Emri Produktit</Form.Label>
-            <Form.Control 
-                as="textarea" name="emriProduktit" value={produkti.emriProduktit} onChange={handleInputChange} />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="pershkrimi">
-            <Form.Label>Pershkrimi</Form.Label>
-            <Form.Control as="textarea" name="pershkrimi" value={produkti.pershkrimi} onChange={handleInputChange} />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label>Foto Produktit</Form.Label>
-            <Form.Control type="file" accept="image/*" placeholder="Foto e Produktit" onChange={handleFotoChange} />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="kategoriaId">
-            <Form.Label>Kategoria</Form.Label>
-            <Form.Select name="kategoriaId" value={produkti.kategoriaId} onChange={handleInputChange}>
-              <option value="">Zgjidh Kategorinë</option>
-              {categories.map((category) => (
-                <option key={category.kategoriaId} value={category.kategoriaId}>
-                  {category.llojiKategoris}
-                </option>
-              ))}
-            </Form.Select>
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="kompaniaId">
-            <Form.Label>Kompania</Form.Label>
-            <Form.Select name="kompaniaId" value={produkti.kompaniaId} onChange={handleInputChange}>
-              <option value="">Zgjidh Kompaninë</option>
-              {companies.map((company) => (
-                <option key={company.kompaniaID} value={company.kompaniaID}>
-                  {company.emriKompanis}
-                </option>
-              ))}
-            </Form.Select>
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="sasiaNeStok">
-            <Form.Label>Lloji TVSH-s</Form.Label>
-            <Form.Control type="number" name="llojiTVSH" value={produkti.llojiTVSH} onChange={handleInputChange} />
-          </Form.Group>
-        </Form>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={props.largo} disabled={loading}>
-          Anulo <FontAwesomeIcon icon={faTimes} />
-        </Button>
-        <Button variant="primary" onClick={handleSubmit} disabled={loading}>
-          {loading ? <Spinner animation="border" size="sm" /> : 'Ruaj'} <FontAwesomeIcon icon={faPenToSquare} />
-        </Button>
-      </Modal.Footer>
-    </Modal>
+    <>
+      {shfaqEditoFotot && (
+        <EditoFototProduktit
+          id={props.id}
+          largo={() => setShfaqEditoFotot(false)}
+          shfaqmesazhin={() => setShfaqMesazhin(true)}
+          perditesoTeDhenat={() => setPerditeso(Date.now())}
+          setTipiMesazhit={(e) => props.setTipiMesazhit(e)}
+          setPershkrimiMesazhit={(e) => props.setPershkrimiMesazhit(e)}
+        />
+      )}
+
+      {!shfaqEditoFotot && (
+        <Modal show={true} onHide={props.largo}>
+          <Modal.Header closeButton>
+            <Modal.Title>Edito Produktin</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            {error && <Alert variant="danger">{error}</Alert>}
+            {success && <Alert variant="success">Product updated successfully.</Alert>}
+            <Form>
+              <Form.Group className="mb-3" controlId="emriProduktit">
+                <Form.Label>Emri Produktit</Form.Label>
+                <Form.Control as="textarea" name="emriProduktit" value={produkti.emriProduktit} onChange={handleInputChange} />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="pershkrimi">
+                <Form.Label>Pershkrimi</Form.Label>
+                <Form.Control as="textarea" name="pershkrimi" value={produkti.pershkrimi} onChange={handleInputChange} />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                <Form.Label>Foto Produktit</Form.Label>
+                <Form.Control type="file" accept="image/*" placeholder="Foto e Produktit" onChange={handleFotoChange} />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="kategoriaId">
+                <Form.Label>Kategoria</Form.Label>
+                <Form.Select name="kategoriaId" value={produkti.kategoriaId} onChange={handleInputChange}>
+                  <option value="">Zgjidh Kategorinë</option>
+                  {categories.map((category) => (
+                    <option key={category.kategoriaId} value={category.kategoriaId}>
+                      {category.llojiKategoris}
+                    </option>
+                  ))}
+                </Form.Select>
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="kompaniaId">
+                <Form.Label>Kompania</Form.Label>
+                <Form.Select name="kompaniaId" value={produkti.kompaniaId} onChange={handleInputChange}>
+                  <option value="">Zgjidh Kompaninë</option>
+                  {companies.map((company) => (
+                    <option key={company.kompaniaID} value={company.kompaniaID}>
+                      {company.emriKompanis}
+                    </option>
+                  ))}
+                </Form.Select>
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="sasiaNeStok">
+                <Form.Label>Lloji TVSH-s</Form.Label>
+                <Form.Control type="number" name="llojiTVSH" value={produkti.llojiTVSH} onChange={handleInputChange} />
+              </Form.Group>
+            </Form>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="info" onClick={() => setShfaqEditoFotot(true)} disabled={loading}>
+              Perditeso Fotot <FontAwesomeIcon icon={faTimes} />
+            </Button>
+            <Button variant="secondary" onClick={props.largo} disabled={loading}>
+              Anulo <FontAwesomeIcon icon={faTimes} />
+            </Button>
+            <Button variant="primary" onClick={handleSubmit} disabled={loading}>
+              {loading ? <Spinner animation="border" size="sm" /> : 'Ruaj'} <FontAwesomeIcon icon={faPenToSquare} />
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      )}
+    </>
   );
 }
 
