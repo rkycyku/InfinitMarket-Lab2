@@ -243,42 +243,62 @@ namespace InfinitMarket.Controllers.API.Produktet
                 return NotFound("Produkti nuk u gjet.");
             }
 
-            if (!produktiData.EmriProduktit.IsNullOrEmpty()) {
+            if (!string.IsNullOrEmpty(produktiData.EmriProduktit))
+            {
                 existingProdukti.EmriProduktit = produktiData.EmriProduktit;
             }
 
-            if (!produktiData.Pershkrimi.IsNullOrEmpty())
+            if (!string.IsNullOrEmpty(produktiData.Pershkrimi))
+            {
                 existingProdukti.Pershkrimi = produktiData.Pershkrimi;
+            }
 
-            if (!produktiData.FotoProduktit.IsNullOrEmpty())
+            if (!string.IsNullOrEmpty(produktiData.FotoProduktit))
+            {
                 existingProdukti.FotoProduktit = produktiData.FotoProduktit;
+            }
 
-            if (produktiData.KompaniaId > 0 || produktiData.KompaniaId != null)
+            if (produktiData.KompaniaId.HasValue && produktiData.KompaniaId > 0)
+            {
                 existingProdukti.KompaniaId = produktiData.KompaniaId;
+            }
 
-            if (produktiData.KategoriaId > 0 || produktiData.KategoriaId != null)
+            if (produktiData.KategoriaId.HasValue && produktiData.KategoriaId > 0)
+            {
                 existingProdukti.KategoriaId = produktiData.KategoriaId;
+            }
 
-            if (!produktiData.isDeleted.IsNullOrEmpty())
+            if (!string.IsNullOrEmpty(produktiData.isDeleted))
+            {
                 existingProdukti.isDeleted = produktiData.isDeleted;
+            }
 
-            if (existingProdukti.TeDhenatProduktit != null)
+            if (existingProdukti.TeDhenatProduktit != null && produktiData.TeDhenatProduktit != null)
             {
                 var teDhenatProduktit = existingProdukti.TeDhenatProduktit;
 
-                if (produktiData.TeDhenatProduktit.SasiaNeStok > 0 || produktiData.TeDhenatProduktit.SasiaNeStok != null)
+                if (produktiData.TeDhenatProduktit.SasiaNeStok.HasValue && produktiData.TeDhenatProduktit.SasiaNeStok > 0)
+                {
                     teDhenatProduktit.SasiaNeStok = produktiData.TeDhenatProduktit.SasiaNeStok;
+                }
 
-                if (produktiData.TeDhenatProduktit.QmimiBleres > 0 || produktiData.TeDhenatProduktit.QmimiBleres != null)
+                if (produktiData.TeDhenatProduktit.QmimiBleres.HasValue && produktiData.TeDhenatProduktit.QmimiBleres > 0)
+                {
                     teDhenatProduktit.QmimiBleres = produktiData.TeDhenatProduktit.QmimiBleres;
+                }
 
-                if (produktiData.TeDhenatProduktit.QmimiProduktit > 0 || produktiData.TeDhenatProduktit.QmimiProduktit != null)
+                if (produktiData.TeDhenatProduktit.QmimiProduktit.HasValue && produktiData.TeDhenatProduktit.QmimiProduktit > 0)
+                {
                     teDhenatProduktit.QmimiProduktit = produktiData.TeDhenatProduktit.QmimiProduktit;
+                }
 
-                teDhenatProduktit.DataPerditsimit = DateTime.Now; // Always update modification date
+                // Always update modification date
+                teDhenatProduktit.DataPerditsimit = DateTime.Now;
 
-                if (produktiData.TeDhenatProduktit.llojiTVSH > 0 || produktiData.TeDhenatProduktit.llojiTVSH != null)
+                if (produktiData.TeDhenatProduktit.llojiTVSH.HasValue && produktiData.TeDhenatProduktit.llojiTVSH > 0)
+                {
                     teDhenatProduktit.llojiTVSH = produktiData.TeDhenatProduktit.llojiTVSH;
+                }
             }
 
             try
@@ -292,6 +312,7 @@ namespace InfinitMarket.Controllers.API.Produktet
 
             return Ok("Product u perditesua me sukses.");
         }
+
 
 
         [AllowAnonymous]

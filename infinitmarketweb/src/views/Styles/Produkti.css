@@ -30,7 +30,7 @@ table {
 }
 
 .foto {
-  width: 20em;
+  width: 27.5em;
 }
 
 .foto .swiper-slide img {
@@ -231,5 +231,9 @@ td a:hover {
   }
   .mesazhiZbritjes {
     width: 90%;
+  }
+
+  .foto {
+    width: 23em;
   }
 }

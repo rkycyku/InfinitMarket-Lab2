@@ -146,6 +146,76 @@ const menuItems = {
           url: '/admin/mesazhet'
         }
       ]
+    },
+    {
+      id: 'shitesdashboard',
+      title: 'Shites Dashboard',
+      type: 'group shites',
+      icon: 'icon-navigation',
+      children: [
+        {
+          id: 'Produktet',
+          title: 'Produktet',
+          type: 'collapse',
+          icon: 'feather icon-home',
+          children: [
+            {
+              id: 'ListaEProdukteve',
+              title: 'Lista e Produkteve',
+              type: 'item',
+              url: '/admin/produktet/ListaEProdukteve'
+            },
+          ]
+        },
+        {
+          id: 'TeNdryshme',
+          title: 'Te Ndryshme',
+          type: 'collapse',
+          icon: 'feather icon-sliders',
+          children: [
+            {
+              id: 'KodiZbritjes',
+              title: 'Kodi Zbritjes',
+              type: 'item',
+              url: '/admin/TeNdryshme/KodiZbritjes'
+            },
+          ]
+        },
+        {
+          id: 'Klientet',
+          title: 'Klientet',
+          type: 'collapse',
+          icon: 'feather icon-info',
+          children: [
+            {
+              id: 'ListaEKlienteve',
+              title: 'Lista e Klienteve',
+              type: 'item',
+              url: '/Admin/Klientet/ListaEKlienteve'
+            },
+            {
+              id: 'ShportatEKlienteve',
+              title: 'Shportat e Klienteve',
+              type: 'item',
+              url: '/Admin/Klientet/ShportaEKlienteve'
+            },
+          ]
+        },
+        {
+          id: 'Porosit',
+          title: 'Porosit',
+          type: 'item',
+          icon: 'feather icon-package',
+          url: '/admin/porosite'
+        },
+        {
+          id: 'Mesazhet',
+          title: 'Mesazhet',
+          type: 'item',
+          icon: 'feather icon-at-sign',
+          url: '/admin/mesazhet'
+        }
+      ]
     }
   ]
 };

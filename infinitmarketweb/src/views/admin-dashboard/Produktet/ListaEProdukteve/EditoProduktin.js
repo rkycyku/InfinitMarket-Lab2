@@ -9,8 +9,8 @@ function EditoProduktin(props) {
   const [produkti, setProdukti] = useState({
     emriProduktit: '',
     pershkrimi: '',
-    fotoProduktit: '',
     kategoriaId: '',
+    fotoProduktit: '',
     kompaniaId: '',
     llojiTVSH: '',
     isDeleted: ''
@@ -22,8 +22,6 @@ function EditoProduktin(props) {
   const [success, setSuccess] = useState(false);
 
   const [perditeso, setPerditeso] = useState(Date.now());
-
-  const [foto, setFoto] = useState(null);
 
   const [shfaqEditoFotot, setShfaqEditoFotot] = useState(false);
 
@@ -68,91 +66,38 @@ function EditoProduktin(props) {
     setProdukti((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleFotoChange = (event) => {
-    setFoto(event.target.files[0]);
-  };
-
   const handleSubmit = async () => {
-    if (foto) {
-      const formData = new FormData();
-      formData.append('foto', foto);
-
-      try {
-        await axios
-          .post(
-            `https://localhost:7251/api/TeNdryshme/VendosFotot/EditoProduktin?fotoVjeterProduktit=${produkti.fotoProduktit}`,
-            formData,
-            authentikimi
-          )
-          .then(async (response) => {
-            await axios
-              .put(
-                `https://localhost:7251/api/Produktet/Produkti/PerditesoProduktin/${props.id}`,
-                {
-                  ProduktiId: produkti.produktiId,
-                  EmriProduktit: produkti.emriProduktit,
-                  Pershkrimi: produkti.pershkrimi,
-                  FotoProduktit: response.data,
-                  KompaniaId: produkti.kompaniaId,
-                  KategoriaId: produkti.kategoriaId,
-                  isDeleted: produkti.isDeleted,
-                  TeDhenatProduktit: {
-                    llojiTVSH: produkti.llojiTVSH
-                  }
-                },
-                authentikimi
-              )
-              .then((x) => {
-                props.setTipiMesazhit('success');
-                props.setPershkrimiMesazhit('Produkti u Perditesua me sukses!');
-                props.perditesoTeDhenat();
-                props.largo();
-                props.shfaqmesazhin();
-              })
-              .catch((error) => {
-                console.error('Error saving the product:', error);
-                props.setTipiMesazhit('danger');
-                props.setPershkrimiMesazhit('Ndodhi nje gabim gjate perditesimit te produktit!');
-                props.perditesoTeDhenat();
-                props.shfaqmesazhin();
-              });
-          });
-      } catch (error) {
-        console.error(error);
-      }
-    } else {
-      await axios
-        .put(
-          `https://localhost:7251/api/Produktet/Produkti/PerditesoProduktin/${props.id}`,
-          {
-            ProduktiId: produkti.produktiId,
-            EmriProduktit: produkti.emriProduktit,
-            Pershkrimi: produkti.pershkrimi,
-            FotoProduktit: produkti.fotoProduktit,
-            KompaniaId: produkti.kompaniaId,
-            KategoriaId: produkti.kategoriaId,
-            isDeleted: produkti.isDeleted,
-            TeDhenatProduktit: {
-              llojiTVSH: produkti.llojiTVSH
-            }
-          },
-          authentikimi
-        )
-        .then((x) => {
-          props.setTipiMesazhit('success');
-          props.setPershkrimiMesazhit('Produkti u Perditesua me sukses!');
-          props.perditesoTeDhenat();
-          props.largo();
-          props.shfaqmesazhin();
-        })
-        .catch((error) => {
-          console.error('Error saving the product:', error);
-          props.setTipiMesazhit('danger');
-          props.setPershkrimiMesazhit('Ndodhi nje gabim gjate perditesimit te produktit!');
-          props.perditesoTeDhenat();
-          props.shfaqmesazhin();
-        });
-    }
+    await axios
+      .put(
+        `https://localhost:7251/api/Produktet/Produkti/PerditesoProduktin/${props.id}`,
+        {
+          ProduktiId: produkti.produktiId,
+          EmriProduktit: produkti.emriProduktit,
+          Pershkrimi: produkti.pershkrimi,
+          FotoProduktit: produkti.fotoProduktit,
+          KompaniaId: produkti.kompaniaId,
+          KategoriaId: produkti.kategoriaId,
+          isDeleted: produkti.isDeleted,
+          TeDhenatProduktit: {
+            llojiTVSH: produkti.llojiTVSH
+          }
+        },
+        authentikimi
+      )
+      .then((x) => {
+        props.setTipiMesazhit('success');
+        props.setPershkrimiMesazhit('Produkti u Perditesua me sukses!');
+        props.perditesoTeDhenat();
+        props.largo();
+        props.shfaqmesazhin();
+      })
+      .catch((error) => {
+        console.error('Error saving the product:', error);
+        props.setTipiMesazhit('danger');
+        props.setPershkrimiMesazhit('Ndodhi nje gabim gjate perditesimit te produktit!');
+        props.perditesoTeDhenat();
+        props.shfaqmesazhin();
+      });
   };
 
   return (
@@ -169,7 +114,13 @@ function EditoProduktin(props) {
       )}
 
       {!shfaqEditoFotot && (
-        <Modal show={true} onHide={() => {props.largo(); props.perditesoTeDhenat();}}>
+        <Modal
+          show={true}
+          onHide={() => {
+            props.largo();
+            props.perditesoTeDhenat();
+          }}
+        >
           <Modal.Header closeButton>
             <Modal.Title>Edito Produktin</Modal.Title>
           </Modal.Header>
@@ -184,10 +135,6 @@ function EditoProduktin(props) {
               <Form.Group className="mb-3" controlId="pershkrimi">
                 <Form.Label>Pershkrimi</Form.Label>
                 <Form.Control as="textarea" name="pershkrimi" value={produkti.pershkrimi} onChange={handleInputChange} />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                <Form.Label>Foto Produktit</Form.Label>
-                <Form.Control type="file" accept="image/*" placeholder="Foto e Produktit" onChange={handleFotoChange} />
               </Form.Group>
               <Form.Group className="mb-3" controlId="kategoriaId">
                 <Form.Label>Kategoria</Form.Label>
@@ -221,7 +168,14 @@ function EditoProduktin(props) {
             <Button variant="info" onClick={() => setShfaqEditoFotot(true)} disabled={loading}>
               Perditeso Fotot <FontAwesomeIcon icon={faTimes} />
             </Button>
-            <Button variant="secondary" onClick={() => {props.largo(); props.perditesoTeDhenat();}} disabled={loading}>
+            <Button
+              variant="secondary"
+              onClick={() => {
+                props.largo();
+                props.perditesoTeDhenat();
+              }}
+              disabled={loading}
+            >
               Anulo <FontAwesomeIcon icon={faTimes} />
             </Button>
             <Button variant="primary" onClick={handleSubmit} disabled={loading}>

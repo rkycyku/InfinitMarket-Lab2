@@ -94,8 +94,7 @@ function EditoFototProduktit(props) {
           `https://localhost:7251/api/Produktet/Produkti/PerditesoProduktin/${updatedProdukti.produkti.produktiId}`,
           {
             ProduktiId: props.id,
-            FotoProduktit: updatedProdukti.fotoProduktit.length > 0 ? updatedProdukti.fotoProduktit[0].emriFotos : 'ProduktPaFoto.png',
-            TeDhenatProduktit: {}
+            FotoProduktit: updatedProdukti.fotoProduktit.length > 0 ? updatedProdukti.fotoProduktit[0].emriFotos : 'ProduktPaFoto.png'
           },
           authentikimi
         );
@@ -112,8 +111,7 @@ function EditoFototProduktit(props) {
         `https://localhost:7251/api/Produktet/Produkti/PerditesoProduktin/${props.id}`,
         {
           ProduktiId: props.id,
-          FotoProduktit: emriFotos,
-          TeDhenatProduktit: {}
+          FotoProduktit: emriFotos
         },
         authentikimi
       );

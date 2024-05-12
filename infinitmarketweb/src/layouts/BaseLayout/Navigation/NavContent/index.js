@@ -32,10 +32,6 @@ const NavContent = ({ navigation }) => {
           const rolet = await axios.get(`https://localhost:7251/api/Perdoruesi/shfaqSipasID?idUserAspNet=${getID}`, authentikimi);
 
           setTeDhenat(rolet.data);
-
-          setResetoFaqen((prevCount) => prevCount + 1);
-
-          console.log(perdoruesi.data);
         } catch (err) {
           console.log(err);
         } 
@@ -51,6 +47,8 @@ const NavContent = ({ navigation }) => {
     if (item.type == 'group') {
         return <NavGroup key={'nav-group-' + item.id} group={item} />;
     }else if(item.type == 'group admin' && (teDhenat && teDhenat.rolet && teDhenat.rolet.includes("Admin"))){
+      return <NavGroup key={'nav-group-' + item.id} group={item} />;
+    }else if(item.type == 'group shites' && (teDhenat && teDhenat.rolet && teDhenat.rolet.includes("Shites"))){
       return <NavGroup key={'nav-group-' + item.id} group={item} />;
     }else{
       return false;

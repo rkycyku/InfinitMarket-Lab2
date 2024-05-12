@@ -14,7 +14,7 @@ namespace InfinitMarket.Models
 
         public string? Pershkrimi { get; set; } = "";
 
-        public string? FotoProduktit { get; set; } = "produktPaFoto.png";
+        public string? FotoProduktit { get; set; } = "ProduktPaFoto.png";
 
         public int? KompaniaId { get; set; }
 
