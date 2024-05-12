@@ -21,6 +21,8 @@ function EditoProduktin(props) {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
 
+  const [perditeso, setPerditeso] = useState(Date.now());
+
   const [foto, setFoto] = useState(null);
 
   const [shfaqEditoFotot, setShfaqEditoFotot] = useState(false);
@@ -59,7 +61,7 @@ function EditoProduktin(props) {
     };
 
     fetchData();
-  }, [props.id]);
+  }, [props.id, perditeso]);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -167,7 +169,7 @@ function EditoProduktin(props) {
       )}
 
       {!shfaqEditoFotot && (
-        <Modal show={true} onHide={props.largo}>
+        <Modal show={true} onHide={() => {props.largo(); props.perditesoTeDhenat();}}>
           <Modal.Header closeButton>
             <Modal.Title>Edito Produktin</Modal.Title>
           </Modal.Header>
@@ -219,7 +221,7 @@ function EditoProduktin(props) {
             <Button variant="info" onClick={() => setShfaqEditoFotot(true)} disabled={loading}>
               Perditeso Fotot <FontAwesomeIcon icon={faTimes} />
             </Button>
-            <Button variant="secondary" onClick={props.largo} disabled={loading}>
+            <Button variant="secondary" onClick={() => {props.largo(); props.perditesoTeDhenat();}} disabled={loading}>
               Anulo <FontAwesomeIcon icon={faTimes} />
             </Button>
             <Button variant="primary" onClick={handleSubmit} disabled={loading}>

@@ -160,7 +160,11 @@ const routes = [
         path: '/Admin/Klientet/ShportaEKlienteve',
         element: lazy(() => import('./views/admin-dashboard/Klientet/ShportaEKlienteve'))
       },
-
+      {
+        exact: true,
+        path: '/AboutUs',
+        element: lazy(() => import('./views/AboutUs'))
+      },
 
       {
         exact: true,

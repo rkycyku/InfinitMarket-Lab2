@@ -208,7 +208,7 @@ td a:hover {
   }
 
   .produkti {
-    width: 90%;
+    width: 100%;
     gap: 1em;
     padding: 1em;
   }
@@ -229,17 +229,6 @@ td a:hover {
   table {
     width: 100%;
   }
-
-  .foto {
-    width: 10em;
-  }
-
-  .foto img {
-    width: 100%;
-    aspect-ratio: 3/2;
-    object-fit: contain;
-  }
-
   .mesazhiZbritjes {
     width: 90%;
   }

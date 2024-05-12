@@ -24,10 +24,29 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
         [Route("ShfaqOfertatSlider")]
         public async Task<IActionResult> ShfaqOfertatESlider()
         {
-            var ofertat = await _context.SliderOfertat.Where(x => x.isDeleted == "false").ToListAsync();
+            var dataAktuale = DateTime.Now;
+
+            var ofertatEVjetra = await _context.SliderOfertat
+                .Where(x => x.isDeleted == "false" && x.DataMbarimitOfertes <= dataAktuale)
+                .ToListAsync();
+
+            if (ofertatEVjetra.Count > 0)
+            {
+                foreach(var oferta in ofertatEVjetra)
+                {
+                    oferta.isDeleted = "true";
+                    _context.SliderOfertat.Update(oferta);
+                    await _context.SaveChangesAsync();
+                }
+            }
+
+            var ofertat = await _context.SliderOfertat
+                .Where(x => x.isDeleted == "false")
+                .ToListAsync();
 
             return Ok(ofertat);
         }
+
 
         [AllowAnonymous]
         [HttpPost]

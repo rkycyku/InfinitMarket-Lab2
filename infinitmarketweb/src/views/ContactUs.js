@@ -82,12 +82,12 @@ const ContactUs = () => {
   return (
     <div className="body">
       <Helmet>
-        <title>ContactUs | Infinit Market</title>
+        <title>Contact Us | Infinit Market</title>
       </Helmet>
       {shfaqMesazhin && <Mesazhi tipi={tipiMesazhit} pershkrimi={pershkrimiMesazhit} setShfaqMesazhin={setShfaqMesazhin} />}
       <div className="forms">
         <Form className="form">
-          <Form.Text className="formTitle">Contact Us</Form.Text>
+        <h2 className="text-center mb-5">Contact Us</h2>
           <FloatingLabel controlId="floatingInput" label="Emri" className="mb-3">
             <Form.Control className="inputt" value={emri} placeholder="Email" type="text" onChange={(e) => vendosEmrin(e.target.value)} />
           </FloatingLabel>
@@ -104,7 +104,7 @@ const ContactUs = () => {
               onChange={(e) => vendosMesazhin(e.target.value)}
             />
           </FloatingLabel>
-          <Button className="button" onClick={dergoMesazhin}>
+          <Button className="button mt-4" onClick={dergoMesazhin}>
             Send <FontAwesomeIcon icon={faEnvelopeCircleCheck} />
           </Button>
         </Form>

@@ -82,19 +82,42 @@ function EditoFototProduktit(props) {
       await axios.delete(`https://localhost:7251/api/Produktet/FototProduktit/FshijFotonEProduktitPerGallery?id=${fotoID}`, authentikimi);
       setPerditeso(Date.now());
 
-      // Update the product's main photo only if the deleted photo was the main one
-      if (produkti && produkti.produkti && produkti.produkti.fotoProduktit === emriFotos) {
+      await new Promise((resolve) => setTimeout(resolve, 100));
+
+      const updatedProdukti =
+        produkti &&
+        produkti.produkti &&
+        (await axios.get(`https://localhost:7251/api/Produktet/Produkti/ShfaqProduktinSipasIDsAll/${props.id}`, authentikimi)).data;
+
+      if (updatedProdukti && updatedProdukti.produkti && updatedProdukti.produkti.fotoProduktit === emriFotos) {
         await axios.put(
-          `https://localhost:7251/api/Produktet/Produkti/PerditesoProduktin/${props.id}`,
+          `https://localhost:7251/api/Produktet/Produkti/PerditesoProduktin/${updatedProdukti.produkti.produktiId}`,
           {
             ProduktiId: props.id,
-            FotoProduktit: produkti.fotoProduktit.length > 1 ? produkti.fotoProduktit[0].emriFotos : 'ProduktPaFoto.png',
+            FotoProduktit: updatedProdukti.fotoProduktit.length > 0 ? updatedProdukti.fotoProduktit[0].emriFotos : 'ProduktPaFoto.png',
             TeDhenatProduktit: {}
           },
           authentikimi
         );
         setPerditeso(Date.now());
       }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async function VendosFotoKryesore(emriFotos) {
+    try {
+      await axios.put(
+        `https://localhost:7251/api/Produktet/Produkti/PerditesoProduktin/${props.id}`,
+        {
+          ProduktiId: props.id,
+          FotoProduktit: emriFotos,
+          TeDhenatProduktit: {}
+        },
+        authentikimi
+      );
+      setPerditeso(Date.now());
     } catch (error) {
       console.error(error);
     }
@@ -108,7 +131,7 @@ function EditoFototProduktit(props) {
   };
 
   return (
-    <Modal show={true} onHide={props.largo} size="xl">
+    <Modal show={true} onHide={() => {props.largo(); props.perditesoTeDhenat();}} size="xl">
       <Modal.Header closeButton>
         <Modal.Title>Edito Foto e Produktit</Modal.Title>
       </Modal.Header>
@@ -169,13 +192,15 @@ function EditoFototProduktit(props) {
                       </table>
                     </div>
                     {produkti && produkti.produkti && produkti.produkti.fotoProduktit != foto.emriFotos ? (
-                      <Button variant="primary">Vendos Foton Kryesore</Button>
+                      <Button variant="primary" onClick={() => VendosFotoKryesore(foto.emriFotos)}>
+                        Vendos Foton Kryesore
+                      </Button>
                     ) : (
                       <Button variant="primary" disabled>
                         Eshte Foto Kryesore
                       </Button>
                     )}
-                    <Button variant="danger" onClick={() => fshijFoton(foto.id, foto.emriFotos)} >
+                    <Button variant="danger" onClick={() => fshijFoton(foto.id, foto.emriFotos)}>
                       <FontAwesomeIcon icon={faTrash} />
                     </Button>
                   </Card.Body>
@@ -185,7 +210,7 @@ function EditoFototProduktit(props) {
         </Row>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={props.largo} disabled={loading}>
+        <Button variant="secondary" onClick={() => {props.largo(); props.perditesoTeDhenat();}} disabled={loading}>
           Anulo <FontAwesomeIcon icon={faTimes} />
         </Button>
         <Button variant="primary" onClick={handleSubmit} disabled={loading}>

@@ -22,7 +22,7 @@ const menuItems = {
           title: 'Rreth Nesh',
           type: 'item',
           icon: 'feather icon-info',
-          url: '/'
+          url: '/AboutUs'
         },
         {
           id: 'ContactUs',

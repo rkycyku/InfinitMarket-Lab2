@@ -44,9 +44,22 @@ namespace InfinitMarket.Controllers.API.Produktet
         public async Task<ActionResult> FshijFotonEProduktitPerGallery(string id)
         {
             var filter = Builders<FototProduktit>.Filter.Eq(x => x.Id, id);
+            var fotoProduktit = await _fototProduktit.Find(filter).FirstOrDefaultAsync();
             await _fototProduktit.DeleteOneAsync(filter);
 
-            return Ok();
+            var follderi = Path.Combine("..", "infinitmarketweb", "public", "img", "produktet");
+
+            if (!fotoProduktit.EmriFotos.Equals("ProduktPaFoto.png"))
+            {
+                var fotoVjeter = Path.Combine(follderi, fotoProduktit.EmriFotos);
+
+                if (System.IO.File.Exists(fotoVjeter))
+                {
+                    System.IO.File.Delete(fotoVjeter);
+                }
+            }
+
+            return Ok("Foto u fshi me sukses!");
         }
     }
 }
