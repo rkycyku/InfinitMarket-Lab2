@@ -7,6 +7,7 @@ import PagesaMeSukses from '../../../components/Checkout/PagesaMeSukses';
 import 'react-datepicker/dist/react-datepicker.css';
 import './Styles/TabelaEPorosive.css';
 import Tabela from '../../../components/Tabela/Tabela';
+import KontrolloAksesinNeFaqe from '../../../components/KontrolliAksesit/KontrolloAksesinNeFaqe';
 
 function TabelaEPorosive() {
   const [porosite, setPorosite] = useState([]);
@@ -73,6 +74,7 @@ function TabelaEPorosive() {
 
   return (
     <div>
+      <KontrolloAksesinNeFaqe />
       {shfaqMesazhin && <Mesazhi setShfaqMesazhin={setShfaqMesazhin} pershkrimi={pershkrimiMesazhit} tipi={tipiMesazhit} />}
       {edito && (
         <PerditesoStatusinPorosis

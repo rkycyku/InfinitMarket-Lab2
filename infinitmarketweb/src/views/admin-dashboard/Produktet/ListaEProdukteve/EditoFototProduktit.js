@@ -4,14 +4,14 @@ import { Button, Form, Modal, Spinner, Alert, Card, Row, Col, Table, InputGroup 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
 import './Styles/style.css';
+import { useNavigate } from 'react-router-dom';
+import jwtDecode from 'jwt-decode';
+import KontrolloAksesin from '../../../../components/KontrolliAksesit/KontrolloAksesinNeFunksione.js';
 
 function EditoFototProduktit(props) {
   const [produkti, setProdukti] = useState();
-  const [categories, setCategories] = useState([]);
-  const [companies, setCompanies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(false);
   const [perditeso, setPerditeso] = useState(Date.now());
 
   const [fotot, setFotot] = useState(null);
@@ -129,93 +129,116 @@ function EditoFototProduktit(props) {
   };
 
   return (
-    <Modal show={true} onHide={() => {props.largo(); props.perditesoTeDhenat();}} size="xl">
-      <Modal.Header closeButton>
-        <Modal.Title>Edito Foto e Produktit</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <Card>
-          <Card.Body>
-            <div className="teDhenatProduktit">
-              <table>
-                <tbody>
-                  <tr>
-                    <td>ID Produktit:</td>
-                    <td>{produkti && produkti.produkti && produkti.produkti.produktiId}</td>
-                  </tr>
-                  <tr>
-                    <td>Emri Produktit:</td>
-                    <td>{produkti && produkti.produkti && produkti.produkti.emriProduktit}</td>
-                  </tr>
-                  <tr>
-                    <td>Foto Kryesore:</td>
-                    <td>{produkti && produkti.produkti && produkti.produkti.fotoProduktit}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <Form className="mt-4">
-              <Form.Group controlId="exampleForm.ControlInput1">
-                <Form.Label>Foto Produktit</Form.Label>
-                <InputGroup className="mb-3">
-                  <Form.Control type="file" accept="image/*" placeholder="Foto e Produktit" onChange={handleFotoChange} multiple />
-                  <Button variant="outline-secondary" onClick={() => handleSubmit()}>
-                    Vendos Fotot
-                  </Button>
-                </InputGroup>
-              </Form.Group>
-            </Form>
-          </Card.Body>
-        </Card>
-        <Row>
-          {produkti &&
-            produkti.fotoProduktit &&
-            produkti.fotoProduktit.map((foto) => (
-              <Col>
-                <Card style={{ width: '25em' }} className="PaGallery">
-                  <Card.Img variant="top" src={`${process.env.PUBLIC_URL}/img/produktet/${foto.emriFotos}`} />
-                  <Card.Body>
-                    <div className="teDhenatProduktit mb-3">
-                      <table>
-                        <tbody>
-                          <tr>
-                            <td>ID:</td>
-                            <td>{foto.id}</td>
-                          </tr>
-                          <tr>
-                            <td>Emri:</td>
-                            <td>{foto.emriFotos}</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                    {produkti && produkti.produkti && produkti.produkti.fotoProduktit != foto.emriFotos ? (
-                      <Button variant="primary" onClick={() => VendosFotoKryesore(foto.emriFotos)}>
-                        Vendos Foton Kryesore
-                      </Button>
-                    ) : (
-                      <Button variant="primary" disabled>
-                        Eshte Foto Kryesore
-                      </Button>
-                    )}
-                    <Button variant="danger" onClick={() => fshijFoton(foto.id, foto.emriFotos)}>
-                      <FontAwesomeIcon icon={faTrash} />
+    <>
+      <KontrolloAksesin
+        largo={() => setShfaqEditoFotot(false)}
+        shfaqmesazhin={() => setShfaqMesazhin(true)}
+        perditesoTeDhenat={() => setPerditeso(Date.now())}
+        setTipiMesazhit={(e) => props.setTipiMesazhit(e)}
+        setPershkrimiMesazhit={(e) => props.setPershkrimiMesazhit(e)}
+      />
+      <Modal
+        show={true}
+        onHide={() => {
+          props.largo();
+          props.perditesoTeDhenat();
+        }}
+        size="xl"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Edito Foto e Produktit</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Card>
+            <Card.Body>
+              <div className="teDhenatProduktit">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>ID Produktit:</td>
+                      <td>{produkti && produkti.produkti && produkti.produkti.produktiId}</td>
+                    </tr>
+                    <tr>
+                      <td>Emri Produktit:</td>
+                      <td>{produkti && produkti.produkti && produkti.produkti.emriProduktit}</td>
+                    </tr>
+                    <tr>
+                      <td>Foto Kryesore:</td>
+                      <td>{produkti && produkti.produkti && produkti.produkti.fotoProduktit}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <Form className="mt-4">
+                <Form.Group controlId="exampleForm.ControlInput1">
+                  <Form.Label>Foto Produktit</Form.Label>
+                  <InputGroup className="mb-3">
+                    <Form.Control type="file" accept="image/*" placeholder="Foto e Produktit" onChange={handleFotoChange} multiple />
+                    <Button variant="outline-secondary" onClick={() => handleSubmit()}>
+                      Vendos Fotot
                     </Button>
-                  </Card.Body>
-                </Card>
-              </Col>
-            ))}
-        </Row>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={() => {props.largo(); props.perditesoTeDhenat();}} disabled={loading}>
-          Anulo <FontAwesomeIcon icon={faTimes} />
-        </Button>
-        <Button variant="primary" onClick={handleSubmit} disabled={loading}>
-          {loading ? <Spinner animation="border" size="sm" /> : 'Ruaj'} <FontAwesomeIcon icon={faPenToSquare} />
-        </Button>
-      </Modal.Footer>
-    </Modal>
+                  </InputGroup>
+                </Form.Group>
+              </Form>
+            </Card.Body>
+          </Card>
+          <Row>
+            {produkti &&
+              produkti.fotoProduktit &&
+              produkti.fotoProduktit.map((foto) => (
+                <Col>
+                  <Card style={{ width: '25em' }} className="PaGallery">
+                    <Card.Img variant="top" src={`${process.env.PUBLIC_URL}/img/produktet/${foto.emriFotos}`} />
+                    <Card.Body>
+                      <div className="teDhenatProduktit mb-3">
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td>ID:</td>
+                              <td>{foto.id}</td>
+                            </tr>
+                            <tr>
+                              <td>Emri:</td>
+                              <td>{foto.emriFotos}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      {produkti && produkti.produkti && produkti.produkti.fotoProduktit != foto.emriFotos ? (
+                        <Button variant="primary" onClick={() => VendosFotoKryesore(foto.emriFotos)}>
+                          Vendos Foton Kryesore
+                        </Button>
+                      ) : (
+                        <Button variant="primary" disabled>
+                          Eshte Foto Kryesore
+                        </Button>
+                      )}
+                      <Button variant="danger" onClick={() => fshijFoton(foto.id, foto.emriFotos)}>
+                        <FontAwesomeIcon icon={faTrash} />
+                      </Button>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              ))}
+          </Row>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="secondary"
+            onClick={() => {
+              props.largo();
+              props.perditesoTeDhenat();
+            }}
+            disabled={loading}
+          >
+            Anulo <FontAwesomeIcon icon={faTimes} />
+          </Button>
+          <Button variant="primary" onClick={handleSubmit} disabled={loading}>
+            {loading ? <Spinner animation="border" size="sm" /> : 'Ruaj'} <FontAwesomeIcon icon={faPenToSquare} />
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
   );
 }
 

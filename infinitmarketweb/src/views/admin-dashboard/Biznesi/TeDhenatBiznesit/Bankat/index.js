@@ -11,6 +11,7 @@ import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 import ShtoBanken from './ShtoBanken';
 import EditoBanken from './EditoBanken';
 import LargoBanken from './LargoBanken';
+import KontrolloAksesinNeFaqe from '../../../../../components/KontrolliAksesit/KontrolloAksesinNeFaqe';
 
 function Bankat(props) {
   const [klientet, setKlientet] = useState([]);
@@ -76,6 +77,7 @@ function Bankat(props) {
 
   return (
     <div>
+      <KontrolloAksesinNeFaqe />
       <Helmet>
         <title>Bankat | InfinitMarket Online</title>
       </Helmet>

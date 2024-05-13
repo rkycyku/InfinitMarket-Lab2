@@ -8,6 +8,7 @@ import { TailSpin } from 'react-loader-spinner';
 import Mesazhi from '../../../../components/Mesazhi';
 import FshijZbritjen from './FshijZbritjen';
 import Tabela from '../../../../components/Tabela/Tabela';
+import KontrolloAksesinNeFaqe from '../../../../components/KontrolliAksesit/KontrolloAksesinNeFaqe';
 
 function ZbritjetEProduktit(props) {
   const [zbritjet, setZbritjet] = useState([]);
@@ -104,6 +105,7 @@ function ZbritjetEProduktit(props) {
 
   return (
     <div>
+      <KontrolloAksesinNeFaqe />
       {shfaqMesazhin && <Mesazhi setShfaqMesazhin={setShfaqMesazhin} pershkrimi={pershkrimiMesazhit} tipi={tipiMesazhit} />}
       {fshij && (
         <FshijZbritjen

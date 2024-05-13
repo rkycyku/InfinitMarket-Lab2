@@ -6,6 +6,9 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark, faBan, faL } from '@fortawesome/free-solid-svg-icons';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import jwtDecode from 'jwt-decode';
+import KontrolloAksesin from '../../../../components/KontrolliAksesit/KontrolloAksesinNeFunksione.js';
 
 const ShtoProduktin = (props) => {
   const [perditeso, setPerditeso] = useState('');
@@ -22,6 +25,14 @@ const ShtoProduktin = (props) => {
   const [kontrolloProduktin, setKontrolloProduktin] = useState(false);
   const [konfirmoProduktin, setKonfirmoProduktin] = useState(false);
   const [fushatEZbrazura, setFushatEZbrazura] = useState(false);
+
+  const getToken = localStorage.getItem('token');
+
+  const authentikimi = {
+    headers: {
+      Authorization: `Bearer ${getToken}`
+    }
+  };
 
   useEffect(() => {
     const vendosProduktet = async () => {
@@ -40,14 +51,6 @@ const ShtoProduktin = (props) => {
 
     vendosProduktet();
   }, [perditeso]);
-
-  const getToken = localStorage.getItem('token');
-
-  const authentikimi = {
-    headers: {
-      Authorization: `Bearer ${getToken}`
-    }
-  };
 
   const handleFotoChange = (event) => {
     const files = event.target.files;
@@ -89,16 +92,15 @@ const ShtoProduktin = (props) => {
                 props.largo();
                 props.shfaqmesazhin();
                 response.data.forEach(async (foto) => {
-                  await axios
-                    .post(
-                      'https://localhost:7251/api/Produktet/FototProduktit/VendosFotonEProduktitPerGallery',
-                      {
-                        id: null,
-                        produktiID: produktiID.data,
-                        emriFotos: foto
-                      },
-                      authentikimi
-                    );
+                  await axios.post(
+                    'https://localhost:7251/api/Produktet/FototProduktit/VendosFotonEProduktitPerGallery',
+                    {
+                      id: null,
+                      produktiID: produktiID.data,
+                      emriFotos: foto
+                    },
+                    authentikimi
+                  );
                 });
               })
               .catch((error) => {
@@ -155,6 +157,13 @@ const ShtoProduktin = (props) => {
 
   return (
     <>
+      <KontrolloAksesin
+        largo={() => props.largo()}
+        shfaqmesazhin={() => props.shfaqmesazhin()}
+        perditesoTeDhenat={() => props.perditesoTeDhenat()}
+        setTipiMesazhit={(e) => props.setTipiMesazhit(e)}
+        setPershkrimiMesazhit={(e) => props.setPershkrimiMesazhit(e)}
+      />
       {fushatEZbrazura && (
         <Modal size="sm" show={fushatEZbrazura} onHide={() => setFushatEZbrazura(false)}>
           <Modal.Header closeButton>

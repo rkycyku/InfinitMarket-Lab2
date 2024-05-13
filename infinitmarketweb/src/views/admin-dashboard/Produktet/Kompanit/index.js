@@ -6,6 +6,7 @@ import EditoKompanin from './EditoKompanin';
 import LargoKompanin from './LargoKompanin';
 import { TailSpin } from 'react-loader-spinner';
 import Tabela from '../../../../components/Tabela/Tabela';
+import KontrolloAksesinNeFaqe from '../../../../components/KontrolliAksesit/KontrolloAksesinNeFaqe';
 
 function TabelaEKompanive(props) {
   const [kompanit, setKompanit] = useState([]);
@@ -68,6 +69,7 @@ function TabelaEKompanive(props) {
 
   return (
     <div>
+      <KontrolloAksesinNeFaqe />
       {shto && (
         <ShtoKompanit
           shfaq={handleShow}

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { TailSpin } from 'react-loader-spinner';
 import Mesazhi from '../../components/Mesazhi';
 import Tabela from '../../components/Tabela/Tabela';
+import KontrolloAksesinNeFaqe from '../../components/KontrolliAksesit/KontrolloAksesinNeFaqe';
 
 function Mesazhet() {
   const [mesazhet, setMesazhet] = useState([]);
@@ -101,6 +102,7 @@ function Mesazhet() {
 
   return (
     <div className="containerDashboardP">
+      <KontrolloAksesinNeFaqe />
       {shfaqMesazhin && <Mesazhi setShfaqMesazhin={setShfaqMesazhin} pershkrimi={pershkrimiMesazhit} tipi={tipiMesazhit} />}
       {loading ? (
         <div className="Loader">

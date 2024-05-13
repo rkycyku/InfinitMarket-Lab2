@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Button, Form, Modal, Spinner, Alert } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
+import jwtDecode from 'jwt-decode';
 
 function EditoStokunQmimin(props) {
   const [produkti, setProdukti] = useState({
@@ -13,8 +15,6 @@ function EditoStokunQmimin(props) {
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(false);
-
   const [stoku, setStoku] = useState(0);
   const [qmimiBleres, setQmimiBleres] = useState(0);
   const [qmimiProduktit, setQmimiProduktit] = useState(0);
@@ -26,6 +26,33 @@ function EditoStokunQmimin(props) {
       Authorization: `Bearer ${getToken}`
     }
   };
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const kontrolloAksesin = () => {
+      const token = localStorage.getItem('token');
+      if (token) {
+        try {
+          const decodedToken = jwtDecode(token);
+          if (decodedToken.role === 'admin') {
+          } else {
+            props.setTipiMesazhit('danger');
+            props.setPershkrimiMesazhit('Nuk keni akses!');
+            props.perditesoTeDhenat();
+            props.shfaqmesazhin();
+            props.largo();
+          }
+        } catch (error) {
+          console.error('Error decoding token:', error);
+        }
+      } else {
+        navigate('/login');
+      }
+    };
+
+    kontrolloAksesin();
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {

@@ -6,6 +6,7 @@ import EditoKategorin from './EditoKategorin';
 import LargoKategorin from './LargoKategorin';
 import { TailSpin } from 'react-loader-spinner';
 import Tabela from '../../../../components/Tabela/Tabela';
+import KontrolloAksesinNeFaqe from '../../../../components/KontrolliAksesit/KontrolloAksesinNeFaqe';
 
 function TabelaEKategorive(props) {
   const [kategorit, setKategorit] = useState([]);
@@ -66,6 +67,7 @@ function TabelaEKategorive(props) {
 
   return (
     <div>
+      <KontrolloAksesinNeFaqe />
       {shto && (
         <ShtoKategori
           shfaq={handleShow}

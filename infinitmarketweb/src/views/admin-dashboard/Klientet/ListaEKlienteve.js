@@ -9,6 +9,7 @@ import EksportoTeDhenat from '../../../components/Tabela/EksportoTeDhenat';
 import SortIcon from '../../../components/Tabela/SortIcon';
 import useSortableData from '../../../hooks/useSortableData';
 import Tabela from '../../../components/Tabela/Tabela';
+import KontrolloAksesinNeFaqe from '../../../components/KontrolliAksesit/KontrolloAksesinNeFaqe';
 
 function ListaEKlienteve(props) {
   const [klientet, setKlientet] = useState([]);
@@ -62,6 +63,7 @@ function ListaEKlienteve(props) {
 
   return (
     <div>
+      <KontrolloAksesinNeFaqe />
       {shfaqMesazhin && <Mesazhi setShfaqMesazhin={setShfaqMesazhin} pershkrimi={pershkrimiMesazhit} tipi={tipiMesazhit} />}
       {loading ? (
         <div className="Loader">

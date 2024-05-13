@@ -4,6 +4,8 @@ import { Button, Form, Modal, Spinner, Alert } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faTimes } from '@fortawesome/free-solid-svg-icons';
 import EditoFototProduktit from './EditoFototProduktit';
+import { useNavigate } from 'react-router-dom';
+import jwtDecode from 'jwt-decode';
 
 function EditoProduktin(props) {
   const [produkti, setProdukti] = useState({
@@ -32,6 +34,33 @@ function EditoProduktin(props) {
       Authorization: `Bearer ${getToken}`
     }
   };
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const kontrolloAksesin = () => {
+      const token = localStorage.getItem('token');
+      if (token) {
+        try {
+          const decodedToken = jwtDecode(token);
+          if (decodedToken.role === 'admin') {
+          } else {
+            props.setTipiMesazhit('danger');
+            props.setPershkrimiMesazhit('Nuk keni akses!');
+            props.perditesoTeDhenat();
+            props.shfaqmesazhin();
+            props.largo();
+          }
+        } catch (error) {
+          console.error('Error decoding token:', error);
+        }
+      } else {
+        navigate('/login');
+      }
+    };
+
+    kontrolloAksesin();
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {

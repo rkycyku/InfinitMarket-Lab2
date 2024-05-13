@@ -3,6 +3,7 @@ import axios from 'axios';
 import Mesazhi from '../../../components/Mesazhi';
 import { TailSpin } from 'react-loader-spinner';
 import Tabela from '../../../components/Tabela/Tabela';
+import KontrolloAksesinNeFaqe from '../../../components/KontrolliAksesit/KontrolloAksesinNeFaqe';
 
 function ShportaEKlienteve(props) {
   const [klientet, setKlientet] = useState([]);
@@ -47,6 +48,7 @@ function ShportaEKlienteve(props) {
 
   return (
     <div>
+      <KontrolloAksesinNeFaqe />
       {shfaqMesazhin && <Mesazhi setShfaqMesazhin={setShfaqMesazhin} pershkrimi={pershkrimiMesazhit} tipi={tipiMesazhit} />}
       {loading ? (
         <div className="Loader">

@@ -7,6 +7,7 @@ import { TailSpin } from 'react-loader-spinner';
 import LargoProduktin from './LargoProduktin';
 import EditoStokunQmimin from './EditoStokunQmimin';
 import Tabela from '../../../../components/Tabela/Tabela';
+import KontrolloAksesinNeFaqe from '../../../../components/KontrolliAksesit/KontrolloAksesinNeFaqe';
 
 function TabelaEProdukteve() {
   const [produktet, setProduktet] = useState([]);
@@ -111,6 +112,7 @@ function TabelaEProdukteve() {
 
   return (
     <div>
+      <KontrolloAksesinNeFaqe />
       {edito && (
         <EditoProduktin
           id={id}
