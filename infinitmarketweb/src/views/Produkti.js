@@ -322,7 +322,7 @@ function Produkti() {
                       Out of Stock
                     </Button>
                   )}
-                  {teDhenat != '' && (teDhenat.rolet.includes('Admin') || teDhenat.rolet.includes('Menaxher')) && (
+                  {teDhenat != '' && (teDhenat.rolet.includes('Admin') || teDhenat.rolet.includes('Shites')) && (
                     <Button onClick={(e) => handleEdito(e)}>
                       Perditeso <FontAwesomeIcon icon={faPenToSquare} />
                     </Button>

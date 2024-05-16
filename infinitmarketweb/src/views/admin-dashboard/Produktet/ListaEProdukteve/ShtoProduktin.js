@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import KontrolloAksesin from '../../../../components/KontrolliAksesit/KontrolloAksesinNeFunksione.js';
+import KontrolloAksesinNeFunksione from '../../../../components/KontrolliAksesit/KontrolloAksesinNeFunksione.js';
 
 const ShtoProduktin = (props) => {
   const [perditeso, setPerditeso] = useState('');
@@ -157,7 +158,7 @@ const ShtoProduktin = (props) => {
 
   return (
     <>
-      <KontrolloAksesin
+      <KontrolloAksesinNeFunksione
         largo={() => props.largo()}
         shfaqmesazhin={() => props.shfaqmesazhin()}
         perditesoTeDhenat={() => props.perditesoTeDhenat()}
