@@ -8,14 +8,14 @@ namespace InfinitMarket.Models
         [Key]
         public int AdresaID { get; set; }
         public int PerdoruesiID { get; set; }
-        public string? Qyteti { get; set; } = "";
-        public int? ZipKodi { get; set; } = 0;
-        public string? Adresa { get; set; } = "";
-        public string? Shteti { get; set; } = "";
-        public string? Email { get; set; } = "";
-        public string? NrKontaktit { get; set; } = "";
-        public string? Emri { get; set; } = "";
-        public string? Mbiemri { get; set; } = "";
+        public string? Qyteti { get; set; } = "Prishtine";
+        public int? ZipKodi { get; set; } = 10000;
+        public string? Adresa { get; set; } = "P.A.";
+        public string? Shteti { get; set; } = "Kosove";
+        public string? Email { get; set; } = "xxx";
+        public string? NrKontaktit { get; set; } = "0";
+        public string? Emri { get; set; } = "xxx";
+        public string? Mbiemri { get; set; } = "xxx";
 
         [ForeignKey(nameof(PerdoruesiID))]
         public virtual Perdoruesi? Perdoruesi { get; set;}

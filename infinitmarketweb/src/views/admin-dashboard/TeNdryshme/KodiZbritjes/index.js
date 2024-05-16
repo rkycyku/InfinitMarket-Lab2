@@ -7,6 +7,7 @@ import { TailSpin } from 'react-loader-spinner';
 import ShtoKodin from './ShtoKodin';
 import Tabela from '../../../../components/Tabela/Tabela';
 import KontrolloAksesinNeFaqe from '../../../../components/KontrolliAksesit/KontrolloAksesinNeFaqe';
+import Titulli from '../../../../components/Titulli';
 
 function KodiZbritjes() {
   const [kodetEZbritjeve, setKodetEZbritjeve] = useState([]);
@@ -71,6 +72,7 @@ function KodiZbritjes() {
   return (
     <div>
       <KontrolloAksesinNeFaqe />
+      <Titulli titulli={'Kodet e Zbritjeve'} />
       {shto && (
         <ShtoKodin
           shfaq={handleShow}

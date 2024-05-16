@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faXmark } from '@fortawesome/free-solid-svg-icons';
+import KontrolloAksesinNeFunksione from '../../../../components/KontrolliAksesit/KontrolloAksesinNeFunksione';
 
 function EditoKompanin(props) {
   const [kompania, setKompania] = useState([]);
@@ -104,6 +105,13 @@ function EditoKompanin(props) {
 
   return (
     <>
+    <KontrolloAksesinNeFunksione
+        largo={() => props.largo()}
+        shfaqmesazhin={() => props.shfaqmesazhin()}
+        perditesoTeDhenat={() => props.perditesoTeDhenat()}
+        setTipiMesazhit={(e) => props.setTipiMesazhit(e)}
+        setPershkrimiMesazhit={(e) => props.setPershkrimiMesazhit(e)}
+      />
       {fushatEZbrazura && (
         <Modal size="sm" show={fushatEZbrazura} onHide={() => setFushatEZbrazura(false)}>
           <Modal.Header closeButton>

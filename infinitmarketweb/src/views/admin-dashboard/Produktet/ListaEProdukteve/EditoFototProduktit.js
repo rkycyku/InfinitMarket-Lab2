@@ -4,9 +4,8 @@ import { Button, Form, Modal, Spinner, Alert, Card, Row, Col, Table, InputGroup 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
 import './Styles/style.css';
-import { useNavigate } from 'react-router-dom';
-import jwtDecode from 'jwt-decode';
 import KontrolloAksesin from '../../../../components/KontrolliAksesit/KontrolloAksesinNeFunksione.js';
+import KontrolloAksesinNeFunksione from '../../../../components/KontrolliAksesit/KontrolloAksesinNeFunksione.js';
 
 function EditoFototProduktit(props) {
   const [produkti, setProdukti] = useState();
@@ -130,7 +129,7 @@ function EditoFototProduktit(props) {
 
   return (
     <>
-      <KontrolloAksesin
+      <KontrolloAksesinNeFunksione
         largo={() => setShfaqEditoFotot(false)}
         shfaqmesazhin={() => setShfaqMesazhin(true)}
         perditesoTeDhenat={() => setPerditeso(Date.now())}

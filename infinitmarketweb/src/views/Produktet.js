@@ -7,6 +7,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFaceFrown } from '@fortawesome/free-solid-svg-icons';
+import Titulli from '../components/Titulli';
 
 function Produktet(props) {
   const { kategoriaid } = useParams();
@@ -70,9 +71,7 @@ function Produktet(props) {
   }, [perditeso]);
   return (
     <div>
-      <Helmet>
-        <title>Produktet | Tech Store</title>
-      </Helmet>
+      <Titulli titulli={'Produktet'} />
       <div className="navKerkimi">
         <Dropdown>
           <Dropdown.Toggle className="button button-kategoria" variant="success" id="dropdown-basic">

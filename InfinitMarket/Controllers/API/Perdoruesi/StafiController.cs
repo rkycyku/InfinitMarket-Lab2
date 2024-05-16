@@ -47,6 +47,61 @@ namespace InfinitMarket.Controllers
             return Ok(false);
         }
 
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("EshteVetem1Admin")]
+        public async Task<IActionResult> EshteVetem1Admin()
+        {
+            var nrAdmin = await _userManager.GetUsersInRoleAsync("Admin");
+
+            if (nrAdmin.Count == 1)
+            {
+                return Ok(true);
+            }
+            return Ok(false);
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("ShfaqStafinPerPerditesim")]
+        public async Task<IActionResult> ShfaqStafinPerPerditesim(int ID)
+        {
+            var perdoruesi = await _context.Perdoruesit.Where(x => x.UserID == ID).FirstOrDefaultAsync();
+                
+            if (perdoruesi == null)
+            {
+                return BadRequest();
+            }
+
+            var perdoruesiAspNet = await _userManager.FindByIdAsync(perdoruesi.AspNetUserId);
+
+            var roletPerdoruesit = await _userManager.GetRolesAsync(perdoruesiAspNet);
+
+            var rolet = await _roleManager.Roles.ToListAsync();
+
+            var roletELejuaraPerVendosje = new List<string>();
+
+            foreach (var roli in rolet)
+            {
+                if (!roletPerdoruesit.Contains(roli.Name))
+                {
+                    roletELejuaraPerVendosje.Add(roli.Name);
+                }
+            }
+
+            var StafiPerPerditesim = new
+            {
+                perdoruesi.UserID,
+                perdoruesi.Emri,
+                perdoruesi.Mbiemri,
+                perdoruesi.Email,
+                roletPerdoruesit,
+                roletELejuaraPerVendosje
+            };
+
+            return Ok(StafiPerPerditesim);
+        }
+
 
         [AllowAnonymous]
         [HttpPost]
@@ -61,7 +116,13 @@ namespace InfinitMarket.Controllers
                 {
                     await _userManager.AddToRoleAsync(perdoruesiEkziston, registerModel.RoliZgjedhur );
 
-                    return Ok("Eshte perditesuar roli!");
+                    var PerditesimiRolit = new
+                    {
+                        Email = registerModel.Email,
+                        Roli = registerModel.RoliZgjedhur
+                    };
+
+                    return Ok(PerditesimiRolit);
                 }
 
                 var perdoruesiIRI = new IdentityUser()
@@ -88,9 +149,9 @@ namespace InfinitMarket.Controllers
                     {
                         AspNetUserId = perdoruesiIRI.Id,
                         Emri = registerModel.Emri,
-                        Email = perdoruesiIRI.Email,
+                        Email = registerModel.Email,
                         Mbiemri = registerModel.Mbiemri,
-                        EmailFillestar = perdoruesiIRI.Email
+                        EmailFillestar = registerModel.Email
                     };
                     await _context.Perdoruesit.AddAsync(perdoruesi);
                     await _context.SaveChangesAsync();
@@ -102,10 +163,31 @@ namespace InfinitMarket.Controllers
                     await _context.TeDhenatPerdoruesit.AddAsync(teDhenatPerdoruesit);
                     await _context.SaveChangesAsync();
 
+                    AdresatPerdoruesit adresat = new()
+                    {
+                        PerdoruesiID = perdoruesi.UserID,
+                        Email = registerModel.Emri,
+                        Emri = registerModel.Emri,
+                        Mbiemri = registerModel.Mbiemri,
+                    };
+
+                    await _context.AdresatPerdoruesit.AddAsync(adresat);
+                    await _context.SaveChangesAsync();
+
+                    Shporta shporta = new()
+                    {
+                        PerdoruesiID = perdoruesi.UserID,
+                        AdresaPorosisID = adresat.AdresaID
+                    };
+
+                    await _context.Shporta.AddAsync(shporta);
+                    await _context.SaveChangesAsync();
+
                     var TeDhenatPerHyrje = new
                     {
                         Email = registerModel.Email,
-                        Password = passwordi
+                        Password = passwordi,
+                        Aksesi = registerModel.RoliZgjedhur
                     };
 
                     return Ok(TeDhenatPerHyrje);
@@ -125,10 +207,17 @@ namespace InfinitMarket.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        [Route("shtoRolinPerdoruesit")]
-        public async Task<IActionResult> PerditesoAksesin(string userID, string roli)
+        [Route("ShtoRolinStafit")]
+        public async Task<IActionResult> ShtoRolinStafit(int userID, string roli)
         {
-            var user = await _userManager.FindByIdAsync(userID);
+            var perdoruesi = await _context.Perdoruesit.Where(x => x.UserID == userID).FirstOrDefaultAsync();
+
+            if (perdoruesi == null)
+            {
+                return BadRequest();
+            }
+
+            var user = await _userManager.FindByIdAsync(perdoruesi.AspNetUserId);
 
             if (user == null)
             {
@@ -166,10 +255,17 @@ namespace InfinitMarket.Controllers
 
         [AllowAnonymous]
         [HttpDelete]
-        [Route("FshijRolinUserit")]
-        public async Task<IActionResult> FshijRolinUserit(string userID, string roli)
+        [Route("FshijRolinStafit")]
+        public async Task<IActionResult> FshijRolinStafit(int userID, string roli)
         {
-            var perdoruesi = await _userManager.FindByIdAsync(userID);
+            var GjejAspNetID = await _context.Perdoruesit.Where(x => x.UserID == userID).FirstOrDefaultAsync();
+
+            if (GjejAspNetID == null)
+            {
+                return BadRequest();
+            }
+
+            var perdoruesi = await _userManager.FindByIdAsync(GjejAspNetID.AspNetUserId);
 
             if (perdoruesi == null)
             {

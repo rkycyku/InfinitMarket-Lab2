@@ -4,6 +4,7 @@ import { TailSpin } from 'react-loader-spinner';
 import Mesazhi from '../../components/Mesazhi';
 import Tabela from '../../components/Tabela/Tabela';
 import KontrolloAksesinNeFaqe from '../../components/KontrolliAksesit/KontrolloAksesinNeFaqe';
+import Titulli from '../../components/Titulli';
 
 function Mesazhet() {
   const [mesazhet, setMesazhet] = useState([]);
@@ -85,6 +86,7 @@ function Mesazhet() {
   return (
     <div className="containerDashboardP">
       <KontrolloAksesinNeFaqe />
+      <Titulli titulli={'Mesazhet e derguara nga Perdoruesit'} />
       {shfaqMesazhin && <Mesazhi setShfaqMesazhin={setShfaqMesazhin} pershkrimi={pershkrimiMesazhit} tipi={tipiMesazhit} />}
       {loading ? (
         <div className="Loader">
@@ -101,13 +103,13 @@ function Mesazhet() {
         </div>
       ) : (
         <>
-            <Tabela
-              data={mesazhet}
-              tableName="Mesazhet e derguara nga Perdoruesit"
-              kaButona
-              funksionButonEdit={(e) => handleEdito(e)}
-              funksionButonFshij={(e) => handleFshij(e)}
-            />
+          <Tabela
+            data={mesazhet}
+            tableName="Mesazhet e derguara nga Perdoruesit"
+            kaButona
+            funksionButonEdit={(e) => handleEdito(e)}
+            funksionButonFshij={(e) => handleFshij(e)}
+          />
         </>
       )}
     </div>

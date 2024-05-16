@@ -55,7 +55,7 @@ namespace InfinitMarket.Migrations
                 columns: new[] { "UserID", "Emri", "Mbiemri", "Email", "Username", "AspNetUserId" },
                 values: new object[,]
                 {
-            { 1, "Admin", "Admin", "admin@infinitmarket.net", "admin", "01010101-0101-0101-0101-010101010101" },
+            { 1, "Admin", "Admin", "admin@infinitmarket.com", "admin@infinitmarket.com", "01010101-0101-0101-0101-010101010101" },
                 });
 
             migrationBuilder.InsertData(

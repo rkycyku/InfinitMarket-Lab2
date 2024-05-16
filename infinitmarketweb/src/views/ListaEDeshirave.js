@@ -48,9 +48,7 @@ function Home() {
 
   return (
     <div>
-      <Helmet>
-        <title>Lista e Deshirave | Infinit Market</title>
-      </Helmet>
+      <Titulli titulli={'Lista e Deshirave'} />
       <div className="artikujt">
         <div className="titulliArtikuj">
           <h1>Lista e Deshirave</h1>

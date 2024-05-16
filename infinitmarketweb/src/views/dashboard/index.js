@@ -11,6 +11,7 @@ import { Helmet } from 'react-helmet';
 
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
+import Titulli from '../../components/Titulli';
 
 
 
@@ -63,9 +64,7 @@ const DashDefault = () => {
 
   return (
     <React.Fragment>
-      <Helmet>
-        <title>Dashboard | Infinit Market</title>
-      </Helmet>
+      <Titulli titulli={'Dashboard'} />
       <Row>
         <div className="dashboard">
           <div className="containerDashboard">

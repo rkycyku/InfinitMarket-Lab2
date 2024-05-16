@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Image } from 'react-bootstrap';
 import Footer from '../components/Footer';
 import { Helmet } from 'react-helmet';
+import Titulli from '../components/Titulli';
 
 function AboutUs() {
   const [teDhenatBiznesit, setTeDhenatBiznesit] = useState([]);
@@ -32,9 +33,7 @@ function AboutUs() {
 
   return (
     <>
-      <Helmet>
-        <title>About Us | Infinit Market</title>
-      </Helmet>
+      <Titulli titulli={'About Us'} />
       <section id="about-us" className="py-5">
         <Container>
           <h2 className="text-center mb-5">About Us</h2>

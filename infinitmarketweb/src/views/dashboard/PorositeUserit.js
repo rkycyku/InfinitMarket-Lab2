@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import PagesaMeSukses from '../../components/Checkout/PagesaMeSukses';
 import EksportoTeDhenat from '../../components/Tabela/EksportoTeDhenat';
 import Tabela from '../../components/Tabela/Tabela';
+import Titulli from '../../components/Titulli';
 
 function PorositeUserit(props) {
   const [porosite, setPorosite] = useState([]);
@@ -62,6 +63,7 @@ function PorositeUserit(props) {
 
   return (
     <div>
+      <Titulli titulli={'Porosite e Juaja'} />
       {loading ? (
         <div className="Loader">
           <TailSpin

@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faXmark } from '@fortawesome/free-solid-svg-icons';
+import KontrolloAksesinNeFunksione from '../../../components/KontrolliAksesit/KontrolloAksesinNeFunksione';
 
 function ShtoStafin(props) {
   const [emri, setEmri] = useState('');
@@ -58,11 +59,19 @@ function ShtoStafin(props) {
       )
       .then((response) => {
         props.setTipiMesazhit('success');
-        props.setPershkrimiMesazhit(`
-        <p><span>Llogaria e stafit u krijua me sukses, keto jane te dhenat per hyrje:</span></p>
-        <p><span>Email:</span> ${response.data.email}</p>
-        <p><span>Password:</span> ${response.data.password}</p>
-      `);
+        if (kontrolloEmail === true) {
+          props.setPershkrimiMesazhit(`
+          <p><span>U shtua roli:  ${response.data.roli} per ${response.data.email}</span></p>
+        `);
+        } else {
+          props.setPershkrimiMesazhit(`
+          <p><span>Llogaria e stafit u krijua me sukses, keto jane te dhenat per hyrje:</span></p>
+          <p><span>Email:</span> ${response.data.email}</p>
+          <p><span>Password:</span> ${response.data.password}</p>
+          <p><span>Aksesi:</span> ${response.data.aksesi}</p>
+        `);
+        }
+
         props.perditesoTeDhenat();
         props.largo();
         props.shfaqmesazhin();
@@ -72,12 +81,16 @@ function ShtoStafin(props) {
       });
   }
 
-  const handleKontrolli = () => {
+  const handleKontrolli = async () => {
     if (isNullOrEmpty(emri) || isNullOrEmpty(mbiemri) || isNullOrEmpty(email)) {
       setFushatEZbrazura(true);
     } else {
-      const kontrolloEmail = axios.get(`https://localhost:7251/api/Perdoruesi/Stafi/KontrolloPerdoruesin?email=${email}`, authentikimi);
-      if (konfirmoEmail == false && kontrolloEmail.data === true) {
+      const kontrolloEmail = await axios.get(
+        `https://localhost:7251/api/Perdoruesi/Stafi/KontrolloPerdoruesin?email=${email}`,
+        authentikimi
+      );
+      console.log(kontrolloEmail);
+      if (kontrolloEmail.data === true) {
         setKontrolloEmail(true);
       } else {
         handleSubmit();
@@ -87,6 +100,13 @@ function ShtoStafin(props) {
 
   return (
     <>
+    <KontrolloAksesinNeFunksione
+        largo={() => props.largo()}
+        shfaqmesazhin={() => props.shfaqmesazhin()}
+        perditesoTeDhenat={() => props.perditesoTeDhenat()}
+        setTipiMesazhit={(e) => props.setTipiMesazhit(e)}
+        setPershkrimiMesazhit={(e) => props.setPershkrimiMesazhit(e)}
+      />
       {fushatEZbrazura && (
         <Modal size="sm" show={fushatEZbrazura} onHide={() => setFushatEZbrazura(false)}>
           <Modal.Header closeButton>
@@ -109,7 +129,7 @@ function ShtoStafin(props) {
       {kontrolloEmail && (
         <Modal size="sm" show={kontrolloEmail} onHide={() => setKontrolloEmail(false)}>
           <Modal.Header closeButton>
-            <Modal.Title as="h6">Konfirmo vendosjen</Modal.Title>
+            <Modal.Title as="h6">Konfirmo Emailin</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <span style={{ fontSize: '10pt' }}>Ky email ekziston ne sistem!</span>
@@ -180,7 +200,7 @@ function ShtoStafin(props) {
             Anulo <FontAwesomeIcon icon={faXmark} />
           </Button>
           <Button className="Butoni" onClick={handleKontrolli}>
-            Shto Kompanin <FontAwesomeIcon icon={faPlus} />
+            Shto Stafin <FontAwesomeIcon icon={faPlus} />
           </Button>
         </Modal.Footer>
       </Modal>

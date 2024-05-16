@@ -7,6 +7,7 @@ import LargoKategorin from './LargoKategorin';
 import { TailSpin } from 'react-loader-spinner';
 import Tabela from '../../../../components/Tabela/Tabela';
 import KontrolloAksesinNeFaqe from '../../../../components/KontrolliAksesit/KontrolloAksesinNeFaqe';
+import Titulli from '../../../../components/Titulli';
 
 function TabelaEKategorive(props) {
   const [kategorit, setKategorit] = useState([]);
@@ -67,7 +68,8 @@ function TabelaEKategorive(props) {
 
   return (
     <div>
-      <KontrolloAksesinNeFaqe />
+      <KontrolloAksesinNeFaqe vetemAdmin/>
+      <Titulli titulli={'Kategorite e Produktit'} />
       {shto && (
         <ShtoKategori
           shfaq={handleShow}

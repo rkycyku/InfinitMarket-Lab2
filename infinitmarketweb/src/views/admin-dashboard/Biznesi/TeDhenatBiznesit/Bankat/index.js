@@ -12,6 +12,7 @@ import ShtoBanken from './ShtoBanken';
 import EditoBanken from './EditoBanken';
 import LargoBanken from './LargoBanken';
 import KontrolloAksesinNeFaqe from '../../../../../components/KontrolliAksesit/KontrolloAksesinNeFaqe';
+import Titulli from './../../../../../components/Titulli';
 
 function Bankat(props) {
   const [klientet, setKlientet] = useState([]);
@@ -77,10 +78,8 @@ function Bankat(props) {
 
   return (
     <div>
-      <KontrolloAksesinNeFaqe />
-      <Helmet>
-        <title>Bankat | InfinitMarket Online</title>
-      </Helmet>
+      <KontrolloAksesinNeFaqe vetemAdmin/>
+      <Titulli titulli={'Bankat'} />
       {shfaqMesazhin && <Mesazhi setShfaqMesazhin={setShfaqMesazhin} pershkrimi={pershkrimiMesazhit} tipi={tipiMesazhit} />}
       {shto && (
         <ShtoBanken

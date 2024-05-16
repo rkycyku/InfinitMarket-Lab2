@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { TailSpin } from 'react-loader-spinner';
 import Tabela from '../../components/Tabela/Tabela';
+import Titulli from '../../components/Titulli';
 
 function MesazhetUserit(props) {
   const [mesazhet, setMesazhet] = useState([]);
@@ -47,6 +48,7 @@ function MesazhetUserit(props) {
 
   return (
     <div>
+      <Titulli titulli={'Mesazhet e derguara nga Ju'} />
       {loading ? (
         <div className="Loader">
           <TailSpin

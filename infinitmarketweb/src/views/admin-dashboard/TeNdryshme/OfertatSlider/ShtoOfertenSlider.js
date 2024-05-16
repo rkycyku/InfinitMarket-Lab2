@@ -6,6 +6,7 @@ import Modal from 'react-bootstrap/Modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faXmark } from '@fortawesome/free-solid-svg-icons';
 import useKeyboardNavigation from '../../../../contexts/useKeyboardNavigation';
+import KontrolloAksesinNeFunksione from '../../../../components/KontrolliAksesit/KontrolloAksesinNeFunksione';
 
 function ShtoOfertenSlider(props) {
   const [foto, setFoto] = useState(null);
@@ -186,6 +187,13 @@ function ShtoOfertenSlider(props) {
 
   return (
     <>
+    <KontrolloAksesinNeFunksione
+        largo={() => props.largo()}
+        shfaqmesazhin={() => props.shfaqmesazhin()}
+        perditesoTeDhenat={() => props.perditesoTeDhenat()}
+        setTipiMesazhit={(e) => props.setTipiMesazhit(e)}
+        setPershkrimiMesazhit={(e) => props.setPershkrimiMesazhit(e)}
+      />
       {fushatEZbrazura && (
         <Modal size="sm" show={fushatEZbrazura} onHide={() => setFushatEZbrazura(false)}>
           <Modal.Header closeButton>

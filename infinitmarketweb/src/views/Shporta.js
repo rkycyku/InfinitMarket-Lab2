@@ -23,6 +23,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
 import Mesazhi from '../components/Mesazhi';
 import Checkout from '../components/Checkout/Checkout';
+import Titulli from '../components/Titulli';
 
 export default function Shporta() {
   const [perditeso, setPerditeso] = useState(Date.now());
@@ -35,7 +36,7 @@ export default function Shporta() {
 
   const [promoCode, setPromoCode] = useState('');
   const [teDhenatZbritje, setTeDhenatZbritjes] = useState([]);
-  
+
   const [checkout, setCheckout] = useState(false);
 
   const getToken = localStorage.getItem('token');
@@ -59,7 +60,7 @@ export default function Shporta() {
       console.log('Redirect status is succeeded. Perform action...');
       // Example: Redirect to a different page
       // window.location.href = '/success'; // Assuming '/success' is your success page route
-      setCheckout(true)
+      setCheckout(true);
     }
   }, [location.search]);
 
@@ -204,6 +205,7 @@ export default function Shporta() {
 
   return (
     <>
+      <Titulli titulli={'Shporta'} />
       {shfaqMesazhin && <Mesazhi setShfaqMesazhin={setShfaqMesazhin} pershkrimi={pershkrimiMesazhit} tipi={tipiMesazhit} />}
       {checkout && (
         <Checkout
@@ -425,9 +427,9 @@ export default function Shporta() {
                                 €
                               </MDBTypography>
                             </div>
-                              <Button disabled={shporta && shporta.totaliProdukteveNeShporte == 0} onClick={() => setCheckout(true)}>
-                                Kalo tek Pagesa
-                              </Button>
+                            <Button disabled={shporta && shporta.totaliProdukteveNeShporte == 0} onClick={() => setCheckout(true)}>
+                              Kalo tek Pagesa
+                            </Button>
                           </div>
                         </MDBCol>
                       </MDBRow>

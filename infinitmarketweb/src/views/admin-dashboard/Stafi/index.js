@@ -6,6 +6,7 @@ import EditoKompanin from './EditoRoletStafit';
 import { TailSpin } from 'react-loader-spinner';
 import Tabela from '../../../components/Tabela/Tabela';
 import KontrolloAksesinNeFaqe from '../../../components/KontrolliAksesit/KontrolloAksesinNeFaqe';
+import Titulli from '../../../components/Titulli';
 
 function Stafi(props) {
   const [stafi, setStafi] = useState([]);
@@ -70,7 +71,8 @@ function Stafi(props) {
 
   return (
     <div>
-      <KontrolloAksesinNeFaqe />
+      <KontrolloAksesinNeFaqe vetemAdmin/>
+      <Titulli titulli={'Stafi'} />
       {shto && (
         <ShtoKompanit
           shfaq={handleShow}

@@ -6,6 +6,7 @@ import LargoOfertenSlider from './LargoOfertenSlider';
 import { TailSpin } from 'react-loader-spinner';
 import Tabela from '../../../../components/Tabela/Tabela';
 import KontrolloAksesinNeFaqe from '../../../../components/KontrolliAksesit/KontrolloAksesinNeFaqe';
+import Titulli from '../../../../components/Titulli';
 
 function OfertatSlider(props) {
   const [kategorit, setKategorit] = useState([]);
@@ -65,7 +66,8 @@ function OfertatSlider(props) {
 
   return (
     <div>
-      <KontrolloAksesinNeFaqe />
+      <KontrolloAksesinNeFaqe vetemAdmin />
+      <Titulli titulli={'Ofertat e Sliderit'} />
       {shto && (
         <ShtoOfertenSlider
           shfaq={handleShow}

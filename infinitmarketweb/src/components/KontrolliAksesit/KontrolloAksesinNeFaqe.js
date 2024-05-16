@@ -11,7 +11,11 @@ function KontrolloAksesinNeFaqe(props) {
       if (token) {
         try {
           const decodedToken = jwtDecode(token);
-          if (decodedToken.role.includes('Admin') || decodedToken.role.includes('Shites')) {
+          if (
+            props.vetemAdmin
+              ? decodedToken.role.includes('Admin')
+              : decodedToken.role.includes('Admin') || decodedToken.role.includes('Shites')
+          ) {
           } else {
             navigate('/403');
           }
@@ -26,10 +30,7 @@ function KontrolloAksesinNeFaqe(props) {
     kontrolloAksesin();
   }, []);
 
-  return (
-    <div>
-    </div>
-  );
+  return <div></div>;
 }
 
 export default KontrolloAksesinNeFaqe;

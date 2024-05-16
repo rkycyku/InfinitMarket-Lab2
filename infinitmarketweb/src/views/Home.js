@@ -12,6 +12,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import Titulli from '../components/Titulli';
 
 function Home() {
   const [produktet, setProduktet] = useState([]);
@@ -45,9 +46,7 @@ function Home() {
 
   return (
     <div>
-      <Helmet>
-        <title>Home | Infinit Market</title>
-      </Helmet>
+      <Titulli titulli={'Home'} />
       <Swiper
         spaceBetween={30}
         centeredSlides={true}

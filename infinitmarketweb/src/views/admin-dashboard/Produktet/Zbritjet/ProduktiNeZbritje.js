@@ -6,6 +6,7 @@ import Modal from "react-bootstrap/Modal";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faXmark } from '@fortawesome/free-solid-svg-icons';
 import Mesazhi from "../../../../components/Mesazhi";
+import KontrolloAksesinNeFunksione from "../../../../components/KontrolliAksesit/KontrolloAksesinNeFunksione";
 
 function ProduktiNeZbritje(props) {
   const [produkti, setProdukti] = useState("");
@@ -125,6 +126,13 @@ function ProduktiNeZbritje(props) {
   }
   return (
     <>
+    <KontrolloAksesinNeFunksione
+        largo={() => props.largo()}
+        shfaqmesazhin={() => props.shfaqmesazhin()}
+        perditesoTeDhenat={() => props.perditesoTeDhenat()}
+        setTipiMesazhit={(e) => props.setTipiMesazhit(e)}
+        setPershkrimiMesazhit={(e) => props.setPershkrimiMesazhit(e)}
+      />
       {shfaqMesazhin &&
         <Mesazhi
           setShfaqMesazhin={setShfaqMesazhin}

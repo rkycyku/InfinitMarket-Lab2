@@ -4,29 +4,16 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPenToSquare, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faPenToSquare, faPlus, faTrash, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { Card, Col, Row } from 'react-bootstrap';
+import '../../Styles/Produkti.css';
+import KontrolloAksesinNeFunksione from '../../../components/KontrolliAksesit/KontrolloAksesinNeFunksione';
 
-function EditoKompanin(props) {
-  const [kompania, setKompania] = useState([]);
-  
+function EditoRoletStafit(props) {
+  const [stafi, setStafi] = useState([]);
+
   const [perditeso, setPerditeso] = useState('');
-  const [kompanit, setKompanite] = useState([]);
-  const [kontrolloKompanine, setKontrolloKompanine] = useState(false);
-  const [konfirmoKompanine, setKonfirmoKompanine] = useState(false);
   const [fushatEZbrazura, setFushatEZbrazura] = useState(false);
-
-  useEffect(() => {
-    const vendosKompanite = async () => {
-      try {
-        const kompanit = await axios.get(`https://localhost:7251/api/Produktet/Kompania/shfaqKompanit`, authentikimi);
-        setKompanite(kompanit.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    vendosKompanite();
-  }, [perditeso]);
 
   const getToken = localStorage.getItem('token');
 
@@ -39,71 +26,68 @@ function EditoKompanin(props) {
   useEffect(() => {
     const shfaqKompanit = async () => {
       try {
-        const kompania = await axios.get(
-          `https://localhost:7251/api/Produktet/Kompania/shfaqKompaninSipasIDs?id=${props.id}`,
-          authentikimi
-        );
-        setKompania(kompania.data);
+        const stafi = await axios.get(`https://localhost:7251/api/Perdoruesi/Stafi/ShfaqStafinPerPerditesim?ID=${props.id}`, authentikimi);
+        setStafi(stafi.data);
       } catch (err) {
         console.log(err);
       }
     };
 
     shfaqKompanit();
-  }, []);
+  }, [perditeso]);
 
-  const handleEmriChange = (value) => {
-    setKompania((prev) => ({ ...prev, emriKompanis: value }));
-  };
-
-  const handleAdresaChange = (value) => {
-    setKompania((prev) => ({ ...prev, Adresa: value }));
-  };
-
-  function isNullOrEmpty(value) {
-    return value === null || value === '' || value === undefined;
-  }
-
-  async function handleSubmit() {
+  async function ShtoRolin(roli) {
     await axios
-      .put(
-        `https://localhost:7251/api/Produktet/Kompania/perditesoKompanin?id=${kompania.kompaniaId}`,
-        {
-          emriKompanis: kompania.emriKompanis,
-          adresa: kompania.Adresa
-        },
-        authentikimi
-      )
+      .post(`https://localhost:7251/api/Perdoruesi/Stafi/ShtoRolinStafit?userID=${props.id}&roli=${roli}`, {}, authentikimi)
       .then((x) => {
-        props.setTipiMesazhit('success');
-        props.setPershkrimiMesazhit('Kompania u Perditesua me sukses!');
+        setPerditeso(Date.now());
         props.perditesoTeDhenat();
-        props.largo();
-        props.shfaqmesazhin();
       })
       .catch((error) => {
-        console.error('Error saving kompania:', error);
+        console.error('Error saving stafi:', error);
         props.setTipiMesazhit('danger');
         props.setPershkrimiMesazhit('Ndodhi nje gabim gjate perditesimit te kompanis!');
         props.perditesoTeDhenat();
         props.shfaqmesazhin();
       });
   }
+  async function FshijRolin(roli) {
+    var eshteVetem1Admin = await axios.get(`https://localhost:7251/api/Perdoruesi/Stafi/EshteVetem1Admin`, authentikimi);
 
-  const handleKontrolli = () => {
-    if (isNullOrEmpty(kompania.emriKompanis)) {
-      setFushatEZbrazura(true);
+    if (eshteVetem1Admin === false) {
+      await axios
+        .delete(`https://localhost:7251/api/Perdoruesi/Stafi/FshijRolinStafit?userID=${props.id}&roli=${roli}`, authentikimi)
+        .then((x) => {
+          setPerditeso(Date.now());
+          props.perditesoTeDhenat();
+        })
+        .catch((error) => {
+          console.error('Error saving stafi:', error);
+          props.setTipiMesazhit('danger');
+          props.setPershkrimiMesazhit('Ndodhi nje gabim gjate perditesimit te rolit!');
+          props.perditesoTeDhenat();
+          props.shfaqmesazhin();
+        });
     } else {
-      if (konfirmoKompanine == false && kompanit.filter((item) => item.emriKompanis === kompania.emriKompanis).length !== 0) {
-        setKontrolloKompanine(true);
-      } else {
-        handleSubmit();
-      }
+      props.setTipiMesazhit('danger');
+      props.setPershkrimiMesazhit(`<p><span>Ky role nuk mund te fshihet pasi qe eshte Admini i vetem!</span></p>
+      <p><span>Ju lutem vendosni Admin tjeter dhe pastaj modifikoni kete!</span></p> `);
+      props.perditesoTeDhenat();
+      props.shfaqmesazhin();
+      props.largo();
     }
-  };
+  }
 
   return (
     <>
+      <KontrolloAksesinNeFunksione
+        largo={() => props.largo()}
+        shfaqmesazhin={() => props.shfaqmesazhin()}
+        perditesoTeDhenat={() => props.perditesoTeDhenat()}
+        setTipiMesazhit={(e) => props.setTipiMesazhit(e)}
+        setPershkrimiMesazhit={(e) => props.setPershkrimiMesazhit(e)}
+      />
+
       {fushatEZbrazura && (
         <Modal size="sm" show={fushatEZbrazura} onHide={() => setFushatEZbrazura(false)}>
           <Modal.Header closeButton>
@@ -123,71 +107,101 @@ function EditoKompanin(props) {
           </Modal.Footer>
         </Modal>
       )}
-      {kontrolloKompanine && (
-        <Modal size="sm" show={kontrolloKompanine} onHide={() => setKontrolloKompanine(false)}>
-          <Modal.Header closeButton>
-            <Modal.Title as="h6">Konfirmo Perditesimin</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <span style={{ fontSize: '10pt' }}>Nje kompani me te njejtin emer ekziston ne sistem!</span>
-            <br />
-            <strong style={{ fontSize: '10pt' }}>A jeni te sigurt qe deshironi te vazhdoni?</strong>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button size="sm" variant="secondary" onClick={() => setKontrolloKompanine(false)}>
-              Korrigjo <FontAwesomeIcon icon={faXmark} />
-            </Button>
-            <Button
-              size="sm"
-              variant="warning"
-              onClick={() => {
-                handleSubmit();
-              }}
-            >
-              Vazhdoni
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      )}
-      <Modal className="modalEditShto" show={true} onHide={() => props.largo()}>
+      <Modal size="lg" className="modalEditShto" show={true} onHide={() => props.largo()}>
         <Modal.Header closeButton>
-          <Modal.Title>Edito Kompanin</Modal.Title>
+          <Modal.Title>Edito Rolet e Stafit</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>ID Kompanis</Form.Label>
-              <Form.Control value={kompania.kompaniaId} disabled />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>
-                Emri Kompanis<span style={{ color: 'red' }}>*</span>
-              </Form.Label>
-              <Form.Control
-                onChange={(e) => handleEmriChange(e.target.value)}
-                value={kompania.emriKompanis}
-                type="text"
-                placeholder="Emri Kompanis"
-                autoFocus
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Adresa Kompanis</Form.Label>
-              <Form.Control
-                onChange={(e) => handleAdresaChange(e.target.value)}
-                type="text"
-                placeholder="Adresa Kompanis"
-                value={kompania.adresa}
-              />
-            </Form.Group>
-          </Form>
+          <Card>
+            <Card.Body>
+              <div className="teDhenatProduktit">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>ID Stafit:</td>
+                      <td>{stafi.userID}</td>
+                    </tr>
+                    <tr>
+                      <td>Emri dhe Mbiemri:</td>
+                      <td>{stafi.emri + ' ' + stafi.mbiemri}</td>
+                    </tr>
+                    <tr>
+                      <td>Email:</td>
+                      <td>{stafi.email}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </Card.Body>
+          </Card>
+          <Card>
+            <Card.Header>Rolet aktuale</Card.Header>
+            <Card.Body>
+              <Row>
+                {stafi &&
+                  stafi.roletPerdoruesit &&
+                  stafi.roletPerdoruesit
+                    .filter((roli) => roli != 'Klient')
+                    .map((roli) => (
+                      <Col key={roli}>
+                        <Card>
+                          <Card.Body>
+                            <div className="teDhenatProduktit mb-3">
+                              <table>
+                                <tbody>
+                                  <tr>
+                                    <td>Roli:</td>
+                                    <td>{roli}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <Button variant="danger" onClick={() => FshijRolin(roli)}>
+                              <FontAwesomeIcon icon={faTrash} />
+                            </Button>
+                          </Card.Body>
+                        </Card>
+                      </Col>
+                    ))}
+              </Row>
+            </Card.Body>
+          </Card>
+          <Card>
+            <Card.Header>Rolet e Lira</Card.Header>
+            <Card.Body>
+              <Row>
+                {stafi &&
+                  stafi.roletELejuaraPerVendosje &&
+                  stafi.roletELejuaraPerVendosje
+                    .filter((roli) => roli != 'Klient')
+                    .map((roli) => (
+                      <Col key={roli}>
+                        <Card>
+                          <Card.Body>
+                            <div className="teDhenatProduktit mb-3">
+                              <table>
+                                <tbody>
+                                  <tr>
+                                    <td>Roli:</td>
+                                    <td>{roli}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <Button variant="success" onClick={() => ShtoRolin(roli)}>
+                              <FontAwesomeIcon icon={faPlus} />
+                            </Button>
+                          </Card.Body>
+                        </Card>
+                      </Col>
+                    ))}
+              </Row>
+            </Card.Body>
+          </Card>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => props.largo()}>
             Anulo <FontAwesomeIcon icon={faXmark} />
-          </Button>
-          <Button className="Butoni" onClick={handleKontrolli}>
-            Edito Kompanin <FontAwesomeIcon icon={faPenToSquare} />
           </Button>
         </Modal.Footer>
       </Modal>
@@ -195,4 +209,4 @@ function EditoKompanin(props) {
   );
 }
 
-export default EditoKompanin;
+export default EditoRoletStafit;

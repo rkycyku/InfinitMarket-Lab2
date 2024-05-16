@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBan, faXmark } from '@fortawesome/free-solid-svg-icons'
+import KontrolloAksesinNeFunksione from "../../../../components/KontrolliAksesit/KontrolloAksesinNeFunksione";
 
 function LargoKompanin(props) {
     const getToken = localStorage.getItem("token");
@@ -31,6 +32,14 @@ function LargoKompanin(props) {
 
     }
     return (
+        <>
+        <KontrolloAksesinNeFunksione
+        largo={() => props.largo()}
+        shfaqmesazhin={() => props.shfaqmesazhin()}
+        perditesoTeDhenat={() => props.perditesoTeDhenat()}
+        setTipiMesazhit={(e) => props.setTipiMesazhit(e)}
+        setPershkrimiMesazhit={(e) => props.setPershkrimiMesazhit(e)}
+      />
         <Modal show={true} onHide={() => props.largo()}>
             <Modal.Header closeButton>
                 <Modal.Title style={{ color: "red" }}>Largo Kompanin</Modal.Title>
@@ -50,6 +59,7 @@ function LargoKompanin(props) {
                 </Button>
             </Modal.Footer>
         </Modal>
+        </>
     )
 }
 

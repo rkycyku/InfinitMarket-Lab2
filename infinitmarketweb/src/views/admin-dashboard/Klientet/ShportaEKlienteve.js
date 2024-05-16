@@ -4,6 +4,7 @@ import Mesazhi from '../../../components/Mesazhi';
 import { TailSpin } from 'react-loader-spinner';
 import Tabela from '../../../components/Tabela/Tabela';
 import KontrolloAksesinNeFaqe from '../../../components/KontrolliAksesit/KontrolloAksesinNeFaqe';
+import Titulli from './../../../components/Titulli';
 
 function ShportaEKlienteve(props) {
   const [klientet, setKlientet] = useState([]);
@@ -49,6 +50,7 @@ function ShportaEKlienteve(props) {
   return (
     <div>
       <KontrolloAksesinNeFaqe />
+      <Titulli titulli={'Shporta e Klienteve'} />
       {shfaqMesazhin && <Mesazhi setShfaqMesazhin={setShfaqMesazhin} pershkrimi={pershkrimiMesazhit} tipi={tipiMesazhit} />}
       {loading ? (
         <div className="Loader">

@@ -7,6 +7,7 @@ import { TailSpin } from 'react-loader-spinner';
 
 import { MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdb-react-ui-kit';
 import KontrolloAksesinNeFaqe from '../../../../components/KontrolliAksesit/KontrolloAksesinNeFaqe';
+import Titulli from './../../../../components/Titulli';
 
 function TeDhenatEBiznesit(props) {
   const [teDhenatBiznesit, setTeDhenatBiznesit] = useState([]);
@@ -144,10 +145,8 @@ function TeDhenatEBiznesit(props) {
 
   return (
     <>
-      <KontrolloAksesinNeFaqe />
-      <Helmet>
-        <title>Te Dhenat e Biznesit | InfinitMarket Online</title>
-      </Helmet>
+      <KontrolloAksesinNeFaqe vetemAdmin/>
+      <Titulli titulli={'Tedhenat e Biznesit'} />
 
       <div className="containerDashboardP">
         {shfaqMesazhin && <Mesazhi setShfaqMesazhin={setShfaqMesazhin} pershkrimi={pershkrimiMesazhit} tipi={tipiMesazhit} />}

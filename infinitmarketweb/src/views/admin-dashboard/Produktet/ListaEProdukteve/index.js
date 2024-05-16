@@ -8,6 +8,7 @@ import LargoProduktin from './LargoProduktin';
 import EditoStokunQmimin from './EditoStokunQmimin';
 import Tabela from '../../../../components/Tabela/Tabela';
 import KontrolloAksesinNeFaqe from '../../../../components/KontrolliAksesit/KontrolloAksesinNeFaqe';
+import Titulli from '../../../../components/Titulli';
 
 function TabelaEProdukteve() {
   const [produktet, setProduktet] = useState([]);
@@ -113,6 +114,7 @@ function TabelaEProdukteve() {
   return (
     <div>
       <KontrolloAksesinNeFaqe />
+      <Titulli titulli={'Lista e Produkteve'} />
       {edito && (
         <EditoProduktin
           id={id}

@@ -19,6 +19,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { useNavigate } from 'react-router-dom';
+import Titulli from '../components/Titulli';
 
 function Produkti() {
   const { id } = useParams();
@@ -169,13 +170,13 @@ function Produkti() {
 
   return (
     <div className="container">
-      <Helmet>
-        <title>
-          {produkti && produkti.produkti && produkti.produkti.emriProduktit !== ''
-            ? produkti && produkti.produkti && produkti.produkti.emriProduktit + ' | Infinit Market'
-            : 'Infinit Market'}
-        </title>
-      </Helmet>
+      <Titulli
+        titulli={
+          produkti && produkti.produkti && produkti.produkti.emriProduktit !== ''
+            ? produkti && produkti.produkti && produkti.produkti.emriProduktit
+            : ' '
+        }
+      />
       {shfaqMesazhin && <Mesazhi setShfaqMesazhin={setShfaqMesazhin} pershkrimi={pershkrimiMesazhit} tipi={tipiMesazhit} />}
       {edito && (
         <EditoProduktin
@@ -190,7 +191,7 @@ function Produkti() {
       )}
       <div className="produkti">
         <div className="detajet">
-          <div className='foto'>
+          <div className="foto">
             {produkti && produkti.fotoProduktit && produkti.fotoProduktit.length > 0 ? (
               <Swiper
                 pagination={{

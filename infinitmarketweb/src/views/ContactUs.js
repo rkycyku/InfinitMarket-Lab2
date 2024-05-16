@@ -6,6 +6,7 @@ import { Form, FloatingLabel, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelopeCircleCheck } from '@fortawesome/free-solid-svg-icons';
 import Footer from '../components/Footer';
+import Titulli from '../components/Titulli';
 
 const ContactUs = () => {
   const [emri, setEmri] = useState('');
@@ -81,9 +82,7 @@ const ContactUs = () => {
 
   return (
     <div className="body">
-      <Helmet>
-        <title>Contact Us | Infinit Market</title>
-      </Helmet>
+      <Titulli titulli={'Contact Us'} />
       {shfaqMesazhin && <Mesazhi tipi={tipiMesazhit} pershkrimi={pershkrimiMesazhit} setShfaqMesazhin={setShfaqMesazhin} />}
       <div className="forms">
         <Form className="form">

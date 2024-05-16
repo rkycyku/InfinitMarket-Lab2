@@ -7,6 +7,7 @@ import LargoKompanin from './LargoKompanin';
 import { TailSpin } from 'react-loader-spinner';
 import Tabela from '../../../../components/Tabela/Tabela';
 import KontrolloAksesinNeFaqe from '../../../../components/KontrolliAksesit/KontrolloAksesinNeFaqe';
+import Titulli from '../../../../components/Titulli';
 
 function TabelaEKompanive(props) {
   const [kompanit, setKompanit] = useState([]);
@@ -69,7 +70,8 @@ function TabelaEKompanive(props) {
 
   return (
     <div>
-      <KontrolloAksesinNeFaqe />
+      <KontrolloAksesinNeFaqe vetemAdmin />
+      <Titulli titulli={'Kompanite Partnere'} />
       {shto && (
         <ShtoKompanit
           shfaq={handleShow}

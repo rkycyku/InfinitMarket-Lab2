@@ -9,6 +9,7 @@ import Mesazhi from '../../../../components/Mesazhi';
 import FshijZbritjen from './FshijZbritjen';
 import Tabela from '../../../../components/Tabela/Tabela';
 import KontrolloAksesinNeFaqe from '../../../../components/KontrolliAksesit/KontrolloAksesinNeFaqe';
+import Titulli from '../../../../components/Titulli';
 
 function ZbritjetEProduktit(props) {
   const [zbritjet, setZbritjet] = useState([]);
@@ -105,7 +106,8 @@ function ZbritjetEProduktit(props) {
 
   return (
     <div>
-      <KontrolloAksesinNeFaqe />
+      <KontrolloAksesinNeFaqe vetemAdmin/>
+      <Titulli titulli={'Zbritjet e Produkteve'} />
       {shfaqMesazhin && <Mesazhi setShfaqMesazhin={setShfaqMesazhin} pershkrimi={pershkrimiMesazhit} tipi={tipiMesazhit} />}
       {fshij && (
         <FshijZbritjen
