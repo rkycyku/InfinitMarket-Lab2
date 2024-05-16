@@ -132,6 +132,13 @@ const menuItems = {
           ]
         },
         {
+          id: 'Stafi',
+          title: 'Stafi',
+          type: 'item',
+          icon: 'feather icon-users',
+          url: '/Admin/Stafi'
+        },
+        {
           id: 'Porosit',
           title: 'Porosit',
           type: 'item',

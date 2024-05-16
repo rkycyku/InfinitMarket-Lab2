@@ -162,6 +162,11 @@ const routes = [
       },
       {
         exact: true,
+        path: '/Admin/Stafi',
+        element: lazy(() => import('./views/admin-dashboard/Stafi'))
+      },
+      {
+        exact: true,
         path: '/AboutUs',
         element: lazy(() => import('./views/AboutUs'))
       },

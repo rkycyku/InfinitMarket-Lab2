@@ -233,7 +233,7 @@ namespace InfinitMarket.Areas.Identity.Pages.Account
 
                         var userId = await _userManager.GetUserIdAsync(user);
 
-                        await _userManager.AddToRolesAsync(user, new[] { "User", "Klient" });
+                        await _userManager.AddToRoleAsync(user, "Klient");
 
                         Perdoruesi perdoruesi = new Perdoruesi()
                         {

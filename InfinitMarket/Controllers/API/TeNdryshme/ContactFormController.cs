@@ -40,7 +40,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
                 User = x.User != null ? new
                 {
                     x.User.UserID,
-                    x.User.Username
+                    x.User.Email
                 } : null
             });
 
@@ -70,7 +70,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
                 User = x.User != null ? new
                 {
                     x.User.UserID,
-                    x.User.Username
+                    x.User.Email
                 } : null
             });
 

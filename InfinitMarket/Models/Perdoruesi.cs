@@ -18,7 +18,6 @@ namespace InfinitMarket.Models
         public IdentityUser? AspNetUser { get; set; }
 
         public virtual TeDhenatPerdoruesit? TeDhenatPerdoruesit { get; set; }
-        public string? Username { get; set; }
     }
 }
 

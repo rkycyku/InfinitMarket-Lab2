@@ -292,7 +292,6 @@ namespace InfinitMarket.Controllers.API.Produktet
                     teDhenatProduktit.QmimiProduktit = produktiData.TeDhenatProduktit.QmimiProduktit;
                 }
 
-                // Always update modification date
                 teDhenatProduktit.DataPerditsimit = DateTime.Now;
 
                 if (produktiData.TeDhenatProduktit.llojiTVSH.HasValue && produktiData.TeDhenatProduktit.llojiTVSH > 0)

@@ -82,24 +82,6 @@ function Mesazhet() {
     shfaqKompanit();
   }, [perditeso]);
 
-  function PergatitjaTeDhenavePerEksport() {
-    return mesazhet.map((m) => {
-      const { mesazhiId, user, emri, email, mesazhi, dataDergeses, statusi } = m;
-
-      const klienti = user ? user.userID + ' - ' + user.emri + ' ' + user.mbiemri : 'Nuk ka Llogari';
-
-      return {
-        ID: mesazhiId,
-        Perdoruesi: klienti,
-        Emri: emri,
-        Email: email,
-        Mesazhi: mesazhi,
-        'Data Dergeses': new Date(dataDergeses).toLocaleDateString('en-GB', { dateStyle: 'short' }),
-        Statusi: statusi
-      };
-    });
-  }
-
   return (
     <div className="containerDashboardP">
       <KontrolloAksesinNeFaqe />

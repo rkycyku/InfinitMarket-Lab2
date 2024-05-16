@@ -8,17 +8,17 @@ namespace InfinitMarket.Models
     {
         [Key]
         public int TeDhenatID { get; set; }
-        public string? NrKontaktit { get; set; } = "";
+        public string? NrKontaktit { get; set; } = "38344111222";
 
-        public string? Qyteti { get; set; } = "";
+        public string? Qyteti { get; set; } = "Prishtine";
 
-        public int? ZipKodi { get; set; } = 0;
+        public int? ZipKodi { get; set; } = 10000;
 
-        public string? Adresa { get; set; } = "";
+        public string? Adresa { get; set; } = "P.A.";
 
-        public string? Shteti { get; set; } = "";
+        public string? Shteti { get; set; } = "Kosove";
 
-        public string? Gjinia { get; set; } = "";
+        public string? Gjinia { get; set; } = "M";
         
 
         public DateTime? DataLindjes { get; set; } = DateTime.Now;
