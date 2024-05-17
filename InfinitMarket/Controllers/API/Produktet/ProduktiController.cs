@@ -334,6 +334,7 @@ namespace InfinitMarket.Controllers.API.Produktet
 
             return Ok("Produkti u perditesua me sukses.");
         }
+
         [AllowAnonymous]
         [HttpPost]
         [Route("ShtoKategorineEDetajet")]
@@ -364,14 +365,73 @@ namespace InfinitMarket.Controllers.API.Produktet
         }
 
         [AllowAnonymous]
-        [HttpGet]
-        [Route("ShfaqKategoriteEDetajet")]
+        [HttpGet("ShfaqKategoriteEDetajet")]
         public async Task<ActionResult> ShfaqKategoriteEDetajet()
         {
-            var kategorite = await _context.KategoriteEDetajeve.ToListAsync();
+            var kategorite = await _context.KategoriteEDetajeve
+                .Where(k => k.isDeleted == "false")
+                .ToListAsync();
 
             return Ok(kategorite);
         }
+
+        [AllowAnonymous]
+        [HttpDelete("FshijKategorineEDetajet/{id}")]
+        public async Task<ActionResult> FshijKategorineEDetajet(int id)
+        {
+            var kategoria = await _context.KategoriteEDetajeve.FindAsync(id);
+
+            if (kategoria == null)
+            {
+                return NotFound();
+            }
+
+            kategoria.isDeleted = "true";
+
+            _context.Entry(kategoria).State = EntityState.Modified;
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        [AllowAnonymous]
+        [HttpPut]
+        [Route("PerditesoKategorineEDetajet/{id}")]
+        public async Task<ActionResult> PerditesoKategorineEDetajet(int id, [FromBody] KategoriteEDetajeve updatedCategory)
+        {
+            var existingCategory = await _context.KategoriteEDetajeve.FindAsync(id);
+
+            if (existingCategory == null)
+            {
+                return NotFound();
+            }
+
+            existingCategory.EmriKategoriseDetajeve = updatedCategory.EmriKategoriseDetajeve;
+
+            existingCategory.DetajetJson = updatedCategory.DetajetJson;
+
+            try
+            {
+                _context.Entry(existingCategory).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!_context.KategoriteEDetajeve.Any(e => e.KategoriaDetajeveId == id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+
 
         [AllowAnonymous]
         [HttpGet]
@@ -416,5 +476,62 @@ namespace InfinitMarket.Controllers.API.Produktet
 
             return Ok("TeDhenatEDetajeve u shtua me sukses.");
         }
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("ShfaqTeDhenatEDetajeve/{id}")]
+        public async Task<ActionResult> ShfaqTeDhenatEDetajeve(int id)
+        {
+            var teDhenat = await _context.TeDhenatEDetajeve
+                .Where(t => t.TeDhenatEDetajeveId == id)
+                .Select(t => new
+                {
+                    t.TeDhenatEDetajeveId,
+                    t.KategoriaDetajeveId,
+                    t.KategoriteEDetajeve.EmriKategoriseDetajeve,
+                    t.TeDhenatJson
+                })
+                .FirstOrDefaultAsync();
+
+            if (teDhenat == null)
+            {
+                return NotFound("TeDhenatEDetajeve nuk u gjet.");
+            }
+
+            return Ok(teDhenat);
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("UpdateTeDhenatEDetajeve/{id}")]
+        public async Task<ActionResult> UpdateTeDhenatEDetajeve(int id, [FromBody] UpdateDetailsDto updateDetailsDto)
+        {
+            var teDhenat = await _context.TeDhenatEDetajeve
+                .FirstOrDefaultAsync(t => t.TeDhenatEDetajeveId == id);
+
+            if (teDhenat == null)
+            {
+                return NotFound("TeDhenatEDetajeve nuk u gjet.");
+            }
+
+            teDhenat.TeDhenatJson = updateDetailsDto.TeDhenatJson;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Gabim gjatë përditësimit të të dhënave: " + ex.Message);
+            }
+
+            return Ok(teDhenat);
+        }
+
+        public class UpdateDetailsDto
+        {
+            public string TeDhenatJson { get; set; }
+        }
+
     }
 }
