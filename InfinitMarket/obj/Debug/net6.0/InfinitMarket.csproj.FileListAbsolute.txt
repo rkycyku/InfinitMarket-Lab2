@@ -893,3 +893,17 @@ D:\Programim\GitHubProjekte\InfinitMarket-Lab2\InfinitMarket\bin\Debug\net6.0\Zs
 D:\Programim\GitHubProjekte\InfinitMarket-Lab2\InfinitMarket\bin\Debug\net6.0\runtimes\linux\native\libmongocrypt.so
 D:\Programim\GitHubProjekte\InfinitMarket-Lab2\InfinitMarket\bin\Debug\net6.0\runtimes\osx\native\libmongocrypt.dylib
 D:\Programim\GitHubProjekte\InfinitMarket-Lab2\InfinitMarket\bin\Debug\net6.0\runtimes\win\native\mongocrypt.dll
+C:\react\InfinitMarket-Lab2\InfinitMarket\bin\Debug\net6.0\AWSSDK.Core.dll
+C:\react\InfinitMarket-Lab2\InfinitMarket\bin\Debug\net6.0\AWSSDK.SecurityToken.dll
+C:\react\InfinitMarket-Lab2\InfinitMarket\bin\Debug\net6.0\DnsClient.dll
+C:\react\InfinitMarket-Lab2\InfinitMarket\bin\Debug\net6.0\MongoDB.Bson.dll
+C:\react\InfinitMarket-Lab2\InfinitMarket\bin\Debug\net6.0\MongoDB.Driver.dll
+C:\react\InfinitMarket-Lab2\InfinitMarket\bin\Debug\net6.0\MongoDB.Driver.Core.dll
+C:\react\InfinitMarket-Lab2\InfinitMarket\bin\Debug\net6.0\MongoDB.Libmongocrypt.dll
+C:\react\InfinitMarket-Lab2\InfinitMarket\bin\Debug\net6.0\SharpCompress.dll
+C:\react\InfinitMarket-Lab2\InfinitMarket\bin\Debug\net6.0\Snappier.dll
+C:\react\InfinitMarket-Lab2\InfinitMarket\bin\Debug\net6.0\Stripe.net.dll
+C:\react\InfinitMarket-Lab2\InfinitMarket\bin\Debug\net6.0\ZstdSharp.dll
+C:\react\InfinitMarket-Lab2\InfinitMarket\bin\Debug\net6.0\runtimes\linux\native\libmongocrypt.so
+C:\react\InfinitMarket-Lab2\InfinitMarket\bin\Debug\net6.0\runtimes\osx\native\libmongocrypt.dylib
+C:\react\InfinitMarket-Lab2\InfinitMarket\bin\Debug\net6.0\runtimes\win\native\mongocrypt.dll

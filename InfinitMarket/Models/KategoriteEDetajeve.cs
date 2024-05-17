@@ -10,5 +10,7 @@ namespace InfinitMarket.Models
         public string EmriKategoriseDetajeve { get; set; }
 
         public string DetajetJson { get; set; }
+
+        public string? isDeleted { get; set; } = "false";
     }
 }
