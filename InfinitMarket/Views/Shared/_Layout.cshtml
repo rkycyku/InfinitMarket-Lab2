@@ -69,14 +69,154 @@
                             <a href="http://localhost:3000/" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Home</span></a>
                         </li>
                         <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
-                            <a href="http://localhost:3000/" class="nav-link "><span class="pcoded-micon"><i class="feather icon-package"></i></span><span class="pcoded-mtext">Products</span></a>
+                            <a href="http://localhost:3000/Produktet" class="nav-link "><span class="pcoded-micon"><i class="feather icon-package"></i></span><span class="pcoded-mtext">Produktet</span></a>
                         </li>
                         <li data-username="dashboard" class="nav-item">
-                            <a href="http://localhost:3000/" class="nav-link "><span class="pcoded-micon"><i class="feather icon-info"></i></span><span class="pcoded-mtext">About Us</span></a>
+                            <a href="http://localhost:3000/AboutUs" class="nav-link "><span class="pcoded-micon"><i class="feather icon-info"></i></span><span class="pcoded-mtext">Rreth Nesh</span></a>
                         </li>
                         <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
-                            <a href="http://localhost:3000/" class="nav-link "><span class="pcoded-micon"><i class="feather icon-at-sign"></i></span><span class="pcoded-mtext">Contact Us</span></a>
+                            <a href="http://localhost:3000/ContactUs" class="nav-link "><span class="pcoded-micon"><i class="feather icon-at-sign"></i></span><span class="pcoded-mtext">Na Kontaktoni</span></a>
                         </li>
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            var user = await UserManager.GetUserAsync(User);
+                            var userRoles = (await UserManager.GetRolesAsync(user)).ToList();
+
+                            // Displaying the user's email
+
+                            // Displaying the user's roles
+                            @if (userRoles.Contains("Admin"))
+                            {
+                                <!-- [Admin Menu] Start-->
+                                <li class="nav-item pcoded-menu-caption  ">
+                                    <label>Admin Dashboard</label>
+                                </li>
+                                <li class="nav-item pcoded-hasmenu  ">
+                                    <a class="nav-link">
+                                        <span class="pcoded-micon"><i class="feather icon-home"></i></span>
+                                        <span class="pcoded-mtext">Produktet</span>
+                                    </a>
+                                    <ul class="pcoded-submenu    -flush">
+                                        <li><a class="nav-link" href="http://localhost:3000/admin/produktet/ListaEProdukteve" target="">Lista e Produkteve</a></li>
+                                        <li><a class="nav-link" href="http://localhost:3000/admin/produktet/zbritjet" target="">Zbritjet</a></li>
+                                        <li><a class="nav-link" href="http://localhost:3000/admin/produktet/kategorite" target="">Kategorite</a></li>
+                                        <li><a class="nav-link" href="http://localhost:3000/admin/produktet/kompanite" target="">Kompanite</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item pcoded-hasmenu  ">
+                                    <a class="nav-link">
+                                        <span class="pcoded-micon">
+                                            <i class="feather icon-sliders"></i>
+                                        </span>
+                                        <span class="pcoded-mtext">Te Ndryshme</span>
+                                    </a>
+                                    <ul class="pcoded-submenu    -flush">
+                                        <li><a class="nav-link" href="http://localhost:3000/admin/TeNdryshme/OfertatSlider" target="">Ofertat Slider Home</a></li>
+                                        <li><a class="nav-link" href="http://localhost:3000/admin/TeNdryshme/KodiZbritjes" target="">Kodi Zbritjes</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item pcoded-hasmenu  ">
+                                    <a class="nav-link">
+                                        <span class="pcoded-micon">
+                                            <i class="feather icon-info"></i>
+                                        </span>
+                                        <span class="pcoded-mtext">Biznesi</span>
+                                    </a>
+                                    <ul class="pcoded-submenu    -flush">
+                                        <li>
+                                            <a class="nav-link" href="http://localhost:3000/admin/Biznesi/TeDhenatEBiznesit" target="">Te Dhenat E Biznesit</a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link" href="http://localhost:3000/admin/Biznesi/Bankat" target="">Bankat</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item pcoded-hasmenu  ">
+                                    <a class="nav-link">
+                                        <span class="pcoded-micon">
+                                            <i class="feather icon-info"></i>
+                                        </span>
+                                        <span class="pcoded-mtext">Klientet</span>
+                                    </a>
+                                    <ul class="pcoded-submenu    -flush">
+                                        <li>
+                                            <a class="nav-link" href="http://localhost:3000/admin/Klientet/ListaEKlienteve" target="">Lista e Klienteve</a>
+                                        </li>
+                                        <li><a class="nav-link" href="http://localhost:3000/admin/Klientet/ShportaEKlienteve" target="">Shportat e Klienteve</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="http://localhost:3000/admin/Stafi" target="">
+                                        <span class="pcoded-micon"><i class="feather icon-users"></i></span>
+                                        <span class="pcoded-mtext">Stafi</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="http://localhost:3000/admin/porosite" target="">
+                                        <span class="pcoded-micon"> <i class="feather icon-package"></i></span>
+                                        <span class="pcoded-mtext">Porosit</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="http://localhost:3000/admin/mesazhet" target="">
+                                        <span class="pcoded-micon"><i class="feather icon-at-sign"></i></span>
+                                        <span class="pcoded-mtext">Mesazhet</span>
+                                    </a>
+                                </li>
+                                <!-- [Admin Menu] End-->
+                            }
+
+                            @if (userRoles.Contains("Shites"))
+                            {
+                                <!-- [Shites Menu] Start-->
+                                <li class="nav-item pcoded-menu-caption  "><label>Shites Dashboard</label></li>
+                                <li class="nav-item pcoded-hasmenu  ">
+                                    <a class="nav-link">
+                                        <span class="pcoded-micon"><i class="feather icon-home"></i></span>
+                                        <span class="pcoded-mtext">Produktet</span>
+                                    </a>
+                                    <ul class="pcoded-submenu    -flush">
+                                        <li>
+                                            <a class="nav-link" href="http://localhost:3000/admin/produktet/ListaEProdukteve" target="">Lista e Produkteve</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item pcoded-hasmenu  ">
+                                    <a class="nav-link">
+                                        <span class="pcoded-micon"><i class="feather icon-sliders"></i></span>
+                                        <span class="pcoded-mtext">Te Ndryshme</span>
+                                    </a>
+                                    <ul class="pcoded-submenu    -flush">
+                                        <li><a class="nav-link" href="http://localhost:3000/admin/TeNdryshme/KodiZbritjes" target="">Kodi Zbritjes</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item pcoded-hasmenu  ">
+                                    <a class="nav-link">
+                                        <span class="pcoded-micon">
+                                            <i class="feather icon-info"></i>
+                                        </span>
+                                        <span class="pcoded-mtext">Klientet</span>
+                                    </a>
+                                    <ul class="pcoded-submenu    -flush">
+                                        <li><a class="nav-link" href="http://localhost:3000/admin/Klientet/ListaEKlienteve" target="">Lista e Klienteve</a> </li>
+                                        <li> <a class="nav-link" href="http://localhost:3000/admin/Klientet/ShportaEKlienteve" target="">Shportat e Klienteve</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="http://localhost:3000/admin/porosite" target="">
+                                        <span class="pcoded-micon"><i class="feather icon-package"></i></span>
+                                        <span class="pcoded-mtext">Porosit</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="http://localhost:3000/admin/mesazhet" target="">
+                                        <span class="pcoded-micon"><i class="feather icon-at-sign"></i></span>
+                                        <span class="pcoded-mtext">Mesazhet</span>
+                                    </a>
+                                </li>
+                                <!-- [Shites Menu] End-->
+                            }
+                        }
                     </ul>
                 </div>
             </div>
@@ -115,8 +255,9 @@
                                 </div>
                                 <ul class="pro-body">
                                     <li><a href="https://localhost:7251/Identity/Account/Manage" class="dropdown-item"><i class="feather icon-user"></i> Profile</a></li>
-                                    <li><a href="http://localhost:3000" class="dropdown-item"><i class="feather icon-shopping-cart"></i> Porosite</a></li>
-                                    <li><a href="http://localhost:3000" class="dropdown-item"><i class="feather icon-heart"></i> Lista e Deshirave</a></li>
+                                    <li><a href="http://localhost:3000/Dashboard/PorositEMia" class="dropdown-item"><i class="feather icon-shopping-cart"></i> Porosite</a></li>
+                                    <li><a href="http://localhost:3000/ListaEDeshirave" class="dropdown-item"><i class="feather icon-heart"></i> Lista e Deshirave</a></li>
+                                    <li><a class="dropdown-item" href="http://localhost:3000/Dashboard/MesazhetEMia"><i class="feather icon-message-circle"></i> Mesazhet e Mia</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -125,16 +266,15 @@
             </div>
         </header>
         <div class="pcoded-main-container">
-        <div class="pcoded-wrapper">
-            <div class="pcoded-content">
-                <div class="pcoded-inner-content">
-                    <!-- [ breadcrumb ] start -->
-
-                    <!-- [ breadcrumb ] end -->
-                    <div class="main-body">
-                        <div class="page-wrapper">
-                @RenderBody()
-            </div>
+            <div class="pcoded-wrapper">
+                <div class="pcoded-content">
+                    <div class="pcoded-inner-content">
+                        <!-- [ breadcrumb ] start -->
+                        <!-- [ breadcrumb ] end -->
+                        <div class="main-body">
+                            <div class="page-wrapper">
+                                @RenderBody()
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -147,7 +287,7 @@
         @RenderBody()
     }
 
-    
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

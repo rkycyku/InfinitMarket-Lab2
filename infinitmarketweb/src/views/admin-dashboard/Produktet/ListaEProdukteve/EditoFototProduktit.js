@@ -115,6 +115,7 @@ function EditoFototProduktit(props) {
         authentikimi
       );
       setPerditeso(Date.now());
+      props.perditesoTeDhenat();
     } catch (error) {
       console.error(error);
     }

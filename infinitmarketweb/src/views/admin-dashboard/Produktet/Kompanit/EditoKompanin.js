@@ -165,7 +165,7 @@ function EditoKompanin(props) {
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>ID Kompanis</Form.Label>
-              <Form.Control value={kompania.kompaniaId} disabled />
+              <Form.Control value={kompania.kompaniaID} disabled />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>

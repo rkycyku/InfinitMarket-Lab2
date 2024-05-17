@@ -14,6 +14,7 @@ import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { faFaceFrown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Titulli from '../components/Titulli';
 
 function Home() {
   const [produktet, setProduktet] = useState([]);
