@@ -32,6 +32,13 @@ function Tabela({
     setItemsPerPage(newItemsPerPage);
   };
 
+  const renderCellContent = (content) => {
+    if (typeof content === 'object' && content !== null) {
+      return <pre>{JSON.stringify(content, null, 2)}</pre>;
+    }
+    return <div dangerouslySetInnerHTML={{ __html: content }} />;
+  };
+
   return (
     <div>
       {data.length > 0 ? (
@@ -101,10 +108,7 @@ function Tabela({
             {items.map((item) => (
               <tr key={item.ID}>
                 {headeri.map((header) => (
-                  <td key={`${item.ID}-${header}`}>
-                    <div className="" dangerouslySetInnerHTML={{ __html: item[header] }} />
-                    {}
-                  </td>
+                  <td key={`${item.ID}-${header}`}>{renderCellContent(item[header])}</td>
                 ))}
                 {kaButona && (
                   <td>

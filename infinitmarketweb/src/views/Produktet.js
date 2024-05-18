@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet';
 import Footer from '../components/Footer';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import ProduktetNeHome from '../components/ProduktetNeHome';
+import ProduktetNeHome from '../components/Produktet/ProduktetNeHome';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

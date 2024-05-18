@@ -18,11 +18,13 @@ namespace InfinitMarket.Controllers.API.Produktet
     {
         private readonly ApplicationDbContext _context;
         private readonly IMongoCollection<FototProduktit>? _fototProduktit;
+        private readonly IMongoCollection<VlersimetEProduktit>? _vleresimiProduktit;
 
         public ProduktiController(ApplicationDbContext context, MongoDBService mongoDBService)
         {
             _context = context;
             _fototProduktit = mongoDBService.Database?.GetCollection<FototProduktit>("fotoProduktit");
+            _vleresimiProduktit = mongoDBService.Database?.GetCollection<VlersimetEProduktit>("vleresimetEProduktit");
         }
 
         [AllowAnonymous]
@@ -139,13 +141,37 @@ namespace InfinitMarket.Controllers.API.Produktet
                 })
                 .FirstOrDefaultAsync();
 
-            var filter = Builders<FototProduktit>.Filter.Eq(x => x.ProduktiID, id);
-            var fotoProduktit = await _fototProduktit.Find(filter).ToListAsync();
+            var filterFototProduktit = Builders<FototProduktit>.Filter.Eq(x => x.ProduktiID, id);
+            var fotoProduktit = await _fototProduktit.Find(filterFototProduktit).ToListAsync();
 
-            var ProduktiMeFotoGallery = new
+            var filterVleresimiProduktit = Builders<VlersimetEProduktit>.Filter.Eq(x => x.ProduktiID, id);
+            var vleresimiProduktit = await _vleresimiProduktit.Find(filterVleresimiProduktit).ToListAsync();
+
+            var VleresimetPoduktiList = new List<Object>();
+
+            foreach(var vleresimi in vleresimiProduktit)
+            {
+                var perdoruesi = await _context.Perdoruesit.Where(x => x.UserID == vleresimi.KlientiID).FirstOrDefaultAsync();
+
+                var vl = new
+                {
+                    perdoruesi.Emri,
+                    perdoruesi.Mbiemri,
+                    perdoruesi.Email,
+                    vleresimi.Id,
+                    vleresimi.VlersimiTekst,
+                    vleresimi.VlersimiYll
+                };
+
+                VleresimetPoduktiList.Add(vl);
+            }
+
+
+            var ProduktiMeFotoGalleryVleresim = new
             {
                 produkti,
-                fotoProduktit
+                fotoProduktit,
+                VleresimetPoduktiList
             };
 
             if (produkti == null)
@@ -153,7 +179,7 @@ namespace InfinitMarket.Controllers.API.Produktet
                 return NotFound();
             }
 
-            return Ok(ProduktiMeFotoGallery);
+            return Ok(ProduktiMeFotoGalleryVleresim);
         }
 
         [AllowAnonymous]

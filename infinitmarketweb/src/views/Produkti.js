@@ -3,7 +3,7 @@ import './Styles/Produkti.css';
 import { useState } from 'react';
 import axios from 'axios';
 import { useEffect } from 'react';
-import ProduktetNeHome from '../components/ProduktetNeHome';
+import ProduktetNeHome from '../components/Produktet/ProduktetNeHome';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import Mesazhi from '../components/Mesazhi';
@@ -20,6 +20,7 @@ import 'swiper/css/pagination';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { useNavigate } from 'react-router-dom';
 import Titulli from '../components/Titulli';
+import VleresimetEProduktit from '../components/Produktet/VleresimetEProduktit';
 
 function Produkti() {
   const { id } = useParams();
@@ -82,6 +83,8 @@ function Produkti() {
       try {
         const response = await axios.get(`https://localhost:7251/api/Produktet/Produkti/ShfaqProduktinSipasIDsAll/${id}`, authentikimi);
         const teDhenatProduktit = response.data;
+
+        console.log(response.data);
 
         if (!teDhenatProduktit.produkti) {
           navigate('/404'); // Redirect to 404 page if product not found
@@ -294,11 +297,8 @@ function Produkti() {
                               (100 + (produkti && produkti.produkti && produkti.produkti.llojiTVSH)))
                       ).toFixed(2)
                     : parseFloat(
-                        produkti &&
-                          produkti.produkti &&
-                          produkti.produkti.qmimiProduktit - produkti &&
-                          produkti.produkti &&
-                          produkti.produkti.qmimiProduktit *
+                        (produkti && produkti.produkti && produkti.produkti.qmimiProduktit) -
+                          (produkti && produkti.produkti && produkti.produkti.qmimiProduktit) *
                             ((produkti && produkti.produkti && produkti.produkti.llojiTVSH) /
                               (100 + (produkti && produkti.produkti && produkti.produkti.llojiTVSH)))
                       ).toFixed(2)}{' '}
@@ -337,6 +337,12 @@ function Produkti() {
             <h2>Pershkrimi: </h2>
             <p>{produkti && produkti.produkti && produkti.produkti.pershkrimi}</p>
           </div>
+        )}
+        {produkti && produkti.vleresimetPoduktiList && (
+          <>
+            <h1>Product Reviews</h1>
+            <VleresimetEProduktit reviews={produkti && produkti.vleresimetPoduktiList} />
+          </>
         )}
       </div>
 

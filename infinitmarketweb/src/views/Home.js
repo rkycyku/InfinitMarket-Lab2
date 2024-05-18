@@ -1,4 +1,4 @@
-import ProduktetNeHome from '../components/ProduktetNeHome';
+import ProduktetNeHome from '../components/Produktet/ProduktetNeHome';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Footer from '../components/Footer';

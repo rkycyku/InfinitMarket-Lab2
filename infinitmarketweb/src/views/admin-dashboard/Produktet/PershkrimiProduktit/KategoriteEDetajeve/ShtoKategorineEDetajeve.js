@@ -5,8 +5,9 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { propTypes } from 'react-bootstrap/esm/Image';
 
-const ShtoKategorineEDetajeve = ({ handleClose }) => {
+const ShtoKategorineEDetajeve = (props, { handleClose }) => {
   const [inputs, setInputs] = useState({});
   const [emri, setEmri] = useState('');
   const [error, setError] = useState('');
@@ -61,7 +62,7 @@ const ShtoKategorineEDetajeve = ({ handleClose }) => {
       const response = await axios.post('https://localhost:7251/api/Produktet/Produkti/ShtoKategorineEDetajet', data);
 
       console.log('Response from API:', response.data);
-      
+      props.perditesoTeDhenat();
     } catch (error) {
       console.error('Error sending data:', error);
     }
