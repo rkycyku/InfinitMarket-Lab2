@@ -8,11 +8,10 @@ import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import Mesazhi from '../components/Mesazhi';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartShopping, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { faCartShopping, faPenToSquare, faPlus } from '@fortawesome/free-solid-svg-icons';
 import EditoProduktin from './admin-dashboard/Produktet/ListaEProdukteve/EditoProduktin';
 import Footer from '../components/Footer';
 import { Button } from 'react-bootstrap';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import '../assets/css/swiperSlider.css';
 import 'swiper/css';
@@ -20,7 +19,10 @@ import 'swiper/css/pagination';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { useNavigate } from 'react-router-dom';
 import Titulli from '../components/Titulli';
-import VleresimetEProduktit from '../components/Produktet/VleresimetEProduktit';
+import ShtoVleresimin from '../components/Produktet/ShtoVleresimin';
+import { faStar, faStarHalfAlt} from '@fortawesome/free-solid-svg-icons';
+import {faStar as faStarEmpty} from '@fortawesome/free-regular-svg-icons';
+
 
 function Produkti() {
   const { id } = useParams();
@@ -32,6 +34,7 @@ function Produkti() {
   const [tipiMesazhit, setTipiMesazhit] = useState('success');
   const [pershkrimiMesazhit, setPershkrimiMesazhit] = useState('');
   const [edito, setEdito] = useState(false);
+  const [shtoVleresimin, setShtoVleresimin] = useState(false);
   const [teDhenat, setTeDhenat] = useState([]);
 
   const [shporta, setShporta] = useState([]);
@@ -171,6 +174,46 @@ function Produkti() {
     setEdito(true);
   };
 
+  const handleShtoVleresimin = (e) => {
+    e.preventDefault();
+    setShtoVleresimin(true);
+  };
+
+  //Vleresimi Start
+  let vleresimiTotal = 0;
+
+  produkti &&
+    produkti.vleresimetPoduktiList &&
+    produkti.vleresimetPoduktiList.map((vleresimi) => {
+      vleresimiTotal += vleresimi.vlersimiYll;
+      console.log(vleresimi.vlersimiYll);
+    });
+
+  const vleresimiMesatar =
+    vleresimiTotal > 0 ? vleresimiTotal / (produkti && produkti.vleresimetPoduktiList && produkti.vleresimetPoduktiList.length) : 0;
+  const numriVleresimeve = produkti && produkti.vleresimetPoduktiList && produkti.vleresimetPoduktiList.length;
+
+  const shfaqYllat = (vleresimi) => {
+    const yllIcons = [];
+    for (let i = 0; i < 5; i++) {
+      if (vleresimi >= i + 1) {
+        yllIcons.push(
+          <FontAwesomeIcon key={i} icon={faStar} className="yll" />
+        );
+      } else if (vleresimi >= i + 0.5) {
+        yllIcons.push(
+          <FontAwesomeIcon key={i} icon={faStarHalfAlt} className="yll" />
+        );
+      } else {
+        yllIcons.push(
+          <FontAwesomeIcon key={i} icon={faStarEmpty} className="yll" />
+        );
+      }
+    }
+    return yllIcons;
+  };
+  //Vleresimi Mbarimi
+
   return (
     <div className="container">
       <Titulli
@@ -186,6 +229,18 @@ function Produkti() {
           shfaq={edito}
           largo={() => setEdito(false)}
           id={produkti && produkti.produkti && produkti.produkti.produktiId}
+          shfaqmesazhin={() => setShfaqMesazhin(true)}
+          perditesoTeDhenat={() => setPerditeso(Date.now())}
+          setTipiMesazhit={setTipiMesazhit}
+          setPershkrimiMesazhit={setPershkrimiMesazhit}
+        />
+      )}
+      {shtoVleresimin && (
+        <ShtoVleresimin
+          shfaq={shtoVleresimin}
+          largo={() => setShtoVleresimin(false)}
+          idProdukti={produkti && produkti.produkti && produkti.produkti.produktiId}
+          idKlienti={teDhenat && teDhenat.userID}
           shfaqmesazhin={() => setShfaqMesazhin(true)}
           perditesoTeDhenat={() => setPerditeso(Date.now())}
           setTipiMesazhit={setTipiMesazhit}
@@ -340,8 +395,35 @@ function Produkti() {
         )}
         {produkti && produkti.vleresimetPoduktiList && (
           <>
-            <h1>Product Reviews</h1>
-            <VleresimetEProduktit reviews={produkti && produkti.vleresimetPoduktiList} />
+            <h2>Vleresimet e Produktit</h2>
+            <div className="vleresimetEProduktit">
+              <div className="vleresimiTotal">
+                <div className="yllatVleresimi">
+                  <span className="vleresimiMesatar">{vleresimiMesatar.toFixed(2)}</span>
+                  <span className="numriVleresimeve">
+                    {' '}
+                    {numriVleresimeve === 0
+                      ? 'Nuk ka asnje vleresim'
+                      : numriVleresimeve === 1
+                      ? numriVleresimeve + ' vlerësim'
+                      : numriVleresimeve + ' vlerësime'}
+                  </span>
+                  <span className="yllat yll">{shfaqYllat(vleresimiMesatar)}</span>
+                </div>
+                <div className="shtoVleresim">
+                  <Button variant="primary" onClick={(e) => handleShtoVleresimin(e)}>Vendosni nje vleresim <FontAwesomeIcon icon={faPlus} /></Button>
+                </div>
+              </div>
+              {produkti.vleresimetPoduktiList.map((vleresimi, index) => (
+                <div key={index} className="vleresimiProduktit">
+                  <div className="klienti">
+                    {vleresimi.emri} {vleresimi.mbiemri} - {vleresimi.email}
+                  </div>
+                  <div className="yllat yll">{shfaqYllat(vleresimi.vlersimiYll)}</div>
+                  <div className="vleresimi">{vleresimi.vlersimiTekst}</div>
+                </div>
+              ))}
+            </div>
           </>
         )}
       </div>

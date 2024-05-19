@@ -2,7 +2,9 @@
 using InfinitMarket.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MongoDB.Driver;
+using System.Linq;
 
 namespace InfinitMarket.Controllers.API.Produktet
 {
@@ -12,9 +14,36 @@ namespace InfinitMarket.Controllers.API.Produktet
     public class VleresimetEProduktitController : ControllerBase
     {
         private readonly IMongoCollection<VlersimetEProduktit>? _vleresimiProduktit;
-        public VleresimetEProduktitController(MongoDBService mongoDBService)
+        private readonly ApplicationDbContext _context;
+
+        public VleresimetEProduktitController(MongoDBService mongoDBService, ApplicationDbContext context)
         {
             _vleresimiProduktit = mongoDBService.Database?.GetCollection<VlersimetEProduktit>("vleresimetEProduktit");
+            _context = context;
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("KontrolloALejohetVleresimi")]
+        public async Task<IActionResult> KontrolloALejohetVleresimi(int produktiId, int userID)
+        {
+            // Get all orders for the client
+            var porositKlientit = await _context.Porosit
+                .Where(p => p.IdKlienti == userID)
+                .Select(p => p.IdPorosia)
+                .ToListAsync();
+
+            var eshteBlereProdukti = await _context.TeDhenatEPorosis
+                .AnyAsync(t => t.IdProdukti == produktiId && porositKlientit.Contains((int)t.IdPorosia));
+
+            if (eshteBlereProdukti)
+            {
+                return Ok(true);
+            }
+            else
+            {
+                return Ok(false);
+            }
         }
 
 

@@ -177,6 +177,63 @@ td a:hover {
   color: #777;
 }
 
+/* Vleresimi Start */
+
+.vleresimetEProduktit {
+  padding: 30px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 90%;
+}
+.vleresimiTotal{
+  display: flex;
+  justify-content: space-between;
+}
+
+.yllatVleresimi{
+  display: flex;
+  gap: 0.4em;
+  align-items: center;
+  justify-content: center;
+}
+
+.vleresimiProduktit {
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.klienti {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.yllat {
+  color: orange;
+  margin-bottom: 10px;
+}
+
+.yll {
+  color: #ffd700;
+  font-size: 1.5rem;
+}
+.review {
+  margin-bottom: 10px;
+}
+
+.vleresimiMesatar {
+  font-size: 18px;
+  font-style: italic;
+  color: #666;
+}
+
+
+/* Vleresimi Mbarim */
+
 @media (min-width: 1025px) {
   .button-kategoria {
     width: 10em;

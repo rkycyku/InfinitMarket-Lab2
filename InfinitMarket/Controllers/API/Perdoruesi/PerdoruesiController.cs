@@ -72,6 +72,7 @@ namespace InfinitMarket.Controllers
                 perdoruesi?.Mbiemri,
                 perdoruesi?.Email,
                 perdoruesi?.TeDhenatPerdoruesit,
+                perdoruesi?.UserID,
                 rolet
             };
 
