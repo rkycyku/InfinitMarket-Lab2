@@ -29,6 +29,7 @@ namespace InfinitMarket.Models
 
         public virtual TeDhenatProduktit? TeDhenatProduktit { get; set; }
 
+        public virtual List<TeDhenatEPorosis>? TeDhenatEPorosis { get; set; }
         public virtual ZbritjaQmimitProduktit? ZbritjaQmimitProduktit { get; set; }
     }
 }

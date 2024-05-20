@@ -18,6 +18,8 @@ namespace InfinitMarket.Models
         public IdentityUser? AspNetUser { get; set; }
 
         public virtual TeDhenatPerdoruesit? TeDhenatPerdoruesit { get; set; }
+
+        public virtual List<Porosit>? Porosit { get; set; }
     }
 }
 

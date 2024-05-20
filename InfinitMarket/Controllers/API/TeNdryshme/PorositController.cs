@@ -61,8 +61,21 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             }
 
             var porosit = await _context.Porosit
-                .Where(p => p.IdKlienti == perdoruesi.UserID)
                 .OrderByDescending(p => p.IdPorosia)
+                .Where(p => p.IdKlienti == perdoruesi.UserID)
+                .Select(p => new
+                {
+                    p.IdPorosia,
+                    p.Totali18TVSH,
+                    p.Totali8TVSH,
+                    p.DataPorosis,
+                    p.StatusiPorosis,
+                    p.Zbritja,
+                    p.TotaliProdukteve,
+                    p.LlojiPageses,
+                    p.LlojiTransportit,
+                    p.QmimiTransportit,
+                })
                 .ToListAsync();
 
             return Ok(porosit);

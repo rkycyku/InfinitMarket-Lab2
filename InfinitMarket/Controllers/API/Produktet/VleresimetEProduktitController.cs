@@ -1,5 +1,6 @@
 ﻿using InfinitMarket.Data;
 using InfinitMarket.Entities;
+using InfinitMarket.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -27,7 +28,6 @@ namespace InfinitMarket.Controllers.API.Produktet
         [Route("KontrolloALejohetVleresimi")]
         public async Task<IActionResult> KontrolloALejohetVleresimi(int produktiId, int userID)
         {
-            // Get all orders for the client
             var porositKlientit = await _context.Porosit
                 .Where(p => p.IdKlienti == userID)
                 .Select(p => p.IdPorosia)
@@ -57,6 +57,33 @@ namespace InfinitMarket.Controllers.API.Produktet
 
             return vleresimiProduktit is not null ? Ok(vleresimiProduktit) : NotFound();
         }
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("ShfaqVleresimetEKlientitPerProduktin")]
+        public async Task<IActionResult> ShfaqVleresimetEKlientitPerProduktin(int produktiId, int klientiID)
+        {
+            var filter = Builders<VlersimetEProduktit>.Filter.And(
+                Builders<VlersimetEProduktit>.Filter.Eq(x => x.ProduktiID, produktiId),
+                Builders<VlersimetEProduktit>.Filter.Eq(x => x.KlientiID, klientiID)
+            );
+
+            var vleresimiProduktit = await _vleresimiProduktit.Find(filter).FirstOrDefaultAsync();
+
+            return vleresimiProduktit is not null ? Ok(vleresimiProduktit) : Ok(false);
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("ShfaqVleresiminNgaID")]
+        public async Task<IActionResult> ShfaqVleresiminNgaID(string idVleresimi)
+        {
+            var filter = Builders<VlersimetEProduktit>.Filter.Eq(x => x.Id, idVleresimi);
+            var vleresimiProduktit = await _vleresimiProduktit.Find(filter).FirstOrDefaultAsync();
+
+            return vleresimiProduktit is not null ? Ok(vleresimiProduktit) : NotFound();
+        }
+
 
         [AllowAnonymous]
         [HttpPost]

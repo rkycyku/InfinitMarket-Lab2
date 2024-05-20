@@ -84,7 +84,7 @@ function PerditesoStatusinPorosis(props) {
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                         <Form.Label>Totali Porosis</Form.Label>
                         <Form.Control
-                            value={parseFloat(porosia.totaliPorosis).toFixed(2) + " €"}
+                            value={parseFloat(porosia.totali8TVSH + porosia.totali18TVSH - porosia.zbritja).toFixed(2) + " €"}
                             disabled
                         />
                     </Form.Group>

@@ -231,10 +231,7 @@ function EditoFototProduktit(props) {
             }}
             disabled={loading}
           >
-            Anulo <FontAwesomeIcon icon={faTimes} />
-          </Button>
-          <Button variant="primary" onClick={handleSubmit} disabled={loading}>
-            {loading ? <Spinner animation="border" size="sm" /> : 'Ruaj'} <FontAwesomeIcon icon={faPenToSquare} />
+            Mbyll <FontAwesomeIcon icon={faTimes} />
           </Button>
         </Modal.Footer>
       </Modal>

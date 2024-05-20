@@ -95,6 +95,12 @@ const menuItems = {
               type: 'item',
               url: '/admin/TeNdryshme/KodiZbritjes'
             },
+            {
+              id: 'Statistika',
+              title: 'Statistika',
+              type: 'item',
+              url: '/Admin/TeNdryshme/Statistika'
+            },
           ]
         },
         {

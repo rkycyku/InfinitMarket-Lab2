@@ -50,7 +50,7 @@ namespace InfinitMarket.Migrations
                 columns: new[] { "IDTeDhenatBiznesit", "EmriIBiznesit", "ShkurtesaEmritBiznesit", "NUI", "NF", "NrTVSH", "Adresa", "NrKontaktit", "Email", "Logo" },
                 values: new object[,]
                 {
-                    { 1, "InfinitMarket Online SH.P.K.", "INF", "112233445", "112233445", "112233445", "P.A., Prishtine, 10000 Kosove", "38344111222", "info@infinitmarket.com", "PaLogo.png"}
+                    { 1, "", "", "0", "0", "0", "", "0", "", "PaLogo.png"}
                 });
 
             migrationBuilder.InsertData(

@@ -105,6 +105,36 @@ function EditoProduktin(props) {
       });
   };
 
+  const ruajPerditesoFoto = async () => {
+    await axios
+      .put(
+        `https://localhost:7251/api/Produktet/Produkti/PerditesoProduktin/${props.id}`,
+        {
+          ProduktiId: produkti.produktiId,
+          EmriProduktit: produkti.emriProduktit,
+          Pershkrimi: produkti.pershkrimi,
+          FotoProduktit: produkti.fotoProduktit,
+          KompaniaId: produkti.kompaniaId,
+          KategoriaId: produkti.kategoriaId,
+          isDeleted: produkti.isDeleted,
+          TeDhenatProduktit: {
+            llojiTVSH: produkti.llojiTVSH
+          }
+        },
+        authentikimi
+      )
+      .then((x) => {
+        setShfaqEditoFotot(true);
+      })
+      .catch((error) => {
+        console.error('Error saving the product:', error);
+        props.setTipiMesazhit('danger');
+        props.setPershkrimiMesazhit('Ndodhi nje gabim gjate perditesimit te produktit!');
+        props.perditesoTeDhenat();
+        props.shfaqmesazhin();
+      });
+  };
+
   return (
     <>
       <KontrolloAksesinNeFunksione
@@ -177,7 +207,13 @@ function EditoProduktin(props) {
             </Form>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="info" onClick={() => setShfaqEditoFotot(true)} disabled={loading}>
+            <Button
+              variant="info"
+              onClick={() => {
+                ruajPerditesoFoto();
+              }}
+              disabled={loading}
+            >
               Perditeso Fotot <FontAwesomeIcon icon={faTimes} />
             </Button>
             <Button

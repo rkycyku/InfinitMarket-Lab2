@@ -8,9 +8,9 @@ namespace InfinitMarket.Entities
         [BsonId]
         [BsonElement("_id"), BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }
-        [BsonElement("produkti_id"), BsonRepresentation(BsonType.Int32)]
+        [BsonElement("produktiID"), BsonRepresentation(BsonType.Int32)]
         public int? ProduktiID { get; set; }
-        [BsonElement("klienti_id"), BsonRepresentation(BsonType.Int32)]
+        [BsonElement("klientiID"), BsonRepresentation(BsonType.Int32)]
         public int? KlientiID { get; set; }
         [BsonElement("vlersimiTekst"), BsonRepresentation(BsonType.String)]
         public string? VlersimiTekst {  get; set; }

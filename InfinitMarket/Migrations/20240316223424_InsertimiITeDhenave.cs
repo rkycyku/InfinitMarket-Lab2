@@ -14,9 +14,9 @@ namespace InfinitMarket.Migrations
               columns: new[] { "Id", "Name", "NormalizedName", "ConcurrencyStamp" },
               values: new object[,]
               {
-            { "01010101-0101-0101-0101-010101010101", "Admin", "ADMIN", "01010101-0101-0101-0101-010101010101" },
-            { "02020202-0202-0202-0202-020202020202", "Shites", "SHITES", "02020202-0202-0202-0202-020202020202" },
-            { "03030303-0303-0303-0303-030303030303", "Klient", "KLIENT", "03030303-0303-0303-0303-030303030303" },
+            { "01010101-0101-0101-0101-010101010101", "Klient", "KLIENT", "01010101-0101-0101-0101-010101010101" },
+            { "02020202-0202-0202-0202-020202020202", "Admin", "ADMIN", "02020202-0202-0202-0202-020202020202" },
+            { "03030303-0303-0303-0303-030303030303", "Shites", "SHITES", "03030303-0303-0303-0303-030303030303" },
               });
 
             migrationBuilder.InsertData(
@@ -33,7 +33,7 @@ namespace InfinitMarket.Migrations
             {
                 "01010101-0101-0101-0101-010101010101", "admin@infinitmarket.com", "ADMIN@INFINITMARKET.COM",
                 "admin@infinitmarket.com", "ADMIN@INFINITMARKET.COM", false,
-                "AQAAAAEAACcQAAAAEJlO6MbXUfC+q4JVGrZEjKV6z1dDnA323QebRD85vPQJ3ScQEmBr3P8zKSHwu5Cy2w==",
+                "AQAAAAEAACcQAAAAELLjjlFHUVkbwtDOorEU6HVbq2qnXSEdkqZzadodugKLCxM3E2rWpIESXFgq+tJ/IA==",
                 "PKJ54KGIZB4MOS3BACM2INRJE54VBB32", "9e6bf9b8-daa7-42b1-9529-f17ee6633b0f",
                 null, false, false, null, true, 0
             },
@@ -47,7 +47,6 @@ namespace InfinitMarket.Migrations
 
             { "01010101-0101-0101-0101-010101010101", "01010101-0101-0101-0101-010101010101" },
             { "01010101-0101-0101-0101-010101010101", "02020202-0202-0202-0202-020202020202" },
-            { "01010101-0101-0101-0101-010101010101", "03030303-0303-0303-0303-030303030303" },
                 });
 
             migrationBuilder.InsertData(
@@ -63,7 +62,7 @@ namespace InfinitMarket.Migrations
                 columns: new[] { "TeDhenatID", "NrKontaktit", "Qyteti", "ZipKodi", "Adresa", "Shteti", "UserID", "DataKrijimit", "DataLindjes", "EmailPersonal", "EmriPrindit", "Gjinia", "NrPersonal" },
                 values: new object[,]
                 {
-            { 1, "38344111222", "Prishtine", "10000", "P.A.", "Kosove", 1, "1900-01-01T00:00:00.000Z", "1900-01-01T00:00:00.000Z", "admin@infinitmarket.com", "Filani", "M", "1100110011" },
+            { 1, "+38344111222", "Prishtine", "10000", "P.A.", "Kosove", 1, "1900-01-01T00:00:00.000Z", "1900-01-01T00:00:00.000Z", "admin@infinitmarket.com", "Filani", "M", "1100110011" },
                 });
         }
 

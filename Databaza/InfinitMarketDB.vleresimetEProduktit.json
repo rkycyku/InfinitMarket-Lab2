@@ -1,0 +1,323 @@
+[
+  {
+    "produktiID": 63,
+    "klientiID": 5,
+    "vlersimiTekst": "Ky produkt i tejkaloi pritshmëritë e mia! Vlerë e shkëlqyer për çmimin.",
+    "vlersimiYll": 4
+  },
+  {
+    "produktiID": 17,
+    "klientiID": 9,
+    "vlersimiTekst": "Jam fare i zhgënjyer me këtë produkt. Nuk funksionoi siç është reklamuar.",
+    "vlersimiYll": 2
+  },
+  {
+    "produktiID": 42,
+    "klientiID": 3,
+    "vlersimiTekst": "Deri tani, gjithçka është mirë. Produkti duket të jetë me cilësi të lartë.",
+    "vlersimiYll": 5
+  },
+  {
+    "produktiID": 63,
+    "klientiID": 5,
+    "vlersimiTekst": "Ky produkt i tejkaloi pritshmëritë e mia! Vlerë e shkëlqyer për çmimin.",
+    "vlersimiYll": 4
+  },
+  {
+    "produktiID": 17,
+    "klientiID": 9,
+    "vlersimiTekst": "Jam fare i zhgënjyer me këtë produkt. Nuk funksionoi siç është reklamuar.",
+    "vlersimiYll": 2
+  },
+  {
+    "produktiID": 42,
+    "klientiID": 3,
+    "vlersimiTekst": "Deri tani, gjithçka është mirë. Produkti duket të jetë me cilësi të lartë.",
+    "vlersimiYll": 5
+  },
+  {
+    "produktiID": 25,
+    "klientiID": 11,
+    "vlersimiTekst": "Funksionon mrekullisht! Përshtatet shumë mirë me nevojat e mia.",
+    "vlersimiYll": 5
+  },
+  {
+    "produktiID": 77,
+    "klientiID": 7,
+    "vlersimiTekst": "Nuk kam pasur probleme me këtë produkt deri tani. Shumë i kënaqur me blerjen time.",
+    "vlersimiYll": 4
+  },
+  {
+    "produktiID": 12,
+    "klientiID": 2,
+    "vlersimiTekst": "Një produkt i zakonshëm. Nuk kam shumë për të thënë për të.",
+    "vlersimiYll": 3
+  },
+  {
+    "produktiID": 39,
+    "klientiID": 1,
+    "vlersimiTekst": "Nuk kam qenë i kënaqur me performancën e këtij produkti. Ka pasur shumë gabime dhe problemet e shpeshta.",
+    "vlersimiYll": 2
+  },
+  {
+    "produktiID": 55,
+    "klientiID": 10,
+    "vlersimiTekst": "Produkt i dobët. Nuk do t'i sugjeroja atë për të tjerët.",
+    "vlersimiYll": 1
+  },
+  {
+    "produktiID": 73,
+    "klientiID": 8,
+    "vlersimiTekst": "Më ka impresionuar me performancën e tij. Nuk mund të prisja më shumë nga ky produkt.",
+    "vlersimiYll": 5
+  },
+  {
+    "produktiID": 7,
+    "klientiID": 6,
+    "vlersimiTekst": "Produkt i prishur që nuk funksionon siç duhet. Do të kërkoj rimbursim.",
+    "vlersimiYll": 1
+  },
+  {
+    "produktiID": 30,
+    "klientiID": 4,
+    "vlersimiTekst": "Mund të them se ky produkt është shumë i përshtatshëm për nevojat e mia. E rekomandoj me siguri!",
+    "vlersimiYll": 5
+  },
+  {
+    "produktiID": 58,
+    "klientiID": 12,
+    "vlersimiTekst": "Një produkt i rregullt. Nuk ka shkëlqim të veçantë por punon siç duhet.",
+    "vlersimiYll": 3
+  },
+  {
+    "produktiID": 5,
+    "klientiID": 2,
+    "vlersimiTekst": "Produkti i parë që kam blerë që nuk ka pasur probleme të mëdha deri tani. I kënaqur me performancën e tij.",
+    "vlersimiYll": 4
+  },
+  {
+    "produktiID": 72,
+    "klientiID": 9,
+    "vlersimiTekst": "Nuk do të kisha blerë këtë produkt përsëri. Ka pasur shumë probleme dhe shërbimi i klientit ishte i dobët.",
+    "vlersimiYll": 2
+  },
+  {
+    "produktiID": 20,
+    "klientiID": 7,
+    "vlersimiTekst": "Nuk e rekomandoj këtë produkt. Shumë i brishtë dhe ka shumë defekte.",
+    "vlersimiYll": 1
+  },
+  {
+    "produktiID": 49,
+    "klientiID": 6,
+    "vlersimiTekst": "Nuk jam i kënaqur me cilësinë e këtij produkti. Është shumë i ndjeshëm ndaj ndotjeve.",
+    "vlersimiYll": 2
+  },
+  {
+    "produktiID": 35,
+    "klientiID": 3,
+    "vlersimiTekst": "Funksionon siç duhet, por është pak i shtrenjtë për cilësinë që ofron.",
+    "vlersimiYll": 3
+  },
+  {
+    "produktiID": 80,
+    "klientiID": 10,
+    "vlersimiTekst": "Produkt i zakonshëm me një çmim të arsyeshëm. Përfitimi është në përputhje me çmimin.",
+    "vlersimiYll": 3
+  },
+  {
+    "produktiID": 13,
+    "klientiID": 8,
+    "vlersimiTekst": "Një produkt i mirë për çmimin. Nuk ka shkëlqim të jashtëzakonshëm, por përmbush nevojat.",
+    "vlersimiYll": 4
+  },
+  {
+    "produktiID": 67,
+    "klientiID": 1,
+    "vlersimiTekst": "Kjo ka qenë një investim i dobishëm. Produkti punon mirë dhe është i qëndrueshëm.",
+    "vlersimiYll": 5
+  },
+  {
+    "produktiID": 51,
+    "klientiID": 4,
+    "vlersimiTekst": "Nuk kam pasur probleme me këtë produkt. Punon siç duhet dhe është e lehtë për t'u përdorur.",
+    "vlersimiYll": 4
+  },
+  {
+    "produktiID": 8,
+    "klientiID": 9,
+    "vlersimiTekst": "Produkti është i dobët. Kam hasur shumë probleme teknike që nuk janë zgjidhur.",
+    "vlersimiYll": 2
+  },
+  {
+    "produktiID": 26,
+    "klientiID": 11,
+    "vlersimiTekst": "Një produkt i shkëlqyer për nevojat e mia. Puna është e shkëlqyer dhe ka qenë shumë e qëndrueshme.",
+    "vlersimiYll": 5
+  },
+  {
+    "produktiID": 62,
+    "klientiID": 7,
+    "vlersimiTekst": "Nuk do t'i këshilloja këtë produkt për dikë tjetër. Ka pasur shumë probleme dhe defekte.",
+    "vlersimiYll": 1
+  },
+  {
+    "produktiID": 38,
+    "klientiID": 3,
+    "vlersimiTekst": "Produkti ka punuar mirë për mua. Nuk kam asnjë ankesë deri tani.",
+    "vlersimiYll": 4
+  },
+  {
+    "produktiID": 75,
+    "klientiID": 8,
+    "vlersimiTekst": "Shumë i pakënaqur me cilësinë e këtij produkti. Është shumë i kërkueshëm dhe ka shumë probleme.",
+    "vlersimiYll": 2
+  },
+  {
+    "produktiID": 2,
+    "klientiID": 1,
+    "vlersimiTekst": "Ky produkt ka qenë një investim i mirë. Kam pasur përfitim të konsiderueshëm nga përdorimi i tij.",
+    "vlersimiYll": 5
+  },
+  {
+    "produktiID": 47,
+    "klientiID": 5,
+    "vlersimiTekst": "Produkt i rregullt, por nuk ka dhënë shumë për çmimin e tij.",
+    "vlersimiYll": 3
+  },
+  {
+    "produktiID": 71,
+    "klientiID": 12,
+    "vlersimiTekst": "Shumë i lumtur me performancën e këtij produkti. Ka plotësuar të gjitha pritshmëritë e mia.",
+    "vlersimiYll": 5
+  },
+  {
+    "produktiID": 15,
+    "klientiID": 10,
+    "vlersimiTekst": "Nuk kam pasur një përvojë të mirë me këtë produkt. Ka pasur shumë probleme dhe shërbimi i klientit nuk ishte i dobët.",
+    "vlersimiYll": 2
+  },
+  {
+    "_id": {
+      "$oid": "664bc9f5fe5b1a9de4ed0b75"
+    },
+    "produktiID": 31,
+    "klientiID": 6,
+    "vlersimiTekst": "Produkti ka funksionuar siç është reklamuar. Kam qenë i kënaqur me performancën e tij.",
+    "vlersimiYll": 4
+  },
+  {
+    "produktiID": 79,
+    "klientiID": 2,
+    "vlersimiTekst": "Nuk rekomandoj këtë produkt për asnjë. Ka qenë një përvojë e tmerrshme me të.",
+    "vlersimiYll": 1
+  },
+  {
+    "produktiID": 60,
+    "klientiID": 8,
+    "vlersimiTekst": "Ky produkt ka qenë një investim i vlefshëm për mua. E përdor çdo ditë pa probleme.",
+    "vlersimiYll": 5
+  },
+  {
+    "produktiID": 24,
+    "klientiID": 10,
+    "vlersimiTekst": "Nuk kam qenë i kënaqur me cilësinë e këtij produkti. Ka pasur shumë defekte dhe problemet nuk janë zgjidhur.",
+    "vlersimiYll": 2
+  },
+  {
+    "produktiID": 46,
+    "klientiID": 7,
+    "vlersimiTekst": "Produkt i shkëlqyer! Ka qenë një zgjedhje e shkëlqyer për nevojat e mia.",
+    "vlersimiYll": 5
+  },
+  {
+    "produktiID": 9,
+    "klientiID": 1,
+    "vlersimiTekst": "Një produkt i rregullt. Nuk ka dhënë shumë përvojë ndryshe përveç asaj që prisja.",
+    "vlersimiYll": 3
+  },
+  {
+    "produktiID": 54,
+    "klientiID": 12,
+    "vlersimiTekst": "Nuk do ta kisha blerë përsëri. Ka qenë një përvojë e këqinjë me këtë produkt.",
+    "vlersimiYll": 1
+  },
+  {
+    "produktiID": 22,
+    "klientiID": 9,
+    "vlersimiTekst": "Ky produkt ka qenë një shpëtim për mua. Ka punuar mirë dhe pa probleme.",
+    "vlersimiYll": 4
+  },
+  {
+    "produktiID": 64,
+    "klientiID": 5,
+    "vlersimiTekst": "Funksionon mirë për mua. Nuk kam hasur probleme të mëdha deri tani.",
+    "vlersimiYll": 4
+  },
+  {
+    "produktiID": 16,
+    "klientiID": 3,
+    "vlersimiTekst": "Nuk kam pasur një përvojë të mirë me këtë produkt. Ka pasur shumë probleme teknike.",
+    "vlersimiYll": 2
+  },
+  {
+    "produktiID": 36,
+    "klientiID": 11,
+    "vlersimiTekst": "Produkt i rregullt. Nuk kam pasur probleme të mëdha me të deri tani.",
+    "vlersimiYll": 3
+  },
+  {
+    "produktiID": 76,
+    "klientiID": 6,
+    "vlersimiTekst": "Nuk e rekomandoj këtë produkt për asnjë. Ka shumë defekte dhe shërbimi i klientit është i dobët.",
+    "vlersimiYll": 1
+  },
+  {
+    "produktiID": 4,
+    "klientiID": 8,
+    "vlersimiTekst": "Produkti ka punuar mirë për mua deri tani. E përdor me sukses për detyrat e mia të përditshme.",
+    "vlersimiYll": 4
+  },
+  {
+    "produktiID": 65,
+    "klientiID": 2,
+    "vlersimiTekst": "Nuk jam i kënaqur me performancën e këtij produkti. Ka shumë gabime dhe shërbimi i klientit është i dobët.",
+    "vlersimiYll": 2
+  },
+  {
+    "produktiID": 33,
+    "klientiID": 9,
+    "vlersimiTekst": "Një produkt i shkëlqyer për çmimin. Kam qenë shumë i lumtur me performancën e tij.",
+    "vlersimiYll": 5
+  },
+  {
+    "produktiID": 11,
+    "klientiID": 3,
+    "vlersimiTekst": "Nuk rekomandoj këtë produkt për asnjë. Ka qenë një përvojë shumë e keqe me të.",
+    "vlersimiYll": 1
+  },
+  {
+    "produktiID": 69,
+    "klientiID": 12,
+    "vlersimiTekst": "Ky produkt ka qenë një shpëtim për mua. Ka punuar mirë dhe është i qëndrueshëm.",
+    "vlersimiYll": 4
+  },
+  {
+    "produktiID": 21,
+    "klientiID": 5,
+    "vlersimiTekst": "Produkt i mirë me një çmim të arsyeshëm. E përdor për detyrat e përditshme me sukses.",
+    "vlersimiYll": 4
+  },
+  {
+    "produktiID": 44,
+    "klientiID": 10,
+    "vlersimiTekst": "Nuk kam pasur një përvojë të mirë me këtë produkt. Ka pasur shumë probleme teknike dhe nuk është i qëndrueshëm.",
+    "vlersimiYll": 2
+  },
+  {
+    "produktiID": 18,
+    "klientiID": 7,
+    "vlersimiTekst": "Produkt i zakonshëm. Puna është e pritshme për një produkt me këtë çmim.",
+    "vlersimiYll": 3
+  }
+]

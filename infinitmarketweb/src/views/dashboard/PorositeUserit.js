@@ -34,7 +34,7 @@ function PorositeUserit(props) {
     const vendosPorosite = async () => {
       try {
         setLoading(true);
-        const porosia = await axios.get('https://localhost:7251/api/TeNdryshme/Porosia/ShfaqPorosit', authentikimi);
+        const porosia = await axios.get(`https://localhost:7251/api/TeNdryshme/Porosia/ShfaqPorositeKlientit?idPerdoruesi=${getID}`, authentikimi);
         setPorosite(
           porosia.data.map((k) => ({
             ID: k.idPorosia,

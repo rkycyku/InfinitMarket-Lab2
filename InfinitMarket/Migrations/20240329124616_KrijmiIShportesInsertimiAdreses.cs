@@ -60,7 +60,7 @@ namespace InfinitMarket.Migrations
                 columns: new[] { "AdresaID", "PerdoruesiID", "Qyteti", "ZipKodi", "Adresa", "Shteti", "Emri", "Mbiemri", "NrKontaktit", "Email"},
                 values: new object[,]
                 {
-            { 1, 1, "Prishtine", "10000", "P.A.", "Kosove", "Admin", "Admin", "38344111222", "admin@infinitmarket.com"},
+            { 1, 1, "Prishtine", "10000", "P.A.", "Kosove", "Admin", "Admin", "+38344111222", "admin@infinitmarket.com"},
                 });
         }
 

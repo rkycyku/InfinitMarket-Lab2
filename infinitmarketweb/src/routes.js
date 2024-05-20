@@ -86,6 +86,11 @@ const routes = [
         element: lazy(() => import('./views/admin-dashboard/TeNdryshme/KodiZbritjes'))
       },
       {
+        exact: true,
+        path: '/admin/TeNdryshme/Statistika',
+        element: lazy(() => import('./views/admin-dashboard/TeNdryshme/Statistika/Statistika.js'))
+      },
+      {
         exact: 'true',
         path: '/admin/mesazhet',
         element: lazy(() => import('./views/admin-dashboard/Mesazhet'))

@@ -52,8 +52,6 @@ function TabelaEProdukteve() {
             'Çmimi €': parseFloat(k.qmimiProduktit).toFixed(2)
           }))
         );
-
-        console.log(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
