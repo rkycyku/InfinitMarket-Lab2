@@ -225,7 +225,7 @@ export default function Shporta() {
                   <MDBCard className="card-registration card-registration-2" style={{ borderRadius: '15px' }}>
                     <MDBCardBody className="p-0">
                       <MDBRow className="g-0">
-                        <MDBCol lg="8">
+                        <MDBCol lg="9">
                           <div className="p-5">
                             <div className="d-flex justify-content-between align-items-center mb-5">
                               <MDBTypography tag="h1" className="fw-bold mb-0 text-black">
@@ -251,14 +251,19 @@ export default function Shporta() {
                                   Produkti
                                 </MDBTypography>
                               </MDBCol>
-                              <MDBCol md="3" lg="3" xl="3" className="d-flex align-items-center">
+                              <MDBCol md="1" lg="1" xl="1" className="d-flex align-items-center">
                                 <MDBTypography tag="h6" className="text-muted">
                                   Sasia
                                 </MDBTypography>
                               </MDBCol>
-                              <MDBCol md="3" lg="2" xl="2" className="text-end">
+                              <MDBCol md="2" lg="2" xl="2" className="text-end">
                                 <MDBTypography tag="h6" className="text-muted">
                                   Qmimi Produktit
+                                </MDBTypography>
+                              </MDBCol>
+                              <MDBCol md="2" lg="2" xl="2" className="text-end">
+                                <MDBTypography tag="h6" className="text-muted">
+                                  Qmimi Total
                                 </MDBTypography>
                               </MDBCol>
                               <MDBCol md="1" lg="1" xl="1" className="text-end">
@@ -277,23 +282,28 @@ export default function Shporta() {
                                       <MDBCardImage
                                         src={`${process.env.PUBLIC_URL}/img/produktet/${produkti.fotoProduktit}`}
                                         fluid
-                                        className="rounded-3"
+                                        className="rounded-3 fotoShporta"
                                         alt={produkti.fotoProduktit}
                                       />
                                     </MDBCol>
                                     <MDBCol md="3" lg="3" xl="3">
-                                      <MDBTypography tag="h6" className="text-muted">
-                                        {produkti.emriKategoris}
-                                      </MDBTypography>
-                                      <MDBTypography tag="h6" className="text-black mb-0">
-                                        {produkti.emriProduktit}
-                                      </MDBTypography>
+                                      <Link to={`/produktet/kategoria/${produkti.emriKategoris}`}>
+                                        <MDBTypography tag="h6" className="text-muted">
+                                          {produkti.emriKategoris}
+                                        </MDBTypography>
+                                      </Link>
+                                      <Link to={`/produktet/${produkti.produktiID}`}>
+                                        <MDBTypography tag="h6" className="text-black mb-0">
+                                          {produkti.emriProduktit}
+                                        </MDBTypography>
+                                      </Link>
                                     </MDBCol>
-                                    <MDBCol md="3" lg="3" xl="3" className="d-flex align-items-center">
+                                    <MDBCol md="1" lg="1" xl="1" className="d-flex align-items-center butonShporta">
                                       <Button
                                         disabled={produkti.sasiaProduktitNeShporte <= 1}
                                         variant="link"
-                                        className="px-2"
+                                        className="butonShporta"
+                                        size="sm"
                                         onClick={() => UleSasin(produkti.produktiID)}
                                       >
                                         <MDBIcon fas icon="minus" />
@@ -301,17 +311,32 @@ export default function Shporta() {
                                       <MDBTypography tag="h6" className="text-black mb-0">
                                         {produkti.sasiaProduktitNeShporte}
                                       </MDBTypography>
-                                      <Button variant="link" className="px-2" onClick={() => RritSasin(produkti.produktiID)}>
+                                      <Button
+                                        variant="link"
+                                        size="sm"
+                                        className="butonShporta"
+                                        onClick={() => RritSasin(produkti.produktiID)}
+                                      >
                                         <MDBIcon fas icon="plus" />
                                       </Button>
                                     </MDBCol>
-                                    <MDBCol md="3" lg="2" xl="2" className="text-end">
+                                    <MDBCol md="2" lg="2" xl="2" className="text-end">
                                       <MDBTypography tag="h6" className="mb-0">
                                         {parseFloat(produkti.qmimiProduktit).toFixed(2)} €
                                       </MDBTypography>
                                     </MDBCol>
+                                    <MDBCol md="2" lg="2" xl="2" className="text-end">
+                                      <MDBTypography tag="h6" className="mb-0">
+                                        {parseFloat(produkti.qmimiProduktit * produkti.sasiaProduktitNeShporte).toFixed(2)} €
+                                      </MDBTypography>
+                                    </MDBCol>
                                     <MDBCol md="1" lg="1" xl="1" className="text-end">
-                                      <Button variant="link" className="px-2" onClick={() => LargoProduktin(produkti.produktiID)}>
+                                      <Button
+                                        variant="link"
+                                        size="sm"
+                                        className="butonShporta"
+                                        onClick={() => LargoProduktin(produkti.produktiID)}
+                                      >
                                         <MDBIcon fas icon="times" />
                                       </Button>
                                     </MDBCol>
@@ -332,7 +357,7 @@ export default function Shporta() {
                             </div>
                           </div>
                         </MDBCol>
-                        <MDBCol lg="4" className="bg-grey">
+                        <MDBCol lg="3" className="bg-grey">
                           <div className="p-5">
                             <MDBTypography tag="h3" className="fw-bold mb-5 mt-2 pt-1">
                               Totali i porosisë

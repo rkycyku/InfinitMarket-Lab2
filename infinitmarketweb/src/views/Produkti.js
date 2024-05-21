@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faPenToSquare, faPlus, faXmark } from '@fortawesome/free-solid-svg-icons';
 import EditoProduktin from './admin-dashboard/Produktet/ListaEProdukteve/EditoProduktin';
 import Footer from '../components/Footer';
-import { Button } from 'react-bootstrap';
+import { Button, Tab, Tabs } from 'react-bootstrap';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import '../assets/css/swiperSlider.css';
 import 'swiper/css';
@@ -422,62 +422,67 @@ function Produkti() {
             </div>
           </div>
         </div>
-        {kaPershkrim && (
-          <div className="pershkrimi">
-            <h2>Pershkrimi: </h2>
-            <p>{produkti && produkti.produkti && produkti.produkti.pershkrimi}</p>
-          </div>
-        )}
-        {produkti && produkti.vleresimetPoduktiList && (
-          <>
-            <h2>Vleresimet e Produktit</h2>
-            <div className="vleresimetEProduktit">
-              <div className="vleresimiTotal">
-                <div className="yllatVleresimi">
-                  <span className="vleresimiMesatar">{vleresimiMesatar.toFixed(2)}</span>
-                  <span className="numriVleresimeve">
-                    {' '}
-                    {numriVleresimeve === 0
-                      ? 'Nuk ka asnje vleresim'
-                      : numriVleresimeve === 1
-                      ? numriVleresimeve + ' vlerësim'
-                      : numriVleresimeve + ' vlerësime'}
-                  </span>
-                  <span className="yllat yll">{shfaqYllat(vleresimiMesatar)}</span>
-                </div>
-                <div className="shtoVleresim">
-                  <Button variant="primary" onClick={(e) => handleShtoVleresimin(e)}>
-                    Vendosni nje vleresim <FontAwesomeIcon icon={faPlus} />
-                  </Button>
-                </div>
+        <Tabs defaultActiveKey="Pershkrimi" id="fill-tab-example" className="mb-3" fill>
+          <Tab eventKey="Pershkrimi" title="Pershkrimi">
+            {kaPershkrim && (
+              <div className="pershkrimi">
+                <h2>Pershkrimi: </h2>
+                <p>{produkti && produkti.produkti && produkti.produkti.pershkrimi}</p>
               </div>
-              {produkti &&
-                produkti.vleresimetPoduktiList &&
-                produkti.vleresimetPoduktiList.map((vleresimi) => (
-                  <div key={vleresimi.id} className="vleresimiProduktit">
-                    <div className="klienti">
-                      {vleresimi.emri} {vleresimi.mbiemri} - {vleresimi.email}
-                      {vleresimiProduktitNgaKlienti != false &&
-                        vleresimiProduktitNgaKlienti &&
-                        vleresimiProduktitNgaKlienti.id == vleresimi.id && (
-                          <div className="shtoVleresim">
-                            <Button variant="danger" onClick={() => setFshijVleresimin(true)}>
-                              <FontAwesomeIcon icon={faXmark} />
-                            </Button>
-
-                            <Button variant="info" onClick={() => setEditoVleresimin(true)}>
-                              <FontAwesomeIcon icon={faPenToSquare} />
-                            </Button>
-                          </div>
-                        )}
+            )}
+          </Tab>
+          <Tab eventKey="Vleresimet" title="Vleresimet">
+            {produkti && produkti.vleresimetPoduktiList && (
+              <>
+                <div className="vleresimetEProduktit">
+                  <div className="vleresimiTotal">
+                    <div className="yllatVleresimi">
+                      <span className="vleresimiMesatar">{vleresimiMesatar.toFixed(2)}</span>
+                      <span className="numriVleresimeve">
+                        {' '}
+                        {numriVleresimeve === 0
+                          ? 'Nuk ka asnje vleresim'
+                          : numriVleresimeve === 1
+                          ? numriVleresimeve + ' vlerësim'
+                          : numriVleresimeve + ' vlerësime'}
+                      </span>
+                      <span className="yllat yll">{shfaqYllat(vleresimiMesatar)}</span>
                     </div>
-                    <div className="yllat yll">{shfaqYllat(vleresimi.vlersimiYll)}</div>
-                    <div className="vleresimi">{vleresimi.vlersimiTekst}</div>
+                    <div className="shtoVleresim">
+                      <Button variant="primary" onClick={(e) => handleShtoVleresimin(e)}>
+                        Vendosni nje vleresim <FontAwesomeIcon icon={faPlus} />
+                      </Button>
+                    </div>
                   </div>
-                ))}
-            </div>
-          </>
-        )}
+                  {produkti &&
+                    produkti.vleresimetPoduktiList &&
+                    produkti.vleresimetPoduktiList.map((vleresimi) => (
+                      <div key={vleresimi.id} className="vleresimiProduktit">
+                        <div className="klienti">
+                          {vleresimi.emri} {vleresimi.mbiemri} - {vleresimi.email}
+                          {vleresimiProduktitNgaKlienti != false &&
+                            vleresimiProduktitNgaKlienti &&
+                            vleresimiProduktitNgaKlienti.id == vleresimi.id && (
+                              <div className="shtoVleresim">
+                                <Button variant="danger" onClick={() => setFshijVleresimin(true)}>
+                                  <FontAwesomeIcon icon={faXmark} />
+                                </Button>
+
+                                <Button variant="info" onClick={() => setEditoVleresimin(true)}>
+                                  <FontAwesomeIcon icon={faPenToSquare} />
+                                </Button>
+                              </div>
+                            )}
+                        </div>
+                        <div className="yllat yll">{shfaqYllat(vleresimi.vlersimiYll)}</div>
+                        <div className="vleresimi">{vleresimi.vlersimiTekst}</div>
+                      </div>
+                    ))}
+                </div>
+              </>
+            )}
+          </Tab>
+        </Tabs>
       </div>
 
       <div className="artikujt">

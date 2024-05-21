@@ -127,7 +127,7 @@ function ShtoOfertenSlider(props) {
       if (filteredItemsProduktet.length > 0) {
         handleNdryshoProduktin(filteredItemsProduktet[selectedIndexProduktet]);
       }
-      ndrroField(e, 'pershkrimShtese');
+      ndrroField(e, 'fotoOfertes');
     }
   };
   function handleNdryshoProduktin(produkti) {
@@ -148,7 +148,7 @@ function ShtoOfertenSlider(props) {
       if (filteredItemsKategorit.length > 0) {
         handleNdryshoKategorin(filteredItemsKategorit[selectedIndexKategorit]);
       }
-      ndrroField(e, 'pershkrimShtese');
+      ndrroField(e, 'fotoOfertes');
     }
   };
   function handleNdryshoKategorin(kategoria) {
@@ -169,7 +169,7 @@ function ShtoOfertenSlider(props) {
       if (filteredItemsKompanit.length > 0) {
         handleNdryshoKompania(filteredItemsKompanit[selectedIndexKompanit]);
       }
-      ndrroField(e, 'pershkrimShtese');
+      ndrroField(e, 'fotoOfertes');
     }
   };
   function handleNdryshoKompania(kompania) {
@@ -187,7 +187,7 @@ function ShtoOfertenSlider(props) {
 
   return (
     <>
-    <KontrolloAksesinNeFunksione
+      <KontrolloAksesinNeFunksione
         largo={() => props.largo()}
         shfaqmesazhin={() => props.shfaqmesazhin()}
         perditesoTeDhenat={() => props.perditesoTeDhenat()}
@@ -262,7 +262,7 @@ function ShtoOfertenSlider(props) {
                 onClick={() => {
                   setLlojiOfertes('LinkINdryshem');
                   setInputValue('');
-                  setLinkuOfertes("")
+                  setLinkuOfertes('');
                 }}
               />
               <Form.Check
@@ -273,7 +273,7 @@ function ShtoOfertenSlider(props) {
                 onClick={() => {
                   setLlojiOfertes('Njoftim');
                   setInputValue('');
-                  setLinkuOfertes("PaLink")
+                  setLinkuOfertes('PaLink');
                 }}
               />
             </Form.Group>
@@ -376,15 +376,17 @@ function ShtoOfertenSlider(props) {
               <Form.Label>
                 Foto Ofertes<span style={{ color: 'red' }}>*</span>
               </Form.Label>
-              <Form.Control type="file" accept="image/*" placeholder="Foto e Kompanis" onChange={handleFotoChange} required />
+              <Form.Control type="file" accept="image/*" placeholder="Foto Ofertes" id="fotoOfertes" onChange={handleFotoChange} required />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+            <Form.Group className="mb-3" controlId="dataFillimitOfertes">
               <Form.Label>Data Fillimit Ofertes</Form.Label>
               <Form.Control
                 onChange={(e) => handleDataFillimitOfertesChange(e.target.value)}
                 value={dataFillimitOfertes}
                 type="date"
                 placeholder="dataFillimitOfertes Kompanis"
+                id="dataFillimitOfertes"
+                name="dataFillimitOfertes"
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
