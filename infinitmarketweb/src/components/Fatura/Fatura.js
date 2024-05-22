@@ -392,7 +392,7 @@ function Fatura(props) {
     <>
       <h1 className="title">
         Fatura NR: {barkodi}
-        <MDBBtn className="mb-3 Butoni" onClick={() => FaturaPerRuajtje()}>
+        <MDBBtn className="mx-1 mb-3 Butoni" onClick={() => FaturaPerRuajtje()}>
           Ruaj <FontAwesomeIcon icon={faDownload} />
         </MDBBtn>
         <MDBBtn className="mb-3 Butoni" onClick={() => window.close()}>

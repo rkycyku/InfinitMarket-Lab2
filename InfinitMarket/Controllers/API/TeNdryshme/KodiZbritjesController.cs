@@ -1,9 +1,11 @@
 ﻿using InfinitMarket.Data;
 using InfinitMarket.Models;
+using InfinitMarket.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace InfinitMarket.Controllers.API.TeNdryshme
 {
@@ -13,10 +15,12 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
     public class KodiZbritjeController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IAdminLogService _adminLogService;
 
-        public KodiZbritjeController(ApplicationDbContext context)
+        public KodiZbritjeController(ApplicationDbContext context, IAdminLogService adminLogService)
         {
             _context = context;
+            _adminLogService = adminLogService;
         }
 
         [AllowAnonymous]
@@ -59,6 +63,9 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             await _context.KodiZbritjes.AddAsync(kodiZbritjes);
             await _context.SaveChangesAsync();
 
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            await _adminLogService.LogAsync(userId, "Shto", "KodiZbrijes", kodiZbritjes.Kodi.ToString(), $"Kodi i Zbritjes u shtua: {kodiZbritjes.Kodi} - Shuma: {kodiZbritjes.QmimiZbritjes} €");
+
             return CreatedAtAction("ShfaqKodet", kodiZbritjes.Kodi, kodiZbritjes);
         }
 
@@ -91,6 +98,9 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             _context.KodiZbritjes.Update(teDhenatKodit);
             await _context.SaveChangesAsync();
 
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            await _adminLogService.LogAsync(userId, "Perditeso", "KodiZbrijes", kodi.ToString(), $"Kodi i Zbritjes u perditesua: {kodi} - Shuma: {k.QmimiZbritjes} €");
+
             return Ok(teDhenatKodit);
         }
 
@@ -110,6 +120,9 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
 
             _context.KodiZbritjes.Update(teDhenatKodit);
             await _context.SaveChangesAsync();
+
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            await _adminLogService.LogAsync(userId, "Fshij", "KodiZbrijes", kodi.ToString(), $"Kodi i Zbritjes u Fshi: {kodi}");
 
             return NoContent();
         }

@@ -36,13 +36,16 @@ Profesor:
 - **Pagesat me Stripe** - Opsioni i Pagesave me Stripe eshte aktiv dhe si i tille mund te perfundohet pagesa duke perdorur kartelat bankare.
 - **Lista e Deshirave** - Secili Klient ka mundesin e vendosjes se Produkteve ne Listen e Deshirave.
 - **Eksportimi i Te Dhenave** - Eksportimi i te dhenave eshte i mundur ne te gjitha faqet ku gjenden tabela. Eksportimi lejohet ne formate te ndryshme si: Excel, JSON, CSV, Tekst etj.
+- **Tabelat** - Secila tabel eshte e konfiguruar ne ate menyre qe te mundesoj filtrimin e te dhenave mbas search, apo te beje renditjen e tyre sipas te gjitha kolonave ne tabel.
 - **Fatura** - Secila porosi ka te mundur shfaqjen, ruajtjen dhe printimin e fatures per ate porosi.
+- **Barcode dhe QRCode** - Secila fature ka te vendosur Barcode i cili permban numrin e fatures si dhe QRCode me te gjitha te dhenat e Fatures.
 - **Statistikat** - Kjo eshte nje faqe e dedikuar vetem per statistikat e Dyqanit e cila ka qasje vetem Roli i Admin, Ne kete faqe gjenden statistika te ndryshme per shtije, produkte dhe klient.
 - **Zbritjet e Produktit** - Zbritjet mundesohen per te gjitha produktet dhe mund te vendosen sipas datave te ndryshme.
 - **Kodi i Zbritjev** - Kodi i Zbritjeve mundeson qe te krijohet kod i veqant i cili ka ne brendesi te saj qmimin e zbritjes, ky kod mundesohet per zbritje ne te gjithe shporten ose vetem ne produkt te caktuar.
 - **Te dhenat e Biznesit** - Ketu mund te vendosen Te dhenat e Biznesit si Emri Biznesit, Numri Unik, TVSH etj., Logo si dhe Infomatat bankare te cilat shfaqen tek pjesa e fatures.
 - **Slideri i Ofertave** - Ky slider eshte i vendosur tek pjesa e home i cili sherben per shfaqjen e ofertave te ndryshme ose informatave.
 - **Vleresimet e Produktit** - Vendosja e vleresimit mundesohet vetem per ata Klient te cilet e kane blere kete produkt.
+- **Gjurmimi** - Te gjitha ndryshimet ne sistem te cilat behen per Shto, Perditeso ose Fshije jane te gjurmuar dhe permbajn ID-n e Stafit, Detajet, si dhe Tabelen dhe ID-n e Entitetit.
 - **Atributi isDeleted** - Me kete atribut mundesohet qe gjate largimit se produkteve, kategorive, kompanive etj. nga sistemi ato ne te vertet nuk fshihen por si te tilla mbeten ne databaze por qe nuk shfaqen tek klienti, kjo eshte bere qe te mos kete probleme pas largimit te mos kete probleme ne sistem dhe te mos ndryshohen faturat e statistikat.
 
 ## Konfigurimi
@@ -64,7 +67,7 @@ Pasi qe te behet konfigurimi ju mund te kyqeni me keto te dhena:
 
 ## Informata te tjera
 
-Ne rast se deshironi te perdorni te dhenat e InfinitMarket ato mund te i gjeni ne file-in e cila gjendet ne folderin **Databaza** me emrin **InfinitMarket.sql** kete file duhet ta beni execute ne **SQL Server** pasi qe te keni bere konfigurimet paraprake, pastaj duhet te behet gjithashtu Krijim i Databazes ne **MongoDB** si dhe i **Collections**, Emri i databazes ne MongoDB: **InfinitMarketDB**, Emri i Collections: **fotoProduktit, vleresimetEProduktit** pasi te behen krijimet e tyre duhet te behen **import JSON Filet** te cilat gjenden ne folderin e **Databaza** me emrat: **nfinitMarketDB.fotoProduktit.json per fotoProduktit dhe InfinitMarketDB.vleresimetEProduktit.json per vleresimetEProduktit**.
+Ne rast se deshironi te perdorni te dhenat e InfinitMarket ato mund te i gjeni ne file-in e cila gjendet ne folderin **Databaza** me emrin **InfinitMarket.sql** kete file duhet ta beni execute ne **SQL Server** pasi qe te keni bere konfigurimet paraprake, pastaj duhet te behet gjithashtu Krijim i Databazes ne **MongoDB** si dhe i **Collections**, Emri i databazes ne MongoDB: **InfinitMarketDB**, Emri i Collections: **fotoProduktit, vleresimetEProduktit** pasi te behen krijimet e tyre duhet te behen **import JSON Filet** te cilat gjenden ne folderin e **Databaza** me emrat: **InfinitMarketDB.fotoProduktit.json per fotoProduktit dhe InfinitMarketDB.vleresimetEProduktit.json per vleresimetEProduktit**.
 
 Me posht gjeni dy video per krijim e Databazes dhe Collection ne MongoDB si dhe importimin e te dhenave:
 
@@ -72,6 +75,7 @@ Me posht gjeni dy video per krijim e Databazes dhe Collection ne MongoDB si dhe 
 - https://www.youtube.com/watch?v=N6DC0uQ6c-k - Importimi i Te Dhenave.
 - Connection String per MongoDB: **mongodb://localhost:27017**
 
+Password eshte i tille per te gjitha llogarit e tjera pas importimit te InfinitMarket EmriMbiemri1@ - Emri dhe Mbiemri si dhe email mund te gjenden ne Admin Dashboard tek pjesa e Klientit.
 
 [Stripe - Kartelat per Testim](https://docs.stripe.com/testing) - Ketu mund te gjenden te gjitha kartela qe do te mund te i testoni.
 
@@ -168,6 +172,3 @@ Ne kete shembull eshte perfshire vetem Excel por ka dhe formate tjera si: JSON, 
 ### Porosia e Perfunduar
 
 ![](ReadMeImages/ShportaPorosiaPerfunduar.png)
-
-
-

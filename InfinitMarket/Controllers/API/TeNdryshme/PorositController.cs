@@ -1,8 +1,10 @@
 ﻿using InfinitMarket.Data;
 using InfinitMarket.Models;
+using InfinitMarket.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace InfinitMarket.Controllers.API.TeNdryshme
 {
@@ -12,10 +14,12 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
     public class PorosiaController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly IAdminLogService _adminLogService;
 
-        public PorosiaController(ApplicationDbContext context)
+        public PorosiaController(ApplicationDbContext context, IAdminLogService adminLogService)
         {
             _context = context;
+            _adminLogService = adminLogService;
         }
 
         [AllowAnonymous]
@@ -237,6 +241,9 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
 
             _context.Porosit.Update(porosia);
             await _context.SaveChangesAsync();
+
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            await _adminLogService.LogAsync(userId, "Perditeso", "Porosit", porosia.IdPorosia.ToString(), $"Eshte Perditesuar statusi i Porosis: {statusi}");
 
             return Ok(porosia);
         }

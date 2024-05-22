@@ -91,6 +91,11 @@ const routes = [
         element: lazy(() => import('./views/admin-dashboard/TeNdryshme/Statistika/Statistika.js'))
       },
       {
+        exact: true,
+        path: '/Admin/TeNdryshme/Gjurmimet',
+        element: lazy(() => import('./views/admin-dashboard/TeNdryshme/Gjurmimet.js'))
+      },
+      {
         exact: 'true',
         path: '/admin/mesazhet',
         element: lazy(() => import('./views/admin-dashboard/Mesazhet'))

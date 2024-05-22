@@ -101,6 +101,12 @@ const menuItems = {
               type: 'item',
               url: '/Admin/TeNdryshme/Statistika'
             },
+            {
+              id: 'Gjurmimet',
+              title: 'Gjurmimet',
+              type: 'item',
+              url: '/Admin/TeNdryshme/Gjurmimet'
+            },
           ]
         },
         {

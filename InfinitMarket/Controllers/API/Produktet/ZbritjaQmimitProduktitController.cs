@@ -1,8 +1,10 @@
 ﻿using InfinitMarket.Data;
 using InfinitMarket.Models;
+using InfinitMarket.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace InfinitMarket.Controllers.API.Produktet
 {
@@ -12,10 +14,12 @@ namespace InfinitMarket.Controllers.API.Produktet
     public class ZbritjaQmimitProduktitController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IAdminLogService _adminLogService;
 
-        public ZbritjaQmimitProduktitController(ApplicationDbContext context)
+        public ZbritjaQmimitProduktitController(ApplicationDbContext context, IAdminLogService adminLogService)
         {
             _context = context;
+            _adminLogService = adminLogService;
         }
 
         [AllowAnonymous]
@@ -47,6 +51,9 @@ namespace InfinitMarket.Controllers.API.Produktet
             await _context.ZbritjaQmimitProduktit.AddAsync(zbritja);
             await _context.SaveChangesAsync();
 
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            await _adminLogService.LogAsync(userId, "Shto", "ZbritjaQmimitProduktit", zbritja.ZbritjaID.ToString(), $"Eshte Shtuar Zbritja per produktin: {zbritja.ProduktiId}");
+
             return CreatedAtAction("get", zbritja.ProduktiId, zbritja);
         }
 
@@ -64,6 +71,9 @@ namespace InfinitMarket.Controllers.API.Produktet
 
             _context.ZbritjaQmimitProduktit.Remove(produkti);
             await _context.SaveChangesAsync();
+
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            await _adminLogService.LogAsync(userId, "Fshij", "ZbritjaQmimitProduktit", id.ToString(), $"Eshte Larguar Zbritja per produktin: {produkti.ProduktiId}");
 
             return NoContent();
         }

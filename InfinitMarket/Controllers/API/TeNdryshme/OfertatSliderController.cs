@@ -1,9 +1,11 @@
 ﻿using InfinitMarket.Data;
 using InfinitMarket.Models;
+using InfinitMarket.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace InfinitMarket.Controllers.API.TeNdryshme
 {
@@ -13,10 +15,12 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
     public class OfertatSliderController : ControllerBase
     {
         public readonly ApplicationDbContext _context;
+        private readonly IAdminLogService _adminLogService;
 
-        public OfertatSliderController(ApplicationDbContext context)
+        public OfertatSliderController(ApplicationDbContext context, IAdminLogService adminLogService)
         {
             _context = context;
+            _adminLogService = adminLogService;
         }
 
         [AllowAnonymous]
@@ -56,6 +60,9 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             await _context.SliderOfertat.AddAsync(so);
             await _context.SaveChangesAsync();
 
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            await _adminLogService.LogAsync(userId, "Shto", "SliderOfertat", so.SliderOfertatID.ToString(), $"Eshte Shtuar Oferta e re");
+
             return CreatedAtAction("get", so.SliderOfertatID, so);
         }
 
@@ -75,6 +82,9 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
 
             _context.SliderOfertat.Update(oferta);
             await _context.SaveChangesAsync();
+
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            await _adminLogService.LogAsync(userId, "Fshij", "SliderOfertat", id.ToString(), $"Eshte Larguar oferta");
 
             return Ok("Oferta u fshi me sukses");
         }

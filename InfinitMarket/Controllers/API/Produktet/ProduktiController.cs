@@ -9,9 +9,12 @@ using InfinitMarket.Data;
 using InfinitMarket.Entities;
 using MongoDB.Driver;
 using Microsoft.IdentityModel.Tokens;
+using InfinitMarket.Services;
+using System.Security.Claims;
 
 namespace InfinitMarket.Controllers.API.Produktet
 {
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [Route("api/Produktet/[controller]")]
     [ApiController]
     public class ProduktiController : ControllerBase
@@ -19,12 +22,14 @@ namespace InfinitMarket.Controllers.API.Produktet
         private readonly ApplicationDbContext _context;
         private readonly IMongoCollection<FototProduktit>? _fototProduktit;
         private readonly IMongoCollection<VlersimetEProduktit>? _vleresimiProduktit;
+        private readonly IAdminLogService _adminLogService;
 
-        public ProduktiController(ApplicationDbContext context, MongoDBService mongoDBService)
+        public ProduktiController(ApplicationDbContext context, MongoDBService mongoDBService, IAdminLogService adminLogService)
         {
             _context = context;
             _fototProduktit = mongoDBService.Database?.GetCollection<FototProduktit>("fotoProduktit");
             _vleresimiProduktit = mongoDBService.Database?.GetCollection<VlersimetEProduktit>("vleresimetEProduktit");
+            _adminLogService = adminLogService;
         }
 
         [AllowAnonymous]
@@ -215,6 +220,9 @@ namespace InfinitMarket.Controllers.API.Produktet
             {
                 _context.Produkti.Add(produkti);
                 await _context.SaveChangesAsync();
+
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                await _adminLogService.LogAsync(userId, "Shto", "Produkti", produkti.ProduktiId.ToString(), $"Eshte Shtuar Produkti: {produkti.EmriProduktit}");
             }
             catch (Exception ex)
             {
@@ -240,6 +248,9 @@ namespace InfinitMarket.Controllers.API.Produktet
             try
             {
                 await _context.SaveChangesAsync();
+
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                await _adminLogService.LogAsync(userId, "Fshij", "Produkti", produkti.ProduktiId.ToString(), $"Eshte Larguar Produkti: {produkti.EmriProduktit}");
             }
             catch (Exception ex)
             {
@@ -268,6 +279,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             {
                 return NotFound("Produkti nuk u gjet.");
             }
+
 
             if (!string.IsNullOrEmpty(produktiData.EmriProduktit))
             {
@@ -329,6 +341,9 @@ namespace InfinitMarket.Controllers.API.Produktet
             try
             {
                 await _context.SaveChangesAsync();
+
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                await _adminLogService.LogAsync(userId, "Perditeso", "Produkti", produktiData.ProduktiId.ToString(), $"Eshte Perditesuar Produkti: {existingProdukti.EmriProduktit}");
             }
             catch (Exception ex)
             {
@@ -358,6 +373,9 @@ namespace InfinitMarket.Controllers.API.Produktet
             produkti.TeDhenatProduktit.DataPerditsimit = DateTime.Now;
             await _context.SaveChangesAsync();
 
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            await _adminLogService.LogAsync(userId, "Perditeso", "TeDhenatProduktit", id.ToString(), $"Eshte Perditesuar Stoku/Qmimi per Produktin: {produkti.EmriProduktit}");
+
             return Ok("Produkti u perditesua me sukses.");
         }
 
@@ -381,6 +399,9 @@ namespace InfinitMarket.Controllers.API.Produktet
             {
                 _context.KategoriteEDetajeve.Add(kategoria);
                 await _context.SaveChangesAsync();
+
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                await _adminLogService.LogAsync(userId, "Shto", "KategoriteEDetajeve", kategoria.KategoriaDetajeveId.ToString(), $"Eshte Shtuar Kategoria e Detajeve: {kategoria.EmriKategoriseDetajeve}");
             }
             catch (Exception ex)
             {
@@ -418,6 +439,9 @@ namespace InfinitMarket.Controllers.API.Produktet
 
             await _context.SaveChangesAsync();
 
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            await _adminLogService.LogAsync(userId, "Fshij", "KategoriteEDetajeve", kategoria.KategoriaDetajeveId.ToString(), $"Eshte Larguar Kategoria e Detajeve: {kategoria.EmriKategoriseDetajeve}");
+
             return NoContent();
         }
 
@@ -441,6 +465,9 @@ namespace InfinitMarket.Controllers.API.Produktet
             {
                 _context.Entry(existingCategory).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
+
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                await _adminLogService.LogAsync(userId, "Perditeso", "KategoriteEDetajeve", existingCategory.KategoriaDetajeveId.ToString(), $"Eshte Perditesuar Kategoria e Detajeve: {existingCategory.EmriKategoriseDetajeve}");
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -494,6 +521,9 @@ namespace InfinitMarket.Controllers.API.Produktet
             {
                 _context.TeDhenatEDetajeve.Add(teDhenat);
                 await _context.SaveChangesAsync();
+
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                await _adminLogService.LogAsync(userId, "Shto", "TeDhenatEDetajeve", teDhenat.TeDhenatEDetajeveId.ToString(), $"Eshte Shtuar Te Dhenat e Detajeve: {teDhenat.TeDhenatJson}");
             }
             catch (Exception ex)
             {
@@ -545,6 +575,8 @@ namespace InfinitMarket.Controllers.API.Produktet
             try
             {
                 await _context.SaveChangesAsync();
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                await _adminLogService.LogAsync(userId, "Perditeso", "TeDhenatEDetajeve", teDhenat.TeDhenatEDetajeveId.ToString(), $"Eshte Perditesuar Te Dhenat e Detajeve: {teDhenat.TeDhenatJson}");
             }
             catch (Exception ex)
             {

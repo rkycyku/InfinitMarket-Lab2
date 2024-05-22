@@ -1,5 +1,6 @@
 ﻿using InfinitMarket.Data;
 using InfinitMarket.Models;
+using InfinitMarket.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,10 +14,11 @@ namespace InfinitMarket.Controllers.API.Produktet
     public class ShportaController : ControllerBase
     {
         public readonly ApplicationDbContext _context;
-
-        public ShportaController(ApplicationDbContext context)
+        private readonly IAdminLogService _adminLogService;
+        public ShportaController(ApplicationDbContext context, IAdminLogService adminLogService)
         {
             _context = context;
+            _adminLogService = adminLogService;
         }
 
         [AllowAnonymous]

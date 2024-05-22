@@ -33,5 +33,6 @@ namespace InfinitMarket.Data
         public DbSet<Bankat> Bankat { get; set; } 
         public DbSet<ListaEDeshirave> ListaEDeshirave {  get; set; }
         public DbSet<ZbritjaQmimitProduktit> ZbritjaQmimitProduktit { get; set; }
+        public DbSet<AdminLogs> AdminLogs { get; set; }
     }
 }

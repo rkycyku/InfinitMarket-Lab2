@@ -68,7 +68,7 @@ function ShtoKodin(props) {
             qmimiZbritjes: qmimi,
             produktiId: produkti
         }, authentikimi)
-            .then((response) => {
+            .then(() => {
                 props.setTipiMesazhit("success");
                 props.setPershkrimiMesazhit("Kodi i zbritjes u krijua!")
                 props.perditesoTeDhenat();

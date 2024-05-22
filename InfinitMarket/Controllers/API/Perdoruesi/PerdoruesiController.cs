@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using InfinitMarket.Data;
 using InfinitMarket.Models;
+using InfinitMarket.Services;
 
 namespace InfinitMarket.Controllers
 {
@@ -16,13 +17,16 @@ namespace InfinitMarket.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly IAdminLogService _adminLogService;
 
         public PerdoruesiController(
             ApplicationDbContext context,
-            UserManager<IdentityUser> userManager)
+            UserManager<IdentityUser> userManager,
+            IAdminLogService adminLogService)
         {
             _context = context;
             _userManager = userManager;
+            _adminLogService = adminLogService;
         }
 
         [AllowAnonymous]

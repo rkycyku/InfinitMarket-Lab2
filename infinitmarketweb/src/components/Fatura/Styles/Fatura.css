@@ -131,7 +131,10 @@ td {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
+  width: 100%;
+  gap: 1em;
+  margin-bottom: 0.5em;
 }
 
 .teDhenatEKlientit {

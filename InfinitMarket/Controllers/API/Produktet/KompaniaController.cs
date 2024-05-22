@@ -1,10 +1,12 @@
 ﻿using InfinitMarket.Data;
 using InfinitMarket.Models;
+using InfinitMarket.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace InfinitMarket.Controllers.API.Produktet
 {
@@ -14,10 +16,12 @@ namespace InfinitMarket.Controllers.API.Produktet
     public class KompaniaController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly IAdminLogService _adminLogService;
 
-        public KompaniaController(ApplicationDbContext context)
+        public KompaniaController(ApplicationDbContext context, IAdminLogService adminLogService)
         {
             _context = context;
+            _adminLogService = adminLogService;
         }
 
         //[Authorize(Policy = "punonAdministrat")]
@@ -59,6 +63,9 @@ namespace InfinitMarket.Controllers.API.Produktet
             await _context.KompanitePartnere.AddAsync(kompaniaPartnere);
             await _context.SaveChangesAsync();
 
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            await _adminLogService.LogAsync(userId, "Shto", "KompanitePartnere", kompaniaPartnere.KompaniaID.ToString(), $"Eshte Shtuar Kompania: {kompaniaPartnere.EmriKompanis}");
+
             return CreatedAtAction("get", kompaniaPartnere.KompaniaID, kompaniaPartnere);
         }
 
@@ -81,6 +88,9 @@ namespace InfinitMarket.Controllers.API.Produktet
             _context.KompanitePartnere.Update(kompania);
             await _context.SaveChangesAsync();
 
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            await _adminLogService.LogAsync(userId, "Perditeso", "KompanitePartnere", kompaniaPartnere.KompaniaID.ToString(), $"Eshte Perditesuar Kompania: {kompaniaPartnere.EmriKompanis}");
+
             return Ok(kompania);
         }
 
@@ -101,6 +111,9 @@ namespace InfinitMarket.Controllers.API.Produktet
 
             _context.KompanitePartnere.Update(kompania);
             await _context.SaveChangesAsync();
+
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            await _adminLogService.LogAsync(userId, "Fshij", "KompanitePartnere", kompania.KompaniaID.ToString(), $"Eshte Larguar Kompania: {kompania.EmriKompanis}");
 
             return Ok();
         }

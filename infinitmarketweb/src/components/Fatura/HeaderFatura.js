@@ -2,11 +2,14 @@ import './Styles/Fatura.css';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Barkodi from './Barkodi';
+import QRCode from 'qrcode.react';
 
 function HeaderFatura(props) {
   const [teDhenatBiznesit, setTeDhenatBiznesit] = useState([]);
 
-  const [teDhenatFat, setteDhenatFat] = useState([]);
+  const [teDhenatFat, setTeDhenatFat] = useState([]);
+
+  const [teDhenatQRCode, setTeDhenatQrCode] = useState(null);
 
   const getToken = localStorage.getItem('token');
 
@@ -20,33 +23,32 @@ function HeaderFatura(props) {
     const vendosFature = async () => {
       try {
         const teDhenat = await axios.get(
-          `https://localhost:7251/api/TeNdryshme/Porosia/ShfaqPorosineNgaID?nrFatures=${props.faturaID ?? 61}`,
+          `https://localhost:7251/api/TeNdryshme/Porosia/ShfaqPorosineNgaID?nrFatures=${props.faturaID}`,
           authentikimi
         );
 
-        console.log(teDhenat.data);
+        const teDhenatBiznesit = await axios.get('https://localhost:7251/api/Biznesi/TeDhenatBiznesit/ShfaqTeDhenat', authentikimi);
+        const BankatBiznesit = await axios.get('https://localhost:7251/api/Biznesi/TeDhenatBiznesit/ShfaqBankat', authentikimi);
 
-        setteDhenatFat(teDhenat.data);
+        const teDhenatQRCode = {
+          TeDhenatEBiznesit: teDhenatBiznesit.data,
+          LlogaritBankare: BankatBiznesit.data,
+          TeDhenatEFatures: teDhenat.data,
+          BarkodiFat: props.Barkodi
+        };
+
+        setTeDhenatFat(teDhenat.data);
+        setTeDhenatBiznesit(teDhenatBiznesit.data);
+        setTeDhenatQrCode(teDhenatQRCode);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
 
     vendosFature();
-  }, [props.faturaID]);
+  }, [props.faturaID, props.Barkodi]);
 
-  useEffect(() => {
-    const vendosTeDhenatBiznesit = async () => {
-      try {
-        const teDhenat = await axios.get('https://localhost:7251/api/Biznesi/TeDhenatBiznesit/ShfaqTeDhenat', authentikimi);
-        setTeDhenatBiznesit(teDhenat.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    vendosTeDhenatBiznesit();
-  }, [props.faturaID]);
+  const jsonString = JSON.stringify(teDhenatQRCode, props.Barkodi);
 
   return (
     <>
@@ -96,6 +98,9 @@ function HeaderFatura(props) {
           <div className="barkodi">
             <span id="nrFatures">
               <Barkodi value={props.Barkodi} />
+            </span>
+            <span id="nrFatures">
+              <QRCode size={170} value={jsonString} />
             </span>
           </div>
           <div className="teDhenatEKlientit">

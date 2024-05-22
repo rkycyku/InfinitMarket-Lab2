@@ -7,6 +7,7 @@ using System.Security.Claims;
 using System.Text;
 using InfinitMarket.Data;
 using Stripe;
+using InfinitMarket.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -115,6 +116,7 @@ builder.Services.AddSwaggerGen(c => {
 });
 
 builder.Services.AddSingleton<MongoDBService>();
+builder.Services.AddScoped<IAdminLogService, AdminLogService>();
 
 var app = builder.Build();
 

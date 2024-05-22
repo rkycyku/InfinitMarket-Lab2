@@ -9,6 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using InfinitMarket.Models;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.IdentityModel.Tokens;
+using InfinitMarket.Services;
+using System.Security.Claims;
 
 namespace InfinitMarket.Controllers
 {
@@ -20,17 +22,20 @@ namespace InfinitMarket.Controllers
         private readonly IConfiguration _configuration;
         private readonly ApplicationDbContext _context;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly IAdminLogService _adminLogService;
 
         public StafiController(
             UserManager<IdentityUser> userManager,
            RoleManager<IdentityRole> roleManager,
             IConfiguration configuration,
-            ApplicationDbContext context)
+            ApplicationDbContext context,
+            IAdminLogService adminLogService)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _configuration = configuration;
             _context = context;
+            _adminLogService = adminLogService;
         }
 
         [AllowAnonymous]
@@ -190,6 +195,9 @@ namespace InfinitMarket.Controllers
                         Aksesi = registerModel.RoliZgjedhur
                     };
 
+                    var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                    await _adminLogService.LogAsync(userId, "Shto", "Perdoruesi", perdoruesi.UserID.ToString(), $"Eshte Shtuar Stafi i ri: {TeDhenatPerHyrje.Email} - Roli: {TeDhenatPerHyrje.Aksesi}");
+
                     return Ok(TeDhenatPerHyrje);
                 }
                 return BadRequest(new AuthResults()
@@ -231,6 +239,8 @@ namespace InfinitMarket.Controllers
 
             if (perditesoAksesin.Succeeded)
             {
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                await _adminLogService.LogAsync(userId, "Perditeso", "Perdoruesi", perdoruesi.UserID.ToString(), $"Eshte Perditesuar roli i Stafit: {perdoruesi.Email} - Roli: {roli}");
 
                 return Ok(new AuthResults
                 {
@@ -285,6 +295,9 @@ namespace InfinitMarket.Controllers
                     if (eKaRolin == true)
                     {
                         await _userManager.RemoveFromRoleAsync(perdoruesi, roli);
+
+                        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                        await _adminLogService.LogAsync(userId, "Fshij", "Perdoruesi", GjejAspNetID.UserID.ToString(), $"Eshte Larguar roli per Stafin: {GjejAspNetID.Email} - Roli: {roli}");
 
                         return Ok(new AuthResults
                         {

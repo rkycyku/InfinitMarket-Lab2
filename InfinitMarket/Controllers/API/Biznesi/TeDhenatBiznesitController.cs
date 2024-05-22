@@ -1,10 +1,12 @@
 ﻿using InfinitMarket.Data;
 using InfinitMarket.Models;
+using InfinitMarket.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
 
 namespace InfinitMarket.Controllers.API.Biznesi
 {
@@ -14,10 +16,12 @@ namespace InfinitMarket.Controllers.API.Biznesi
     public class TeDhenatBiznesitController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IAdminLogService _adminLogService;
 
-        public TeDhenatBiznesitController(ApplicationDbContext context)
+        public TeDhenatBiznesitController(ApplicationDbContext context, IAdminLogService adminLogService)
         {
             _context = context;
+            _adminLogService = adminLogService;
         }
 
         [AllowAnonymous]
@@ -51,7 +55,11 @@ namespace InfinitMarket.Controllers.API.Biznesi
             teDhenat.Adresa = k.Adresa;
             teDhenat.Logo = k.Logo;
 
-            _context.SaveChanges();
+            _context.TeDhenatBiznesit.Update(teDhenat);
+            await _context.SaveChangesAsync();
+
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            await _adminLogService.LogAsync(userId, "Perditeso", "TeDhenatBiznesit", k.IDTeDhenatBiznesit.ToString(), $"Eshte bere perditesimi i te dhenave te Biznesit");
 
             return Ok(teDhenat);
         }
@@ -90,6 +98,9 @@ namespace InfinitMarket.Controllers.API.Biznesi
             await _context.Bankat.AddAsync(banka);
             await _context.SaveChangesAsync();
 
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            await _adminLogService.LogAsync(userId, "Shto", "Bankat", banka.BankaID.ToString(), $"Eshte shtuar Banka: {banka.EmriBankes} - Nr. Llogaris: {banka.NumriLlogaris}");
+
             return CreatedAtAction("ShfaqBankat", banka.BankaID, banka);
         }
 
@@ -107,6 +118,9 @@ namespace InfinitMarket.Controllers.API.Biznesi
 
             _context.Bankat.Remove(banka);
             await _context.SaveChangesAsync();
+
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            await _adminLogService.LogAsync(userId, "Fshij", "Bankat", banka.BankaID.ToString(), $"Eshte Larguar Banka: {banka.EmriBankes} - Nr.Llogaris: {banka.NumriLlogaris}");
 
             return NoContent();
         }
@@ -141,6 +155,9 @@ namespace InfinitMarket.Controllers.API.Biznesi
 
             _context.Bankat.Update(banka);
             await _context.SaveChangesAsync();
+
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            await _adminLogService.LogAsync(userId, "Shto", "Bankat", banka.BankaID.ToString(), $"Eshte shtuar Banka: {banka.EmriBankes} - Shuma: {banka.NumriLlogaris}");
 
             return Ok(banka);
         }
