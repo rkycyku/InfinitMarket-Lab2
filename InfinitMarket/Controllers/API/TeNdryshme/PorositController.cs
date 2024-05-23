@@ -59,7 +59,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
         {
             var perdoruesi = await _context.Perdoruesit.Where(x => x.AspNetUserId == idPerdoruesi).FirstOrDefaultAsync();
 
-            if(perdoruesi == null)
+            if (perdoruesi == null)
             {
                 return NotFound();
             }
@@ -130,7 +130,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
                 })
                 .FirstOrDefaultAsync();
 
-            if(porosia == null)
+            if (porosia == null)
             {
                 return NotFound();
             }
@@ -246,6 +246,64 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             await _adminLogService.LogAsync(userId, "Perditeso", "Porosit", porosia.IdPorosia.ToString(), $"Eshte Perditesuar statusi i Porosis: {statusi}");
 
             return Ok(porosia);
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("TeDhenatFatQRCode")]
+        public async Task<IActionResult> TeDhenatFatQRCode(int nrPorosis, string nrBarkodit)
+        {
+            var teDhenatEBiznesit = await _context.TeDhenatBiznesit.FirstAsync();
+            var bankatBiznesit = await _context.Bankat.ToListAsync();
+            var porsia = await _context.Porosit.Include(x => x.AdresaDorezimit).Where(x => x.IdPorosia == nrPorosis).FirstOrDefaultAsync();
+            var teDhenatEPorosis = await _context.TeDhenatEPorosis.Include(x => x.Produkti).Where(x => x.IdPorosia == nrPorosis).ToListAsync();
+            var LlogaritBankare = new List<string>();
+            var ProduktetEPorosis = new List<string>();
+
+            foreach (var bankat in bankatBiznesit)
+            {
+                var banka = $"{bankat.EmriBankes} - {bankat.NumriLlogaris}, Valuta: {bankat.Valuta}";
+
+                LlogaritBankare.Add(banka);
+            }
+
+            foreach (var produktet in teDhenatEPorosis)
+            {
+                var produkti = $"{produktet.Produkti.EmriProduktit}, Sasia: {produktet.SasiaPorositur} cope, Qmimi: {produktet.QmimiProduktit} €, Totali: {produktet.QmimiProduktit * produktet.SasiaPorositur} €";
+
+                ProduktetEPorosis.Add(produkti);
+            }
+
+            var Fatura = new
+            {
+                TeDhenatEBiznesit = new
+                {
+                    teDhenatEBiznesit.EmriIBiznesit,
+                    teDhenatEBiznesit.Adresa,
+                    Kontakti = teDhenatEBiznesit.Email + ", " + teDhenatEBiznesit.NrKontaktit,
+                    NumratEBiznesit = $"NUI: {teDhenatEBiznesit.NUI}, Nr. TVSH: {teDhenatEBiznesit.NrTVSH}, NF: {teDhenatEBiznesit.NF}",
+                    LlogaritBankare
+                },
+                Porosia = new
+                {
+                    NrFatures = nrBarkodit,
+                    TotaliPorosisMeZbritje = porsia.Totali18TVSH + porsia.Totali8TVSH - porsia.Zbritja + " €",
+                    Zbritja = porsia.Zbritja + " €",
+                    porsia.TotaliProdukteve,
+                    porsia.LlojiPageses,
+                    porsia.StatusiPorosis,
+                    Dergesa = new
+                    {
+                        Klienti = porsia.AdresaDorezimit.Emri + " " + porsia.AdresaDorezimit.Mbiemri,
+                        AdresaDorezimit = $"{porsia.AdresaDorezimit.Adresa}, {porsia.AdresaDorezimit.Qyteti}, {porsia.AdresaDorezimit.Shteti} {porsia.AdresaDorezimit.ZipKodi}",
+                        Transporti = $"Qmimi Transportit: {porsia.QmimiTransportit} €, Lloji Transportit: {porsia.LlojiTransportit}",
+                        TotaliPerPagese = porsia.LlojiPageses == "Stripe" ? "0.00 €" : porsia.Totali18TVSH + porsia.Totali8TVSH - porsia.Zbritja + " €"
+                    },
+                    ProduktetEPorosis
+                }
+            };
+
+            return Ok(Fatura);
         }
     }
 

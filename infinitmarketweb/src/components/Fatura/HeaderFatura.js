@@ -28,18 +28,12 @@ function HeaderFatura(props) {
         );
 
         const teDhenatBiznesit = await axios.get('https://localhost:7251/api/Biznesi/TeDhenatBiznesit/ShfaqTeDhenat', authentikimi);
-        const BankatBiznesit = await axios.get('https://localhost:7251/api/Biznesi/TeDhenatBiznesit/ShfaqBankat', authentikimi);
 
-        const teDhenatQRCode = {
-          TeDhenatEBiznesit: teDhenatBiznesit.data,
-          LlogaritBankare: BankatBiznesit.data,
-          TeDhenatEFatures: teDhenat.data,
-          BarkodiFat: props.Barkodi
-        };
+        const teDhenatQRCode = await axios.get(`https://localhost:7251/api/TeNdryshme/Porosia/TeDhenatFatQRCode?nrPorosis=${props.faturaID}&nrBarkodit=${props.Barkodi}`, authentikimi);
 
         setTeDhenatFat(teDhenat.data);
         setTeDhenatBiznesit(teDhenatBiznesit.data);
-        setTeDhenatQrCode(teDhenatQRCode);
+        setTeDhenatQrCode(teDhenatQRCode.data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -48,7 +42,7 @@ function HeaderFatura(props) {
     vendosFature();
   }, [props.faturaID, props.Barkodi]);
 
-  const jsonString = JSON.stringify(teDhenatQRCode, props.Barkodi);
+  const jsonString = JSON.stringify(teDhenatQRCode);
 
   return (
     <>
@@ -100,7 +94,7 @@ function HeaderFatura(props) {
               <Barkodi value={props.Barkodi} />
             </span>
             <span id="nrFatures">
-              <QRCode size={170} value={jsonString} />
+              <QRCode size={180} value={jsonString} />
             </span>
           </div>
           <div className="teDhenatEKlientit">
