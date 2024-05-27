@@ -17,7 +17,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             _context = context;
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         [Route("totaleTeNdryshme")]
         public async Task<IActionResult> GetTotaleTeNdryshme()
@@ -132,7 +132,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             return Ok(totalet);
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         [Route("15PerdoruesitMeSeShumtiBlerje")]
         public async Task<IActionResult> GetTop15()
@@ -157,7 +157,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             return Ok(bleresit);
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         [Route("15ProduktetMeTeShitura")]
         public async Task<IActionResult> GetTop15Prod()
@@ -187,7 +187,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             return Ok(produktet);
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         [Route("TotaletJavore")]
         public async Task<IActionResult> GetShitjetJavore()

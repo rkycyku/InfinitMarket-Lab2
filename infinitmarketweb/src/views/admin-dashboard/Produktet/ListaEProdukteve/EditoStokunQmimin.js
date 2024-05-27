@@ -52,28 +52,6 @@ function EditoStokunQmimin(props) {
     fetchData();
   }, [props.id]);
 
-  const generateRandomValue = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  };
-
-  const handleRandomQmimiBleres = () => {
-    const randomPercent = generateRandomValue(20, 40);
-    const newQmimiBleres = qmimiProduktit - (qmimiProduktit * randomPercent) / 100;
-    setQmimiBleres(newQmimiBleres.toFixed(2));
-  };
-
-  const handleRandomSasiaNeStok = () => {
-    const getRandomNumber = (min, max) => {
-      let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-      while (randomNumber < 10) {
-        randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-      }
-      return randomNumber;
-    };
-    const newStoku = getRandomNumber(0, 263);
-    setStoku(newStoku);
-  };
-
   const handleSubmit = async () => {
     await axios
       .put(
@@ -121,9 +99,6 @@ function EditoStokunQmimin(props) {
                 Shtoni Sasine ne Stok: <span style={{ fontWeight: 'bold' }}>Sasia Aktuale {produkti.sasiaNeStok}</span>
               </Form.Label>
               <Form.Control type="number" name="sasiaNeStok" value={stoku} onChange={(e) => setStoku(e.target.value)} />
-              <Button className="mt-2" variant="primary" onClick={handleRandomSasiaNeStok}>
-                Generate Random
-              </Button>
             </Form.Group>
             <Form.Group className="mb-3" controlId="qmimiBleres">
               <Form.Label>
@@ -131,15 +106,11 @@ function EditoStokunQmimin(props) {
                 <span style={{ fontWeight: 'bold' }}>Çmimi Aktual {parseFloat(produkti.qmimiBleres).toFixed(2)} €</span>{' '}
               </Form.Label>
               <Form.Control type="number" name="qmimiBleres" value={qmimiBleres} onChange={(e) => setQmimiBleres(e.target.value)} />
-              <Button className="mt-2" variant="primary" onClick={handleRandomQmimiBleres}>
-                Generate Random
-              </Button>
             </Form.Group>
             <Form.Group className="mb-3" controlId="qmimiProduktit">
               <Form.Label>
                 Perditesoni Çmimi Produktit:{' '}
-                <span style={{ fontWeight: 'bold' }}>Çmimi Aktual {parseFloat(produkti.qmimiProduktit).toFixed(2)} €</span>{
-' '}
+                <span style={{ fontWeight: 'bold' }}>Çmimi Aktual {parseFloat(produkti.qmimiProduktit).toFixed(2)} €</span>{' '}
               </Form.Label>
               <Form.Control
                 type="number"

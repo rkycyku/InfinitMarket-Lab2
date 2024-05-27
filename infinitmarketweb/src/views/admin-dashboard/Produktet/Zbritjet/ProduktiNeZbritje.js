@@ -15,7 +15,6 @@ function ProduktiNeZbritje(props) {
   const [qmimiZbritur, setQmimiZbritur] = useState(0.00);
   const [dataSkadimit, setDataSkadimit] = useState(new Date().toISOString().substring(0, 10));
   const [produktet, setProduktet] = useState([]);
-  const [perditeso, setPerditeso] = useState("");
   const [shfaqMesazhin, setShfaqMesazhin] = useState(false);
   const [tipiMesazhit, setTipiMesazhit] = useState("");
   const [pershkrimiMesazhit, setPershkrimiMesazhit] = useState("");
@@ -44,7 +43,7 @@ function ProduktiNeZbritje(props) {
     };
 
     vendosProduktet();
-  }, [perditeso]);
+  }, [produkti]);
 
   useEffect(() => {
     const vendosDetajetProduktit = async () => {
@@ -68,7 +67,7 @@ function ProduktiNeZbritje(props) {
     };
 
     vendosDetajetProduktit();
-  }, [perditeso, produkti]);
+  }, [produkti]);
 
   const handleProduktiChange = (value) => {
     setProdukti(value);
@@ -108,7 +107,7 @@ function ProduktiNeZbritje(props) {
         .then(() => {
           props.setTipiMesazhit("success");
           props.setPershkrimiMesazhit("Zbritja u shtua me sukses!")
-          props.setPerditeso(Date.now());
+          props.setPerditeso();
           props.mbyllZbritjen();
           props.shfaqmesazhin();
         })

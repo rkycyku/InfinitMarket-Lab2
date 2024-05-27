@@ -21,7 +21,7 @@ public class StripeController : Controller
         _context = context;
     }
 
-    [AllowAnonymous]
+    [Authorize]
     [HttpPost]
     [Route("KrijoPagesenStripe")]
     public async Task<IActionResult> KrijoPagesenStripe(PaymentIntentCreateRequest request)
@@ -101,7 +101,7 @@ public class StripeController : Controller
         return Json(new { clientSecret = paymentIntent.ClientSecret });
     }
 
-    [AllowAnonymous]
+    [Authorize]
     [HttpGet]
     [Route("ShfaqPagesat")]
     public List<CustomOrder> ShfaqPagesat()
@@ -129,7 +129,7 @@ public class StripeController : Controller
         return customOrders;
     }
 
-    [AllowAnonymous]
+    [Authorize]
     [HttpDelete]
     [Route("AnuloPagesen")]
     public async void AnuloPagesen(string orderId)

@@ -58,7 +58,7 @@ function EditoKompanin(props) {
   };
 
   const handleAdresaChange = (value) => {
-    setKompania((prev) => ({ ...prev, Adresa: value }));
+    setKompania((prev) => ({ ...prev, adresa: value }));
   };
 
   function isNullOrEmpty(value) {
@@ -68,10 +68,10 @@ function EditoKompanin(props) {
   async function handleSubmit() {
     await axios
       .put(
-        `https://localhost:7251/api/Produktet/Kompania/perditesoKompanin?id=${kompania.kompaniaId}`,
+        `https://localhost:7251/api/Produktet/Kompania/perditesoKompanin?id=${kompania.kompaniaID}`,
         {
           emriKompanis: kompania.emriKompanis,
-          adresa: kompania.Adresa
+          adresa: kompania.adresa
         },
         authentikimi
       )

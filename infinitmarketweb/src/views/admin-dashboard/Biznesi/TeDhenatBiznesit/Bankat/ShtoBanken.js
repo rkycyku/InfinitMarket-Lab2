@@ -11,7 +11,7 @@ function ShtoBanken(props) {
   const [emriBankes, setEmriBankes] = useState('');
   const [numriLlogaris, setNumriLlogaris] = useState('');
   const [adresaBankes, setAdresaBankes] = useState('');
-  const [valuta, setValuta] = useState('');
+  const [valuta, setValuta] = useState('Euro');
 
   const [perditeso, setPerditeso] = useState('');
   const [bankat, setBankat] = useState([]);

@@ -54,7 +54,9 @@ function EditoRoletStafit(props) {
   async function FshijRolin(roli) {
     var eshteVetem1Admin = await axios.get(`https://localhost:7251/api/Perdoruesi/Stafi/EshteVetem1Admin`, authentikimi);
 
-    if (eshteVetem1Admin === false) {
+    console.log(eshteVetem1Admin);
+
+    if (eshteVetem1Admin.data == false) {
       await axios
         .delete(`https://localhost:7251/api/Perdoruesi/Stafi/FshijRolinStafit?userID=${props.id}&roli=${roli}`, authentikimi)
         .then((x) => {

@@ -132,11 +132,6 @@ const routes = [
       },
       {
         exact: true,
-        path: '/produktet/PershkrimiProduktit/KategoriteEDetajeve/',
-        element: lazy(() => import('./views/admin-dashboard/Produktet/PershkrimiProduktit/KategoriteEDetajeve/ListaEKategoriveTePershkrimit.js'))
-      },
-      {
-        exact: true,
         path: '/shporta',
         element: lazy(() => import('./views/Shporta'))
       },

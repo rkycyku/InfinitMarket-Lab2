@@ -34,7 +34,7 @@ namespace InfinitMarket.Controllers.API.Biznesi
             return Ok(teDhenat);
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         [Route("PerditesoTeDhenat")]
         public async Task<IActionResult> PerditesoTeDhenat([FromBody] TeDhenatBiznesit k)
@@ -90,7 +90,7 @@ namespace InfinitMarket.Controllers.API.Biznesi
             return Ok(bankaNgaID);
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [Route("ShtoBanken")]
         public async Task<IActionResult> ShtoBanken(Bankat banka)
@@ -104,7 +104,7 @@ namespace InfinitMarket.Controllers.API.Biznesi
             return CreatedAtAction("ShfaqBankat", banka.BankaID, banka);
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         [Route("FshijBanken")]
         public async Task<IActionResult> FshijBanken(int id)
@@ -125,7 +125,7 @@ namespace InfinitMarket.Controllers.API.Biznesi
             return NoContent();
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         [Route("PerditesoBanken")]
         public async Task<IActionResult> PerditesoBanken(int id, [FromBody] Bankat b)

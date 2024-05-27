@@ -23,7 +23,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             _context = context;
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpGet]
         [Route("KontrolloALejohetVleresimi")]
         public async Task<IActionResult> KontrolloALejohetVleresimi(int produktiId, int userID)
@@ -47,7 +47,7 @@ namespace InfinitMarket.Controllers.API.Produktet
         }
 
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpGet]
         [Route("ShfaqVleresimetPerProduktin")]
         public async Task<IActionResult> ShfaqVleresimetPerProduktin(int produktiId)
@@ -58,7 +58,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return vleresimiProduktit is not null ? Ok(vleresimiProduktit) : NotFound();
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpGet]
         [Route("ShfaqVleresimetEKlientitPerProduktin")]
         public async Task<IActionResult> ShfaqVleresimetEKlientitPerProduktin(int produktiId, int klientiID)
@@ -73,7 +73,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return vleresimiProduktit is not null ? Ok(vleresimiProduktit) : Ok(false);
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpGet]
         [Route("ShfaqVleresiminNgaID")]
         public async Task<IActionResult> ShfaqVleresiminNgaID(string idVleresimi)
@@ -85,7 +85,7 @@ namespace InfinitMarket.Controllers.API.Produktet
         }
 
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpPost]
         [Route("VendosVleresimetPerProduktin")]
         public async Task<IActionResult> VendosVleresimetPerProduktin(VlersimetEProduktit vleresimi)
@@ -94,7 +94,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return CreatedAtAction(nameof(ShfaqVleresimetPerProduktin), new { id = vleresimi.Id }, vleresimi);
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpPut]
         [Route("NdryshoVleresiminEProduktit")]
         public async Task<IActionResult> NdryshoVleresiminEProduktit(string id, VlersimetEProduktit vleresimi)
@@ -122,8 +122,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             }
         }
 
-
-        [AllowAnonymous]
+        [Authorize]
         [HttpDelete]
         [Route("FshijVleresiminEProduktit")]
         public async Task<ActionResult> FshijVleresiminEProduktit(string id)

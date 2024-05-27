@@ -23,7 +23,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             _adminLogService = adminLogService;
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin, Shites")]
         [HttpGet]
         [Route("ShfaqKodet")]
         public async Task<IActionResult> ShfaqKodet()
@@ -37,7 +37,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             return Ok(kodet);
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpGet]
         [Route("GjejKodin")]
         public async Task<IActionResult> GjejKodin(string kodi)
@@ -55,7 +55,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             return Ok(kodiZbritjes);
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin, Shites")]
         [HttpPost]
         [Route("ShtoKodin")]
         public async Task<IActionResult> ShtoKodin(KodiZbritjes kodiZbritjes)
@@ -69,7 +69,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             return CreatedAtAction("ShfaqKodet", kodiZbritjes.Kodi, kodiZbritjes);
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin, Shites")]
         [HttpPut]
         [Route("PerditesoTeDhenatEKodit")]
         public async Task<IActionResult> PerditesoTeDhenatEKodit(String kodi, [FromBody] KodiZbritjes k)
@@ -104,7 +104,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             return Ok(teDhenatKodit);
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin, Shites")]
         [HttpDelete]
         [Route("FshijKodin")]
         public async Task<IActionResult> Delete(String kodi)

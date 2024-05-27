@@ -34,33 +34,6 @@ function ZbritjetEProduktit(props) {
   useEffect(() => {
     const shfaqZbritjet = async () => {
       try {
-        <table className="tableBig">
-          <tr>
-            <th>Nr. Zbritjes</th>
-            <th>ID dhe Emri Produktit</th>
-            <th>Qmim pa Zbritje</th>
-            <th>Qmimi me Zbritje</th>
-            <th>Data e Zbritjes</th>
-            <th>Data e Skadimit</th>
-            <th>Funksione</th>
-          </tr>
-
-          {zbritjet.map((z, index) => (
-            <tr key={index}>
-              <td>{index + 1}</td>
-              <td>{z.produktiId + ' - ' + z.emriProduktit}</td>
-              <td>{parseFloat(z.qmimiPaZbritjeProduktit).toFixed(2)} €</td>
-              <td>{parseFloat(z.qmimiMeZbritjeProduktit).toFixed(2)} € </td>
-              <td>{new Date(z.dataZbritjes).toLocaleDateString('en-GB', { dateStyle: 'short' })}</td>
-              <td>{new Date(z.dataSkadimit).toLocaleDateString('en-GB', { dateStyle: 'short' })}</td>
-              <td>
-                <Button style={{ marginRight: '0.5em' }} variant="danger" onClick={() => handleFshij(z.produktiId)}>
-                  <FontAwesomeIcon icon={faClose} />
-                </Button>
-              </td>
-            </tr>
-          ))}
-        </table>;
         setLoading(true);
         const zbritja = await axios.get('https://localhost:7251/api/Produktet/ZbritjaQmimitProduktit/shfaqZbritjet', authentikimi);
         setZbritjet(
@@ -116,13 +89,14 @@ function ZbritjetEProduktit(props) {
           shfaqmesazhin={() => setShfaqMesazhin(true)}
           setTipiMesazhit={setTipiMesazhit}
           setPershkrimiMesazhit={setPershkrimiMesazhit}
+          setPerditeso={() => setPerditeso(Date.now())}
         />
       )}
       {shtoZbritjen && (
         <ProduktiNeZbritje
           mbyllZbritjen={() => setShtoZbritjen(false)}
           shfaq={() => setShtoZbritjen(true)}
-          setPerditeso={setPerditeso}
+          setPerditeso={() => setPerditeso(Date.now())}
           setTipiMesazhit={setTipiMesazhit}
           setPershkrimiMesazhit={setPershkrimiMesazhit}
           shfaqmesazhin={() => setShfaqMesazhin(true)}

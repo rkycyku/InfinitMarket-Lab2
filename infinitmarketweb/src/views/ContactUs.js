@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Helmet } from 'react-helmet';
 import Mesazhi from '../components/Mesazhi';
-import { Form, FloatingLabel, Button } from 'react-bootstrap';
+import { Form, FloatingLabel, Button, Modal } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelopeCircleCheck } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelopeCircleCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
 import Footer from '../components/Footer';
 import Titulli from '../components/Titulli';
 
@@ -80,20 +80,42 @@ const ContactUs = () => {
       });
   }
 
+  function isNullOrEmpty(value) {
+    return value === null || value === '' || value === undefined;
+  }
+
+  const handleKontrolli = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (isNullOrEmpty(msg) || isNullOrEmpty(emri) || isNullOrEmpty(email)) {
+      setTipiMesazhit('danger');
+      setPershkrimiMesazhit('Ju lutemi plotesoni te gjitha fushat me <span style="color: red;">*</span>');
+      setShfaqMesazhin(true);
+    } else {
+      if (!emailRegex.test(email)) {
+        setTipiMesazhit('danger');
+        setPershkrimiMesazhit('Ju lutem shenoni nje email valid!');
+        setShfaqMesazhin(true);
+      } else {
+        dergoMesazhin();
+      }
+    }
+  };
+
   return (
     <div className="body">
       <Titulli titulli={'Contact Us'} />
       {shfaqMesazhin && <Mesazhi tipi={tipiMesazhit} pershkrimi={pershkrimiMesazhit} setShfaqMesazhin={setShfaqMesazhin} />}
       <div className="forms">
         <Form className="form">
-        <h2 className="text-center mb-5">Contact Us</h2>
-          <FloatingLabel controlId="floatingInput" label="Emri" className="mb-3">
+          <h2 className="text-center mb-5">Contact Us</h2>
+          <FloatingLabel controlId="floatingInput" label="Emri*" className="mb-3">
             <Form.Control className="inputt" value={emri} placeholder="Email" type="text" onChange={(e) => vendosEmrin(e.target.value)} />
           </FloatingLabel>
-          <FloatingLabel controlId="floatingInput" label="Email" className="mb-3">
+          <FloatingLabel controlId="floatingInput" label="Email*" className="mb-3">
             <Form.Control className="inputt" value={email} type="text" placeholder="Email" onChange={(e) => vendosEmail(e.target.value)} />
           </FloatingLabel>
-          <FloatingLabel controlId="floatingInput" label="Mesazhi Juaj">
+          <FloatingLabel controlId="floatingInput" label="Mesazhi Juaj*">
             <Form.Control
               className="inputt"
               value={msg}
@@ -103,7 +125,7 @@ const ContactUs = () => {
               onChange={(e) => vendosMesazhin(e.target.value)}
             />
           </FloatingLabel>
-          <Button className="button mt-4" onClick={dergoMesazhin}>
+          <Button className="button mt-4" onClick={handleKontrolli}>
             Send <FontAwesomeIcon icon={faEnvelopeCircleCheck} />
           </Button>
         </Form>

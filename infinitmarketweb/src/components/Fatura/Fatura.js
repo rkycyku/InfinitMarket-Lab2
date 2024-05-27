@@ -124,30 +124,33 @@ function Fatura(props) {
 
   useEffect(() => {
     if (getID) {
-      const vendosTeDhenatUserit = async () => {
-        try {
-          const teDhenatUser = await axios.get(`https://localhost:7251/api/Perdoruesi/shfaqSipasID?idUserAspNet=${getID}`, authentikimi);
-          setTeDhenat(teDhenatUser.data);
-          if (!teDhenatUser.data.rolet.includes('Admin', 'Menaxher')) {
-            setKaAkses(false);
+      if (teDhenatFat) {
+        const vendosTeDhenatUserit = async () => {
+          try {
+            const teDhenatUser = await axios.get(`https://localhost:7251/api/Perdoruesi/shfaqSipasID?idUserAspNet=${getID}`, authentikimi);
+            setTeDhenat(teDhenatUser.data);
+            console.log(teDhenatFat);
+            if (teDhenatFat.idKlienti != teDhenatUser.data.userID && !teDhenatUser.data.rolet.includes('Admin', 'Shites')) {
+              setKaAkses(false);
+            }
+            console.log(teDhenatUser.data);
+          } catch (err) {
+            console.log(err);
           }
-          console.log(teDhenatUser.data);
-        } catch (err) {
-          console.log(err);
-        }
-      };
+        };
 
-      vendosTeDhenatUserit();
+        vendosTeDhenatUserit();
+      }
     } else {
       navigate('/login');
     }
-  }, [getID]);
+  }, [getID, teDhenatFat]);
 
   useEffect(() => {
     console.log(teDhenat);
     if (teDhenat) {
       if (!kaAkses) {
-        navigate('/dashboard');
+        navigate('/403');
       } else {
         if (vendosFature === true) {
           // FaturaPerRuajtje();

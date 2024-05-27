@@ -23,7 +23,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             _adminLogService = adminLogService;
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpGet]
         [Route("ShfaqOfertatSlider")]
         public async Task<IActionResult> ShfaqOfertatESlider()
@@ -52,7 +52,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
         }
 
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [Route("VendosOfertatSlider")]
         public async Task<IActionResult> VendosOfertatSlider(SliderOfertat so)
@@ -66,7 +66,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             return CreatedAtAction("get", so.SliderOfertatID, so);
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         [Route("FshijOfertenSlider")]
         public async Task<IActionResult> FshijOfertenSlider(int id)

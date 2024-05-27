@@ -14,6 +14,7 @@ using System.Security.Claims;
 
 namespace InfinitMarket.Controllers
 {
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [Route("api/Perdoruesi/[controller]")]
     [ApiController]
     public class StafiController : ControllerBase
@@ -38,7 +39,7 @@ namespace InfinitMarket.Controllers
             _adminLogService = adminLogService;
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         [Route("KontrolloPerdoruesin")]
         public async Task<IActionResult> KontrolloPerdoruesin(string email)
@@ -52,7 +53,7 @@ namespace InfinitMarket.Controllers
             return Ok(false);
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         [Route("EshteVetem1Admin")]
         public async Task<IActionResult> EshteVetem1Admin()
@@ -66,13 +67,13 @@ namespace InfinitMarket.Controllers
             return Ok(false);
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         [Route("ShfaqStafinPerPerditesim")]
         public async Task<IActionResult> ShfaqStafinPerPerditesim(int ID)
         {
             var perdoruesi = await _context.Perdoruesit.Where(x => x.UserID == ID).FirstOrDefaultAsync();
-                
+
             if (perdoruesi == null)
             {
                 return BadRequest();
@@ -108,7 +109,7 @@ namespace InfinitMarket.Controllers
         }
 
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [Route("RegjistroStafin")]
         public async Task<IActionResult> Register([FromBody] RegisterModel registerModel)
@@ -119,7 +120,7 @@ namespace InfinitMarket.Controllers
 
                 if (perdoruesiEkziston != null)
                 {
-                    await _userManager.AddToRoleAsync(perdoruesiEkziston, registerModel.RoliZgjedhur );
+                    await _userManager.AddToRoleAsync(perdoruesiEkziston, registerModel.RoliZgjedhur);
 
                     var PerditesimiRolit = new
                     {
@@ -213,7 +214,7 @@ namespace InfinitMarket.Controllers
             return BadRequest();
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [Route("ShtoRolinStafit")]
         public async Task<IActionResult> ShtoRolinStafit(int userID, string roli)
@@ -263,7 +264,7 @@ namespace InfinitMarket.Controllers
             }
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         [Route("FshijRolinStafit")]
         public async Task<IActionResult> FshijRolinStafit(int userID, string roli)
@@ -322,7 +323,7 @@ namespace InfinitMarket.Controllers
 
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         [Route("shfaqRolet")]
         public async Task<IActionResult> ShfaqRolet()
@@ -350,7 +351,7 @@ namespace InfinitMarket.Controllers
             return Ok(roletWithUsersCount);
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         [Route("ShfaqStafin")]
         public async Task<IActionResult> ShfaqStafin()
@@ -364,7 +365,10 @@ namespace InfinitMarket.Controllers
                 var user = await _userManager.FindByIdAsync(perdoruesi.AspNetUserId);
                 var roletPerdoruesit = await _userManager.GetRolesAsync(user);
 
-                if(roletPerdoruesit.Contains("Admin") || roletPerdoruesit.Contains("Shites"))
+                // Remove the "Klient" role from the list of roles
+                var eshteStaf = roletPerdoruesit.Where(role => role != "Klient").ToList();
+
+                if (eshteStaf.Contains("Admin") || eshteStaf.Contains("Shites"))
                 {
                     var personi = new
                     {
@@ -372,18 +376,15 @@ namespace InfinitMarket.Controllers
                         perdoruesi.Emri,
                         perdoruesi.Mbiemri,
                         perdoruesi.Email,
-                        Rolet = roletPerdoruesit
+                        Rolet = eshteStaf
                     };
 
                     stafi.Add(personi);
                 }
             }
-
             return Ok(stafi);
         }
     }
-
-
 
     public class RegisterModel
     {

@@ -334,9 +334,31 @@ function Checkout(props) {
               <div className="adresaDorezimit">
                 <h5>Lloji i Transportit</h5>
                 <Form.Select className="mb-2" onChange={(e) => handleTransporti(e.target.value)}>
-                  <option value={'DSHPP'}>Dergese ne shtepi - Pa Pagese</option>
-                  <option value={'DSH1.5'}>Dergese ne shtepi - 1.50 €</option>
-                  <option value={'DSH2.5'}>Dergese ne shtepi - 2.50 €</option>
+                  {shporta.totali18TVSH +
+                    shporta.totali8TVSH -
+                    (shporta && shporta.kodiZbritjes && shporta.kodiZbritjes.qmimiZbritjes
+                      ? shporta && shporta.kodiZbritjes && shporta.kodiZbritjes.qmimiZbritjes
+                      : 0) >
+                    200 && <option value={'DSHPP'}>Dergese ne shtepi - Pa Pagese</option>}
+
+                  {shporta.totali18TVSH +
+                    shporta.totali8TVSH -
+                    (shporta && shporta.kodiZbritjes && shporta.kodiZbritjes.qmimiZbritjes
+                      ? shporta && shporta.kodiZbritjes && shporta.kodiZbritjes.qmimiZbritjes
+                      : 0) >
+                    100 &&
+                    shporta.totali18TVSH +
+                      shporta.totali8TVSH -
+                      (shporta && shporta.kodiZbritjes && shporta.kodiZbritjes.qmimiZbritjes
+                        ? shporta && shporta.kodiZbritjes && shporta.kodiZbritjes.qmimiZbritjes
+                        : 0) <
+                      200 && <option value={'DSH1.5'}>Dergese ne shtepi - 1.50 €</option>}
+                  {shporta.totali18TVSH +
+                    shporta.totali8TVSH -
+                    (shporta && shporta.kodiZbritjes && shporta.kodiZbritjes.qmimiZbritjes
+                      ? shporta && shporta.kodiZbritjes && shporta.kodiZbritjes.qmimiZbritjes
+                      : 0) <
+                    100 && <option value={'DSH2.5'}>Dergese ne shtepi - 2.50 €</option>}
                   <option value={'MZPP'} selected>
                     Merre ne zyre - Pa Pagese
                   </option>

@@ -19,13 +19,13 @@ namespace InfinitMarket.Models
         public int? KompaniaId { get; set; }
 
         public int? KategoriaId { get; set; }
+        public string? isDeleted { get; set; } = "false";
+
         [ForeignKey(nameof(KategoriaId))]
         public virtual KategoriaProduktit? Kategoria { get; set; }
 
         [ForeignKey(nameof(KompaniaId))]
         public virtual KompanitePartnere? KompanitePartnere { get; set; }
-
-        public string? isDeleted { get; set; } = "false";
 
         public virtual TeDhenatProduktit? TeDhenatProduktit { get; set; }
 

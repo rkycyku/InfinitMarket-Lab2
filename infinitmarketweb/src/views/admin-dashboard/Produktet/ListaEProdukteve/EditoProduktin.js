@@ -43,9 +43,9 @@ function EditoProduktin(props) {
       setLoading(true);
       try {
         const [responseProdukti, responseCategories, responseCompanies] = await Promise.all([
-          axios.get(`https://localhost:7251/api/Produktet/Produkti/ShfaqProduktinSipasIDsAll/${props.id}`),
-          axios.get('https://localhost:7251/api/Produktet/Kategoria/shfaqKategorit'),
-          axios.get('https://localhost:7251/api/Produktet/Kompania/shfaqKompanit')
+          axios.get(`https://localhost:7251/api/Produktet/Produkti/ShfaqProduktinSipasIDsAll/${props.id}`, authentikimi),
+          axios.get('https://localhost:7251/api/Produktet/Kategoria/shfaqKategorit', authentikimi),
+          axios.get('https://localhost:7251/api/Produktet/Kompania/shfaqKompanit', authentikimi)
         ]);
 
         const isDeleted = responseProdukti.data.produkti.isDeleted ? 'true' : 'false';

@@ -283,7 +283,7 @@ function ShtoOfertenSlider(props) {
                 <Form.Control
                   type="text"
                   className="form-control styled-input"
-                  placeholder="Zgjedhni Partnerin"
+                  placeholder="Zgjedhni Produktin"
                   value={inputValue}
                   onChange={handleInputChangeProdukti}
                   onKeyDown={handleInputKeyDownProdukti}

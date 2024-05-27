@@ -32,7 +32,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             _adminLogService = adminLogService;
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpGet]
         [Route("ShfaqProduktet")]
         public async Task<ActionResult> Get()
@@ -63,7 +63,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return Ok(produkti);
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpGet]
         [Route("Shfaq15ProduktetMeTeFundit")]
         public async Task<ActionResult> Shfaq15ProduktetMeTeFundit()
@@ -88,38 +88,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return Ok(Kthe15TeFundit);
         }
 
-
-        [AllowAnonymous]
-        [HttpGet]
-        [Route("ShfaqProduktetAll")]
-        public async Task<ActionResult> GetAll()
-        {
-            var produkti = await _context.Produkti
-                .OrderByDescending(x => x.ProduktiId)
-                .Select(x => new
-                {
-                    x.ProduktiId,
-                    x.EmriProduktit,
-                    x.Pershkrimi,
-                    x.FotoProduktit,
-                    x.KategoriaId,
-                    x.Kategoria.LlojiKategoris,
-                    x.KompaniaId,
-                    x.KompanitePartnere.EmriKompanis,
-                    x.TeDhenatProduktit.SasiaNeStok,
-                    x.TeDhenatProduktit.QmimiBleres,
-                    x.TeDhenatProduktit.QmimiProduktit,
-                    x.TeDhenatProduktit.DataKrijimit,
-                    x.TeDhenatProduktit.DataPerditsimit,
-                    x.TeDhenatProduktit.llojiTVSH,
-                    x.ZbritjaQmimitProduktit.QmimiMeZbritjeProduktit
-                })
-                .ToListAsync();
-
-            return Ok(produkti);
-        }
-
-        [AllowAnonymous]
+        [Authorize]
         [HttpGet]
         [Route("ShfaqProduktinSipasIDsAll/{id}")]
         public async Task<ActionResult> shfaqSipasIDsAll(int id)
@@ -187,7 +156,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return Ok(ProduktiMeFotoGalleryVleresim);
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [Route("ShtoProdukt")]
         public async Task<ActionResult> ShtoProdukt([FromBody] Produkti produktiData)
@@ -232,7 +201,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return Ok(produkti.ProduktiId);
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         [Route("FshijProduktin/{id}")]
         public async Task<ActionResult> FshijProduktin(int id)
@@ -261,7 +230,7 @@ namespace InfinitMarket.Controllers.API.Produktet
         }
 
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         [Route("PerditesoProduktin/{id}")]
         public async Task<ActionResult> PerditesoProduktin(int id, [FromBody] Produkti produktiData)
@@ -353,9 +322,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return Ok("Product u perditesua me sukses.");
         }
 
-
-
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         [Route("PerditesoStokunQmimin")]
         public async Task<ActionResult> PerditesoStokunQmimin(int id, int stoku, decimal qmimiBleres, decimal qmimiShites)
@@ -378,218 +345,5 @@ namespace InfinitMarket.Controllers.API.Produktet
 
             return Ok("Produkti u perditesua me sukses.");
         }
-
-        [AllowAnonymous]
-        [HttpPost]
-        [Route("ShtoKategorineEDetajet")]
-        public async Task<ActionResult> ShtoKategorineEDetajet([FromBody] KategoriteEDetajeve kategoriaData)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var kategoria = new KategoriteEDetajeve
-            {
-                EmriKategoriseDetajeve = kategoriaData.EmriKategoriseDetajeve,
-                DetajetJson = kategoriaData.DetajetJson
-            };
-
-            try
-            {
-                _context.KategoriteEDetajeve.Add(kategoria);
-                await _context.SaveChangesAsync();
-
-                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-                await _adminLogService.LogAsync(userId, "Shto", "KategoriteEDetajeve", kategoria.KategoriaDetajeveId.ToString(), $"Eshte Shtuar Kategoria e Detajeve: {kategoria.EmriKategoriseDetajeve}");
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
-            }
-
-            return Ok("Kategoria e detajeve u shtua me sukses.");
-        }
-
-        [AllowAnonymous]
-        [HttpGet("ShfaqKategoriteEDetajet")]
-        public async Task<ActionResult> ShfaqKategoriteEDetajet()
-        {
-            var kategorite = await _context.KategoriteEDetajeve
-                .Where(k => k.isDeleted == "false")
-                .ToListAsync();
-
-            return Ok(kategorite);
-        }
-
-        [AllowAnonymous]
-        [HttpDelete("FshijKategorineEDetajet/{id}")]
-        public async Task<ActionResult> FshijKategorineEDetajet(int id)
-        {
-            var kategoria = await _context.KategoriteEDetajeve.FindAsync(id);
-
-            if (kategoria == null)
-            {
-                return NotFound();
-            }
-
-            kategoria.isDeleted = "true";
-
-            _context.Entry(kategoria).State = EntityState.Modified;
-
-            await _context.SaveChangesAsync();
-
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            await _adminLogService.LogAsync(userId, "Fshij", "KategoriteEDetajeve", kategoria.KategoriaDetajeveId.ToString(), $"Eshte Larguar Kategoria e Detajeve: {kategoria.EmriKategoriseDetajeve}");
-
-            return NoContent();
-        }
-
-        [AllowAnonymous]
-        [HttpPut]
-        [Route("PerditesoKategorineEDetajet/{id}")]
-        public async Task<ActionResult> PerditesoKategorineEDetajet(int id, [FromBody] KategoriteEDetajeve updatedCategory)
-        {
-            var existingCategory = await _context.KategoriteEDetajeve.FindAsync(id);
-
-            if (existingCategory == null)
-            {
-                return NotFound();
-            }
-
-            existingCategory.EmriKategoriseDetajeve = updatedCategory.EmriKategoriseDetajeve;
-
-            existingCategory.DetajetJson = updatedCategory.DetajetJson;
-
-            try
-            {
-                _context.Entry(existingCategory).State = EntityState.Modified;
-                await _context.SaveChangesAsync();
-
-                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-                await _adminLogService.LogAsync(userId, "Perditeso", "KategoriteEDetajeve", existingCategory.KategoriaDetajeveId.ToString(), $"Eshte Perditesuar Kategoria e Detajeve: {existingCategory.EmriKategoriseDetajeve}");
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!_context.KategoriteEDetajeve.Any(e => e.KategoriaDetajeveId == id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-
-
-        [AllowAnonymous]
-        [HttpGet]
-        [Route("ShfaqKategorineEDetajet/{id}")]
-        public async Task<ActionResult> ShfaqKategorineEDetajet(int id)
-        {
-            var kategoria = await _context.KategoriteEDetajeve.FindAsync(id);
-
-            if (kategoria == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(kategoria);
-        }
-
-        [AllowAnonymous]
-        [HttpPost]
-        [Route("ShtoTeDhenatEDetajeve")]
-        public async Task<ActionResult> ShtoTeDhenatEDetajeve([FromBody] TeDhenatEDetajeve teDhenatData)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var teDhenat = new TeDhenatEDetajeve
-            {
-                KategoriaDetajeveId = teDhenatData.KategoriaDetajeveId,
-                TeDhenatJson = teDhenatData.TeDhenatJson
-            };
-
-            try
-            {
-                _context.TeDhenatEDetajeve.Add(teDhenat);
-                await _context.SaveChangesAsync();
-
-                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-                await _adminLogService.LogAsync(userId, "Shto", "TeDhenatEDetajeve", teDhenat.TeDhenatEDetajeveId.ToString(), $"Eshte Shtuar Te Dhenat e Detajeve: {teDhenat.TeDhenatJson}");
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
-            }
-
-            return Ok("TeDhenatEDetajeve u shtua me sukses.");
-        }
-
-        [AllowAnonymous]
-        [HttpGet]
-        [Route("ShfaqTeDhenatEDetajeve/{id}")]
-        public async Task<ActionResult> ShfaqTeDhenatEDetajeve(int id)
-        {
-            var teDhenat = await _context.TeDhenatEDetajeve
-                .Where(t => t.TeDhenatEDetajeveId == id)
-                .Select(t => new
-                {
-                    t.TeDhenatEDetajeveId,
-                    t.KategoriaDetajeveId,
-                    t.KategoriteEDetajeve.EmriKategoriseDetajeve,
-                    t.TeDhenatJson
-                })
-                .FirstOrDefaultAsync();
-
-            if (teDhenat == null)
-            {
-                return NotFound("TeDhenatEDetajeve nuk u gjet.");
-            }
-
-            return Ok(teDhenat);
-        }
-
-        [AllowAnonymous]
-        [HttpPost]
-        [Route("UpdateTeDhenatEDetajeve/{id}")]
-        public async Task<ActionResult> UpdateTeDhenatEDetajeve(int id, [FromBody] UpdateDetailsDto updateDetailsDto)
-        {
-            var teDhenat = await _context.TeDhenatEDetajeve
-                .FirstOrDefaultAsync(t => t.TeDhenatEDetajeveId == id);
-
-            if (teDhenat == null)
-            {
-                return NotFound("TeDhenatEDetajeve nuk u gjet.");
-            }
-
-            teDhenat.TeDhenatJson = updateDetailsDto.TeDhenatJson;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-                await _adminLogService.LogAsync(userId, "Perditeso", "TeDhenatEDetajeve", teDhenat.TeDhenatEDetajeveId.ToString(), $"Eshte Perditesuar Te Dhenat e Detajeve: {teDhenat.TeDhenatJson}");
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, "Gabim gjatë përditësimit të të dhënave: " + ex.Message);
-            }
-
-            return Ok(teDhenat);
-        }
-
-        public class UpdateDetailsDto
-        {
-            public string TeDhenatJson { get; set; }
-        }
-
     }
 }

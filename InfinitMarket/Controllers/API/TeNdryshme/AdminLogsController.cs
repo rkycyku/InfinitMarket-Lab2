@@ -18,7 +18,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             _context = context;
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         [Route("ShfaqGjurmimet")]
         public async Task<IActionResult> ShfaqGjurmimet()

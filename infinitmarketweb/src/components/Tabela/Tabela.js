@@ -33,9 +33,6 @@ function Tabela({
   };
 
   const renderCellContent = (content) => {
-    if (typeof content === 'object' && content !== null) {
-      return <pre>{JSON.stringify(content, null, 2)}</pre>;
-    }
     return <div dangerouslySetInnerHTML={{ __html: content }} />;
   };
 

@@ -22,7 +22,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             _adminLogService = adminLogService;
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin, Shites")]
         [HttpGet]
         [Route("ShfaqPorosit")]
         public async Task<IActionResult> ShfaqPorosit()
@@ -52,7 +52,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             return Ok(porosit);
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpGet]
         [Route("ShfaqPorositeKlientit")]
         public async Task<IActionResult> ShfaqPorositeKlientit(string idPerdoruesi)
@@ -85,7 +85,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             return Ok(porosit);
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpGet]
         [Route("ShfaqPorosineNgaID")]
         public async Task<IActionResult> ShfaqPorosineNgaID(int nrFatures)
@@ -139,7 +139,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
         }
 
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpGet]
         [Route("ShfaqTeDhenatEPorosis")]
         public async Task<IActionResult> ShfaqTeDhenatEPorosis(int nrPorosis)
@@ -158,7 +158,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             return Ok(porsia);
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpPost]
         [Route("VendosPorosine")]
         public async Task<IActionResult> VendosPorosine(string AspNetUserID, [FromBody] Porosit porosit)
@@ -225,7 +225,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             return Ok(porosia.IdPorosia);
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin, Shites")]
         [HttpPut]
         [Route("PerditesoStatusinPorosis")]
         public async Task<IActionResult> PerditesoStatusinPorosis(int idPorosia, string statusi)
@@ -248,7 +248,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             return Ok(porosia);
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpGet]
         [Route("TeDhenatFatQRCode")]
         public async Task<IActionResult> TeDhenatFatQRCode(int nrPorosis, string nrBarkodit)

@@ -68,13 +68,7 @@ const menuItems = {
               title: 'Kompanite',
               type: 'item',
               url: '/admin/produktet/kompanite'
-            },
-            {
-              id: 'KategoriteEDetajeve',
-              title: 'KategoriteEDetajeve',
-              type: 'item',
-              url: '/produktet/PershkrimiProduktit/KategoriteEDetajeve'
-            },
+            }
           ]
         },
         {

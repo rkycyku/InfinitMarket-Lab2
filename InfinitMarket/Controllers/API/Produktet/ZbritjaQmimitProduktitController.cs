@@ -22,11 +22,33 @@ namespace InfinitMarket.Controllers.API.Produktet
             _adminLogService = adminLogService;
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpGet]
         [Route("shfaqZbritjet")]
         public async Task<IActionResult> get()
         {
+            var dataAktuale = DateTime.Now;
+
+            var ZbritjetEVjetra = await _context.ZbritjaQmimitProduktit
+                .Where(x => x.DataSkadimit <= dataAktuale)
+                .ToListAsync(); 
+
+            if (ZbritjetEVjetra.Count > 0)
+            {
+                foreach (var zbritja in ZbritjetEVjetra)
+                {
+                    var produkti = await _context.ZbritjaQmimitProduktit.FirstOrDefaultAsync(x => x.ZbritjaID == zbritja.ZbritjaID);
+
+                    if (produkti == null)
+                    {
+                        return BadRequest("Zbritja nuk u gjet!");
+                    }
+
+                    _context.ZbritjaQmimitProduktit.Remove(produkti);
+                    await _context.SaveChangesAsync();
+                }
+            }
+
             var prodMeZbritje = await _context.Produkti
                 .Where(x => x.ZbritjaQmimitProduktit.QmimiMeZbritjeProduktit != null)
                 .Select(x => new
@@ -43,7 +65,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return Ok(prodMeZbritje);
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin, Shites")]
         [HttpPost]
         [Route("shtoZbritjenProduktit")]
         public async Task<IActionResult> Post(ZbritjaQmimitProduktit zbritja)
@@ -57,7 +79,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return CreatedAtAction("get", zbritja.ProduktiId, zbritja);
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin, Shites")]
         [HttpDelete]
         [Route("fshijZbritjenProduktit")]
         public async Task<IActionResult> Delete(int id)

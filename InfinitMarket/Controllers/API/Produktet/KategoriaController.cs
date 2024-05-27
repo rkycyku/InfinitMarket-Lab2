@@ -24,7 +24,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             _adminLogService = adminLogService;
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpGet]
         [Route("shfaqKategorit")]
         public async Task<IActionResult> ShfaqKategorit()
@@ -37,7 +37,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return Ok(kategorit);
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpGet]
         [Route("shfaqKategorinSipasIDs")]
         public async Task<IActionResult> ShfaqKategorinSipasIDs(int id)
@@ -51,7 +51,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return Ok(kategoria);
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [Route("shtoKategorin")]
         public async Task<IActionResult> Post(KategoriaProduktit kategoriaProduktit)
@@ -65,7 +65,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return CreatedAtAction("get", kategoriaProduktit.KategoriaId, kategoriaProduktit);
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         [Route("perditesoKategorin")]
         public async Task<IActionResult> PerditesoKategorin(int id, KategoriaProduktit kategoriaProduktit)
@@ -89,8 +89,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return Ok(kategoria);
         }
 
-        //[AllowAnonymous]
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         [Route("fshijKategorin")]
         public async Task<IActionResult> FshijKategorin(int id)

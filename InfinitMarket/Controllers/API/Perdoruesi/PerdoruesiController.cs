@@ -29,7 +29,7 @@ namespace InfinitMarket.Controllers
             _adminLogService = adminLogService;
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpGet]
         [Route("shfaqPerdoruesit")]
         public async Task<IActionResult> ShfaqPerdoruesit()
@@ -57,7 +57,7 @@ namespace InfinitMarket.Controllers
             return Ok(perdoruesiList);
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpGet]
         [Route("shfaqSipasID")]
         public async Task<IActionResult> ShfaqSipasID(string idUserAspNet)
@@ -83,7 +83,7 @@ namespace InfinitMarket.Controllers
             return Ok(result);
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpGet]
         [Route("ShfaqAdresatPerdoruesit")]
         public async Task<IActionResult> ShfaqShfaqAdresatPerdoruesitSipasID(string idUserAspNet)

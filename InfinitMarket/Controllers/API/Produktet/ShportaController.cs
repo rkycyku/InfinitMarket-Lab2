@@ -21,7 +21,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             _adminLogService = adminLogService;
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin, Shites")]
         [HttpGet]
         [Route("ShfaqShportatEKlienteve")]
         public async Task<IActionResult> ShfaqShportatEKlienteve()
@@ -36,7 +36,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return Ok(shportat);
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpGet]
         [Route("ShfaqShporten")]
         public async Task<IActionResult> ShfaqShporten(string userID)
@@ -51,7 +51,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return Ok(shporta);
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpGet]
         [Route("shfaqProduktetEShportes")]
         public async Task<IActionResult> ShfaqProduktetEShportes(string userID)
@@ -121,7 +121,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return Ok(ListaProdukteve);
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpPost]
         [Route("shtoProduktinNeShporte")]
         public async Task<IActionResult> ShtoProduktinNeShport(string userID, int ProduktiID)
@@ -207,7 +207,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             }
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpPost]
         [Route("menaxhoShporten")]
         public async Task<IActionResult> MenaxhoShporten(string userID, int ProduktiID, string llojiFunksionit)
@@ -315,7 +315,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return Ok();
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpPut]
         [Route("PerditesoKodinZbritjesNeShporte")]
         public async Task<IActionResult> PerditesoKodinZbritjesNeShporte(string userID, string KodiZbritjes)
@@ -342,7 +342,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return Ok();
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpPut]
         [Route("PerditesoAdresenNeShporte")]
         public async Task<IActionResult> PerditesoAdresenNeShporte(string userID, int adresaID)
@@ -369,7 +369,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return Ok();
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpGet]
         [Route("ShfaqListenEDeshirave")]
         public async Task<IActionResult> ShfaqListenEDeshirave(string userID)
@@ -397,7 +397,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return Ok(ListaEDeshirave);
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpGet]
         [Route("KontrolloProduktinNeListenEDeshirave")]
         public async Task<IActionResult> KontrolloProduktinNeListenEDeshirave(string userID, int ProduktiID)
@@ -433,7 +433,7 @@ namespace InfinitMarket.Controllers.API.Produktet
         }
 
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpPost]
         [Route("ShtoProduktinNeListenEDeshirave")]
         public async Task<IActionResult> ShtoProduktinNeListenEDeshirave(string userID, int ProduktiID)
@@ -466,7 +466,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             }
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpDelete]
         [Route("LargoProduktinNgaListaEDeshirave")]
         public async Task<IActionResult> LargoProduktinNgaListaEDeshirave(int ListaEDeshiraveID)

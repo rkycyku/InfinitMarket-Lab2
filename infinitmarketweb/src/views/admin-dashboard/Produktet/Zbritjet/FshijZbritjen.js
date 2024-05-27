@@ -12,6 +12,7 @@ function FshijZbritjen(props) {
       props.fshijZbritjen();
       props.largo();
       props.shfaqmesazhin();
+      props.setPerditeso();
     } catch (error) {
       console.error(error);
       props.setTipiMesazhit('danger');

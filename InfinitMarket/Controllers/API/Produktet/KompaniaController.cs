@@ -24,8 +24,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             _adminLogService = adminLogService;
         }
 
-        //[Authorize(Policy = "punonAdministrat")]
-        [AllowAnonymous]
+        [Authorize]
         [HttpGet]
         [Route("shfaqKompanit")]
         public async Task<IActionResult> ShfaqKompanit()
@@ -38,8 +37,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return Ok(kompanit);
         }
 
-        // [AllowAnonymous]
-        [AllowAnonymous]
+        [Authorize]
         [HttpGet]
         [Route("shfaqKompaninSipasIDs")]
         public async Task<IActionResult> ShfaqKompaninSipasIDs(int id)
@@ -54,8 +52,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return Ok(kompania);
         }
 
-        //[AllowAnonymous]
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [Route("shtoKompanin")]
         public async Task<IActionResult> ShtoKompanin(KompanitePartnere kompaniaPartnere)
@@ -69,8 +66,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return CreatedAtAction("get", kompaniaPartnere.KompaniaID, kompaniaPartnere);
         }
 
-        //[AllowAnonymous]
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         [Route("perditesoKompanin")]
         public async Task<IActionResult> PerditesoKompanin(int id, KompanitePartnere kompaniaPartnere)
@@ -94,8 +90,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return Ok(kompania);
         }
 
-        //[AllowAnonymous]
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         [Route("fshijKompanin")]
         public async Task<IActionResult> FshijKompanin(int id)

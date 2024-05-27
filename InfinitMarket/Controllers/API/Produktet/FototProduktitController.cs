@@ -18,7 +18,7 @@ namespace InfinitMarket.Controllers.API.Produktet
         }
 
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpGet]
         [Route("ShfaqFototEProduktitPerGallery")]
         public async Task<IActionResult> ShfaqFototEProduktit(int produktiId)
@@ -29,7 +29,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return fotoProduktit is not null ? Ok(fotoProduktit) : NotFound();
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [Route("VendosFotonEProduktitPerGallery")]
         public async Task<IActionResult> VendosFotonEProduktitPerGallery(FototProduktit foto)
@@ -38,7 +38,7 @@ namespace InfinitMarket.Controllers.API.Produktet
             return CreatedAtAction(nameof(ShfaqFototEProduktit), new { id = foto.Id }, foto);
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         [Route("FshijFotonEProduktitPerGallery")]
         public async Task<ActionResult> FshijFotonEProduktitPerGallery(string id)

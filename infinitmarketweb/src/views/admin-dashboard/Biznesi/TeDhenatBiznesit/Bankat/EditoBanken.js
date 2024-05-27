@@ -262,7 +262,7 @@ function EditoBanken(props) {
             Anulo <FontAwesomeIcon icon={faXmark} />
           </Button>
           <Button className="Butoni" onClick={handleKontrolli}>
-            Edito Grupin e Produktit <FontAwesomeIcon icon={faPenToSquare} />
+            Edito Banken <FontAwesomeIcon icon={faPenToSquare} />
           </Button>
         </Modal.Footer>
       </Modal>

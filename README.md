@@ -145,7 +145,7 @@ Ne kete shembull eshte perfshire vetem Excel por ka dhe formate tjera si: JSON, 
 
 ### Fatura
 
-![](ReadMeImages/Fatura.jpg)
+![](ReadMeImages/Fatura.png)
 
 ### Lista e Deshirave
 
