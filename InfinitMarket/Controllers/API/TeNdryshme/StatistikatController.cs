@@ -157,7 +157,7 @@ namespace InfinitMarket.Controllers.API.TeNdryshme
             return Ok(bleresit);
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [HttpGet]
         [Route("15ProduktetMeTeShitura")]
         public async Task<IActionResult> GetTop15Prod()
