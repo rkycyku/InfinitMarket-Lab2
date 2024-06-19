@@ -177,30 +177,6 @@ namespace InfinitMarket.Migrations
                     b.ToTable("KategoriaProduktit");
                 });
 
-            modelBuilder.Entity("InfinitMarket.Models.KategoriteEDetajeve", b =>
-                {
-                    b.Property<int>("KategoriaDetajeveId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("KategoriaDetajeveId"), 1L, 1);
-
-                    b.Property<string>("DetajetJson")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("EmriKategoriseDetajeve")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("isDeleted")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("KategoriaDetajeveId");
-
-                    b.ToTable("KategoriteEDetajeve");
-                });
-
             modelBuilder.Entity("InfinitMarket.Models.KodiZbritjes", b =>
                 {
                     b.Property<string>("Kodi")
@@ -271,6 +247,52 @@ namespace InfinitMarket.Migrations
                     b.HasIndex("ProduktiID");
 
                     b.ToTable("ListaEDeshirave");
+                });
+
+            modelBuilder.Entity("InfinitMarket.Models.MbrojtjaEProjektit.Planet", b =>
+                {
+                    b.Property<int>("PlanetId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PlanetId"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("isDeleted")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("PlanetId");
+
+                    b.ToTable("Planet");
+                });
+
+            modelBuilder.Entity("InfinitMarket.Models.MbrojtjaEProjektit.Satellite", b =>
+                {
+                    b.Property<int>("SatelliteId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SatelliteId"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("PlanetId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("isDeleted")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SatelliteId");
+
+                    b.HasIndex("PlanetId");
+
+                    b.ToTable("Satellite");
                 });
 
             modelBuilder.Entity("InfinitMarket.Models.Perdoruesi", b =>
@@ -876,28 +898,6 @@ namespace InfinitMarket.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("TeDhenatEDetajeve", b =>
-                {
-                    b.Property<int>("TeDhenatEDetajeveId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TeDhenatEDetajeveId"), 1L, 1);
-
-                    b.Property<int>("KategoriaDetajeveId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("TeDhenatJson")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("TeDhenatEDetajeveId");
-
-                    b.HasIndex("KategoriaDetajeveId");
-
-                    b.ToTable("TeDhenatEDetajeve");
-                });
-
             modelBuilder.Entity("InfinitMarket.Models.AdminLogs", b =>
                 {
                     b.HasOne("InfinitMarket.Models.Perdoruesi", "Stafi")
@@ -953,6 +953,15 @@ namespace InfinitMarket.Migrations
                     b.Navigation("Klienti");
 
                     b.Navigation("Produkti");
+                });
+
+            modelBuilder.Entity("InfinitMarket.Models.MbrojtjaEProjektit.Satellite", b =>
+                {
+                    b.HasOne("InfinitMarket.Models.MbrojtjaEProjektit.Planet", "Planet")
+                        .WithMany()
+                        .HasForeignKey("PlanetId");
+
+                    b.Navigation("Planet");
                 });
 
             modelBuilder.Entity("InfinitMarket.Models.Perdoruesi", b =>
@@ -1133,17 +1142,6 @@ namespace InfinitMarket.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("TeDhenatEDetajeve", b =>
-                {
-                    b.HasOne("InfinitMarket.Models.KategoriteEDetajeve", "KategoriteEDetajeve")
-                        .WithMany()
-                        .HasForeignKey("KategoriaDetajeveId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("KategoriteEDetajeve");
                 });
 
             modelBuilder.Entity("InfinitMarket.Models.Perdoruesi", b =>

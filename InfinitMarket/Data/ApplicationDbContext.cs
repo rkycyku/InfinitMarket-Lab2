@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using InfinitMarket;
 using InfinitMarket.Models;
-
+using InfinitMarket.Models.MbrojtjaEProjektit;
 
 namespace InfinitMarket.Data
 {
@@ -32,5 +32,7 @@ namespace InfinitMarket.Data
         public DbSet<ListaEDeshirave> ListaEDeshirave {  get; set; }
         public DbSet<ZbritjaQmimitProduktit> ZbritjaQmimitProduktit { get; set; }
         public DbSet<AdminLogs> AdminLogs { get; set; }
+        public DbSet<Planet> Planet { get; set; }
+        public DbSet<Satellite> Satellite { get; set; }
     }
 }

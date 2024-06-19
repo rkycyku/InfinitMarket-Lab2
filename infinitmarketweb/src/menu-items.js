@@ -144,6 +144,26 @@ const menuItems = {
           ]
         },
         {
+          id: 'MbrojtjaEProjektit',
+          title: 'Mbrojtja e Projektit',
+          type: 'collapse',
+          icon: 'feather icon-home',
+          children: [
+            {
+              id: 'Planet',
+              title: 'Planet',
+              type: 'item',
+              url: '/admin/mbrojtjaeprojektit/planet'
+            },
+            {
+              id: 'Satellite',
+              title: 'Satellite',
+              type: 'item',
+              url: '/admin/mbrojtjaeprojektit/satellite'
+            },
+          ]
+        },
+        {
           id: 'Stafi',
           title: 'Stafi',
           type: 'item',

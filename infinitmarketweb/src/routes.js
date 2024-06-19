@@ -191,6 +191,18 @@ const routes = [
         path: '/404',
         element: lazy(() => import('./components/ErrorPages/404'))
       },
+      
+      {
+        exact: true,
+        path: '/admin/mbrojtjaeprojektit/planet',
+        element: lazy(() => import('./views/admin-dashboard/MbrojtjaProjektit/Planet'))
+      },
+      {
+        exact: true,
+        path: '/admin/mbrojtjaeprojektit/satellite',
+        element: lazy(() => import('./views/admin-dashboard/MbrojtjaProjektit/Satellite'))
+      },
+
       {
         path: '*',
         exact: 'true',
