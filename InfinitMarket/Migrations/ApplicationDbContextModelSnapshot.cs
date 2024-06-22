@@ -22,6 +22,49 @@ namespace InfinitMarket.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("InfinitMarket.Controllers.API.MbrojtjaEProjektit.Contract", b =>
+                {
+                    b.Property<int>("ContractID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ContractID"), 1L, 1);
+
+                    b.Property<int>("EmployeeID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ContractID");
+
+                    b.HasIndex("EmployeeID");
+
+                    b.ToTable("Contract");
+                });
+
+            modelBuilder.Entity("InfinitMarket.Controllers.API.MbrojtjaEProjektit.Employee", b =>
+                {
+                    b.Property<int>("EmployeeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EmployeeId"), 1L, 1);
+
+                    b.Property<string>("FullName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("isActive")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("EmployeeId");
+
+                    b.ToTable("Employee");
+                });
+
             modelBuilder.Entity("InfinitMarket.Models.AdminLogs", b =>
                 {
                     b.Property<int>("Id")
@@ -896,6 +939,17 @@ namespace InfinitMarket.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("InfinitMarket.Controllers.API.MbrojtjaEProjektit.Contract", b =>
+                {
+                    b.HasOne("InfinitMarket.Controllers.API.MbrojtjaEProjektit.Employee", "Employee")
+                        .WithMany()
+                        .HasForeignKey("EmployeeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
                 });
 
             modelBuilder.Entity("InfinitMarket.Models.AdminLogs", b =>

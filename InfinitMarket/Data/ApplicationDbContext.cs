@@ -34,5 +34,7 @@ namespace InfinitMarket.Data
         public DbSet<AdminLogs> AdminLogs { get; set; }
         public DbSet<Planet> Planet { get; set; }
         public DbSet<Satellite> Satellite { get; set; }
+        public DbSet<Employee> Employee { get; set; }
+        public DbSet<Contract> Contract { get; set; }
     }
 }

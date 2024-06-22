@@ -202,6 +202,16 @@ const routes = [
         path: '/admin/mbrojtjaeprojektit/satellite',
         element: lazy(() => import('./views/admin-dashboard/MbrojtjaProjektit/Satellite'))
       },
+      {
+        exact: true,
+        path: '/admin/mbrojtjaeprojektit/employee',
+        element: lazy(() => import('./views/admin-dashboard/MbrojtjaProjektit/Employee'))
+      },
+      {
+        exact: true,
+        path: '/admin/mbrojtjaeprojektit/contract',
+        element: lazy(() => import('./views/admin-dashboard/MbrojtjaProjektit/Contract'))
+      },
 
       {
         path: '*',

@@ -100,7 +100,7 @@ const menuItems = {
               title: 'Gjurmimet',
               type: 'item',
               url: '/Admin/TeNdryshme/Gjurmimet'
-            },
+            }
           ]
         },
         {
@@ -120,7 +120,7 @@ const menuItems = {
               title: 'Bankat',
               type: 'item',
               url: '/Admin/Biznesi/Bankat'
-            },
+            }
           ]
         },
         {
@@ -140,7 +140,7 @@ const menuItems = {
               title: 'Shportat e Klienteve',
               type: 'item',
               url: '/Admin/Klientet/ShportaEKlienteve'
-            },
+            }
           ]
         },
         {
@@ -161,6 +161,18 @@ const menuItems = {
               type: 'item',
               url: '/admin/mbrojtjaeprojektit/satellite'
             },
+            {
+              id: 'Employee',
+              title: 'Employee',
+              type: 'item',
+              url: '/admin/mbrojtjaeprojektit/employee'
+            },
+            {
+              id: 'Contract',
+              title: 'Contract',
+              type: 'item',
+              url: '/admin/mbrojtjaeprojektit/contract'
+            }
           ]
         },
         {
@@ -203,7 +215,7 @@ const menuItems = {
               title: 'Lista e Produkteve',
               type: 'item',
               url: '/admin/produktet/ListaEProdukteve'
-            },
+            }
           ]
         },
         {
@@ -217,7 +229,7 @@ const menuItems = {
               title: 'Kodi Zbritjes',
               type: 'item',
               url: '/admin/TeNdryshme/KodiZbritjes'
-            },
+            }
           ]
         },
         {
@@ -237,7 +249,7 @@ const menuItems = {
               title: 'Shportat e Klienteve',
               type: 'item',
               url: '/Admin/Klientet/ShportaEKlienteve'
-            },
+            }
           ]
         },
         {
