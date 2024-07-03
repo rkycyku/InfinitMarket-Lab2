@@ -150,28 +150,16 @@ const menuItems = {
           icon: 'feather icon-home',
           children: [
             {
-              id: 'Planet',
-              title: 'Planet',
+              id: 'Building',
+              title: 'Building',
               type: 'item',
-              url: '/admin/mbrojtjaeprojektit/planet'
+              url: '/admin/mbrojtjaeprojektit/building'
             },
             {
-              id: 'Satellite',
-              title: 'Satellite',
+              id: 'Renovation',
+              title: 'Renovation',
               type: 'item',
-              url: '/admin/mbrojtjaeprojektit/satellite'
-            },
-            {
-              id: 'Employee',
-              title: 'Employee',
-              type: 'item',
-              url: '/admin/mbrojtjaeprojektit/employee'
-            },
-            {
-              id: 'Contract',
-              title: 'Contract',
-              type: 'item',
-              url: '/admin/mbrojtjaeprojektit/contract'
+              url: '/admin/mbrojtjaeprojektit/renovation'
             }
           ]
         },

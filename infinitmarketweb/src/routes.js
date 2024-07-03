@@ -194,23 +194,13 @@ const routes = [
       
       {
         exact: true,
-        path: '/admin/mbrojtjaeprojektit/planet',
-        element: lazy(() => import('./views/admin-dashboard/MbrojtjaProjektit/Planet'))
+        path: '/admin/mbrojtjaeprojektit/building',
+        element: lazy(() => import('./views/admin-dashboard/MbrojtjaProjektit/Building'))
       },
       {
         exact: true,
-        path: '/admin/mbrojtjaeprojektit/satellite',
-        element: lazy(() => import('./views/admin-dashboard/MbrojtjaProjektit/Satellite'))
-      },
-      {
-        exact: true,
-        path: '/admin/mbrojtjaeprojektit/employee',
-        element: lazy(() => import('./views/admin-dashboard/MbrojtjaProjektit/Employee'))
-      },
-      {
-        exact: true,
-        path: '/admin/mbrojtjaeprojektit/contract',
-        element: lazy(() => import('./views/admin-dashboard/MbrojtjaProjektit/Contract'))
+        path: '/admin/mbrojtjaeprojektit/renovation',
+        element: lazy(() => import('./views/admin-dashboard/MbrojtjaProjektit/Renovation'))
       },
 
       {

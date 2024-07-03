@@ -22,49 +22,6 @@ namespace InfinitMarket.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("InfinitMarket.Controllers.API.MbrojtjaEProjektit.Contract", b =>
-                {
-                    b.Property<int>("ContractID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ContractID"), 1L, 1);
-
-                    b.Property<int>("EmployeeID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("StartDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("ContractID");
-
-                    b.HasIndex("EmployeeID");
-
-                    b.ToTable("Contract");
-                });
-
-            modelBuilder.Entity("InfinitMarket.Controllers.API.MbrojtjaEProjektit.Employee", b =>
-                {
-                    b.Property<int>("EmployeeId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EmployeeId"), 1L, 1);
-
-                    b.Property<string>("FullName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("isActive")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("EmployeeId");
-
-                    b.ToTable("Employee");
-                });
-
             modelBuilder.Entity("InfinitMarket.Models.AdminLogs", b =>
                 {
                     b.Property<int>("Id")
@@ -292,50 +249,47 @@ namespace InfinitMarket.Migrations
                     b.ToTable("ListaEDeshirave");
                 });
 
-            modelBuilder.Entity("InfinitMarket.Models.MbrojtjaEProjektit.Planet", b =>
+            modelBuilder.Entity("InfinitMarket.Models.MbrojtjaEProjektit.Building", b =>
                 {
-                    b.Property<int>("PlanetId")
+                    b.Property<int>("BuildingID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PlanetId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BuildingID"), 1L, 1);
+
+                    b.Property<string>("Location")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
+                    b.HasKey("BuildingID");
 
-                    b.Property<string>("isDeleted")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("PlanetId");
-
-                    b.ToTable("Planet");
+                    b.ToTable("Building");
                 });
 
-            modelBuilder.Entity("InfinitMarket.Models.MbrojtjaEProjektit.Satellite", b =>
+            modelBuilder.Entity("InfinitMarket.Models.MbrojtjaEProjektit.Renovation", b =>
                 {
-                    b.Property<int>("SatelliteId")
+                    b.Property<int>("RenovationID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SatelliteId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RenovationID"), 1L, 1);
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("PlanetId")
+                    b.Property<int>("BuildingID")
                         .HasColumnType("int");
 
-                    b.Property<string>("isDeleted")
+                    b.Property<double?>("Cost")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("SatelliteId");
+                    b.HasKey("RenovationID");
 
-                    b.HasIndex("PlanetId");
+                    b.HasIndex("BuildingID");
 
-                    b.ToTable("Satellite");
+                    b.ToTable("Renovation");
                 });
 
             modelBuilder.Entity("InfinitMarket.Models.Perdoruesi", b =>
@@ -941,17 +895,6 @@ namespace InfinitMarket.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("InfinitMarket.Controllers.API.MbrojtjaEProjektit.Contract", b =>
-                {
-                    b.HasOne("InfinitMarket.Controllers.API.MbrojtjaEProjektit.Employee", "Employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Employee");
-                });
-
             modelBuilder.Entity("InfinitMarket.Models.AdminLogs", b =>
                 {
                     b.HasOne("InfinitMarket.Models.Perdoruesi", "Stafi")
@@ -1009,13 +952,15 @@ namespace InfinitMarket.Migrations
                     b.Navigation("Produkti");
                 });
 
-            modelBuilder.Entity("InfinitMarket.Models.MbrojtjaEProjektit.Satellite", b =>
+            modelBuilder.Entity("InfinitMarket.Models.MbrojtjaEProjektit.Renovation", b =>
                 {
-                    b.HasOne("InfinitMarket.Models.MbrojtjaEProjektit.Planet", "Planet")
+                    b.HasOne("InfinitMarket.Models.MbrojtjaEProjektit.Building", "Building")
                         .WithMany()
-                        .HasForeignKey("PlanetId");
+                        .HasForeignKey("BuildingID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("Planet");
+                    b.Navigation("Building");
                 });
 
             modelBuilder.Entity("InfinitMarket.Models.Perdoruesi", b =>
