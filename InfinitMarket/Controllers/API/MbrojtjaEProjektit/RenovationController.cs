@@ -43,20 +43,6 @@ namespace WebAPI.Controllers.MbrojtjaProjektit
             return Ok(Renovation);
         }
 
-        [AllowAnonymous]
-        [HttpGet]
-        [Route("ShfaqRenovationNgaIDLokacioni")]
-        public async Task<IActionResult> ShfaqRenovationNgaIDLokacioni(int BuildingID)
-        {
-            var Renovation = await _context.Renovation.Include(x => x.Building).FirstOrDefaultAsync(x => x.BuildingID == BuildingID);
-
-            if (Renovation == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(Renovation);
-        }
 
         [AllowAnonymous]
         [HttpPost]
