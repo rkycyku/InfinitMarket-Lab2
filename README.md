@@ -1,8 +1,6 @@
 # InfinitMarket - We don't have any limit. We are Infinit
 
-### Logo
-
-![](ReadMeImages/Logo.png)
+![InfinitMarket — Shop without any limit](ReadMeImages/montage/hero.png)
 
 Ky projekt eshte punuar per projektin ne **Lab Kurs 2**.
 
@@ -92,6 +90,8 @@ Produktet, Kompanit, Kategorit, Ofertat etj. jane marre nga [Gjirafa50](https://
 Ne rast se keni paqartesi ose sygjerime kontaktoni me cilin do nga pjestaret e ekipes.
 
 ## Pamja e InfinitMarket
+
+![Every step of the shop, one platform](ReadMeImages/montage/showcase.png)
 
 ### Login
 
